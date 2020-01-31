@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;  //the speed
 
-    public bool keySwitch;
+    public bool keySwitch; // keySwitch
 
     private Rigidbody2D rb;  //the rigidbody of the player
 
