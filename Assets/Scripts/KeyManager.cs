@@ -30,10 +30,11 @@ public class KeyManager : MonoBehaviour
     
     void Update()
     {
-        FindZone();
+        //FindZone();
 
-        keySwitch = playerController.keySwitch;
+        //keySwitch = playerController.keySwitch;
 
+        /*
         switch(zone)
         {
             case 1:
@@ -100,9 +101,10 @@ public class KeyManager : MonoBehaviour
                 Debug.Log("Key: C major");
                 break;
         }
+        */
     }
 
-    private void FindZone()
+    public void FindZone()
     {
         playerPosition = attractor.gravityUp;
 
@@ -172,5 +174,6 @@ public class KeyManager : MonoBehaviour
                 zone = 4;
             }
         }
+        Debug.Log(zone);
     }
 }
