@@ -37,8 +37,13 @@ public class Player2Controller : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) == true)
+        {
+            Application.Quit();
+        }
+
         //jumps, uses physics engine and adds force in the up direction
-        if (Input.GetKeyDown("joystick 2 button 0") && isGrounded)
+        if (Input.GetKeyDown("joystick 2 button 0"))
         {
             Vector3 up = transform.TransformDirection(Vector3.up);
             rb.AddForce(up * 25f, ForceMode2D.Impulse);

@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Obstacle")) && isGrounded == false)
+        if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Obstacle")))
         {
             isGrounded = true;
         }
@@ -64,13 +64,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) == true)
+        {
+            Application.Quit();
+        }
+
         TakeInput();
 
         //jumps, uses physics engine and adds force in the up direction
-        if (Input.GetKeyDown("joystick 1 button 5") && isGrounded)
+        if (Input.GetKeyDown("joystick 1 button 5"))
         {
             Vector3 up = transform.TransformDirection(Vector3.up);
-            rb.AddForce(up * 20f, ForceMode2D.Impulse);
+            rb.AddForce(up * 25f, ForceMode2D.Impulse);
             isGrounded = false;
         }
     }
