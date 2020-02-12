@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;  //the speed
 
-    public bool keySwitch; // keySwitch
+    public bool keySwitch, // keySwitch
+                isMajor;
 
     private bool LT,
                  RT,
                  triggered,
-                 isGrounded;
+                 isGrounded,
+                 canAddObstacle;
 
     public float timer;
 
@@ -35,12 +37,14 @@ public class PlayerController : MonoBehaviour
 
         LT = false;
         RT = false;
-        key = 0;
+        key = 1;
         extension = 0;
         triggered = false;
-        
-        timer = 0;
+
+        timer = 2f;
         isGrounded = true;
+        isMajor = true;
+        canAddObstacle = true;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -64,11 +68,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //quit game in built
         if (Input.GetKeyDown(KeyCode.Escape) == true)
         {
             Application.Quit();
         }
 
+        //takes input for leading player
         TakeInput();
 
         //jumps, uses physics engine and adds force in the up direction
@@ -82,6 +88,84 @@ public class PlayerController : MonoBehaviour
 
     private void TakeInput()
     {
+        timer += Time.deltaTime;
+
+        if(timer >= 0.25f)
+        {
+            canAddObstacle = true;
+        }
+        else
+        {
+            canAddObstacle = false;
+        }
+
+        Debug.Log(Input.GetAxis("Major"));
+
+        if(Input.GetAxisRaw("Major") != 0)
+        {
+            if(isMajor)
+            {
+                if(canAddObstacle)
+                {
+                    extension = 0;
+                    obstacleBuilder.BuildObstacle(key, extension);
+                    timer = 0;
+                }
+            }
+            else
+            {
+                key = 1;
+                isMajor = true;
+                timer = 0;
+            }
+        }
+        else if (Input.GetAxisRaw("Minor") != 0)
+        {
+            if (!isMajor)
+            {
+                if(canAddObstacle)
+                {
+                    extension = 0;
+                    obstacleBuilder.BuildObstacle(key, extension);
+                    timer = 0;
+                }
+            }
+            else
+            {
+                key = 2;
+                isMajor = false;
+                timer = 0;
+            }
+        }
+
+        if (Input.GetKey("joystick 1 button 0") && canAddObstacle)
+        {
+            extension = 1;
+            obstacleBuilder.BuildObstacle(key, extension);
+            timer = 0;
+        }
+        else if (Input.GetKey("joystick 1 button 1") && canAddObstacle)
+        {
+            extension = 2;
+            obstacleBuilder.BuildObstacle(key, extension);
+            timer = 0;
+        }
+        else if (Input.GetKey("joystick 1 button 2") && canAddObstacle)
+        {
+            extension = 3;
+            obstacleBuilder.BuildObstacle(key, extension);
+            timer = 0;
+        }
+        else if (Input.GetKey("joystick 1 button 3") && canAddObstacle)
+        {
+            extension = 4;
+            obstacleBuilder.BuildObstacle(key, extension);
+            timer = 0;
+        }
+
+
+        /*
+        //checks of the player is pressing the left or right trigger, or not pressing anything
         if (Input.GetAxisRaw("Major") != 0 && RT == false)
         {
             if (LT == false)
@@ -117,6 +201,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        //if the player is pressing ont of the trigger, takes further input
         if(triggered)
         {
             timer += Time.deltaTime;
@@ -160,5 +245,6 @@ public class PlayerController : MonoBehaviour
             //obstacleBuilder.BuildObstacle(key, extension);
             
         }
+    */
     }
 }

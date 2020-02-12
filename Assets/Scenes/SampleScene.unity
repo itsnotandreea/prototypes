@@ -644,6 +644,7 @@ MonoBehaviour:
   extension: 0
   moveSpeed: 20
   keySwitch: 0
+  isMajor: 0
   timer: 0
 --- !u!50 &783097454
 Rigidbody2D:
@@ -769,6 +770,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeeab0ab62fc87e459c06c1840b2e01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ext1: {fileID: 5639185751061899848, guid: 8085ab4a6ea4ff14c876276afe298d74, type: 3}
+  ext2: {fileID: 6560355744037724052, guid: 1bdccb085a6b5f743b27829d34bdec4f, type: 3}
+  ext3: {fileID: 7640417728283423678, guid: 26bac237a7f5f75438d30e44abd0fab2, type: 3}
+  ext4: {fileID: 6187813739932068622, guid: abf120d68fa6f0d48a5b76417d29b5a3, type: 3}
+  ext0: {fileID: 1416420298470430680, guid: 71574bf93700311488713fb15c21cc02, type: 3}
 --- !u!4 &798216662 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8983836363940771053, guid: e2a9b378abe6cc24a8f7beca806dda9f,
@@ -1114,7 +1120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ac72b0517eed04b8b700bedadd1b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 22
+  moveSpeed: 0
+  jumpHeight: 25
+  dashSpeed: 35
+  originalSpeed: 22
+  breakSpeed: 8
+  moreWeight: 5
 --- !u!50 &1416259308
 Rigidbody2D:
   serializedVersion: 4
