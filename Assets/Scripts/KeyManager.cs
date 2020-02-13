@@ -12,13 +12,13 @@ public class KeyManager : MonoBehaviour
 
     private GameObject player;
 
-    private PlayerController playerController;
+    private PlayerOneController playerOneController;
     private FauxGravityAttractor attractor;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerController = player.GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("PlayerOne");
+        playerOneController = player.GetComponent<PlayerOneController>();
 
         attractor = GetComponent<FauxGravityAttractor>();
 

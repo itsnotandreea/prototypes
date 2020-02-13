@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2Controller : MonoBehaviour
+public class PlayerTwoController : MonoBehaviour
 {
+    public int button,
+               key;
+
     public float moveSpeed,  //the speed
                  jumpHeight,
                  dashSpeed,
@@ -11,15 +14,29 @@ public class Player2Controller : MonoBehaviour
                  breakSpeed,
                  moreWeight;
 
-    private bool isGrounded;
+    public bool isMajor;
+
+    private bool isGrounded,
+                 onceA,
+                 onceX;
 
     private Rigidbody2D rb;  //the rigidbody of the player
+
+    private PlayerTwoSound pTwoSound;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        pTwoSound = GetComponent<PlayerTwoSound>();
+
         isGrounded = true;
         moveSpeed = originalSpeed;
+        key = 1;
+        isMajor = true;
+        button = 0;
+        onceA = false;
+        onceX = false;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -53,21 +70,49 @@ public class Player2Controller : MonoBehaviour
 
     void TakeInput()
     {
+        if (Input.GetAxisRaw("MajorTwo") != 0)
+        {
+            key = 1;
+        }
+        else if (Input.GetAxisRaw("MinorTwo") != 0)
+        {
+            key = 2;
+        }
+        
         if (Input.GetKey("joystick 2 button 0"))
         {
             //duck
             Vector3 down = transform.TransformDirection(Vector3.down);
             rb.AddForce(down * moreWeight, ForceMode2D.Impulse);
+            if(!onceA)
+            {
+                onceA = true;
+                button = 1;
+                pTwoSound.AssignClip(key, button);
+            }
+            button = 0;
         }
         else if (Input.GetKeyDown("joystick 2 button 1"))
         {
             //dash
             moveSpeed = dashSpeed;
             StartCoroutine(Wait(0.75f));
+
+            button = 2;
+            pTwoSound.AssignClip(key, button);
+            button = 0;
         }
         else if (Input.GetKey("joystick 2 button 2"))
         {
             moveSpeed = breakSpeed;
+
+            if(!onceX)
+            {
+                onceX = true;
+                button = 3;
+                pTwoSound.AssignClip(key, button);
+            }
+            button = 0;
         }
         else if (Input.GetKeyDown("joystick 2 button 3"))
         {
@@ -75,10 +120,16 @@ public class Player2Controller : MonoBehaviour
             Vector3 up = transform.TransformDirection(Vector3.up);
             rb.AddForce(up * jumpHeight, ForceMode2D.Impulse);
             isGrounded = false;
+
+            button = 4;
+            pTwoSound.AssignClip(key, button);
+            button = 0;
         }
         else
         {
-            if(moveSpeed != dashSpeed)
+            onceA = false;
+            onceX = false;
+            if (moveSpeed != dashSpeed)
             {
                 moveSpeed = originalSpeed;
             }

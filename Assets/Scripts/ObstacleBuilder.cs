@@ -15,11 +15,11 @@ public class ObstacleBuilder : MonoBehaviour
 
     private string obstacleName;
 
-    private GameObject player,
+    private GameObject playerOne,
                        floor,
                        obstacleGO;
 
-    private PlayerController playerController;
+    private PlayerOneController playerOneController;
 
     private KeyManager keyManager;
 
@@ -27,8 +27,8 @@ public class ObstacleBuilder : MonoBehaviour
                              
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerController = player.GetComponent<PlayerController>();
+        playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
+        playerOneController = playerOne.GetComponent<PlayerOneController>();
 
         floor = GameObject.FindGameObjectWithTag("Floor");
         keyManager = floor.GetComponent<KeyManager>();
