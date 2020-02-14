@@ -104,7 +104,7 @@ public class PlayerTwoController : MonoBehaviour
         }
         else if (Input.GetKey("joystick 2 button 2"))
         {
-            moveSpeed = breakSpeed;
+            moveSpeed -= Time.deltaTime * 40.0f;
 
             if(!onceX)
             {
