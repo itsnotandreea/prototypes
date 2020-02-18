@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerTwoController : MonoBehaviour
 {
     public int button,
-               key;
+               key,
+               round;
 
     public float moveSpeed,  //the speed
                  jumpHeight,
@@ -37,6 +38,15 @@ public class PlayerTwoController : MonoBehaviour
         button = 0;
         onceA = false;
         onceX = false;
+        round = 1;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Round"))
+        {
+            round += 1;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)

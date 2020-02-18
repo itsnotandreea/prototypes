@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerOneController : MonoBehaviour
 {
     public int key,                //1-major; 2-minor; 0-nothing
-               extension;          //1-A; 2-B; 3-C; 4-D; 0-nothing
+               extension,          //1-A; 2-B; 3-C; 4-D; 0-nothing
+               round;
 
     public float moveSpeed;  //the speed
 
@@ -36,11 +37,20 @@ public class PlayerOneController : MonoBehaviour
         key = 1;
         extension = 0;
         triggered = false;
+        round = 1;
 
         timer = 2f;
         isGrounded = true;
         isMajor = true;
         canAddObstacle = true;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Round"))
+        {
+            round += 1;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
