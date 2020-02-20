@@ -54,7 +54,7 @@ public class CameraScript : MonoBehaviour
 
     void CameraControls()
     {
-        if (GetPerc() > 1.5f)
+        if (GetPerc() > 1.10f)
         {
             TurnOnSecondCam();
         }

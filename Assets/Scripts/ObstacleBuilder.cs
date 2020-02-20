@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class ObstacleBuilder : MonoBehaviour
 {
-    public GameObject ext1,
-                      ext2,
-                      ext3,
-                      ext4,
-                      ext0;
-
     private int zone,
                 obstacle;
 

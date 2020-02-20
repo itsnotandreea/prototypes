@@ -8,7 +8,11 @@ public class PlayerOneController : MonoBehaviour
                extension,          //1-A; 2-B; 3-C; 4-D; 0-nothing
                round;
 
-    public float moveSpeed;  //the speed
+    public float moveSpeed,  //the speed
+                 timer,
+                 fallMultiplier,
+                 lowJumpMultiplier,
+                 jumpHeight;
 
     public bool isMajor;
 
@@ -18,7 +22,7 @@ public class PlayerOneController : MonoBehaviour
                  isGrounded,
                  canAddObstacle;
 
-    public float timer;
+    private int jumped;
 
     private Transform playerPosition;
 
@@ -41,6 +45,7 @@ public class PlayerOneController : MonoBehaviour
 
         timer = 2f;
         isGrounded = true;
+        jumped = 0;
         isMajor = true;
         canAddObstacle = true;
     }
@@ -58,6 +63,7 @@ public class PlayerOneController : MonoBehaviour
         if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Obstacle")))
         {
             isGrounded = true;
+            jumped = 0;
         }
     }
 
@@ -84,11 +90,24 @@ public class PlayerOneController : MonoBehaviour
         TakeInput();
 
         //jumps, uses physics engine and adds force in the up direction
-        if (Input.GetKeyDown("joystick 1 button 5"))
+        if (Input.GetKeyDown("joystick 1 button 5") && (jumped < 2))
         {
             Vector3 up = transform.TransformDirection(Vector3.up);
-            rb.AddForce(up * 25f, ForceMode2D.Impulse);
+            //rb.AddForce(up * 25f, ForceMode2D.Impulse);
+            rb.velocity = up * jumpHeight;
             isGrounded = false;
+            jumped += 1;
+        }
+
+        Vector2 ups = transform.TransformDirection(Vector3.up);
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += ups * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetKey("joystick 2 button 3"))
+        {
+            rb.velocity += ups * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 
@@ -107,16 +126,7 @@ public class PlayerOneController : MonoBehaviour
 
         if(Input.GetAxisRaw("Major") != 0)
         {
-            if(isMajor)
-            {
-                if(canAddObstacle)
-                {
-                    extension = 0;
-                    obstacleBuilder.BuildObstacle(key, extension);
-                    timer = 0;
-                }
-            }
-            else
+            if(!isMajor)
             {
                 key = 1;
                 isMajor = true;
@@ -125,16 +135,7 @@ public class PlayerOneController : MonoBehaviour
         }
         else if (Input.GetAxisRaw("Minor") != 0)
         {
-            if (!isMajor)
-            {
-                if(canAddObstacle)
-                {
-                    extension = 0;
-                    obstacleBuilder.BuildObstacle(key, extension);
-                    timer = 0;
-                }
-            }
-            else
+            if (isMajor)
             {
                 key = 2;
                 isMajor = false;
@@ -162,7 +163,7 @@ public class PlayerOneController : MonoBehaviour
         }
         else if (Input.GetKey("joystick 1 button 3") && canAddObstacle)
         {
-            extension = 4;
+            extension = 0;
             obstacleBuilder.BuildObstacle(key, extension);
             timer = 0;
         }
