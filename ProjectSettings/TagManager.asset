@@ -21,6 +21,8 @@ TagManager:
   - Bat
   - BallTrigger
   - Ball
+  - CatapultTrigger
+  - CatapultBullet
   layers:
   - Default
   - TransparentFX

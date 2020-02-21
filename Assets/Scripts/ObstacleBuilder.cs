@@ -45,7 +45,9 @@ public class ObstacleBuilder : MonoBehaviour
             
             objPosition = transform.position;
 
-            StartCoroutine(Wait(0.2f));
+            Instantiate(obstacleGO, objPosition, transform.rotation);
+
+            //StartCoroutine(Wait(0f));
         }
     }
 

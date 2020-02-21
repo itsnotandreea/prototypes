@@ -125,6 +125,12 @@ public class PlayerTwoController : MonoBehaviour
         {
             other.GetComponent<BallScript>().FallingBall();
         }
+
+        if (other.CompareTag("CatapultTrigger"))
+        {
+            StartCoroutine(other.GetComponent<CatapultScript>().Catapult());
+
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
