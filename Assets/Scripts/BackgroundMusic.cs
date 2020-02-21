@@ -36,7 +36,6 @@ public class BackgroundMusic : MonoBehaviour
 
     void FindKey()
     {
-        Debug.Log(pOneController.key);
         if(pOneController.key == 1)
         {
             currentClip = Cmaj;

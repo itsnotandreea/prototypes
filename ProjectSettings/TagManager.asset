@@ -10,6 +10,17 @@ TagManager:
   - PlayerTwo
   - Round
   - JumpingBot
+  - Jelly
+  - Bomb
+  - BombTrigger
+  - ThwackTrigger
+  - Thwack
+  - RainTrigger
+  - RainDrop
+  - BatTrigger
+  - Bat
+  - BallTrigger
+  - Ball
   layers:
   - Default
   - TransparentFX

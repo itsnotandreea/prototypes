@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4351941195488487683}
   - component: {fileID: 4351941195488487682}
   - component: {fileID: 4351941195488487681}
+  - component: {fileID: 3184553119578786376}
   m_Layer: 0
   m_Name: Bot3
   m_TagString: Untagged
@@ -121,7 +122,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &4351941195488487682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +163,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5122228, y: 5.253008}
   m_EdgeRadius: 0
+--- !u!95 &3184553119578786376
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351941195488487687}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebd40b7e3fc5d864e8d85aa71f63cf07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4351941195904592402
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +373,7 @@ GameObject:
   - component: {fileID: 4351941196196331667}
   - component: {fileID: 4351941196196331666}
   - component: {fileID: 4351941196196331665}
+  - component: {fileID: 8878381479220251782}
   m_Layer: 0
   m_Name: Bot2
   m_TagString: Untagged
@@ -460,7 +481,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &4351941196196331666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +522,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5122228, y: 5.253008}
   m_EdgeRadius: 0
+--- !u!95 &8878381479220251782
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351941196196331671}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebd40b7e3fc5d864e8d85aa71f63cf07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4351941196394900724
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +555,7 @@ GameObject:
   - component: {fileID: 4351941196394900722}
   - component: {fileID: 4351941196394900687}
   - component: {fileID: 4351941196394900686}
+  - component: {fileID: 1128813583667674005}
   m_Layer: 0
   m_Name: Bot1
   m_TagString: Untagged
@@ -622,7 +663,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &4351941196394900687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,3 +704,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5122228, y: 5.253008}
   m_EdgeRadius: 0
+--- !u!95 &1128813583667674005
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351941196394900724}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebd40b7e3fc5d864e8d85aa71f63cf07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
