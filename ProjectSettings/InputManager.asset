@@ -38,7 +38,7 @@ InputManager:
     axis: 6
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Major
+    m_Name: Minor
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -54,7 +54,7 @@ InputManager:
     axis: 8
     joyNum: 1
   - serializedVersion: 3
-    m_Name: MajorTwo
+    m_Name: MinorTwo
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -70,7 +70,7 @@ InputManager:
     axis: 8
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Minor
+    m_Name: Major
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -86,7 +86,7 @@ InputManager:
     axis: 9
     joyNum: 1
   - serializedVersion: 3
-    m_Name: MinorTwo
+    m_Name: MajorTwo
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

@@ -8,6 +8,21 @@ TagManager:
   - Obstacle
   - PlayerOne
   - PlayerTwo
+  - Round
+  - JumpingBot
+  - Jelly
+  - Bomb
+  - BombTrigger
+  - ThwackTrigger
+  - Thwack
+  - RainTrigger
+  - RainDrop
+  - BatTrigger
+  - Bat
+  - BallTrigger
+  - Ball
+  - CatapultTrigger
+  - CatapultBullet
   layers:
   - Default
   - TransparentFX

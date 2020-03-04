@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class PlayerTwoSound : MonoBehaviour
 {
-    public AudioClip A,
-                     Asharp,
-                     B,
-                     C,
-                     Csharp,
-                     D,
-                     Dsharp,
-                     E,
-                     F,
-                     Fsharp,
-                     G,
-                     Gsharp,
+    public AudioClip CmajA,
+                     CmajB,
+                     CmajX,
+                     CmajY,
+                     AminA,
+                     AminB,
+                     AminX,
+                     AminY,
                      empty;
 
     public AudioSource sourceA,         //the audio source that plays the clips
@@ -62,38 +58,38 @@ public class PlayerTwoSound : MonoBehaviour
         {
             if(button == 1)
             {
-                sourceA.PlayOneShot(G);
+                sourceA.PlayOneShot(CmajA);
             }
             else if (button == 2)
             {
-                sourceB.PlayOneShot(E);
+                sourceB.PlayOneShot(CmajB);
             }
             else if (button == 3)
             {
-                sourceX.PlayOneShot(B);
+                sourceX.PlayOneShot(CmajX);
             }
             else if (button == 4)
             {
-                sourceY.PlayOneShot(C);
+                sourceY.PlayOneShot(CmajY);
             }
         }
         else if (key == 2)
         {
             if (button == 1)
             {
-                sourceB.PlayOneShot(E);
+                sourceA.PlayOneShot(AminA);
             }
             else if (button == 2)
             {
-                sourceY.PlayOneShot(C);
+                sourceB.PlayOneShot(AminB);
             }
             else if (button == 3)
             {
-                sourceA.PlayOneShot(G);
+                sourceX.PlayOneShot(AminX);
             }
             else if (button == 4)
             {
-                sourceX.PlayOneShot(A);
+                sourceY.PlayOneShot(AminY);
             }
         }
     }
