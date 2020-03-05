@@ -7,7 +7,9 @@ public class PlayerTwoController : MonoBehaviour
     public int button,
                key,
                round,
-               jumped;
+               jumped,
+               obstacles,
+               total;
 
     public float moveSpeed,  //the speed
                  jumpHeight,
@@ -22,8 +24,6 @@ public class PlayerTwoController : MonoBehaviour
                  thwackForce;
 
     public bool isMajor;
-
-    private int dashCount;
 
     private bool isGrounded,
                  onceA,
@@ -52,7 +52,8 @@ public class PlayerTwoController : MonoBehaviour
         jumped = 0;
         isDashing = false;
         inTrap = false;
-        dashCount = 0;
+        obstacles = 0;
+        total = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -65,30 +66,35 @@ public class PlayerTwoController : MonoBehaviour
         if (other.CompareTag("JumpingBot"))
         {
             StartCoroutine(other.GetComponent<JumpingBotScript>().Fire());
+            obstacles += 1;
         }
 
         if (other.CompareTag("BombTrigger"))
         {
             other.GetComponent<BombScript>().ActivatedBomb();
+            obstacles += 1;
         }
 
         if (other.CompareTag("Bomb"))
         {
             if (isDashing)
             {
+                total = obstacles;
                 other.enabled = false;
             }
             else
             {
-                inTrap = true;
-                Vector2 left = transform.TransformDirection(Vector2.left);
-                rb.AddForce(left * bombForce, ForceMode2D.Impulse);
+                other.gameObject.tag = "Untagged";
+                obstacles -= 2;
+                Vector2 direction = transform.position - other.transform.position;
+                rb.AddForce(direction * bombForce, ForceMode2D.Impulse);
             }
         }
 
         if (other.CompareTag("ThwackTrigger"))
         {
             other.GetComponent<ThwackScript>().ActivatedThwack();
+            obstacles += 1;
             StartCoroutine(Reactivate(other, 5.0f));
         }
 
@@ -96,40 +102,68 @@ public class PlayerTwoController : MonoBehaviour
         {
             Vector2 up = transform.TransformDirection(Vector2.up);
             rb.AddForce(up * thwackForce, ForceMode2D.Impulse);
+            obstacles -= 2;
         }
 
         if (other.CompareTag("RainTrigger"))
         {
+            obstacles += 1;
             StartCoroutine(other.GetComponent<RainScript>().MakeItRain());
         }
 
         if (other.CompareTag("RainDrop"))
         {
             moveSpeed = 0.0f;
+            obstacles -= 2;
+
+            foreach (Transform child in other.transform.parent.gameObject.transform)
+            {
+                child.gameObject.tag = "Untagged";
+            }
+
             StartCoroutine(Wait(0.3f));
         }
 
         if (other.CompareTag("BatTrigger"))
         {
             other.GetComponent<BatScript>().ActivatedBat();
+            obstacles += 1;
             StartCoroutine(Reactivate(other, 5.0f));
         }
 
         if (other.CompareTag("Bat"))
         {
             moveSpeed = 0.0f;
+            obstacles -= 2;
+            other.gameObject.tag = "Untagged";
             StartCoroutine(Wait(0.4f));
         }
 
         if (other.CompareTag("BallTrigger"))
         {
             other.GetComponent<BallScript>().FallingBall();
+            obstacles += 1;
         }
 
         if (other.CompareTag("CatapultTrigger"))
         {
             StartCoroutine(other.GetComponent<CatapultScript>().Catapult());
+            obstacles += 1;
+        }
 
+        if (other.CompareTag("Jelly"))
+        {
+            if (isDashing)
+            {
+                obstacles += 1;
+                other.enabled = false;
+                StartCoroutine(Reactivate(other, 5.0f));
+            }
+            else
+            {
+                obstacles -= 1;
+                moveSpeed = jellySpeed;
+            }
         }
     }
 
@@ -144,7 +178,6 @@ public class PlayerTwoController : MonoBehaviour
             }
             else
             {
-                inTrap = true;
                 moveSpeed = jellySpeed;
             }
         }
@@ -152,28 +185,31 @@ public class PlayerTwoController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-         if(other.CompareTag("Jelly"))
-         {
+        if (other.CompareTag("ThwackTrigger") || other.CompareTag("BombTrigger"))
+        {
+            total = obstacles;
+            Debug.Log("TOTAL: " + total);
+        }
+
+        if (other.CompareTag("RainTrigger") || other.CompareTag("BallTrigger") || other.CompareTag("CatapultTrigger") || other.CompareTag("BatTrigger") || other.CompareTag("JumpingBot"))
+        {
+            total = obstacles;
+            other.gameObject.tag = "Untagged";
+            Debug.Log("TOTAL: " + total);
+        }
+
+        if (other.CompareTag("Jelly"))
+        {
+
+            total = obstacles;
+            other.gameObject.tag = "Untagged";
+            Debug.Log("TOTAL: " + total);
+
             if(!isDashing)
             {
                 moveSpeed = originalSpeed;
             }
-
-            inTrap = false;
-            dashCount = 0;
-         }
-         /*
-         if(other.CompareTag("Bomb"))
-         {
-            if (!isDashing)
-            {
-                moveSpeed = originalSpeed;
-            }
-
-            inTrap = false;
-            dashCount = 0;
         }
-        */
     }
 
 
@@ -185,10 +221,32 @@ public class PlayerTwoController : MonoBehaviour
             jumped = 0;
         }
 
+        if (other.gameObject.tag == "Bot")
+        {
+            foreach (Transform child in other.transform.parent.gameObject.transform)
+            {
+                child.gameObject.tag = "Untagged";
+            }
+
+            obstacles -= 2;
+        }
+
         if (other.gameObject.tag == "Ball")
         {
+            other.gameObject.GetComponent<Collider2D>().isTrigger = false;
             moveSpeed = 0.0f;
+            obstacles -= 2;
+            other.gameObject.tag = "Untagged";
             StartCoroutine(Wait(0.4f));
+        }
+
+        if (other.gameObject.tag == "CatapultBullet")
+        {
+            foreach (Transform child in other.transform.parent.gameObject.transform)
+            {
+                child.gameObject.tag = "Untagged";
+            }
+            obstacles -= 2;
         }
     }
 
@@ -212,6 +270,10 @@ public class PlayerTwoController : MonoBehaviour
 
         TakeInput();
 
+        if (obstacles < 0)
+        {
+            obstacles = 0;
+        }
 
         //make falling quicker
         Vector2 ups = transform.TransformDirection(Vector3.up);
@@ -252,14 +314,12 @@ public class PlayerTwoController : MonoBehaviour
         }
         else if (Input.GetKeyDown("joystick 2 button 1"))
         {
-            dashCount += 1;
-            if((!inTrap) || (dashCount >= 5))
+            if(!inTrap)
             {
                 //dash
                 isDashing = true;
                 moveSpeed = originalSpeed + dashSpeed;
                 StartCoroutine(Wait(0.3f));
-                dashCount = 0;
 
                 button = 2;
                 pTwoSound.AssignClip(key, button);
@@ -308,7 +368,6 @@ public class PlayerTwoController : MonoBehaviour
 
         moveSpeed = originalSpeed;
         isDashing = false;
-        dashCount = 0;
     }
 
     IEnumerator Reactivate(Collider2D other, float waitTime)

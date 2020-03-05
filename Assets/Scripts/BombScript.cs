@@ -16,7 +16,7 @@ public class BombScript : MonoBehaviour
     public void ActivatedBomb()
     {
         anim.Play("bombAnim");
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
 
         StartCoroutine(Destroy(1.3f));
     }

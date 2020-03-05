@@ -44,7 +44,7 @@ public class CatapultScript : MonoBehaviour
 
     public IEnumerator Catapult()
     {
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
 
         rbOne.AddForce(direction * power, ForceMode2D.Impulse);
         bulletOne.GetComponent<FauxGravityBody>().enabled = true;

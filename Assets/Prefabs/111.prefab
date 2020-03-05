@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 6975232805966676537}
   - component: {fileID: 3649453044973714019}
   m_Layer: 0
-  m_Name: 120
+  m_Name: 111
   m_TagString: BombTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
