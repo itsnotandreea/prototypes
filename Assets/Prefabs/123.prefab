@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3184553119578786376}
   m_Layer: 0
   m_Name: Bot3
-  m_TagString: Untagged
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4351941195904592401}
   - component: {fileID: 5430784217671506482}
   m_Layer: 0
-  m_Name: 111
+  m_Name: 123
   m_TagString: JumpingBot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,7 +231,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -6.71, y: 7.1}
+  m_Offset: {x: 4.525797, y: 7.1000004}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -242,7 +242,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4721012, y: 32.81742}
+  m_Size: {x: 23.943699, y: 32.81742}
   m_EdgeRadius: 0
 --- !u!114 &4351941195904592401
 MonoBehaviour:
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 8878381479220251782}
   m_Layer: 0
   m_Name: Bot2
-  m_TagString: Untagged
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 1128813583667674005}
   m_Layer: 0
   m_Name: Bot1
-  m_TagString: Untagged
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

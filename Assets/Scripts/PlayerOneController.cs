@@ -38,7 +38,7 @@ public class PlayerOneController : MonoBehaviour
 
         LT = false;
         RT = false;
-        key = 1;
+        key = 2;
         extension = 0;
         triggered = false;
         round = 1;

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1654136217}
   m_Layer: 0
   m_Name: Bullet3
-  m_TagString: Untagged
+  m_TagString: CatapultBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 2119080020}
   m_Layer: 0
   m_Name: Bullet2
-  m_TagString: Untagged
+  m_TagString: CatapultBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 3020702645528680375}
   - component: {fileID: 736242231193515468}
   m_Layer: 0
-  m_Name: 123
+  m_Name: 112
   m_TagString: CatapultTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,7 +507,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -7.6, y: 2.5045013}
+  m_Offset: {x: -4.2443414, y: 2.5045013}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -518,7 +518,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.876539, y: 6.9083414}
+  m_Size: {x: 12.587855, y: 6.9083414}
   m_EdgeRadius: 0
 --- !u!114 &3020702645528680375
 MonoBehaviour:
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 1249364621}
   m_Layer: 0
   m_Name: Bullet1
-  m_TagString: Untagged
+  m_TagString: CatapultBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

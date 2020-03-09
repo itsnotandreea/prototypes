@@ -16,7 +16,7 @@ public class BatScript : MonoBehaviour
     public void ActivatedBat()
     {
         anim.Play("batAnim");
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
 
         StartCoroutine(Destroy(1.1f));
     }

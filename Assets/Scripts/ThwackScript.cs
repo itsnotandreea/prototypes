@@ -16,7 +16,7 @@ public class ThwackScript : MonoBehaviour
     public void ActivatedThwack()
     {
         anim.Play("thwackAnim");
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
 
         StartCoroutine(Destroy(1.0f));
     }

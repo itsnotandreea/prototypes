@@ -16,7 +16,7 @@ public class JumpingBotScript : MonoBehaviour
 
     public IEnumerator Fire()
     {
-        GetComponent<BoxCollider2D>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
         
         //botOne.GetComponent<CapsuleCollider2D>().enabled = true;
         botOne.SetActive(true);

@@ -23,6 +23,7 @@ TagManager:
   - Ball
   - CatapultTrigger
   - CatapultBullet
+  - Bot
   layers:
   - Default
   - TransparentFX
