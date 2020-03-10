@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CountdownSystem : MonoBehaviour
 {
     public Text UIText;
+
     public float mainTimer,
                  timer;
 
@@ -22,7 +23,7 @@ public class CountdownSystem : MonoBehaviour
 
     private void Update()
     {
-        if(timer >- 0.0f && canCount)
+        if(timer >= 0.0f && canCount)
         {
             timer -= Time.deltaTime;
             UIText.text = Mathf.Floor(timer / 60).ToString("0") + ":" + Mathf.FloorToInt(timer % 60).ToString("00");

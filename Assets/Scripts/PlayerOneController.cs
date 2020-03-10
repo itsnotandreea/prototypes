@@ -16,11 +16,7 @@ public class PlayerOneController : MonoBehaviour
 
     public bool isMajor;
 
-    private bool LT,
-                 RT,
-                 triggered,
-                 isGrounded,
-                 canAddObstacle;
+    private bool canAddObstacle;
 
     private int jumped;
 
@@ -35,16 +31,12 @@ public class PlayerOneController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         obstacleBuilder = GetComponent<ObstacleBuilder>();
-
-        LT = false;
-        RT = false;
+        
         key = 2;
         extension = 0;
-        triggered = false;
         round = 1;
 
         timer = 2f;
-        isGrounded = true;
         jumped = 0;
         isMajor = true;
         canAddObstacle = true;
@@ -62,14 +54,12 @@ public class PlayerOneController : MonoBehaviour
     {
         if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Obstacle")))
         {
-            isGrounded = true;
             jumped = 0;
         }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        isGrounded = false;
     }
 
     void FixedUpdate()
@@ -80,12 +70,6 @@ public class PlayerOneController : MonoBehaviour
 
     private void Update()
     {
-        //quit game in built
-        if (Input.GetKeyDown(KeyCode.Escape) == true)
-        {
-            Application.Quit();
-        }
-
         //takes input for leading player
         TakeInput();
 
@@ -95,7 +79,6 @@ public class PlayerOneController : MonoBehaviour
             Vector3 up = transform.TransformDirection(Vector3.up);
             //rb.AddForce(up * 25f, ForceMode2D.Impulse);
             rb.velocity = up * jumpHeight;
-            isGrounded = false;
             jumped += 1;
         }
 
@@ -115,7 +98,7 @@ public class PlayerOneController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= 0.25f)
+        if(timer >= 1.0f)
         {
             canAddObstacle = true;
         }

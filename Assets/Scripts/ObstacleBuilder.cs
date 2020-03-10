@@ -51,10 +51,12 @@ public class ObstacleBuilder : MonoBehaviour
         }
     }
 
+    /*
     IEnumerator Wait(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
 
         Instantiate(obstacleGO, objPosition, transform.rotation);
     }
+    */
 }

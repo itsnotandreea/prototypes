@@ -27,7 +27,6 @@ public class PlayerTwoController : MonoBehaviour
 
     private bool isGrounded,
                  onceA,
-                 onceX,
                  isDashing,
                  inTrap;
 
@@ -47,13 +46,12 @@ public class PlayerTwoController : MonoBehaviour
         isMajor = true;
         button = 0;
         onceA = false;
-        onceX = false;
         round = 1;
         jumped = 0;
         isDashing = false;
         inTrap = false;
         obstacles = 0;
-        total = 0;
+        total = 12;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -188,14 +186,12 @@ public class PlayerTwoController : MonoBehaviour
         if (other.CompareTag("ThwackTrigger") || other.CompareTag("BombTrigger"))
         {
             total = obstacles;
-            Debug.Log("TOTAL: " + total);
         }
 
         if (other.CompareTag("RainTrigger") || other.CompareTag("BallTrigger") || other.CompareTag("CatapultTrigger") || other.CompareTag("BatTrigger") || other.CompareTag("JumpingBot"))
         {
             total = obstacles;
             other.gameObject.tag = "Untagged";
-            Debug.Log("TOTAL: " + total);
         }
 
         if (other.CompareTag("Jelly"))
@@ -203,7 +199,6 @@ public class PlayerTwoController : MonoBehaviour
 
             total = obstacles;
             other.gameObject.tag = "Untagged";
-            Debug.Log("TOTAL: " + total);
 
             if(!isDashing)
             {
@@ -263,11 +258,6 @@ public class PlayerTwoController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) == true)
-        {
-            Application.Quit();
-        }
-
         TakeInput();
 
         if (obstacles < 0)
@@ -354,7 +344,6 @@ public class PlayerTwoController : MonoBehaviour
         else
         {
             onceA = false;
-            onceX = false;
             if ((moveSpeed != originalSpeed + dashSpeed) && (moveSpeed != 0.0f - dashSpeed) && (!inTrap) && (moveSpeed != 0.0f))
             {
                 moveSpeed = originalSpeed;
