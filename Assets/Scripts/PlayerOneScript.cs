@@ -67,7 +67,7 @@ public class PlayerOneScript : MonoBehaviour
             }
         }
 
-        if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
+        if (!closestKnot.GetComponent<ParticleSystem>().isPlaying && closestKnot != firstKnot)
         {
             closestKnot.GetComponent<ParticleSystem>().Play();
         }
@@ -93,9 +93,11 @@ public class PlayerOneScript : MonoBehaviour
             if(firstKnot == null)
             {
                 firstKnot = closestKnot;
-                private ParticleSystem ps;
-                ParticleSystem = 
-                firstKnot.GetComponent<ParticleSystem>().main.startColor = new Color ();
+
+                firstKnot.GetComponent<ParticleSystem>().Stop();
+                firstKnot.GetComponent<ParticleSystem>().Clear();
+
+                firstKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.9f, 0.0f);
             }
         }
     }
