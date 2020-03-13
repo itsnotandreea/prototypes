@@ -6,7 +6,10 @@ public class PlayerOneScript : MonoBehaviour
 {
     public float radius,
                  closestKnotDist,
-                 currentKnotDist;
+                 currentKnotDist,
+                 length;
+
+    public GameObject line;
 
     private int knotsInRange;
 
@@ -37,7 +40,7 @@ public class PlayerOneScript : MonoBehaviour
         centre = this.transform.position;
 
         Collider2D[] knotsList = Physics2D.OverlapCircleAll(centre, radius, 1 << 8);
-
+        
         closestKnotDist = 1000.0f;
         
         if (knotsList.Length > 0)
@@ -67,38 +70,83 @@ public class PlayerOneScript : MonoBehaviour
             }
         }
 
-        if (!closestKnot.GetComponent<ParticleSystem>().isPlaying && closestKnot != firstKnot)
+        if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
         {
             closestKnot.GetComponent<ParticleSystem>().Play();
         }
         
         Debug.Log(closestKnot.name);
-
     }
 
     void Navigate()
     {
         float horizontal = this.transform.position.x + (radius * Input.GetAxis("POneLeftJoystickHorizontal"));
         float vertical = this.transform.position.y + (radius * Input.GetAxis("POneLeftJoystickVertical"));
-        
-        aimDirection = new Vector2(horizontal, vertical);
 
+        aimDirection = new Vector2(horizontal, vertical);
+        
         Debug.DrawLine(this.transform.position, new Vector3(horizontal, vertical, 0f), Color.black);
     }
 
     void TakeInput()
     {
-        if(Input.GetKey("joystick 1 button 0"))
+        if(Input.GetKeyDown("joystick 1 button 0"))
         {
-            if(firstKnot == null)
+            if(firstKnot == null && closestKnot != null)
             {
                 firstKnot = closestKnot;
 
                 firstKnot.GetComponent<ParticleSystem>().Stop();
                 firstKnot.GetComponent<ParticleSystem>().Clear();
 
-                firstKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.9f, 0.0f);
+                firstKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+            }
+            else if (firstKnot == closestKnot && closestKnot != null)
+            {
+                firstKnot.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f);
+
+                firstKnot = null;
+            }
+            else if (firstKnot != null && firstKnot != closestKnot)
+            {
+                secondKnot = closestKnot;
+
+                secondKnot.GetComponent<ParticleSystem>().Stop();
+                secondKnot.GetComponent<ParticleSystem>().Clear();
+
+                secondKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+
+                CreateLine();
             }
         }
+    }
+
+    void CreateLine()
+    {
+        GameObject newLine = Instantiate(line, firstKnot.transform.position, transform.rotation);
+
+        length = Mathf.Sqrt(Mathf.Pow(firstKnot.transform.position.x - secondKnot.transform.position.x, 2f) +
+                            Mathf.Pow(firstKnot.transform.position.y - secondKnot.transform.position.y, 2f));
+        
+        Vector3 scaler = new Vector3(length / 10f, 1.0f, 1.0f);
+
+        
+        float rotation = Vector3.Angle(Vector3.right, secondKnot.transform.position - firstKnot.transform.position);
+        
+        if(secondKnot.transform.position.y - firstKnot.transform.position.y < 0.0f)
+        {
+            rotation *= -1.0f;
+        }
+
+        //newLine.transform.SetParent(firstKnot.transform);
+
+        newLine.GetComponent<Transform>().localScale = scaler;
+
+        newLine.transform.eulerAngles = new Vector3(0.0f, 0.0f, rotation);
+
+        newLine.AddComponent<BoxCollider2D>();
+        
+        firstKnot = null;
+        secondKnot = null;
     }
 }

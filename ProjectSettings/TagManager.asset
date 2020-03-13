@@ -26,6 +26,7 @@ TagManager:
   - Bot
   - Knot
   - Collectable
+  - Line
   layers:
   - Default
   - TransparentFX
