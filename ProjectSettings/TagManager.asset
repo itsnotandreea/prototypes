@@ -24,6 +24,8 @@ TagManager:
   - CatapultTrigger
   - CatapultBullet
   - Bot
+  - Knot
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -33,7 +35,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Knot
   - 
   - 
   - 
