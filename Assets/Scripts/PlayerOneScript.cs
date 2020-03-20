@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerOneScript : MonoBehaviour
 {
-    public float radius,
+    public float moveSpeed,
+                 radius,
                  closestKnotDist,
                  currentKnotDist,
                  length;
@@ -12,6 +13,8 @@ public class PlayerOneScript : MonoBehaviour
     public GameObject line;
 
     private int knotsInRange;
+
+    private bool canConnect;
 
     private Vector2 centre,
                     aimDirection;
@@ -26,8 +29,16 @@ public class PlayerOneScript : MonoBehaviour
 
         closestKnotDist = 1000f;
         closestKnot = null;
+
+        canConnect = true;
     }
-    
+
+    private void FixedUpdate()
+    {
+        //tells object what position to move to
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+    }
+
     void Update()
     {
         FindKnots();
@@ -116,7 +127,37 @@ public class PlayerOneScript : MonoBehaviour
 
                 secondKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
 
-                CreateLine();
+
+
+                Collider2D[] lineList = Physics2D.OverlapCircleAll(centre, radius * 5.0f, 1 << 9);
+                
+                if (lineList.Length > 0)
+                {
+                    foreach (Collider2D line in lineList)
+                    {
+                        if (IsIntersecting(line.gameObject, firstKnot.transform.position.x, firstKnot.transform.position.y,
+                                                            secondKnot.transform.position.x, secondKnot.transform.position.y) == true)
+                        {
+                            canConnect = false;
+                        }
+                    }
+
+                    if (canConnect)
+                    {
+                        CreateLine();
+                        canConnect = true;
+                    }
+                    else
+                    {
+                        firstKnot = null;
+                        secondKnot = null;
+                        canConnect = true;
+                    }
+                }
+                else
+                {
+                    CreateLine();
+                }
             }
         }
     }
@@ -138,7 +179,7 @@ public class PlayerOneScript : MonoBehaviour
             rotation *= -1.0f;
         }
 
-        //newLine.transform.SetParent(firstKnot.transform);
+        newLine.transform.SetParent(secondKnot.transform);
 
         newLine.GetComponent<Transform>().localScale = scaler;
 
@@ -148,5 +189,39 @@ public class PlayerOneScript : MonoBehaviour
         
         firstKnot = null;
         secondKnot = null;
+    }
+
+    bool IsIntersecting(GameObject prevLine, float lineTwoStartX, float lineTwoStartY, float lineTwoEndX, float lineTwoEndY)
+    {
+        bool isIntersecting = false;
+        
+        //3d -> 2d
+        Vector2 p1 = new Vector2(prevLine.transform.position.x, prevLine.transform.position.y);
+        Vector2 p2 = new Vector2(prevLine.transform.parent.transform.position.x, prevLine.transform.parent.transform.position.y);
+
+        Vector2 p3 = new Vector2(lineTwoStartX, lineTwoStartY);
+        Vector2 p4 = new Vector2(lineTwoEndX, lineTwoEndY);
+
+        float denominator = (p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y);
+
+        //Make sure the denominator is > 0, if so the lines are parallel
+        if (denominator != 0)
+        {
+            float u_a = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / denominator;
+            float u_b = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / denominator;
+
+            //Is intersecting if u_a and u_b are between 0 and 1
+            if (u_a >= 0 && u_a <= 1 && u_b >= 0 && u_b <= 1)
+            {
+                isIntersecting = true;
+            }
+        }
+        
+        if ((p1 == p3) || (p1 == p4) || (p2 == p3) || (p2 == p4))
+        {
+            isIntersecting = false;
+        }
+        
+        return isIntersecting;
     }
 }
