@@ -8,9 +8,11 @@ public class PlayerOneScript : MonoBehaviour
                  radius,
                  closestKnotDist,
                  currentKnotDist,
-                 length;
+                 length,
+                 adjustAngle;
 
-    public GameObject line;
+    public GameObject line,
+                      floor;
 
     private bool canConnect;
 
@@ -94,12 +96,34 @@ public class PlayerOneScript : MonoBehaviour
 
     void Navigate()
     {
+        //Calculates angle between start position and current position
+        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 575.0f);
+        Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(transform.position.x, transform.position.y);
+        float adjustAngle = 360.0f - Vector2.Angle(initialPos, currentPos);
+        
+        //Takes Input from Joystick axis
+        float x = Input.GetAxis("POneLeftJoystickHorizontal");
+        float y = Input.GetAxis("POneLeftJoystickVertical");
+
+        //Converts to radians and calculates cos and sin
+        float angle = adjustAngle * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(angle);
+        float sin = Mathf.Sin(angle);
+
+        //applies the new input to the player's position, respecting the radius
+        float x2 = this.transform.position.x + (radius * (x * cos - y * sin));
+        float y2 = this.transform.position.y + (radius * (x * sin + y * cos));
+
+        aimDirection = new Vector2(x2, y2);
+
+        /*
         float horizontal = this.transform.position.x + (radius * Input.GetAxis("POneLeftJoystickHorizontal"));
         float vertical = this.transform.position.y + (radius * Input.GetAxis("POneLeftJoystickVertical"));
 
         aimDirection = new Vector2(horizontal, vertical);
-        
-        Debug.DrawLine(this.transform.position, new Vector3(horizontal, vertical, 0f), Color.black);
+        */
+
+        Debug.DrawLine(this.transform.position, new Vector3(x2, y2, 0f), Color.black);
     }
 
     void TakeInput()
