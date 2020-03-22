@@ -12,8 +12,6 @@ public class PlayerOneScript : MonoBehaviour
 
     public GameObject line;
 
-    private int knotsInRange;
-
     private bool canConnect;
 
     private Vector2 centre,
@@ -21,11 +19,15 @@ public class PlayerOneScript : MonoBehaviour
 
     private GameObject closestKnot,
                        firstKnot,
-                       secondKnot;
+                       secondKnot,
+                       musicGO;
+
+    private MusicSequence musicSequence;
 
     void Start()
     {
-        knotsInRange = 0;
+        musicGO = GameObject.FindGameObjectWithTag("Music");
+        musicSequence = musicGO.GetComponent<MusicSequence>();
 
         closestKnotDist = 1000f;
         closestKnot = null;
@@ -83,10 +85,11 @@ public class PlayerOneScript : MonoBehaviour
 
         if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
         {
+            var main = closestKnot.GetComponent<ParticleSystem>().main;
+            main.startColor = new Color(255f, 225f, 0f, 255f);
+
             closestKnot.GetComponent<ParticleSystem>().Play();
         }
-        
-        Debug.Log(closestKnot.name);
     }
 
     void Navigate()
@@ -110,11 +113,11 @@ public class PlayerOneScript : MonoBehaviour
                 firstKnot.GetComponent<ParticleSystem>().Stop();
                 firstKnot.GetComponent<ParticleSystem>().Clear();
 
-                firstKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+                //firstKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
             }
             else if (firstKnot == closestKnot && closestKnot != null)
             {
-                firstKnot.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f);
+                //firstKnot.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f);
 
                 firstKnot = null;
             }
@@ -125,29 +128,30 @@ public class PlayerOneScript : MonoBehaviour
                 secondKnot.GetComponent<ParticleSystem>().Stop();
                 secondKnot.GetComponent<ParticleSystem>().Clear();
 
-                secondKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+                //secondKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
 
 
-
+                //checks if there are any other lines in range that might be intersecting if creating a line
                 Collider2D[] lineList = Physics2D.OverlapCircleAll(centre, radius * 5.0f, 1 << 9);
                 
                 if (lineList.Length > 0)
-                {
+                {   
                     foreach (Collider2D line in lineList)
                     {
                         if (IsIntersecting(line.gameObject, firstKnot.transform.position.x, firstKnot.transform.position.y,
                                                             secondKnot.transform.position.x, secondKnot.transform.position.y) == true)
                         {
+                            //if there is one such line, then a connection is not possible
                             canConnect = false;
                         }
                     }
 
-                    if (canConnect)
+                    if (canConnect)             //if there is no such line, a connection is possible and it creates one.
                     {
                         CreateLine();
                         canConnect = true;
                     }
-                    else
+                    else                        //if there is a line, deselects both knots so the player can try again
                     {
                         firstKnot = null;
                         secondKnot = null;
@@ -186,6 +190,8 @@ public class PlayerOneScript : MonoBehaviour
         newLine.transform.eulerAngles = new Vector3(0.0f, 0.0f, rotation);
 
         newLine.AddComponent<BoxCollider2D>();
+
+        AddToMusicSequenceList(firstKnot, secondKnot);
         
         firstKnot = null;
         secondKnot = null;
@@ -211,7 +217,7 @@ public class PlayerOneScript : MonoBehaviour
             float u_b = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / denominator;
 
             //Is intersecting if u_a and u_b are between 0 and 1
-            if (u_a >= 0 && u_a <= 1 && u_b >= 0 && u_b <= 1)
+            if ((u_a >= 0) && (u_a <= 1) && (u_b >= 0) && (u_b <= 1))
             {
                 isIntersecting = true;
             }
@@ -223,5 +229,11 @@ public class PlayerOneScript : MonoBehaviour
         }
         
         return isIntersecting;
+    }
+
+    private void AddToMusicSequenceList(GameObject firstKnot, GameObject secondKnot)
+    {
+        musicSequence.sequence.Add(firstKnot);
+        musicSequence.sequence.Add(secondKnot);
     }
 }
