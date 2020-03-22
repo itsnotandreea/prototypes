@@ -233,7 +233,19 @@ public class PlayerOneScript : MonoBehaviour
 
     private void AddToMusicSequenceList(GameObject firstKnot, GameObject secondKnot)
     {
-        musicSequence.sequence.Add(firstKnot);
+        //checks if the last knot is the same as the first one in th new line, so it doesn't add the same note twice?
+        if (musicSequence.sequence.Count > 0)
+        {
+            if (musicSequence.sequence[musicSequence.sequence.Count - 1] != firstKnot)
+            {
+                musicSequence.sequence.Add(firstKnot);
+            }
+        }
+        else
+        {
+            musicSequence.sequence.Add(firstKnot);
+        }
+        
         musicSequence.sequence.Add(secondKnot);
     }
 }
