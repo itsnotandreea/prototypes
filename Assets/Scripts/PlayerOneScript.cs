@@ -85,12 +85,15 @@ public class PlayerOneScript : MonoBehaviour
             }
         }
 
-        if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
+        if(closestKnot != null)
         {
-            var main = closestKnot.GetComponent<ParticleSystem>().main;
-            main.startColor = new Color(255f, 225f, 0f, 255f);
+            if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
+            {
+                var main = closestKnot.GetComponent<ParticleSystem>().main;
+                main.startColor = new Color(255f, 225f, 0f, 255f);
 
-            closestKnot.GetComponent<ParticleSystem>().Play();
+                closestKnot.GetComponent<ParticleSystem>().Play();
+            }
         }
     }
 
