@@ -102,8 +102,16 @@ public class PlayerOneScript : MonoBehaviour
         //Calculates angle between start position and current position
         Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 575.0f);
         Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(transform.position.x, transform.position.y);
-        float adjustAngle = 360.0f - Vector2.Angle(initialPos, currentPos);
-        
+
+        if(transform.position.x > 0)
+        {
+            adjustAngle = 360.0f - Vector2.Angle(initialPos, currentPos);
+        }
+        else
+        {
+            adjustAngle = Vector2.Angle(initialPos, currentPos);
+        }
+
         //Takes Input from Joystick axis
         float x = Input.GetAxis("POneLeftJoystickHorizontal");
         float y = Input.GetAxis("POneLeftJoystickVertical");

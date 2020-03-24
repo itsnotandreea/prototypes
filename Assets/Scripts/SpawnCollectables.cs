@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpwanCollectables : MonoBehaviour
+public class SpawnCollectables : MonoBehaviour
 {
     public float respawnTime,
                  size;
@@ -18,7 +18,7 @@ public class SpwanCollectables : MonoBehaviour
     }
 
 
-    private void SpawnCollectables()
+    private void SpawnCollectable()
     {
         //selects random position within circle of 1 unit, then adds the position to the spawn area's position
         Vector2 pos = Random.insideUnitCircle * (size);
@@ -34,7 +34,7 @@ public class SpwanCollectables : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnTime);
 
-            SpawnCollectables();
+            SpawnCollectable();
         }
     }
 }
