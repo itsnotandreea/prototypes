@@ -39,7 +39,7 @@ public class MusicSequence : MonoBehaviour
         if (sequence.Count > 0 && started == false)
         {
             started = true;
-            StartCoroutine(Play(1.0f));
+            StartCoroutine(Play(1.2f));
         }
 
         while (j < sequence.Count)

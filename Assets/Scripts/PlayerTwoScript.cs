@@ -61,40 +61,12 @@ public class PlayerTwoScript : MonoBehaviour
             jumped = 0;
         }
 
-        if(other.gameObject.tag == "Line")
-        {
-            /*
-            float angle = Vector2.SignedAngle(transform.TransformDirection(other.transform.position), other.transform.position + transform.TransformDirection(Vector3.right) * 10.0f);
-            if (angle > 20.0f || angle < -20.0f)
-            {
-                thereIsSlope = true;
-            }
-            else
-            {
-                thereIsSlope = false;
-            }
-            Debug.Log(angle);
-            */
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D other)
-    {
         if (other.gameObject.tag == "Line")
         {
-            //how the fuck do you get that angle?
-            Debug.DrawLine(other.transform.position, other.transform.position + transform.TransformDirection(Vector3.right) * 10.0f, Color.black);
-            Debug.DrawLine(other.transform.position, other.transform.position + other.transform.TransformDirection(Vector3.right) * 10.0f, Color.black);
+            //how the fuck do you get that angle? - find the angle between the line and player 2.right
+            float angle = Vector2.SignedAngle(transform.TransformDirection(Vector3.right), other.transform.TransformDirection(Vector3.right));
 
-            float angle = Vector2.SignedAngle(transform.TransformDirection(Vector3.right), other.transform.TransformDirection(Vector3.right) * 10.0f);
-            Debug.Log("Old angle: " + angle);
-            
-            Debug.Log("Player Angle" + (360 - transform.localEulerAngles.z));
-
-            Debug.Log(angle - (360 - transform.localEulerAngles.z));
-            
-
-            if (angle > 20.0f || angle < -20.0f)
+            if (angle > 25.0f || angle < 90.0f || angle > -155.0f || angle < -90.0f)
             {
                 thereIsSlope = true;
             }
@@ -105,7 +77,7 @@ public class PlayerTwoScript : MonoBehaviour
         }
     }
 
-        private void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionExit2D(Collision2D other)
     {
         if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Line")) && isGrounded == false)
         {
