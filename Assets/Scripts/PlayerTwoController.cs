@@ -298,7 +298,7 @@ public class PlayerTwoController : MonoBehaviour
             {
                 onceA = true;
                 button = 1;
-                pTwoSound.AssignClip(key, button);
+                //pTwoSound.AssignClip(key, button);
             }
             button = 0;
         }
@@ -312,7 +312,7 @@ public class PlayerTwoController : MonoBehaviour
                 StartCoroutine(Wait(0.3f));
 
                 button = 2;
-                pTwoSound.AssignClip(key, button);
+                //pTwoSound.AssignClip(key, button);
                 button = 0;
             }
             
@@ -325,7 +325,7 @@ public class PlayerTwoController : MonoBehaviour
             StartCoroutine(Wait(0.3f));
 
             button = 3;
-            pTwoSound.AssignClip(key, button);
+            //pTwoSound.AssignClip(key, button);
             button = 0;
         }
         else if (Input.GetKeyDown("joystick 2 button 3") && (jumped < 2))
@@ -338,7 +338,7 @@ public class PlayerTwoController : MonoBehaviour
             jumped += 1;
 
             button = 4;
-            pTwoSound.AssignClip(key, button);
+            //pTwoSound.AssignClip(key, button);
             button = 0;
         }
         else

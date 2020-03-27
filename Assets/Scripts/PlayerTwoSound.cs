@@ -4,38 +4,18 @@ using UnityEngine;
 
 public class PlayerTwoSound : MonoBehaviour
 {
-    public AudioClip CmajA,
-                     CmajB,
-                     CmajX,
-                     CmajY,
-                     AminA,
-                     AminB,
-                     AminX,
-                     AminY,
+    public AudioClip run,
+                     jump,
+                     bounce,
+                     slide,
                      empty;
 
-    public AudioSource sourceA,         //the audio source that plays the clips
-                       sourceB,
-                       sourceX,
-                       sourceY;
+    public AudioSource musicSource;         //the audio source that plays the clips
 
     private AudioClip currentClip;          //the current clip to be played
 
-    private GameObject playerTwo,
-                       floor;
-
-    private PlayerTwoController pTwoController;
-
-    private KeyManager keyManager;
-
     void Start()
     {
-        playerTwo = GameObject.FindGameObjectWithTag("PlayerOne");
-        pTwoController = playerTwo.GetComponent<PlayerTwoController>();
-
-        floor = GameObject.FindGameObjectWithTag("Floor");
-        keyManager = floor.GetComponent<KeyManager>();
-
         //accesses the audio source and sets the initial clip
         currentClip = empty;
     }
@@ -52,45 +32,43 @@ public class PlayerTwoSound : MonoBehaviour
         }*/
     }
 
-    public void AssignClip(int key, int button)
+    public void AssignClip(int button)
     {
-        if(key == 1)
+        if (button == 0)
         {
-            if(button == 1)
+            currentClip = jump;
+            musicSource.clip = currentClip;
+            musicSource.Play();
+        }
+        else if (button == 1)
+        {
+            if (!musicSource.isPlaying || musicSource.clip != run)
             {
-                sourceA.PlayOneShot(CmajA);
-            }
-            else if (button == 2)
-            {
-                sourceB.PlayOneShot(CmajB);
-            }
-            else if (button == 3)
-            {
-                sourceX.PlayOneShot(CmajX);
-            }
-            else if (button == 4)
-            {
-                sourceY.PlayOneShot(CmajY);
+                currentClip = run;
+                musicSource.clip = currentClip;
+                musicSource.Play();
             }
         }
-        else if (key == 2)
+        else if (button == 2)
         {
-            if (button == 1)
+            if (!musicSource.isPlaying || musicSource.clip != run)
             {
-                sourceA.PlayOneShot(AminA);
+                currentClip = run;
+                musicSource.clip = currentClip;
+                musicSource.Play();
             }
-            else if (button == 2)
-            {
-                sourceB.PlayOneShot(AminB);
-            }
-            else if (button == 3)
-            {
-                sourceX.PlayOneShot(AminX);
-            }
-            else if (button == 4)
-            {
-                sourceY.PlayOneShot(AminY);
-            }
+        }
+        else if (button == 3)
+        {
+            currentClip = slide;
+            musicSource.clip = currentClip;
+            musicSource.Play();
+        }
+        else if (button == 100)
+        {
+            currentClip = empty;
+            musicSource.clip = currentClip;
+            musicSource.Play();
         }
     }
 }
