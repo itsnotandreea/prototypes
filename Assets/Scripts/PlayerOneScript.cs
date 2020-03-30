@@ -9,18 +9,24 @@ public class PlayerOneScript : MonoBehaviour
                  closestKnotDist,
                  currentKnotDist,
                  length,
-                 adjustAngle;
+                 adjustAngle,
+                 lineLength,
+                 extraLength;
 
-    public GameObject line,
-                      floor;
+    public GameObject drawing,
+                      floor,
+                      firstKnot,
+                      line;
 
-    private bool canConnect;
+    private bool canConnect,
+                 once;
+
+    private LineRenderer lineRenderer;
 
     private Vector2 centre,
                     aimDirection;
 
     private GameObject closestKnot,
-                       firstKnot,
                        secondKnot,
                        musicGO;
 
@@ -31,10 +37,15 @@ public class PlayerOneScript : MonoBehaviour
         musicGO = GameObject.FindGameObjectWithTag("Music");
         musicSequence = musicGO.GetComponent<MusicSequence>();
 
+        lineRenderer = drawing.GetComponent<LineRenderer>();
+        lineRenderer.SetPosition(0, firstKnot.transform.position);
+        lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
+
         closestKnotDist = 1000f;
         closestKnot = null;
 
         canConnect = true;
+        once = true;
     }
 
     private void FixedUpdate()
@@ -52,17 +63,21 @@ public class PlayerOneScript : MonoBehaviour
 
     void FindKnots()
     {
-        centre = this.transform.position;
+        //adds all knots in range of radius to an array
+        centre = firstKnot.transform.position;
 
-        Collider2D[] knotsList = Physics2D.OverlapCircleAll(centre, radius, 1 << 8);
+        Collider2D[] knotsList = Physics2D.OverlapCircleAll(centre, lineLength, 1 << 8);
         
+        //resets closest distance every time
         closestKnotDist = 1000.0f;
         
+        //if there are knots in range, it starts the navigation through them 
         if (knotsList.Length > 0)
         {
             Navigate();
         }
         
+        //for each knot on the array, it calculates whether it's the closest to the player's input point
         foreach (Collider2D knot in knotsList)
         {
             currentKnotDist = Mathf.Sqrt(Mathf.Pow(aimDirection.x - knot.gameObject.transform.position.x, 2f) +
@@ -76,6 +91,7 @@ public class PlayerOneScript : MonoBehaviour
             }
         }
 
+        //stops particle effect system for all knots but the closestKnot
         foreach (Collider2D knot in knotsList)
         {
             if (knot.gameObject != closestKnot)
@@ -85,6 +101,7 @@ public class PlayerOneScript : MonoBehaviour
             }
         }
 
+        //if the particle system of the closest knot is not already playing, it starts playing it
         if(closestKnot != null)
         {
             if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
@@ -122,52 +139,39 @@ public class PlayerOneScript : MonoBehaviour
         float sin = Mathf.Sin(angle);
 
         //applies the new input to the player's position, respecting the radius
-        float x2 = this.transform.position.x + (radius * (x * cos - y * sin));
-        float y2 = this.transform.position.y + (radius * (x * sin + y * cos));
+        float x2 = firstKnot.transform.position.x + (lineLength * (x * cos - y * sin));
+        float y2 = firstKnot.transform.position.y + (lineLength * (x * sin + y * cos));
 
         aimDirection = new Vector2(x2, y2);
+        
+        DrawLine(aimDirection);
 
-        /*
-        float horizontal = this.transform.position.x + (radius * Input.GetAxis("POneLeftJoystickHorizontal"));
-        float vertical = this.transform.position.y + (radius * Input.GetAxis("POneLeftJoystickVertical"));
+        Debug.DrawLine(firstKnot.transform.position, new Vector3(x2, y2, 0f), Color.black);
+    }
 
-        aimDirection = new Vector2(horizontal, vertical);
-        */
+    void DrawLine(Vector2 endPos)
+    {
+        Vector2 startPos = firstKnot.transform.position;
+        Vector2 dir = endPos - startPos;
 
-        Debug.DrawLine(this.transform.position, new Vector3(x2, y2, 0f), Color.black);
+        float dist = Mathf.Clamp(Vector3.Distance(startPos, endPos), 0, lineLength);
+
+        endPos = startPos + (dir.normalized * dist);
+
+        lineRenderer.SetPosition(1, endPos);
     }
 
     void TakeInput()
     {
+        //A button on xbox
         if(Input.GetKeyDown("joystick 1 button 0"))
         {
-            if(firstKnot == null && closestKnot != null)
-            {
-                firstKnot = closestKnot;
-
-                firstKnot.GetComponent<ParticleSystem>().Stop();
-                firstKnot.GetComponent<ParticleSystem>().Clear();
-
-                //firstKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
-            }
-            else if (firstKnot == closestKnot && closestKnot != null)
-            {
-                //firstKnot.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f);
-
-                firstKnot = null;
-            }
-            else if (firstKnot != null && firstKnot != closestKnot)
+            if (firstKnot != null && firstKnot != closestKnot)
             {
                 secondKnot = closestKnot;
-
-                secondKnot.GetComponent<ParticleSystem>().Stop();
-                secondKnot.GetComponent<ParticleSystem>().Clear();
-
-                //secondKnot.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
-
-
+                
                 //checks if there are any other lines in range that might be intersecting if creating a line
-                Collider2D[] lineList = Physics2D.OverlapCircleAll(centre, radius * 5.0f, 1 << 9);
+                Collider2D[] lineList = Physics2D.OverlapCircleAll(centre, lineLength * 5.0f, 1 << 9);
                 
                 if (lineList.Length > 0)
                 {   
@@ -184,18 +188,31 @@ public class PlayerOneScript : MonoBehaviour
                     if (canConnect)             //if there is no such line, a connection is possible and it creates one.
                     {
                         CreateLine();
+
+                        firstKnot = secondKnot;
+                        secondKnot = null;
+
+                        lineRenderer.SetPosition(0, firstKnot.transform.position);
+
                         canConnect = true;
                     }
                     else                        //if there is a line, deselects both knots so the player can try again
                     {
-                        firstKnot = null;
                         secondKnot = null;
+
                         canConnect = true;
                     }
                 }
                 else
                 {
                     CreateLine();
+
+                    firstKnot = secondKnot;
+                    secondKnot = null;
+
+                    lineRenderer.SetPosition(0, firstKnot.transform.position);
+
+                    canConnect = true;
                 }
             }
         }
@@ -209,7 +226,6 @@ public class PlayerOneScript : MonoBehaviour
                             Mathf.Pow(firstKnot.transform.position.y - secondKnot.transform.position.y, 2f));
         
         Vector3 scaler = new Vector3(length / 10f, 1.0f, 1.0f);
-
         
         float rotation = Vector3.Angle(Vector3.right, secondKnot.transform.position - firstKnot.transform.position);
         
@@ -227,9 +243,6 @@ public class PlayerOneScript : MonoBehaviour
         newLine.AddComponent<BoxCollider2D>();
 
         AddToMusicSequenceList(firstKnot, secondKnot);
-        
-        firstKnot = null;
-        secondKnot = null;
     }
 
     bool IsIntersecting(GameObject prevLine, float lineTwoStartX, float lineTwoStartY, float lineTwoEndX, float lineTwoEndY)

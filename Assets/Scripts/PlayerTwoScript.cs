@@ -17,6 +17,8 @@ public class PlayerTwoScript : MonoBehaviour
                  angleFriction,
                  slideSpeed;
 
+    public GameObject score;
+
     private bool isGrounded,
                  held,
                  isSliding,
@@ -26,12 +28,15 @@ public class PlayerTwoScript : MonoBehaviour
 
     private PlayerTwoSound pTwoSound;
 
-    //private Collision2D line;
-
+    private ScoreScript scoreScript;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
         pTwoSound = GetComponent<PlayerTwoSound>();
+
+        scoreScript = score.GetComponent<ScoreScript>();
 
         button = 100;
         isGrounded = true;
@@ -82,6 +87,15 @@ public class PlayerTwoScript : MonoBehaviour
         if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Line")) && isGrounded == false)
         {
             isGrounded = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Collectable")
+        {
+            scoreScript.IncreaseScore();
+            Destroy(other.gameObject);
         }
     }
 
