@@ -34,6 +34,7 @@ public class PlayerOneScript : MonoBehaviour
 
     void Start()
     {
+        //The music object and script to which the 'notes' are added to
         musicGO = GameObject.FindGameObjectWithTag("Music");
         musicSequence = musicGO.GetComponent<MusicSequence>();
 
@@ -193,6 +194,7 @@ public class PlayerOneScript : MonoBehaviour
                         secondKnot = null;
 
                         lineRenderer.SetPosition(0, firstKnot.transform.position);
+                        lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
 
                         canConnect = true;
                     }
