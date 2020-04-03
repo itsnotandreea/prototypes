@@ -47,6 +47,7 @@ public class ScoreScript : MonoBehaviour
             previousScore = score;
             PlayerPrefs.SetInt(savedScore, previousScore);
         }
+
         pOneScript.lineLength += pOneScript.extraLength;
     }
 }
