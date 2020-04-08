@@ -80,5 +80,5 @@ MonoBehaviour:
   - Master
   Banks: []
   BanksToLoad: []
-  LiveUpdatePort: 9264
+  LiveUpdatePort: 10048
   EnableMemoryTracking: 0

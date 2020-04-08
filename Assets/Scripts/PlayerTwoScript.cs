@@ -96,6 +96,9 @@ public class PlayerTwoScript : MonoBehaviour
         {
             scoreScript.IncreaseScore();
             Destroy(other.gameObject);
+
+            //check for colour and add layer to the overall piece - FMOD
+            // if (other.gameObject.tag == "red") then activate layer 2 - e.g.
         }
     }
 
