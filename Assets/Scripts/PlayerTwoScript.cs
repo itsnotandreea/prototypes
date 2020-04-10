@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerTwoScript : MonoBehaviour
 {
@@ -44,6 +45,70 @@ public class PlayerTwoScript : MonoBehaviour
         pressedTime = 0.0f;
         isSliding = false;
         thereIsSlope = false;
+    }
+
+    private void OnRun()
+    {
+        //tells object what position to move to
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+
+        //sound
+        button = 1;
+        pTwoSound.AssignClip(button);
+
+        Debug.Log("A");
+    }
+
+    private void OnRunBack()
+    {
+        //tells object what position to move to
+        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+
+        //sound
+        button = 2;
+        pTwoSound.AssignClip(button);
+    }
+
+    private void OnJump()
+    {
+        pressedTime += Time.deltaTime;
+
+        if (pressedTime > minimPressedTime)
+        {
+            held = true;
+        }
+    }
+    
+    private void OnJumpRelease()
+    {
+        if (!held)
+        {
+            if (jumped < 2)
+            {
+                Jump();
+            }
+        }
+
+        pressedTime = 0;
+        held = false;
+    }
+
+    private void OnSlide()
+    {
+        //slide
+        isSliding = true;
+
+        if (thereIsSlope)
+        {
+            Vector2 right = transform.TransformDirection(Vector2.right);
+            rb.AddForce(right * slideSpeed);
+            Debug.Log("SLIDING");
+            StartCoroutine(StopSliding(1.0f));
+        }
+
+        //sound
+        button = 3;
+        pTwoSound.AssignClip(button);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -104,7 +169,7 @@ public class PlayerTwoScript : MonoBehaviour
 
     void Update()
     {
-        TakeInput();
+        //TakeInput();
 
         //make falling quicker
         Vector2 ups = transform.TransformDirection(Vector3.up);
@@ -119,6 +184,7 @@ public class PlayerTwoScript : MonoBehaviour
         }
     }
 
+    /*
     void TakeInput()
     {
         if (Input.GetKey("joystick 2 button 0"))
@@ -180,12 +246,9 @@ public class PlayerTwoScript : MonoBehaviour
             button = 3;
             pTwoSound.AssignClip(button);
         }
-        else
-        {
-
-        }
     }
-    
+    */
+
     private void Jump()
     {
         //jumps, uses physics engine and adds force in the up direction

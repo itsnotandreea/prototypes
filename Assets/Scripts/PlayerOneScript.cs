@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerOneScript : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class PlayerOneScript : MonoBehaviour
     private LineRenderer lineRenderer;
 
     private Vector2 centre,
-                    aimDirection;
+                    aimDirection,
+                    stickInput;
 
     private GameObject closestKnot,
                        secondKnot,
@@ -49,6 +51,65 @@ public class PlayerOneScript : MonoBehaviour
         once = true;
     }
 
+    private void OnNavigateKnots(InputValue value)
+    {
+        stickInput = value.Get<Vector2>();
+    }
+
+    private void OnCreateLineButton()
+    {
+        if (firstKnot != null && firstKnot != closestKnot)
+        {
+            secondKnot = closestKnot;
+
+            //checks if there are any other lines in range that might be intersecting if creating a line
+            Collider2D[] lineList = Physics2D.OverlapCircleAll(centre, lineLength * 5.0f, 1 << 9);
+
+            if (lineList.Length > 0)
+            {
+                foreach (Collider2D line in lineList)
+                {
+                    if (IsIntersecting(line.gameObject, firstKnot.transform.position.x, firstKnot.transform.position.y,
+                                                        secondKnot.transform.position.x, secondKnot.transform.position.y) == true)
+                    {
+                        //if there is one such line, then a connection is not possible
+                        canConnect = false;
+                    }
+                }
+
+                if (canConnect)             //if there is no such line, a connection is possible and it creates one.
+                {
+                    CreateLine();
+
+                    firstKnot = secondKnot;
+                    secondKnot = null;
+
+                    lineRenderer.SetPosition(0, firstKnot.transform.position);
+                    lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
+
+                    canConnect = true;
+                }
+                else                        //if there is a line, deselects both knots so the player can try again
+                {
+                    secondKnot = null;
+
+                    canConnect = true;
+                }
+            }
+            else
+            {
+                CreateLine();
+
+                firstKnot = secondKnot;
+                secondKnot = null;
+
+                lineRenderer.SetPosition(0, firstKnot.transform.position);
+
+                canConnect = true;
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         //tells object what position to move to
@@ -59,7 +120,7 @@ public class PlayerOneScript : MonoBehaviour
     {
         FindKnots();
 
-        TakeInput();
+        //TakeInput();
     }
 
     void FindKnots()
@@ -131,8 +192,8 @@ public class PlayerOneScript : MonoBehaviour
         }
 
         //Takes Input from Joystick axis
-        float x = Input.GetAxis("POneLeftJoystickHorizontal");
-        float y = Input.GetAxis("POneLeftJoystickVertical");
+        float x = stickInput.x;
+        float y = stickInput.y;
 
         //Converts to radians and calculates cos and sin
         float angle = adjustAngle * Mathf.Deg2Rad;
@@ -162,10 +223,11 @@ public class PlayerOneScript : MonoBehaviour
         lineRenderer.SetPosition(1, endPos);
     }
 
+    /*
     void TakeInput()
     {
         //A button on xbox
-        if(Input.GetKeyDown("joystick 1 button 0"))
+        if (Input.GetKeyDown("joystick 1 button 0"))
         {
             if (firstKnot != null && firstKnot != closestKnot)
             {
@@ -219,6 +281,7 @@ public class PlayerOneScript : MonoBehaviour
             }
         }
     }
+    */
 
     void CreateLine()
     {

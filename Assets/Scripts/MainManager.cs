@@ -15,13 +15,27 @@ public class MainManager : MonoBehaviour
     
     void Start()
     {
+        if (Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            Debug.Log("Do something special here!");
+        }
+
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            Debug.Log("Do something special here!");
+        }
+
+        if (Application.platform == RuntimePlatform.LinuxPlayer)
+        {
+            Debug.Log("Do something special here!");
+        }
+
         cdSystem = countdown.GetComponent<CountdownSystem>();
 
         pOneController = GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOneController>();
         pTwoController = GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwoController>();
 
         UIWinner.enabled = false;
-
     }
     
     void Update()

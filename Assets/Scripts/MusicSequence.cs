@@ -6,7 +6,9 @@ public class MusicSequence : MonoBehaviour
 {
     public List<GameObject> sequence = new List<GameObject>();
 
-    public int i, j;
+    public int i,
+               j,
+               timeInSeconds;
     
     public bool layerOne,
                 layerTwo,
@@ -76,7 +78,7 @@ public class MusicSequence : MonoBehaviour
         if (sequence.Count > 0 && started == false)
         {
             started = true;
-            StartCoroutine(Play(1.0f));
+            StartCoroutine(Play(timeInSeconds));
         }
 
         while (j < sequence.Count)
