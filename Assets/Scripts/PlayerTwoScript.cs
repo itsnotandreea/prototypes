@@ -20,6 +20,9 @@ public class PlayerTwoScript : MonoBehaviour
 
     public GameObject score;
 
+    [SerializeField]
+    private int playerIndex = 1;
+
     private bool isGrounded,
                  held,
                  isSliding,
@@ -47,29 +50,33 @@ public class PlayerTwoScript : MonoBehaviour
         thereIsSlope = false;
     }
 
-    private void OnRun()
+    public int GetPlayerInput()
+    {
+        return playerIndex;
+    }
+
+    public void RunInput()
     {
         //tells object what position to move to
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-
+        Debug.Log("Move Right");
         //sound
         button = 1;
         pTwoSound.AssignClip(button);
-
-        Debug.Log("A");
     }
 
-    private void OnRunBack()
+    public void RunBackInput()
     {
         //tells object what position to move to
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
 
+        Debug.Log("Move Left");
         //sound
         button = 2;
         pTwoSound.AssignClip(button);
     }
 
-    private void OnJump()
+    public void JumpInput()
     {
         pressedTime += Time.deltaTime;
 
@@ -78,8 +85,8 @@ public class PlayerTwoScript : MonoBehaviour
             held = true;
         }
     }
-    
-    private void OnJumpRelease()
+
+    public void JumpReleaseInput()
     {
         if (!held)
         {
@@ -93,7 +100,7 @@ public class PlayerTwoScript : MonoBehaviour
         held = false;
     }
 
-    private void OnSlide()
+    public void SlideInput()
     {
         //slide
         isSliding = true;

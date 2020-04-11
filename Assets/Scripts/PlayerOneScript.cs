@@ -15,9 +15,12 @@ public class PlayerOneScript : MonoBehaviour
                  extraLength;
 
     public GameObject drawing,
-                      floor,
+                      floor,  
                       firstKnot,
                       line;
+
+    [SerializeField]
+    private int playerIndex = 0;
 
     private bool canConnect,
                  once;
@@ -51,12 +54,17 @@ public class PlayerOneScript : MonoBehaviour
         once = true;
     }
 
-    private void OnNavigateKnots(InputValue value)
+    public int GetPlayerInput()
     {
-        stickInput = value.Get<Vector2>();
+        return playerIndex;
     }
 
-    private void OnCreateLineButton()
+    public void NavigateKnotsInput(Vector2 value)
+    {
+        stickInput = value;
+    }
+
+    public void CreateLineButtonInput()
     {
         if (firstKnot != null && firstKnot != closestKnot)
         {

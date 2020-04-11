@@ -7,8 +7,9 @@ public class MusicSequence : MonoBehaviour
     public List<GameObject> sequence = new List<GameObject>();
 
     public int i,
-               j,
-               timeInSeconds;
+               j;
+
+    public float timeInSeconds;
     
     public bool layerOne,
                 layerTwo,
