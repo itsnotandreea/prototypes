@@ -39,6 +39,8 @@ public class PlayerOneScript : MonoBehaviour
 
     void Start()
     {
+        transform.position = firstKnot.transform.position;
+
         //The music object and script to which the 'notes' are added to
         musicGO = GameObject.FindGameObjectWithTag("Music");
         musicSequence = musicGO.GetComponent<MusicSequence>();
@@ -92,6 +94,8 @@ public class PlayerOneScript : MonoBehaviour
                     firstKnot = secondKnot;
                     secondKnot = null;
 
+                    transform.position = firstKnot.transform.position;
+
                     lineRenderer.SetPosition(0, firstKnot.transform.position);
                     lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
 
@@ -111,6 +115,8 @@ public class PlayerOneScript : MonoBehaviour
                 firstKnot = secondKnot;
                 secondKnot = null;
 
+                transform.position = firstKnot.transform.position;
+
                 lineRenderer.SetPosition(0, firstKnot.transform.position);
 
                 canConnect = true;
@@ -118,17 +124,9 @@ public class PlayerOneScript : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        //tells object what position to move to
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-    }
-
     void Update()
     {
         FindKnots();
-
-        //TakeInput();
     }
 
     void FindKnots()

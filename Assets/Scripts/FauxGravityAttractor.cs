@@ -25,7 +25,11 @@ public class FauxGravityAttractor : MonoBehaviour
         bodyUp  = body.up;
 
         //adds a force in the direction from the center of the planet to the player
-        rb.AddForce(gravityUp * gravity);
+        if(body.transform.name != "Main Camera" && body.transform.name != "Player1" && body.transform.name != "collectablesZone" && body.transform.name != "knotsZone")
+        {
+            rb.AddForce(gravityUp * gravity);
+        }
+        
 
         //the rotation between two directions, gravityUp and bodyUp
         Quaternion targetRotation = Quaternion.FromToRotation(bodyUp,gravityUp) * body.rotation;

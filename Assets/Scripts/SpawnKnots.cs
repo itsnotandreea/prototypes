@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnKnots : MonoBehaviour
 {
     public float respawnTime,
-                 size;
+                 size,
+                 moveSpeed;
 
     public GameObject[] knots;
 
@@ -17,6 +18,12 @@ public class SpawnKnots : MonoBehaviour
     {
         addKnots = true;
         StartCoroutine(KnotsWave());
+    }
+
+    void FixedUpdate()
+    {
+        //tells object what position to move to
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
 
     private void SpawnKnot()

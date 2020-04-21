@@ -59,7 +59,7 @@ public class PlayerTwoScript : MonoBehaviour
     {
         //tells object what position to move to
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-        Debug.Log("Move Right");
+
         //sound
         button = 1;
         pTwoSound.AssignClip(button);
@@ -69,8 +69,7 @@ public class PlayerTwoScript : MonoBehaviour
     {
         //tells object what position to move to
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-
-        Debug.Log("Move Left");
+        
         //sound
         button = 2;
         pTwoSound.AssignClip(button);

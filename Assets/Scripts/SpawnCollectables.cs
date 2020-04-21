@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnCollectables : MonoBehaviour
 {
     public float respawnTime,
-                 size;
+                 size,
+                 moveSpeed;
 
     public GameObject collectable;
 
@@ -17,6 +18,11 @@ public class SpawnCollectables : MonoBehaviour
         StartCoroutine(CollectablesWave());
     }
 
+    void FixedUpdate()
+    {
+        //tells object what position to move to
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+    }
 
     private void SpawnCollectable()
     {
