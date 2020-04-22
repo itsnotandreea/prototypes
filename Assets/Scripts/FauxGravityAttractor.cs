@@ -30,7 +30,6 @@ public class FauxGravityAttractor : MonoBehaviour
             rb.AddForce(gravityUp * gravity);
         }
         
-
         //the rotation between two directions, gravityUp and bodyUp
         Quaternion targetRotation = Quaternion.FromToRotation(bodyUp,gravityUp) * body.rotation;
 

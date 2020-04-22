@@ -25,12 +25,17 @@ public class PlayerTwoScript : MonoBehaviour
 
     private bool isGrounded,
                  held,
-                 isSliding,
                  thereIsSlope;
+
+    private GameObject line;
+
+    private Vector2 slideAngle;
    
     private Rigidbody2D rb;
 
     private PlayerTwoSound pTwoSound;
+
+    private MusicSequence musicSequenceScript;
 
     private ScoreScript scoreScript;
     
@@ -40,14 +45,16 @@ public class PlayerTwoScript : MonoBehaviour
 
         pTwoSound = GetComponent<PlayerTwoSound>();
 
+        musicSequenceScript = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
+
         scoreScript = score.GetComponent<ScoreScript>();
 
         button = 100;
         isGrounded = true;
         held = false;
         pressedTime = 0.0f;
-        isSliding = false;
         thereIsSlope = false;
+        line = null;
     }
 
     public int GetPlayerInput()
@@ -58,7 +65,10 @@ public class PlayerTwoScript : MonoBehaviour
     public void RunInput()
     {
         //tells object what position to move to
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        //transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+
+        Vector2 right = transform.TransformDirection(Vector2.right);
+        rb.velocity = right * moveSpeed;
 
         //sound
         button = 1;
@@ -68,8 +78,11 @@ public class PlayerTwoScript : MonoBehaviour
     public void RunBackInput()
     {
         //tells object what position to move to
-        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        //transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
         
+        Vector2 left = transform.TransformDirection(Vector2.left);
+        rb.velocity = left * moveSpeed;
+
         //sound
         button = 2;
         pTwoSound.AssignClip(button);
@@ -78,11 +91,6 @@ public class PlayerTwoScript : MonoBehaviour
     public void JumpInput()
     {
         pressedTime += Time.deltaTime;
-
-        if (pressedTime > minimPressedTime)
-        {
-            held = true;
-        }
     }
 
     public void JumpReleaseInput()
@@ -102,12 +110,19 @@ public class PlayerTwoScript : MonoBehaviour
     public void SlideInput()
     {
         //slide
-        isSliding = true;
-
         if (thereIsSlope)
         {
-            Vector2 right = transform.TransformDirection(Vector2.right);
-            rb.AddForce(right * slideSpeed);
+            //slideAngle = transform.position - (line.transform.parent.transform.position - line.transform.position);
+            slideAngle = (line.transform.parent.transform.position - line.transform.position);
+            rb.AddForce (slideAngle * slideSpeed);
+
+            /*
+            Vector2 up = transform.TransformDirection(Vector2.up);
+            slideAngle += up;
+            */
+
+            Debug.DrawLine(line.transform.parent.transform.position, line.transform.position, Color.black);
+
             Debug.Log("SLIDING");
             StartCoroutine(StopSliding(1.0f));
         }
@@ -145,6 +160,7 @@ public class PlayerTwoScript : MonoBehaviour
             if (angle > 25.0f || angle < 90.0f || angle > -155.0f || angle < -90.0f)
             {
                 thereIsSlope = true;
+                line = other.gameObject;
             }
             else
             {
@@ -159,6 +175,11 @@ public class PlayerTwoScript : MonoBehaviour
         {
             isGrounded = false;
         }
+
+        if (other.gameObject.tag == "Line")
+        {
+            thereIsSlope = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -168,15 +189,25 @@ public class PlayerTwoScript : MonoBehaviour
             scoreScript.IncreaseScore();
             Destroy(other.gameObject);
 
-            //check for colour and add layer to the overall piece - FMOD
-            // if (other.gameObject.tag == "red") then activate layer 2 - e.g.
+            musicSequenceScript.GetCollectable(other.gameObject);
         }
     }
 
     void Update()
     {
+        if (pressedTime != 0)
+        {
+            pressedTime += Time.deltaTime;
+
+            if (pressedTime > minimPressedTime)
+            {
+                held = true;
+            }
+        }
+
         //TakeInput();
 
+        /*
         //make falling quicker
         Vector2 ups = transform.TransformDirection(Vector3.up);
 
@@ -188,78 +219,16 @@ public class PlayerTwoScript : MonoBehaviour
         {
             rb.velocity += ups * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+        */
     }
-
-    /*
-    void TakeInput()
-    {
-        if (Input.GetKey("joystick 2 button 0"))
-        {
-            pressedTime += Time.deltaTime;
-
-            if (pressedTime > minimPressedTime)
-            {
-                held = true;
-            }
-        }
-
-        if (Input.GetKeyUp("joystick 2 button 0"))
-        {
-            if (!held)
-            {
-                if (jumped < 2)
-                {
-                    Jump();
-                }
-            }
-
-            pressedTime = 0;
-            held = false;
-        }
-
-        if (Input.GetKey("joystick 2 button 1"))
-        {
-            //tells object what position to move to
-            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-
-            //sound
-            button = 1;
-            pTwoSound.AssignClip(button);
-        }
-        else if (Input.GetKey("joystick 2 button 2"))
-        {
-            //tells object what position to move to
-            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-
-            //sound
-            button = 2;
-            pTwoSound.AssignClip(button);
-        }
-        else if (Input.GetKeyDown("joystick 2 button 3"))
-        {
-            //slide
-            isSliding = true;
-
-            if (thereIsSlope)
-            {
-                Vector2 right = transform.TransformDirection(Vector2.right);
-                rb.AddForce(right * slideSpeed);
-                Debug.Log("SLIDING");
-                StartCoroutine(StopSliding(1.0f));
-            }
-            
-            //sound
-            button = 3;
-            pTwoSound.AssignClip(button);
-        }
-    }
-    */
-
+    
     private void Jump()
     {
         //jumps, uses physics engine and adds force in the up direction
         Vector2 up = transform.TransformDirection(Vector2.up);
         rb.velocity = up * jumpHeight;
+
+        //rb.AddForce(up * jumpHeight);
 
         //grounding
         isGrounded = false;
@@ -286,7 +255,9 @@ public class PlayerTwoScript : MonoBehaviour
 
         //makes player bounce at 78.69 degrees
         Vector2 direction = transform.TransformDirection(new Vector3(1, 5, 0));
-        rb.AddForce(direction * impulse, ForceMode2D.Impulse);
+        rb.AddForce(direction * impulse);
+        //rb.velocity = direction * impulse;
+        Debug.Log("BOUNCE");
 
         //grounding
         isGrounded = false;
@@ -301,7 +272,6 @@ public class PlayerTwoScript : MonoBehaviour
     IEnumerator StopSliding(float time)
     {
         yield return new WaitForSeconds(time);
-        isSliding = false;
     }
     /*
     void NormaliseSlope()

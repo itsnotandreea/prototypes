@@ -22,8 +22,7 @@ public class PlayerOneScript : MonoBehaviour
     [SerializeField]
     private int playerIndex = 0;
 
-    private bool canConnect,
-                 once;
+    private bool canConnect;
 
     private LineRenderer lineRenderer;
 
@@ -53,7 +52,6 @@ public class PlayerOneScript : MonoBehaviour
         closestKnot = null;
 
         canConnect = true;
-        once = true;
     }
 
     public int GetPlayerInput()

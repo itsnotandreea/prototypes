@@ -6,9 +6,12 @@ public class SpawnCollectables : MonoBehaviour
 {
     public float respawnTime,
                  size,
-                 moveSpeed;
+                 moveSpeed,
+                 moveUpSpeed;
 
-    public GameObject collectable;
+    public GameObject[] collectables;
+
+    private int randomCollectable;
 
     private bool addCollectables;
 
@@ -20,6 +23,8 @@ public class SpawnCollectables : MonoBehaviour
 
     void FixedUpdate()
     {
+        transform.Translate(Vector2.up * moveUpSpeed * Time.deltaTime);
+
         //tells object what position to move to
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
@@ -31,7 +36,8 @@ public class SpawnCollectables : MonoBehaviour
         Vector3 position = transform.position + new Vector3(pos.x, pos.y, 0.0f);
 
         //instantiate collectable
-        Instantiate(collectable, position, Quaternion.identity);
+        randomCollectable = Random.Range(0, collectables.Length);
+        Instantiate(collectables[randomCollectable], position, Quaternion.identity);
     }
 
     IEnumerator CollectablesWave()

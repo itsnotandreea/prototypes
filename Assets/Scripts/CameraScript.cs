@@ -31,7 +31,7 @@ public class CameraScript : MonoBehaviour
                                   (playerOne.transform.position.y + playerTwo.transform.position.y) / 2,
                                   this.transform.position.z);
         
-        //newPosition = newPosition + transform.TransformDirection(Vector3.up) * dist;
+        newPosition = newPosition + transform.TransformDirection(Vector3.up) * dist;
 
         transform.position = Vector3.MoveTowards(transform.position, newPosition, Time.deltaTime * speed);
     }

@@ -49,8 +49,7 @@ public class MusicSequence : MonoBehaviour
         G = "event:/KnotSounds/SOUND1/G";
 
         currentNote = null;
-
-        /*
+        
         layerOne = true;
         layerTwo = false;
         layerThree = false;
@@ -59,7 +58,6 @@ public class MusicSequence : MonoBehaviour
         layerSix = false;
         layerSeven = false;
         layerEight = false;
-        */
 
         musicEvent = FMODUnity.RuntimeManager.CreateInstance(sound); 
 
@@ -96,6 +94,48 @@ public class MusicSequence : MonoBehaviour
         }
 
         AssignLayer();
+    }
+
+    public void GetCollectable(GameObject collectable)
+    {
+        if (collectable.transform.name == "CollectableCorai(Clone)")
+        {
+            layerTwo = !layerTwo;
+        }
+        else if (collectable.transform.name == "CollectablePink(Clone)")
+        {
+            layerThree = !layerThree;
+        }
+        else if (collectable.transform.name == "CollectableOrange(Clone)")
+        {
+            layerFour = !layerFour;
+        }
+        else if (collectable.transform.name == "CollectablePurple(Clone)")
+        {
+            layerFive = !layerFive;
+        }
+        else if (collectable.transform.name == "CollectableGreen(Clone)")
+        {
+            layerSix = !layerSix;
+        }
+        else if (collectable.transform.name == "CollectableBlue(Clone)")
+        {
+            layerSeven = !layerSeven;
+        }
+        else if (collectable.transform.name == "CollectableYellow(Clone)")
+        {
+            layerEight = !layerEight;
+        }
+        else
+        {
+            layerTwo = false;
+            layerThree = false;
+            layerFour = false;
+            layerFive = false;
+            layerSix = false;
+            layerSeven = false;
+            layerEight = false;
+        }
     }
 
     public void AssignLayer()
@@ -235,7 +275,7 @@ public class MusicSequence : MonoBehaviour
     {
         Vector3 screenPoint = cam.WorldToViewportPoint(knot.transform.position);
 
-        if (screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1)
+        if (screenPoint.x > -0.2f && screenPoint.x < 1.2f && screenPoint.y > -0.2 && screenPoint.y < 1.2)
         {
             onScreen = true;
         }

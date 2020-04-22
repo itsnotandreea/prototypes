@@ -6,7 +6,8 @@ public class SpawnKnots : MonoBehaviour
 {
     public float respawnTime,
                  size,
-                 moveSpeed;
+                 moveSpeed,
+                 moveUpSpeed;
 
     public GameObject[] knots;
 
@@ -22,6 +23,8 @@ public class SpawnKnots : MonoBehaviour
 
     void FixedUpdate()
     {
+        transform.Translate(Vector2.up * moveUpSpeed * Time.deltaTime);
+
         //tells object what position to move to
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
