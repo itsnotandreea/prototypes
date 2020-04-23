@@ -60,7 +60,7 @@ public class CameraScript : MonoBehaviour
 
     void CameraAlteration(float perc)
     {
-        GetComponent<Camera>().orthographicSize = 45 + (5 * perc);
+        GetComponent<Camera>().orthographicSize = 35 + (5 * perc);
     }
 
     float GetPerc()
