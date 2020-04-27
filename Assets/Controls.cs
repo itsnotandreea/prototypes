@@ -35,22 +35,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Run"",
-                    ""type"": ""Button"",
-                    ""id"": ""bda62575-8316-4537-a06f-83e3f84bf3fe"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""RunBack"",
-                    ""type"": ""Button"",
-                    ""id"": ""0c0f4787-d151-49cc-ba85-3846113ec2a7"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""731d0a9d-689e-4a81-9635-bcb9226779bf"",
@@ -67,28 +51,12 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press(behavior=1)""
                 },
                 {
-                    ""name"": ""Slide"",
-                    ""type"": ""Button"",
-                    ""id"": ""4774366e-ad07-421b-ba7f-923193cccfcf"",
-                    ""expectedControlType"": """",
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b61307fe-ce26-4e8d-a087-79ae7bde6d9a"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""RunRelease"",
-                    ""type"": ""Button"",
-                    ""id"": ""925df8f4-95c2-4544-92e5-85408ad72b9d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)""
-                },
-                {
-                    ""name"": ""RunBackRelease"",
-                    ""type"": ""Button"",
-                    ""id"": ""f23cc6a3-971a-44d1-bbf5-e9b7830a63f1"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -116,28 +84,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""27dad142-0457-4951-8929-05fc01740350"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""70046daf-9606-4328-b574-bef88dd56098"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RunBack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""81821cfc-1e8a-4e0a-a4a5-4ed78e57a6f5"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -160,34 +106,23 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3b06e4df-01fa-42f2-8256-9339eed6d9e2"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""id"": ""3fadc2ac-6474-4e86-ae2e-25d80b352842"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Slide"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""35224d93-68df-4ba7-bd08-4f7cd5e23cde"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""c9e242e4-c020-4490-a154-f0a66b29d012"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RunRelease"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""add62273-347d-4c12-8dec-71dea4d8806b"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RunBackRelease"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -200,13 +135,9 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerOne = asset.FindActionMap("PlayerOne", throwIfNotFound: true);
         m_PlayerOne_NavigateKnots = m_PlayerOne.FindAction("NavigateKnots", throwIfNotFound: true);
         m_PlayerOne_CreateLineButton = m_PlayerOne.FindAction("CreateLineButton", throwIfNotFound: true);
-        m_PlayerOne_Run = m_PlayerOne.FindAction("Run", throwIfNotFound: true);
-        m_PlayerOne_RunBack = m_PlayerOne.FindAction("RunBack", throwIfNotFound: true);
         m_PlayerOne_Jump = m_PlayerOne.FindAction("Jump", throwIfNotFound: true);
         m_PlayerOne_JumpRelease = m_PlayerOne.FindAction("JumpRelease", throwIfNotFound: true);
-        m_PlayerOne_Slide = m_PlayerOne.FindAction("Slide", throwIfNotFound: true);
-        m_PlayerOne_RunRelease = m_PlayerOne.FindAction("RunRelease", throwIfNotFound: true);
-        m_PlayerOne_RunBackRelease = m_PlayerOne.FindAction("RunBackRelease", throwIfNotFound: true);
+        m_PlayerOne_Move = m_PlayerOne.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -258,26 +189,18 @@ public class @Controls : IInputActionCollection, IDisposable
     private IPlayerOneActions m_PlayerOneActionsCallbackInterface;
     private readonly InputAction m_PlayerOne_NavigateKnots;
     private readonly InputAction m_PlayerOne_CreateLineButton;
-    private readonly InputAction m_PlayerOne_Run;
-    private readonly InputAction m_PlayerOne_RunBack;
     private readonly InputAction m_PlayerOne_Jump;
     private readonly InputAction m_PlayerOne_JumpRelease;
-    private readonly InputAction m_PlayerOne_Slide;
-    private readonly InputAction m_PlayerOne_RunRelease;
-    private readonly InputAction m_PlayerOne_RunBackRelease;
+    private readonly InputAction m_PlayerOne_Move;
     public struct PlayerOneActions
     {
         private @Controls m_Wrapper;
         public PlayerOneActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @NavigateKnots => m_Wrapper.m_PlayerOne_NavigateKnots;
         public InputAction @CreateLineButton => m_Wrapper.m_PlayerOne_CreateLineButton;
-        public InputAction @Run => m_Wrapper.m_PlayerOne_Run;
-        public InputAction @RunBack => m_Wrapper.m_PlayerOne_RunBack;
         public InputAction @Jump => m_Wrapper.m_PlayerOne_Jump;
         public InputAction @JumpRelease => m_Wrapper.m_PlayerOne_JumpRelease;
-        public InputAction @Slide => m_Wrapper.m_PlayerOne_Slide;
-        public InputAction @RunRelease => m_Wrapper.m_PlayerOne_RunRelease;
-        public InputAction @RunBackRelease => m_Wrapper.m_PlayerOne_RunBackRelease;
+        public InputAction @Move => m_Wrapper.m_PlayerOne_Move;
         public InputActionMap Get() { return m_Wrapper.m_PlayerOne; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,27 +216,15 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CreateLineButton.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCreateLineButton;
                 @CreateLineButton.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCreateLineButton;
                 @CreateLineButton.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCreateLineButton;
-                @Run.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRun;
-                @Run.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRun;
-                @Run.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRun;
-                @RunBack.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunBack;
-                @RunBack.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunBack;
-                @RunBack.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunBack;
                 @Jump.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnJump;
                 @JumpRelease.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnJumpRelease;
                 @JumpRelease.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnJumpRelease;
                 @JumpRelease.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnJumpRelease;
-                @Slide.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnSlide;
-                @Slide.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnSlide;
-                @Slide.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnSlide;
-                @RunRelease.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunRelease;
-                @RunRelease.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunRelease;
-                @RunRelease.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunRelease;
-                @RunBackRelease.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunBackRelease;
-                @RunBackRelease.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunBackRelease;
-                @RunBackRelease.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnRunBackRelease;
+                @Move.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMove;
             }
             m_Wrapper.m_PlayerOneActionsCallbackInterface = instance;
             if (instance != null)
@@ -324,27 +235,15 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CreateLineButton.started += instance.OnCreateLineButton;
                 @CreateLineButton.performed += instance.OnCreateLineButton;
                 @CreateLineButton.canceled += instance.OnCreateLineButton;
-                @Run.started += instance.OnRun;
-                @Run.performed += instance.OnRun;
-                @Run.canceled += instance.OnRun;
-                @RunBack.started += instance.OnRunBack;
-                @RunBack.performed += instance.OnRunBack;
-                @RunBack.canceled += instance.OnRunBack;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
                 @JumpRelease.started += instance.OnJumpRelease;
                 @JumpRelease.performed += instance.OnJumpRelease;
                 @JumpRelease.canceled += instance.OnJumpRelease;
-                @Slide.started += instance.OnSlide;
-                @Slide.performed += instance.OnSlide;
-                @Slide.canceled += instance.OnSlide;
-                @RunRelease.started += instance.OnRunRelease;
-                @RunRelease.performed += instance.OnRunRelease;
-                @RunRelease.canceled += instance.OnRunRelease;
-                @RunBackRelease.started += instance.OnRunBackRelease;
-                @RunBackRelease.performed += instance.OnRunBackRelease;
-                @RunBackRelease.canceled += instance.OnRunBackRelease;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
             }
         }
     }
@@ -353,12 +252,8 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnNavigateKnots(InputAction.CallbackContext context);
         void OnCreateLineButton(InputAction.CallbackContext context);
-        void OnRun(InputAction.CallbackContext context);
-        void OnRunBack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnJumpRelease(InputAction.CallbackContext context);
-        void OnSlide(InputAction.CallbackContext context);
-        void OnRunRelease(InputAction.CallbackContext context);
-        void OnRunBackRelease(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

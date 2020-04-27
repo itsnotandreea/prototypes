@@ -8,9 +8,6 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private int index;
 
-    private bool running,
-                 runningBack;
-
     private PlayerInput playerInput;
 
     private GameObject pOne,
@@ -19,43 +16,40 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerOneScript pOneScript;
     private PlayerTwoScript pTwoScript;
 
+    private Controls controlsScript;
+
+    private Vector2 moveInput;
+
+    private float xInput;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         index = playerInput.playerIndex;
+        
+        if (index == 0)
+        {
+            pOne = GameObject.FindWithTag("PlayerOne");
+            pOneScript = pOne.GetComponent<PlayerOneScript>();
+        }
+        if (index == 1)
+        {
+            pTwo = GameObject.FindWithTag("PlayerTwo");
+            pTwoScript = pTwo.GetComponent<PlayerTwoScript>();
 
-        pOne = GameObject.FindWithTag("PlayerOne");
-        pTwo = GameObject.FindWithTag("PlayerTwo");
-
-        pOneScript = pOne.GetComponent<PlayerOneScript>();
-        pTwoScript = pTwo.GetComponent<PlayerTwoScript>();
-
-        running = false;
-        runningBack = false;
+            controlsScript = new Controls();
+            controlsScript.PlayerOne.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+            controlsScript.PlayerOne.Move.canceled += ctx => moveInput = Vector2.zero;
+        }
     }
 
     private void Update()
     {
-        if (running)
+        if (index == 1)
         {
-            if(runningBack)
-            {
-                runningBack = false;
-            }
-
-            pTwoScript.RunInput();
+            xInput = moveInput.x;
+            pTwoScript.RunInputUpdate(xInput);
         }
-
-        if (runningBack)
-        {
-            if (running)
-            {
-                running = false;
-            }
-
-            pTwoScript.RunBackInput();
-        }
-        
     }
 
     private void OnNavigateKnots(InputValue value)
@@ -73,12 +67,22 @@ public class PlayerInputHandler : MonoBehaviour
             pOneScript.CreateLineButtonInput();
         }
     }
-
+    /*
     private void OnRun()
     {
         if (index == 1)
         {
+            runningBack = false;
             running = true;
+        }
+    }
+
+    private void OnRunBack()
+    {
+        if (index == 1)
+        {
+            running = false;
+            runningBack = true;
         }
     }
 
@@ -90,14 +94,6 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    private void OnRunBack()
-    {
-        if (index == 1)
-        {
-            runningBack = true;
-        }
-    }
-
     private void OnRunBackRelease()
     {
         if (index == 1)
@@ -105,7 +101,7 @@ public class PlayerInputHandler : MonoBehaviour
             runningBack = false;
         }
     }
-
+    */
     private void OnJump()
     {
         if (index == 1)
@@ -118,15 +114,18 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (index == 1)
         {
+            Debug.Log("Jump");
             pTwoScript.JumpReleaseInput();
         }
     }
-
-    private void OnSlide()
+    
+    private void OnEnable()
     {
-        if (index == 1)
-        {
-            pTwoScript.SlideInput();
-        }
+        controlsScript.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controlsScript.Disable();
     }
 }

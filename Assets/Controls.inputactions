@@ -22,22 +22,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Run",
-                    "type": "Button",
-                    "id": "bda62575-8316-4537-a06f-83e3f84bf3fe",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
-                    "name": "RunBack",
-                    "type": "Button",
-                    "id": "0c0f4787-d151-49cc-ba85-3846113ec2a7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "731d0a9d-689e-4a81-9635-bcb9226779bf",
@@ -54,28 +38,12 @@
                     "interactions": "Press(behavior=1)"
                 },
                 {
-                    "name": "Slide",
-                    "type": "Button",
-                    "id": "4774366e-ad07-421b-ba7f-923193cccfcf",
-                    "expectedControlType": "",
+                    "name": "Move",
+                    "type": "PassThrough",
+                    "id": "b61307fe-ce26-4e8d-a087-79ae7bde6d9a",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "RunRelease",
-                    "type": "Button",
-                    "id": "925df8f4-95c2-4544-92e5-85408ad72b9d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)"
-                },
-                {
-                    "name": "RunBackRelease",
-                    "type": "Button",
-                    "id": "f23cc6a3-971a-44d1-bbf5-e9b7830a63f1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -103,28 +71,6 @@
                 },
                 {
                     "name": "",
-                    "id": "27dad142-0457-4951-8929-05fc01740350",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "70046daf-9606-4328-b574-bef88dd56098",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RunBack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "81821cfc-1e8a-4e0a-a4a5-4ed78e57a6f5",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -147,34 +93,23 @@
                 },
                 {
                     "name": "",
-                    "id": "3b06e4df-01fa-42f2-8256-9339eed6d9e2",
-                    "path": "<Gamepad>/buttonNorth",
+                    "id": "3fadc2ac-6474-4e86-ae2e-25d80b352842",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Slide",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "35224d93-68df-4ba7-bd08-4f7cd5e23cde",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "c9e242e4-c020-4490-a154-f0a66b29d012",
+                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RunRelease",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "add62273-347d-4c12-8dec-71dea4d8806b",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RunBackRelease",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

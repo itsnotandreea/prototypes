@@ -10,19 +10,13 @@ public class FauxGravityAttractor : MonoBehaviour
 
     private Vector2 bodyUp = Vector2.zero;
 
-    private void Start()
-    {
-    }
-
     public void Attract(Transform body, Rigidbody2D rb)
     {
         //determines the direction of the player from the centre of the circle
         gravityUp = new Vector2(body.position.x - transform.position.x, body.position.y - transform.position.y).normalized;
         
-        //Debug.Log("gravityUp= " + gravityUp);
-
         //the direction the body is currently facing
-        bodyUp  = body.up;
+        bodyUp  = body.transform.up;
 
         //adds a force in the direction from the center of the planet to the player
         if(body.transform.name != "Main Camera" && body.transform.name != "Player1" && body.transform.name != "collectablesZone" && body.transform.name != "knotsZone")

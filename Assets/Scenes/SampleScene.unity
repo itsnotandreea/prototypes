@@ -2739,7 +2739,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.05
+  m_Mass: 0.15
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2832,7 +2832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416259305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.3, y: 8.9, z: 0}
+  m_LocalPosition: {x: 25.6, y: 41, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 0}
   m_Children:
   - {fileID: 1473348648}
@@ -2967,15 +2967,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: 0
   jumped: 0
-  moveSpeed: 35
-  jumpHeight: 100
+  moveSpeed: 4
+  jumpHeight: 250
   fallMultiplier: 7.5
   lowJumpMultiplier: 7
-  impulse: 85
+  impulse: 3
   pressedTime: 0
   minimPressedTime: 0.32
   angleFriction: 0
-  slideSpeed: 13
   score: {fileID: 1637350859}
   playerIndex: 1
 --- !u!95 &1416259317
@@ -3121,7 +3120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1437195798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3135,7 +3134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3601,7 +3600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3665,7 +3664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa337e5c4abb04449270dc44302c5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -20
+  gravity: -10
   gravityUp: {x: 0, y: 0}
 --- !u!58 &1663019013
 CircleCollider2D:
@@ -3746,10 +3745,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1fc9ce9ef7663bc42b08ba1c8263dd87, type: 3}
-    m_FontSize: 235
+    m_FontSize: 180
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 268
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -4062,7 +4061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIText: {fileID: 1437195798}
-  mainTimer: 181
+  mainTimer: 301
   timer: 0
 --- !u!4 &1788386756
 Transform:
@@ -4252,11 +4251,11 @@ RectTransform:
   m_Father: {fileID: 425850990}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -83}
-  m_SizeDelta: {x: 1000, y: 300}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 250}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1862496287
 MonoBehaviour:
   m_ObjectHideFlags: 0

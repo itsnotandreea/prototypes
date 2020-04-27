@@ -15,21 +15,17 @@ public class PlayerTwoScript : MonoBehaviour
                  impulse,
                  pressedTime,
                  minimPressedTime,
-                 angleFriction,
-                 slideSpeed;
-
+                 angleFriction;
+    
     public GameObject score;
 
     [SerializeField]
     private int playerIndex = 1;
 
     private bool isGrounded,
-                 held,
-                 thereIsSlope;
+                 held;
 
     private GameObject line;
-
-    private Vector2 slideAngle;
    
     private Rigidbody2D rb;
 
@@ -38,7 +34,12 @@ public class PlayerTwoScript : MonoBehaviour
     private MusicSequence musicSequenceScript;
 
     private ScoreScript scoreScript;
-    
+
+    private Vector2 moveAmount,
+                    smoothMoveVelocity,
+                    moveDir,
+                    targetMoveAmount;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,7 +54,6 @@ public class PlayerTwoScript : MonoBehaviour
         isGrounded = true;
         held = false;
         pressedTime = 0.0f;
-        thereIsSlope = false;
         line = null;
     }
 
@@ -62,32 +62,120 @@ public class PlayerTwoScript : MonoBehaviour
         return playerIndex;
     }
 
+    public void RunInputUpdate(float xInput)
+    {
+        /*
+        if(xInput > 0)
+        {
+            xInput = 1.0f;
+        }
+        else if(xInput < 0)
+        {
+            xInput = -1.0f;
+        }
+        */
+        if ((xInput > 0 && transform.localScale.x < 0) || (xInput < 0 && transform.localScale.x > 0))
+        {
+            Flip();
+        }
+
+        moveDir = new Vector3(xInput, 0, 0) * 10f;
+        targetMoveAmount = moveDir * moveSpeed;
+        moveAmount = Vector2.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, 0.15f);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 moveAm = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
+        rb.position += moveAm;
+    }
+
+    private void Flip()
+    {
+        float newXScale = transform.localScale.x * -1.0f;
+        Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
+        transform.localScale = newScale;
+    }
+
+    /*
     public void RunInput()
     {
-        //tells object what position to move to
-        //transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        //turns player around
+        if (transform.localScale.x < 0)
+        {
+            float newXScale = transform.localScale.x * -1.0f;
+            Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
+            transform.localScale = newScale;
+        }
+        Vector2 moveDir = transform.TransformDirection(new Vector2(xInput, 0));
+        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
 
-        Vector2 right = transform.TransformDirection(Vector2.right);
-        rb.velocity = right * moveSpeed;
+
+        //tells object what position to move to
+
+        //Vector2 right = transform.TransformDirection(Vector2.right);
+        // Move the character by finding the target velocity
+        //Vector3 targetVelocity = new Vector2(right.x * (xInput * moveSpeed), right.y * rb.velocity.y);
+        // And then smoothing it out and applying it to the character
+        //Vector3 targetVelocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        //Vector3 targetVelocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        //rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocityZero, movementSmoothing);
+
+
+        //transform.position += right * Time.deltaTime * moveSpeed;
+        //transform.Translate(xInput * Vector2.right * moveSpeed * Time.deltaTime);
+        //rb.MovePosition(transform.position + right * (xInput * moveSpeed) * Time.fixedDeltaTime);
+        //rb.AddForce(right * (xInput * moveSpeed), ForceMode2D.Force);
+
+
+        //if (isGrounded)
+        {
+            //Vector3 right = transform.TransformDirection(Vector2.right);
+            //rb.velocity = right * (xInput * moveSpeed);
+            //rb.velocity = right * moveSpeed;
+        }
+
+        //rb.MovePosition(transform.position + right * moveSpeed * Time.fixedDeltaTime);
+
+        //if (rb.velocity.y <= 3.0f && rb.velocity.y >= -3.0f)
+        
+        //rb.velocity += new Vector2 (right.x * moveSpeed, rb.velocity.y);
+        
+        //transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
 
         //sound
         button = 1;
         pTwoSound.AssignClip(button);
+        
     }
-
+    */
+    /*
     public void RunBackInput()
     {
+        //turns player around
+        if(transform.localScale.x > 0)
+        {
+            float newXScale = transform.localScale.x * -1.0f;
+            Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
+            transform.localScale = newScale;
+        }
+
         //tells object what position to move to
         //transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-        
-        Vector2 left = transform.TransformDirection(Vector2.left);
-        rb.velocity = left * moveSpeed;
 
+        //if (rb.velocity.y <= 2.0f && rb.velocity.y >= -2.0f)
+        //if (isGrounded)
+        {
+            Vector3 left = transform.TransformDirection(Vector2.left);
+            rb.MovePosition(transform.position + left * moveSpeed * Time.fixedDeltaTime);
+            //rb.velocity = left * moveSpeed;
+        }
+        
         //sound
         button = 2;
         pTwoSound.AssignClip(button);
     }
-
+    */
     public void JumpInput()
     {
         pressedTime += Time.deltaTime;
@@ -106,32 +194,7 @@ public class PlayerTwoScript : MonoBehaviour
         pressedTime = 0;
         held = false;
     }
-
-    public void SlideInput()
-    {
-        //slide
-        if (thereIsSlope)
-        {
-            //slideAngle = transform.position - (line.transform.parent.transform.position - line.transform.position);
-            slideAngle = (line.transform.parent.transform.position - line.transform.position);
-            rb.AddForce (slideAngle * slideSpeed);
-
-            /*
-            Vector2 up = transform.TransformDirection(Vector2.up);
-            slideAngle += up;
-            */
-
-            Debug.DrawLine(line.transform.parent.transform.position, line.transform.position, Color.black);
-
-            Debug.Log("SLIDING");
-            StartCoroutine(StopSliding(1.0f));
-        }
-
-        //sound
-        button = 3;
-        pTwoSound.AssignClip(button);
-    }
-
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Line")) && isGrounded == false)
@@ -151,22 +214,6 @@ public class PlayerTwoScript : MonoBehaviour
             isGrounded = true;
             jumped = 0;
         }
-
-        if (other.gameObject.tag == "Line")
-        {
-            //how the fuck do you get that angle? - find the angle between the line and player 2.right
-            float angle = Vector2.SignedAngle(transform.TransformDirection(Vector3.right), other.transform.TransformDirection(Vector3.right));
-
-            if (angle > 25.0f || angle < 90.0f || angle > -155.0f || angle < -90.0f)
-            {
-                thereIsSlope = true;
-                line = other.gameObject;
-            }
-            else
-            {
-                thereIsSlope = false;
-            }
-        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -174,11 +221,6 @@ public class PlayerTwoScript : MonoBehaviour
         if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Line")) && isGrounded == false)
         {
             isGrounded = false;
-        }
-
-        if (other.gameObject.tag == "Line")
-        {
-            thereIsSlope = false;
         }
     }
 
@@ -204,9 +246,7 @@ public class PlayerTwoScript : MonoBehaviour
                 held = true;
             }
         }
-
-        //TakeInput();
-
+        
         /*
         //make falling quicker
         Vector2 ups = transform.TransformDirection(Vector3.up);
@@ -226,9 +266,7 @@ public class PlayerTwoScript : MonoBehaviour
     {
         //jumps, uses physics engine and adds force in the up direction
         Vector2 up = transform.TransformDirection(Vector2.up);
-        rb.velocity = up * jumpHeight;
-
-        //rb.AddForce(up * jumpHeight);
+        rb.AddForce(up * jumpHeight);
 
         //grounding
         isGrounded = false;
@@ -242,64 +280,16 @@ public class PlayerTwoScript : MonoBehaviour
 
     private void Bounce()
     {
-        //makes player jump at the angle resulted in the difference between the position of the player and the point in which the player collided with the line
-        /*
-        ContactPoint2D cPoint = line.contacts[0];
-
-        Vector2 direction = new Vector(cPoint.point.x, cPoint.point.y, transform.position.z) - transform.position;
-        direction = -direction.normalized;
-        */
-
-        //makes player bounce at 45 degrees
-        //Vector2 direction = transform.TransformDirection(Vector3.right) + transform.TransformDirection(Vector3.up);
-
         //makes player bounce at 78.69 degrees
         Vector2 direction = transform.TransformDirection(new Vector3(1, 5, 0));
-        rb.AddForce(direction * impulse);
-        //rb.velocity = direction * impulse;
-        Debug.Log("BOUNCE");
+        rb.AddForce(direction * impulse, ForceMode2D.Impulse);
 
         //grounding
         isGrounded = false;
         jumped += 1;
-        //line = null;
 
         //sound
         button = 0;
         pTwoSound.AssignClip(button);
     }
-
-    IEnumerator StopSliding(float time)
-    {
-        yield return new WaitForSeconds(time);
-    }
-    /*
-    void NormaliseSlope()
-    {
-        if (isGrounded)           //checks if the player is grounded
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 6f, whatIsGround);           //accesses info about the object that has been hit
-
-            if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.001f)
-            {
-                Vector2 up = transform.TransformDirection(Vector2.up);
-                Vector2 right = transform.TransformDirection(Vector2.right);
-
-                Vector2 hitUp = hit.transform.TransformDirection(Vector2.up);
-                Vector2 hitRight = hit.transform.TransformDirection(Vector2.right);
-
-                //rb.velocity = up * jumpHeight;
-
-                //applies the opposite force against the slope force
-                rb.velocity = new Vector2(right.x - (hitRight.x * angleFriction), up.y);
-                //rb.velocity = new Vector2(rb.velocity.x - (hit.normal.x * angleFriction), rb.velocity.y);
-
-                //moves Lamplighter up or down to compensate for the slope below them
-                Vector2 pos = transform.position;
-                pos.y += -hit.normal.x * Mathf.Abs(right.x) * Time.deltaTime * (right.x - hit.normal.x > 0 ? 1 : -1);
-                transform.position = pos;
-            }
-        }
-    }
-    */
 }
