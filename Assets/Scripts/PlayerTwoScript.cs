@@ -40,7 +40,7 @@ public class PlayerTwoScript : MonoBehaviour
                     moveDir,
                     targetMoveAmount;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
@@ -57,23 +57,13 @@ public class PlayerTwoScript : MonoBehaviour
         line = null;
     }
 
-    public int GetPlayerInput()
+    /*public int GetPlayerInput()
     {
         return playerIndex;
-    }
+    }*/
 
     public void RunInputUpdate(float xInput)
     {
-        /*
-        if(xInput > 0)
-        {
-            xInput = 1.0f;
-        }
-        else if(xInput < 0)
-        {
-            xInput = -1.0f;
-        }
-        */
         if ((xInput > 0 && transform.localScale.x < 0) || (xInput < 0 && transform.localScale.x > 0))
         {
             Flip();

@@ -32,7 +32,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""3776b342-52ab-4c77-a349-21992fc2a00e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Jump"",
@@ -52,7 +52,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Move"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""b61307fe-ce26-4e8d-a087-79ae7bde6d9a"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",

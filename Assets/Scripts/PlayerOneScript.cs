@@ -36,7 +36,7 @@ public class PlayerOneScript : MonoBehaviour
 
     private MusicSequence musicSequence;
 
-    void Start()
+    void Awake()
     {
         transform.position = firstKnot.transform.position;
 
@@ -54,10 +54,10 @@ public class PlayerOneScript : MonoBehaviour
         canConnect = true;
     }
 
-    public int GetPlayerInput()
+    /*public int GetPlayerInput()
     {
         return playerIndex;
-    }
+    }*/
 
     public void NavigateKnotsInput(Vector2 value)
     {

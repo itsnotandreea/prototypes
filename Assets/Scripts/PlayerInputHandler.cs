@@ -8,6 +8,8 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private int index;
 
+    private float xInput;
+
     private PlayerInput playerInput;
 
     private GameObject pOne,
@@ -20,8 +22,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private Vector2 moveInput;
 
-    private float xInput;
-
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -32,14 +32,11 @@ public class PlayerInputHandler : MonoBehaviour
             pOne = GameObject.FindWithTag("PlayerOne");
             pOneScript = pOne.GetComponent<PlayerOneScript>();
         }
+
         if (index == 1)
         {
             pTwo = GameObject.FindWithTag("PlayerTwo");
             pTwoScript = pTwo.GetComponent<PlayerTwoScript>();
-
-            controlsScript = new Controls();
-            controlsScript.PlayerOne.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-            controlsScript.PlayerOne.Move.canceled += ctx => moveInput = Vector2.zero;
         }
     }
 
@@ -47,8 +44,24 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (index == 1)
         {
-            xInput = moveInput.x;
             pTwoScript.RunInputUpdate(xInput);
+        }
+    }
+
+    private void OnMove(InputValue value)
+    {
+        if (index == 1)
+        {
+            xInput = value.Get<Vector2>().x;
+
+            if (xInput > 0)
+            {
+                xInput = 1.0f;
+            }
+            if (xInput < 0)
+            {
+                xInput = -1.0f;
+            }
         }
     }
 
@@ -67,41 +80,7 @@ public class PlayerInputHandler : MonoBehaviour
             pOneScript.CreateLineButtonInput();
         }
     }
-    /*
-    private void OnRun()
-    {
-        if (index == 1)
-        {
-            runningBack = false;
-            running = true;
-        }
-    }
 
-    private void OnRunBack()
-    {
-        if (index == 1)
-        {
-            running = false;
-            runningBack = true;
-        }
-    }
-
-    private void OnRunRelease()
-    {
-        if (index == 1)
-        {
-            running = false;
-        }
-    }
-
-    private void OnRunBackRelease()
-    {
-        if (index == 1)
-        {
-            runningBack = false;
-        }
-    }
-    */
     private void OnJump()
     {
         if (index == 1)
@@ -114,18 +93,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (index == 1)
         {
-            Debug.Log("Jump");
             pTwoScript.JumpReleaseInput();
         }
-    }
-    
-    private void OnEnable()
-    {
-        controlsScript.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controlsScript.Disable();
     }
 }
