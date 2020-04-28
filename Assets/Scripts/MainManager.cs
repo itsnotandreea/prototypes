@@ -10,15 +10,16 @@ public class MainManager : MonoBehaviour
     public GameObject countdown;
     
     private CountdownSystem cdSystem;
-    private PlayerOneController pOneController;
+    private PlayerOneScript pOneScript;
+    private PlayerTwoScript pTwoScript;
     //private PlayerTwoController pTwoController;
     
     void Start()
     {
         cdSystem = countdown.GetComponent<CountdownSystem>();
 
-        pOneController = GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOneController>();
-        //pTwoController = GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwoController>();
+        pOneScript = GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOneScript>();
+        pTwoScript = GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwoScript>();
 
         UIWinner.enabled = false;
     }
@@ -33,9 +34,8 @@ public class MainManager : MonoBehaviour
 
         if (cdSystem.timer <= 0.0f)
         {
-            pOneController.enabled = false;
-            //pTwoController.enabled = false;
-            UIWinner.text = "Player 1 wins!";
+            pOneScript.enabled = false;
+            pTwoScript.enabled = false;
             UIWinner.enabled = true;
         }
         /*

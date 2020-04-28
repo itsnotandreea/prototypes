@@ -29,9 +29,10 @@ public class PlayerOneScript : MonoBehaviour
     private LineRenderer lineRenderer;
 
     private Vector2 centre,
-                    aimDirection,
                     leftStickInput,
                     rightStickInput;
+
+    private Vector3 aimDirection;
 
     private GameObject closestKnot,
                        secondKnot,
@@ -227,9 +228,25 @@ public class PlayerOneScript : MonoBehaviour
         float x2 = transform.position.x + (lineLength * (x * cos - y * sin));
         float y2 = transform.position.y + (lineLength * (x * sin + y * cos));
 
-        aimDirection = new Vector2(x2, y2);
+        aimDirection = new Vector3(x2, y2, transform.position.z);
         
         DrawLine(aimDirection);
+
+        Vector3 myLocation = transform.position;
+        aimDirection.z = myLocation.z; // ensure there is no 3D rotation by aligning Z position
+
+        // vector from this object towards the target location
+        Vector3 vectorToTarget = aimDirection - myLocation;
+        // rotate that vector by 90 degrees around the Z axis
+        Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * vectorToTarget;
+
+        // get the rotation that points the Z axis forward, and the Y axis 90 degrees away from the target
+        // (resulting in the X axis facing the target)
+        Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+
+        // changed this from a lerp to a RotateTowards because you were supplying a "speed" not an interpolation value
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100.0f * Time.deltaTime);
+        //transform.Translate(Vector3.right * Time.deltaTime, Space.Self);
 
         Debug.DrawLine(firstKnot.transform.position, new Vector3(x2, y2, 0f), Color.black);
     }
@@ -295,7 +312,7 @@ public class PlayerOneScript : MonoBehaviour
         length = Mathf.Sqrt(Mathf.Pow(firstKnot.transform.position.x - secondKnot.transform.position.x, 2f) +
                             Mathf.Pow(firstKnot.transform.position.y - secondKnot.transform.position.y, 2f));
         
-        Vector3 scaler = new Vector3(length / 10f, 1.0f, 1.0f);
+        Vector3 scaler = new Vector3(length / 10f, 1.5f, 1.0f);
         
         float rotation = Vector3.Angle(Vector3.right, secondKnot.transform.position - firstKnot.transform.position);
         

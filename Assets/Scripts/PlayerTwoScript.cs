@@ -22,7 +22,7 @@ public class PlayerTwoScript : MonoBehaviour
     [SerializeField]
     private int playerIndex = 1;
 
-    private bool isGrounded,
+    public bool isGrounded,
                  held;
 
     private GameObject line;
@@ -42,6 +42,8 @@ public class PlayerTwoScript : MonoBehaviour
 
     private Vector3 bounceDirection;
 
+    private Animator animator;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,6 +53,8 @@ public class PlayerTwoScript : MonoBehaviour
         musicSequenceScript = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
 
         scoreScript = score.GetComponent<ScoreScript>();
+
+        animator = GetComponent<Animator>();
 
         button = 100;
         isGrounded = true;
@@ -113,6 +117,13 @@ public class PlayerTwoScript : MonoBehaviour
                 Jump();
             }
         }
+        else
+        {
+            if (jumped < 2)
+            {
+                Bounce();
+            }
+        }
 
         //resets pressed time
         pressedTime = 0;
@@ -126,18 +137,18 @@ public class PlayerTwoScript : MonoBehaviour
             isGrounded = true;
             jumped = 0;
         }
-
+        /*
         if ((other.gameObject.tag == "Line") && held == true)
         {
+            held = false;
+            pressedTime = 0.0f;
             //line = other;
             if (jumped < 2)
             {
                 Bounce();
             }
-
-            isGrounded = true;
-            jumped = 0;
         }
+        */
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -192,6 +203,8 @@ public class PlayerTwoScript : MonoBehaviour
         Vector2 up = transform.TransformDirection(Vector2.up);
         rb.AddForce(up * jumpHeight);
 
+        animator.Play("playerTwoJump");
+
         //grounding
         isGrounded = false;
         jumped += 1;
@@ -206,6 +219,8 @@ public class PlayerTwoScript : MonoBehaviour
         //makes player bounce at 78.69 degrees
         Vector3 direction = transform.TransformDirection(bounceDirection);
         rb.AddForce(direction * impulse, ForceMode2D.Impulse);
+
+        animator.Play("playerTwoJump");
 
         //grounding
         isGrounded = false;

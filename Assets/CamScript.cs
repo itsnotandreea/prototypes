@@ -44,7 +44,7 @@ public class CamScript : MonoBehaviour
         {
             //change position of the camera if playerOne is out of screen
             distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - playerOne.transform.position.x, 2.0f) + Mathf.Pow(transform.position.y - playerOne.transform.position.y, 2.0f));
-            if (distance > 18.0f)
+            if (distance > 30.0f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, playerOne.transform.position - transform.TransformDirection(behindPos), Time.deltaTime * speed);
             }
@@ -79,7 +79,7 @@ public class CamScript : MonoBehaviour
 
     void CameraAlteration(float perc)
     {
-        GetComponent<Camera>().orthographicSize = 35 + (5 * perc);
+        //GetComponent<Camera>().orthographicSize = 35 + (5 * perc);
     }
 
     float GetPerc()
