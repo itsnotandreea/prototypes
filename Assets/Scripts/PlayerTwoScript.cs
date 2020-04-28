@@ -40,6 +40,8 @@ public class PlayerTwoScript : MonoBehaviour
                     moveDir,
                     targetMoveAmount;
 
+    private Vector3 bounceDirection;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,132 +57,64 @@ public class PlayerTwoScript : MonoBehaviour
         held = false;
         pressedTime = 0.0f;
         line = null;
-    }
 
-    /*public int GetPlayerInput()
-    {
-        return playerIndex;
-    }*/
+        bounceDirection = new Vector3(1, 5, 0);
+    }
 
     public void RunInputUpdate(float xInput)
     {
+        //checks if the player should be flipped to face the right direction
         if ((xInput > 0 && transform.localScale.x < 0) || (xInput < 0 && transform.localScale.x > 0))
         {
             Flip();
         }
 
+        //gets input from PlayerInputHandler from Left Stick X Axis
         moveDir = new Vector3(xInput, 0, 0) * 10f;
+        //adds speed
         targetMoveAmount = moveDir * moveSpeed;
+        //adds a smoothing effect between the current and desired amount of 'moving' the player wants
         moveAmount = Vector2.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, 0.15f);
     }
 
     private void FixedUpdate()
     {
+        //transforms the direction in the characte's local space
         Vector2 moveAm = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
+        //adds the distance to the current rigidbody's position
         rb.position += moveAm;
     }
 
     private void Flip()
     {
+        //flips the sprite for when player is going towards the left side/right side
         float newXScale = transform.localScale.x * -1.0f;
         Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
         transform.localScale = newScale;
+
+        //changes bounce direction accroding to the player's facing
+        bounceDirection.x *= -1.0f;
     }
-
-    /*
-    public void RunInput()
-    {
-        //turns player around
-        if (transform.localScale.x < 0)
-        {
-            float newXScale = transform.localScale.x * -1.0f;
-            Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
-            transform.localScale = newScale;
-        }
-        Vector2 moveDir = transform.TransformDirection(new Vector2(xInput, 0));
-        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
-
-
-        //tells object what position to move to
-
-        //Vector2 right = transform.TransformDirection(Vector2.right);
-        // Move the character by finding the target velocity
-        //Vector3 targetVelocity = new Vector2(right.x * (xInput * moveSpeed), right.y * rb.velocity.y);
-        // And then smoothing it out and applying it to the character
-        //Vector3 targetVelocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
-        //Vector3 targetVelocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
-        //rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocityZero, movementSmoothing);
-
-
-        //transform.position += right * Time.deltaTime * moveSpeed;
-        //transform.Translate(xInput * Vector2.right * moveSpeed * Time.deltaTime);
-        //rb.MovePosition(transform.position + right * (xInput * moveSpeed) * Time.fixedDeltaTime);
-        //rb.AddForce(right * (xInput * moveSpeed), ForceMode2D.Force);
-
-
-        //if (isGrounded)
-        {
-            //Vector3 right = transform.TransformDirection(Vector2.right);
-            //rb.velocity = right * (xInput * moveSpeed);
-            //rb.velocity = right * moveSpeed;
-        }
-
-        //rb.MovePosition(transform.position + right * moveSpeed * Time.fixedDeltaTime);
-
-        //if (rb.velocity.y <= 3.0f && rb.velocity.y >= -3.0f)
-        
-        //rb.velocity += new Vector2 (right.x * moveSpeed, rb.velocity.y);
-        
-        //transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-
-        //sound
-        button = 1;
-        pTwoSound.AssignClip(button);
-        
-    }
-    */
-    /*
-    public void RunBackInput()
-    {
-        //turns player around
-        if(transform.localScale.x > 0)
-        {
-            float newXScale = transform.localScale.x * -1.0f;
-            Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
-            transform.localScale = newScale;
-        }
-
-        //tells object what position to move to
-        //transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-
-        //if (rb.velocity.y <= 2.0f && rb.velocity.y >= -2.0f)
-        //if (isGrounded)
-        {
-            Vector3 left = transform.TransformDirection(Vector2.left);
-            rb.MovePosition(transform.position + left * moveSpeed * Time.fixedDeltaTime);
-            //rb.velocity = left * moveSpeed;
-        }
-        
-        //sound
-        button = 2;
-        pTwoSound.AssignClip(button);
-    }
-    */
+    
     public void JumpInput()
     {
+        //how long has the player been pressing the jump button
         pressedTime += Time.deltaTime;
     }
 
     public void JumpReleaseInput()
     {
+        //when player releases jump button, if the button wasn't held, calls for jump
         if (!held)
         {
+            //checks if the player has jumped already more than twice
             if (jumped < 2)
             {
                 Jump();
             }
         }
 
+        //resets pressed time
         pressedTime = 0;
         held = false;
     }
@@ -266,12 +200,11 @@ public class PlayerTwoScript : MonoBehaviour
         button = 0;
         pTwoSound.AssignClip(button);
     }
-
-
+    
     private void Bounce()
     {
         //makes player bounce at 78.69 degrees
-        Vector2 direction = transform.TransformDirection(new Vector3(1, 5, 0));
+        Vector3 direction = transform.TransformDirection(bounceDirection);
         rb.AddForce(direction * impulse, ForceMode2D.Impulse);
 
         //grounding

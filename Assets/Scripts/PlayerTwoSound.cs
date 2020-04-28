@@ -19,21 +19,10 @@ public class PlayerTwoSound : MonoBehaviour
         //accesses the audio source and sets the initial clip
         currentClip = empty;
     }
-    
-    void Update()
-    {
-        /*
-        MusicSource.clip = currentClip;           //sets current clip to play
-
-        //checks if the audio source isn't playing
-        if (!MusicSource.isPlaying)
-        {
-            MusicSource.Play();     //plays the clip if it isn't 
-        }*/
-    }
 
     public void AssignClip(int button)
     {
+        /*
         if (button == 0)
         {
             currentClip = jump;
@@ -70,5 +59,6 @@ public class PlayerTwoSound : MonoBehaviour
             musicSource.clip = currentClip;
             musicSource.Play();
         }
+        */
     }
 }

@@ -19,6 +19,8 @@ public class PlayerOneScript : MonoBehaviour
                       firstKnot,
                       line;
 
+    public bool autoCamera;
+
     [SerializeField]
     private int playerIndex = 0;
 
@@ -28,13 +30,17 @@ public class PlayerOneScript : MonoBehaviour
 
     private Vector2 centre,
                     aimDirection,
-                    stickInput;
+                    leftStickInput,
+                    rightStickInput;
 
     private GameObject closestKnot,
                        secondKnot,
-                       musicGO;
+                       musicGO,
+                       camera;
 
     private MusicSequence musicSequence;
+
+    private CamScript camScript;
 
     void Awake()
     {
@@ -48,20 +54,38 @@ public class PlayerOneScript : MonoBehaviour
         lineRenderer.SetPosition(0, firstKnot.transform.position);
         lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
 
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        camScript = camera.GetComponent<CamScript>();
+
         closestKnotDist = 1000f;
         closestKnot = null;
 
         canConnect = true;
     }
 
-    /*public int GetPlayerInput()
+    void Update()
     {
-        return playerIndex;
-    }*/
+        FindKnots();
+        MoveCamera();
+    }
 
     public void NavigateKnotsInput(Vector2 value)
     {
-        stickInput = value;
+        leftStickInput = value;
+    }
+
+    public void MoveCameraInput(Vector2 value)
+    {
+        rightStickInput = value;
+        
+        if (rightStickInput.x == 0.0f && rightStickInput.y == 0.0f)
+        {
+            camScript.autoCamera = true;
+        }
+        else
+        {
+            camScript.autoCamera = false;
+        }
     }
 
     public void CreateLineButtonInput()
@@ -122,11 +146,6 @@ public class PlayerOneScript : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        FindKnots();
-    }
-
     void FindKnots()
     {
         //adds all knots in range of radius to an array
@@ -183,7 +202,7 @@ public class PlayerOneScript : MonoBehaviour
     void Navigate()
     {
         //Calculates angle between start position and current position
-        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 575.0f);
+        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 252.0f);
         Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(transform.position.x, transform.position.y);
 
         if(transform.position.x > 0)
@@ -196,8 +215,8 @@ public class PlayerOneScript : MonoBehaviour
         }
 
         //Takes Input from Joystick axis
-        float x = stickInput.x;
-        float y = stickInput.y;
+        float x = leftStickInput.x;
+        float y = leftStickInput.y;
 
         //Converts to radians and calculates cos and sin
         float angle = adjustAngle * Mathf.Deg2Rad;
@@ -205,14 +224,56 @@ public class PlayerOneScript : MonoBehaviour
         float sin = Mathf.Sin(angle);
 
         //applies the new input to the player's position, respecting the radius
-        float x2 = firstKnot.transform.position.x + (lineLength * (x * cos - y * sin));
-        float y2 = firstKnot.transform.position.y + (lineLength * (x * sin + y * cos));
+        float x2 = transform.position.x + (lineLength * (x * cos - y * sin));
+        float y2 = transform.position.y + (lineLength * (x * sin + y * cos));
 
         aimDirection = new Vector2(x2, y2);
         
         DrawLine(aimDirection);
 
         Debug.DrawLine(firstKnot.transform.position, new Vector3(x2, y2, 0f), Color.black);
+    }
+
+    void MoveCamera()
+    {
+        //Calculates angle between start position and current position
+        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 252.0f);
+        Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(camera.transform.position.x, camera.transform.position.y);
+
+        float adjAngle;
+
+        if (camera.transform.position.x > 0)
+        {
+            adjAngle = 360.0f - Vector2.Angle(initialPos, currentPos);
+        }
+        else
+        {
+            adjAngle = Vector2.Angle(initialPos, currentPos);
+        }
+
+        //Takes Input from Joystick axis
+        float x = rightStickInput.x;
+        float y = rightStickInput.y;
+
+        //Converts to radians and calculates cos and sin
+        float angle = adjAngle * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(angle);
+        float sin = Mathf.Sin(angle);
+
+        //applies the new input to the player's position, respecting the radius
+        float x2 = camera.transform.position.x + (lineLength * (x * cos - y * sin));
+        float y2 = camera.transform.position.y + (lineLength * (x * sin + y * cos));
+
+        aimDirection = new Vector2(x2, y2);
+
+        float distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - aimDirection.x, 2.0f) + Mathf.Pow(transform.position.y - aimDirection.y, 2.0f));
+        
+        if (distance < 40.0f)
+        {
+            camScript.newPosition = aimDirection;
+        }
+
+        Debug.DrawLine(camera.transform.position, new Vector3(x2, y2, 0f), Color.black);
     }
 
     void DrawLine(Vector2 endPos)
@@ -226,67 +287,7 @@ public class PlayerOneScript : MonoBehaviour
 
         lineRenderer.SetPosition(1, endPos);
     }
-
-    /*
-    void TakeInput()
-    {
-        //A button on xbox
-        if (Input.GetKeyDown("joystick 1 button 0"))
-        {
-            if (firstKnot != null && firstKnot != closestKnot)
-            {
-                secondKnot = closestKnot;
-                
-                //checks if there are any other lines in range that might be intersecting if creating a line
-                Collider2D[] lineList = Physics2D.OverlapCircleAll(centre, lineLength * 5.0f, 1 << 9);
-                
-                if (lineList.Length > 0)
-                {   
-                    foreach (Collider2D line in lineList)
-                    {
-                        if (IsIntersecting(line.gameObject, firstKnot.transform.position.x, firstKnot.transform.position.y,
-                                                            secondKnot.transform.position.x, secondKnot.transform.position.y) == true)
-                        {
-                            //if there is one such line, then a connection is not possible
-                            canConnect = false;
-                        }
-                    }
-
-                    if (canConnect)             //if there is no such line, a connection is possible and it creates one.
-                    {
-                        CreateLine();
-
-                        firstKnot = secondKnot;
-                        secondKnot = null;
-
-                        lineRenderer.SetPosition(0, firstKnot.transform.position);
-                        lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
-
-                        canConnect = true;
-                    }
-                    else                        //if there is a line, deselects both knots so the player can try again
-                    {
-                        secondKnot = null;
-
-                        canConnect = true;
-                    }
-                }
-                else
-                {
-                    CreateLine();
-
-                    firstKnot = secondKnot;
-                    secondKnot = null;
-
-                    lineRenderer.SetPosition(0, firstKnot.transform.position);
-
-                    canConnect = true;
-                }
-            }
-        }
-    }
-    */
-
+    
     void CreateLine()
     {
         GameObject newLine = Instantiate(line, firstKnot.transform.position, transform.rotation);
@@ -310,6 +311,8 @@ public class PlayerOneScript : MonoBehaviour
         newLine.transform.eulerAngles = new Vector3(0.0f, 0.0f, rotation);
 
         newLine.AddComponent<BoxCollider2D>();
+
+        newLine.GetComponent<BoxCollider2D>().size = new Vector2(newLine.GetComponent<BoxCollider2D>().size.x, 1.0f);
 
         AddToMusicSequenceList(firstKnot, secondKnot);
     }
@@ -365,4 +368,5 @@ public class PlayerOneScript : MonoBehaviour
         
         musicSequence.sequence.Add(secondKnot);
     }
+    
 }

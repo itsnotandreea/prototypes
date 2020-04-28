@@ -57,6 +57,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""79e17940-d0f4-4071-81e3-8318e5777ab0"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -125,6 +133,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33ad6690-2544-40c3-9724-b0470894eed6"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -138,6 +157,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerOne_Jump = m_PlayerOne.FindAction("Jump", throwIfNotFound: true);
         m_PlayerOne_JumpRelease = m_PlayerOne.FindAction("JumpRelease", throwIfNotFound: true);
         m_PlayerOne_Move = m_PlayerOne.FindAction("Move", throwIfNotFound: true);
+        m_PlayerOne_CameraMovement = m_PlayerOne.FindAction("CameraMovement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -192,6 +212,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerOne_Jump;
     private readonly InputAction m_PlayerOne_JumpRelease;
     private readonly InputAction m_PlayerOne_Move;
+    private readonly InputAction m_PlayerOne_CameraMovement;
     public struct PlayerOneActions
     {
         private @Controls m_Wrapper;
@@ -201,6 +222,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerOne_Jump;
         public InputAction @JumpRelease => m_Wrapper.m_PlayerOne_JumpRelease;
         public InputAction @Move => m_Wrapper.m_PlayerOne_Move;
+        public InputAction @CameraMovement => m_Wrapper.m_PlayerOne_CameraMovement;
         public InputActionMap Get() { return m_Wrapper.m_PlayerOne; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -225,6 +247,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMove;
+                @CameraMovement.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCameraMovement;
+                @CameraMovement.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCameraMovement;
+                @CameraMovement.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCameraMovement;
             }
             m_Wrapper.m_PlayerOneActionsCallbackInterface = instance;
             if (instance != null)
@@ -244,6 +269,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @CameraMovement.started += instance.OnCameraMovement;
+                @CameraMovement.performed += instance.OnCameraMovement;
+                @CameraMovement.canceled += instance.OnCameraMovement;
             }
         }
     }
@@ -255,5 +283,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnJumpRelease(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnCameraMovement(InputAction.CallbackContext context);
     }
 }

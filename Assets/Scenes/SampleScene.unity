@@ -327,7 +327,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.9, y: 0.2}
+  m_Size: {x: 9.9, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &106303733 stripped
 Transform:
@@ -882,7 +882,7 @@ MonoBehaviour:
   respawnTime: 1
   size: 20
   moveSpeed: 24
-  moveUpSpeed: 0.6
+  moveUpSpeed: 1
   collectables:
   - {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
   - {fileID: 196570943614750437, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}
@@ -1223,6 +1223,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1245,7 +1246,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49115c6a102133a498eeda90a6f33e85, type: 3}
   m_Name: 
@@ -1363,6 +1364,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attractor: {fileID: 1663019012}
   rb: {fileID: 0}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8c9b71454fc3942bfdc71803dd8041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  dist: 15
+  autoCamera: 0
+  splitTwo: {fileID: 1846234250}
+  splitOne: {fileID: 1122982381}
+  floor: {fileID: 1663019010}
+  playerOne: {fileID: 783097451}
+  playerTwo: {fileID: 1416259305}
+  newPosition: {x: 0, y: 0, z: 0}
+  behindPos: {x: 0, y: 0, z: 0}
 --- !u!1 &611313357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,8 +1904,8 @@ BoxCollider2D:
   m_Offset: {x: 0.051077127, y: -1.5152639}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 10.8}
+    pivot: {x: 0.6431811, y: 0.49999994}
+    oldSize: {x: 6.29, y: 5.97}
     newSize: {x: 10.8, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1930,7 +1953,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 1d034fb6d00bd034a820b18cb1f42958, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39d75a35497c6c04f90d833b0a3234f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1950,7 +1973,7 @@ Transform:
   m_GameObject: {fileID: 783097451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.82, y: 5.56, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_Children:
   - {fileID: 490718361}
   m_Father: {fileID: 0}
@@ -1991,7 +2014,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783097451}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 93a9249d0c4e0a14b9b0272541816ebf, type: 2}
   m_CullingMode: 0
@@ -2026,6 +2049,7 @@ MonoBehaviour:
   floor: {fileID: 1663019010}
   firstKnot: {fileID: 1773681837}
   line: {fileID: 6238559645418678943, guid: ee777105b61951a4996cd94736a8b667, type: 3}
+  autoCamera: 0
   playerIndex: 0
 --- !u!1 &807112666
 GameObject:
@@ -2491,7 +2515,7 @@ PrefabInstance:
     - target: {fileID: -2346416967520540984, guid: 75e97f6e60f10fa42a23859bcf62647a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -575
+      value: -252
       objectReference: {fileID: 0}
     - target: {fileID: -2346416967520540984, guid: 75e97f6e60f10fa42a23859bcf62647a,
         type: 3}
@@ -2541,12 +2565,12 @@ PrefabInstance:
     - target: {fileID: -2346416967520540984, guid: 75e97f6e60f10fa42a23859bcf62647a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 11500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: -2346416967520540984, guid: 75e97f6e60f10fa42a23859bcf62647a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 11500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: -2346416967520540984, guid: 75e97f6e60f10fa42a23859bcf62647a,
         type: 3}
@@ -3949,7 +3973,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.9, y: 0.2}
+  m_Size: {x: 9.9, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1762087652 stripped
 GameObject:
@@ -4762,7 +4786,7 @@ MonoBehaviour:
   respawnTime: 0.25
   size: 18
   moveSpeed: 24
-  moveUpSpeed: 0.6
+  moveUpSpeed: 1
   knots:
   - {fileID: 504393612249318663, guid: ef6e6c9b5676246498e79b7db9d091aa, type: 3}
   - {fileID: 2268967290363231551, guid: 5cc559e87750e904eb721f2133126939, type: 3}

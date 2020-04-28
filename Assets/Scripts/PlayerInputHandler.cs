@@ -20,7 +20,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     private Controls controlsScript;
 
-    private Vector2 moveInput;
+    private Vector2 moveInput,
+                    cameraInput;
 
     private void Awake()
     {
@@ -46,22 +47,10 @@ public class PlayerInputHandler : MonoBehaviour
         {
             pTwoScript.RunInputUpdate(xInput);
         }
-    }
 
-    private void OnMove(InputValue value)
-    {
-        if (index == 1)
+        if (index == 0)
         {
-            xInput = value.Get<Vector2>().x;
-
-            if (xInput > 0)
-            {
-                xInput = 1.0f;
-            }
-            if (xInput < 0)
-            {
-                xInput = -1.0f;
-            }
+            pOneScript.MoveCameraInput(cameraInput);
         }
     }
 
@@ -78,6 +67,31 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 0)
         {
             pOneScript.CreateLineButtonInput();
+        }
+    }
+
+    private void OnCameraMovement(InputValue value)
+    {
+        if (index == 0)
+        {
+            cameraInput = value.Get<Vector2>();
+        }
+    }
+
+    private void OnMove(InputValue value)
+    {
+        if (index == 1)
+        {
+            xInput = value.Get<Vector2>().x;
+
+            if (xInput > 0)
+            {
+                xInput = 1.0f;
+            }
+            if (xInput < 0)
+            {
+                xInput = -1.0f;
+            }
         }
     }
 
