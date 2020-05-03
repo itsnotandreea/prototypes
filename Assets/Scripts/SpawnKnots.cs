@@ -7,7 +7,8 @@ public class SpawnKnots : MonoBehaviour
     public float respawnTime,
                  size,
                  moveSpeed,
-                 moveUpSpeed;
+                 moveUpSpeed,
+                 knotsCount = 0;
 
     public GameObject[] knots;
 
@@ -46,6 +47,7 @@ public class SpawnKnots : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnTime);
 
+            knotsCount += 1;
             SpawnKnot();
         }
     }

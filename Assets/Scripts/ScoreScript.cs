@@ -24,7 +24,7 @@ public class ScoreScript : MonoBehaviour
         scoreText = GetComponent<Text>();
         previousScoreText = previousScoreGO.GetComponent<Text>();
 
-        playerOne = GameObject.FindWithTag("PlayerOne");
+        playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
 
         pOneScript = playerOne.GetComponent<PlayerOneScript>();
 

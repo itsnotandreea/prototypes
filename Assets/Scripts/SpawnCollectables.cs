@@ -7,7 +7,8 @@ public class SpawnCollectables : MonoBehaviour
     public float respawnTime,
                  size,
                  moveSpeed,
-                 moveUpSpeed;
+                 moveUpSpeed,
+                 collectablesCount = 0;
 
     public GameObject[] collectables;
 
@@ -46,6 +47,7 @@ public class SpawnCollectables : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnTime);
 
+            collectablesCount += 1;
             SpawnCollectable();
         }
     }

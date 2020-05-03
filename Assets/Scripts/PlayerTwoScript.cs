@@ -18,12 +18,10 @@ public class PlayerTwoScript : MonoBehaviour
                  angleFriction;
     
     public GameObject score;
-
-    [SerializeField]
-    private int playerIndex = 1;
-
+    
     public bool isGrounded,
-                 held;
+                held,
+                menuMode;
 
     private GameObject line;
    

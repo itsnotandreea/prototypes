@@ -7,29 +7,71 @@ public class MainManager : MonoBehaviour
 {
     public Text UIWinner;
 
-    public GameObject countdown;
-    
+    public GameObject countdown,
+                      timeUI,
+                      scoreUI,
+                      bestUI,
+                      restartUI,
+                      collectablesZone,
+                      knotsZone,
+                      floor,
+                      pictureHolder;
+
+    private bool takePicture,
+                 scoreMode,
+                 composeMode,
+                 menuMode;
+
     private CountdownSystem cdSystem;
     private PlayerOneScript pOneScript;
     private PlayerTwoScript pTwoScript;
-    //private PlayerTwoController pTwoController;
-    
-    void Start()
+    private CamScript camScript;
+    private MenuScript menuScript;
+
+    void Awake()
     {
         cdSystem = countdown.GetComponent<CountdownSystem>();
 
         pOneScript = GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOneScript>();
         pTwoScript = GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwoScript>();
 
+        camScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CamScript>();
+
+        menuScript = GameObject.FindGameObjectWithTag("startingArea").GetComponent<MenuScript>();
+
         UIWinner.enabled = false;
+
+        takePicture = true;
+
+        scoreMode = false;
+        composeMode = false;
+        menuMode = true;
+
+        pOneScript.menuMode = true;
+        pOneScript.lineLength = 45;
+
+        pTwoScript.menuMode = true;
+
+        camScript.menuMode = true;
     }
-    
+
     void Update()
     {
+        if (menuMode)
+        {
+            GetMode();
+        }
+
         //quit game in built
         if (Input.GetKeyDown(KeyCode.Escape) == true)
         {
             Application.Quit();
+        }
+
+        //take picture of game
+        if (Input.GetKeyDown(KeyCode.A) == true)
+        {
+            TakePicture.TakeScreenshot_Static(5000, 5000);
         }
 
         if (cdSystem.timer <= 0.0f)
@@ -37,16 +79,105 @@ public class MainManager : MonoBehaviour
             pOneScript.enabled = false;
             pTwoScript.enabled = false;
             UIWinner.enabled = true;
+
+            camScript.menuCurrentPos = camScript.finalPicturePos;
+            camScript.finishedMode = true;
+            camScript.gameObject.transform.position = camScript.finalPicturePos;
+            camScript.cam.orthographicSize = 700;
+            camScript.cam.transform.rotation = Quaternion.identity;
+
+            floor.SetActive(false);
+            scoreUI.SetActive(false);
+            bestUI.SetActive(false);
+            timeUI.SetActive(false);
+            knotsZone.SetActive(false);
+            collectablesZone.SetActive(false);
+
+            if (takePicture)
+            {
+                TakePicture.TakeScreenshot_Static(5000, 5000);
+                takePicture = false;
+                StartCoroutine(FinalPicture(10.0f));
+            }
         }
-        /*
-        if (pTwoController.total >= 24)
+    }
+
+    private void GetMode()
+    {
+        if (menuScript.playButton)
         {
-            cdSystem.enabled = false;
-            pOneController.enabled = false;
-            pTwoController.enabled = false;
-            UIWinner.text = "Player 2 wins!";
-            UIWinner.enabled = true;
+            camScript.menuCurrentPos = camScript.menuPosTwo;
         }
-        */
+        else if (menuScript.scoreButton)
+        {
+            scoreMode = true;
+            composeMode = false;
+
+            camScript.menuCurrentPos = camScript.menuPosThree;
+            StartGame();
+        }
+        else if (menuScript.composeButton)
+        {
+            composeMode = true;
+            scoreMode = false;
+
+            camScript.menuCurrentPos = camScript.menuPosThree;
+            StartGame();
+        }
+        else
+        {
+            if (menuMode)
+            {
+                camScript.menuCurrentPos = camScript.menuPosOne;
+            }
+        }
+    }
+
+    private void StartGame()
+    {
+        pOneScript.lineLength = 25.0f;
+
+        float smoothness = Mathf.Lerp(camScript.cam.orthographicSize, 40, Time.deltaTime);
+        camScript.cam.orthographicSize = smoothness;
+
+        if (camScript.gameObject.transform.position == camScript.menuPosThree)
+        {
+            menuMode = false;
+            pOneScript.menuMode = false;
+            pTwoScript.menuMode = false;
+            camScript.menuMode = false;
+
+            cdSystem.canCount = true;
+
+            collectablesZone.SetActive(true);
+            knotsZone.SetActive(true);
+
+            timeUI.SetActive(true);
+            restartUI.SetActive(true);
+
+            if (scoreMode)
+            {
+                scoreUI.SetActive(true);
+                bestUI.SetActive(true);
+
+                menuScript.gameObject.transform.Find("ScoreMode").transform.parent = null;
+                Destroy(menuScript.gameObject);
+            }
+            else
+            {
+                scoreUI.SetActive(false);
+                bestUI.SetActive(false);
+
+                menuScript.gameObject.transform.Find("Compose").transform.parent = null;
+                Destroy(menuScript.gameObject);
+            }
+        }
+    }
+    
+    IEnumerator FinalPicture(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        pictureHolder.GetComponent<RawImage>().enabled = true;
     }
 }

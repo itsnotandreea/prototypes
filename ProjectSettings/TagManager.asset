@@ -28,6 +28,7 @@ TagManager:
   - Collectable
   - Line
   - Music
+  - startingArea
   layers:
   - Default
   - TransparentFX

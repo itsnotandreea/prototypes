@@ -10,12 +10,13 @@ public class CountdownSystem : MonoBehaviour
     public float mainTimer,
                  timer;
 
-    private bool canCount,
-                 doOnce;
+    public bool canCount;
+
+    private bool doOnce;
 
     private void Start()
     {
-        canCount = true;
+        canCount = false;
         doOnce = false;
 
         timer = mainTimer;

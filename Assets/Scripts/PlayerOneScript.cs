@@ -19,11 +19,9 @@ public class PlayerOneScript : MonoBehaviour
                       firstKnot,
                       line;
 
-    public bool autoCamera;
-
-    [SerializeField]
-    private int playerIndex = 0;
-
+    public bool autoCamera,
+                menuMode;
+    
     private bool canConnect;
 
     private LineRenderer lineRenderer;
@@ -102,11 +100,14 @@ public class PlayerOneScript : MonoBehaviour
             {
                 foreach (Collider2D line in lineList)
                 {
-                    if (IsIntersecting(line.gameObject, firstKnot.transform.position.x, firstKnot.transform.position.y,
-                                                        secondKnot.transform.position.x, secondKnot.transform.position.y) == true)
+                    if (line.gameObject.transform.name != "specialLine")
                     {
-                        //if there is one such line, then a connection is not possible
-                        canConnect = false;
+                        if (IsIntersecting(line.gameObject, firstKnot.transform.position.x, firstKnot.transform.position.y,
+                                                            secondKnot.transform.position.x, secondKnot.transform.position.y) == true)
+                        {
+                            //if there is one such line, then a connection is not possible
+                            canConnect = false;
+                        }
                     }
                 }
 
@@ -180,22 +181,41 @@ public class PlayerOneScript : MonoBehaviour
         //stops particle effect system for all knots but the closestKnot
         foreach (Collider2D knot in knotsList)
         {
-            if (knot.gameObject != closestKnot)
+            if (knot.transform.name != "startKnot" && knot.transform.name != "Compose" && knot.transform.name != "ScoreMode" && knot.transform.name != "Gallery")
             {
-                knot.gameObject.GetComponent<ParticleSystem>().Stop();
-                knot.gameObject.GetComponent<ParticleSystem>().Clear();
+                if (knot.gameObject != closestKnot)
+                {
+                    knot.gameObject.GetComponent<ParticleSystem>().Stop();
+                    knot.gameObject.GetComponent<ParticleSystem>().Clear();
+                }
+            }
+            else if (knot.transform.name == "startKnot")
+            {
+                if (knot.gameObject != closestKnot)
+                {
+                    knot.gameObject.GetComponent<ButtonsAnimations>().glow = false;
+                }
             }
         }
 
         //if the particle system of the closest knot is not already playing, it starts playing it
-        if(closestKnot != null)
+        if (closestKnot != null)
         {
-            if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
+            if (closestKnot.transform.name != "startKnot" && closestKnot.transform.name != "Compose" && closestKnot.transform.name != "ScoreMode" && closestKnot.transform.name != "Gallery")
             {
-                var main = closestKnot.GetComponent<ParticleSystem>().main;
-                main.startColor = new Color(255f, 225f, 0f, 255f);
+                if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
+                {
+                    var main = closestKnot.GetComponent<ParticleSystem>().main;
+                    main.startColor = new Color(255f, 225f, 0f, 255f);
 
-                closestKnot.GetComponent<ParticleSystem>().Play();
+                    closestKnot.GetComponent<ParticleSystem>().Play();
+                }
+            }
+            else if (closestKnot.transform.name == "startKnot")
+            {
+                closestKnot.GetComponent<ButtonsAnimations>().glow = true;
+                closestKnot.GetComponent<ButtonsAnimations>().idle = false;
+                closestKnot.GetComponent<ButtonsAnimations>().selected = false;
             }
         }
     }
@@ -203,7 +223,7 @@ public class PlayerOneScript : MonoBehaviour
     void Navigate()
     {
         //Calculates angle between start position and current position
-        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 252.0f);
+        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 50.0f);
         Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(transform.position.x, transform.position.y);
 
         if(transform.position.x > 0)
@@ -231,6 +251,8 @@ public class PlayerOneScript : MonoBehaviour
         aimDirection = new Vector3(x2, y2, transform.position.z);
         
         DrawLine(aimDirection);
+
+        //make first player follow the line
 
         Vector3 myLocation = transform.position;
         aimDirection.z = myLocation.z; // ensure there is no 3D rotation by aligning Z position
@@ -281,7 +303,7 @@ public class PlayerOneScript : MonoBehaviour
         float x2 = camera.transform.position.x + (lineLength * (x * cos - y * sin));
         float y2 = camera.transform.position.y + (lineLength * (x * sin + y * cos));
 
-        aimDirection = new Vector2(x2, y2);
+        aimDirection = new Vector3(x2, y2, camera.transform.position.z);
 
         float distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - aimDirection.x, 2.0f) + Mathf.Pow(transform.position.y - aimDirection.y, 2.0f));
         
@@ -321,8 +343,15 @@ public class PlayerOneScript : MonoBehaviour
             rotation *= -1.0f;
         }
 
-        newLine.transform.SetParent(secondKnot.transform);
-
+        if (secondKnot.transform.name != "startKnot" && secondKnot.transform.name != "Compose" && secondKnot.transform.name != "ScoreMode" && secondKnot.transform.name != "Gallery")
+        {
+            newLine.transform.SetParent(secondKnot.transform);
+        }
+        else
+        {
+            newLine.transform.name = "specialLine";
+        }
+        
         newLine.GetComponent<Transform>().localScale = scaler;
 
         newLine.transform.eulerAngles = new Vector3(0.0f, 0.0f, rotation);
@@ -330,7 +359,7 @@ public class PlayerOneScript : MonoBehaviour
         newLine.AddComponent<BoxCollider2D>();
 
         newLine.GetComponent<BoxCollider2D>().size = new Vector2(newLine.GetComponent<BoxCollider2D>().size.x, 1.0f);
-
+        
         AddToMusicSequenceList(firstKnot, secondKnot);
     }
 
@@ -364,26 +393,24 @@ public class PlayerOneScript : MonoBehaviour
         {
             isIntersecting = false;
         }
-        
+
         return isIntersecting;
     }
 
     private void AddToMusicSequenceList(GameObject firstKnot, GameObject secondKnot)
     {
-        //checks if the last knot is the same as the first one in th new line, so it doesn't add the same note twice?
-        if (musicSequence.sequence.Count > 0)
+        if (musicSequence.sequence.Count == 0)
         {
-            if (musicSequence.sequence[musicSequence.sequence.Count - 1] != firstKnot)
+            //checks if the last knot is the same as the first one in the new line, so it doesn't add the same note twice
+            if (firstKnot.transform.name != "startKnot" && firstKnot.transform.name != "Compose" && firstKnot.transform.name != "ScoreMode" && firstKnot.transform.name != "Gallery")
             {
                 musicSequence.sequence.Add(firstKnot);
             }
         }
-        else
+
+        if (secondKnot.transform.name != "startKnot" && secondKnot.transform.name != "Compose" && secondKnot.transform.name != "ScoreMode" && secondKnot.transform.name != "Gallery")
         {
-            musicSequence.sequence.Add(firstKnot);
+            musicSequence.sequence.Add(secondKnot);
         }
-        
-        musicSequence.sequence.Add(secondKnot);
     }
-    
 }

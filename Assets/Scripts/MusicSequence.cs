@@ -126,16 +126,6 @@ public class MusicSequence : MonoBehaviour
         {
             layerEight = !layerEight;
         }
-        else
-        {
-            layerTwo = false;
-            layerThree = false;
-            layerFour = false;
-            layerFive = false;
-            layerSix = false;
-            layerSeven = false;
-            layerEight = false;
-        }
     }
 
     public void AssignLayer()
@@ -208,13 +198,6 @@ public class MusicSequence : MonoBehaviour
     {
         while (i < sequence.Count)
         {
-            /*
-            //Plays the note attached to the object
-            currentClip = sequence[i].GetComponent<AudioSource>().clip;
-            audioSource.clip = currentClip;
-            audioSource.Play();
-            */
-
             FindNote(sequence[i]);
 
             FMODUnity.RuntimeManager.CreateInstance(currentNote);

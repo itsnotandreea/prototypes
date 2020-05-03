@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 4f3d954bdd100064b9d87a875dd01f6c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DUODEUS
+  fontNames:
+  - DUODEUS
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2d24e229c7fb5744d97d94fcbbd7031c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
