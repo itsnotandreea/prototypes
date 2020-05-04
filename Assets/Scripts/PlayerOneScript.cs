@@ -35,7 +35,7 @@ public class PlayerOneScript : MonoBehaviour
     private GameObject closestKnot,
                        secondKnot,
                        musicGO,
-                       camera;
+                       cam;
 
     private MusicSequence musicSequence;
 
@@ -53,8 +53,8 @@ public class PlayerOneScript : MonoBehaviour
         lineRenderer.SetPosition(0, firstKnot.transform.position);
         lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
 
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
-        camScript = camera.GetComponent<CamScript>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
+        camScript = cam.GetComponent<CamScript>();
 
         closestKnotDist = 1000f;
         closestKnot = null;
@@ -277,11 +277,11 @@ public class PlayerOneScript : MonoBehaviour
     {
         //Calculates angle between start position and current position
         Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 252.0f);
-        Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(camera.transform.position.x, camera.transform.position.y);
+        Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(cam.transform.position.x, cam.transform.position.y);
 
         float adjAngle;
 
-        if (camera.transform.position.x > 0)
+        if (cam.transform.position.x > 0)
         {
             adjAngle = 360.0f - Vector2.Angle(initialPos, currentPos);
         }
@@ -300,10 +300,10 @@ public class PlayerOneScript : MonoBehaviour
         float sin = Mathf.Sin(angle);
 
         //applies the new input to the player's position, respecting the radius
-        float x2 = camera.transform.position.x + (lineLength * (x * cos - y * sin));
-        float y2 = camera.transform.position.y + (lineLength * (x * sin + y * cos));
+        float x2 = cam.transform.position.x + (lineLength * (x * cos - y * sin));
+        float y2 = cam.transform.position.y + (lineLength * (x * sin + y * cos));
 
-        aimDirection = new Vector3(x2, y2, camera.transform.position.z);
+        aimDirection = new Vector3(x2, y2, cam.transform.position.z);
 
         float distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - aimDirection.x, 2.0f) + Mathf.Pow(transform.position.y - aimDirection.y, 2.0f));
         
@@ -312,7 +312,7 @@ public class PlayerOneScript : MonoBehaviour
             camScript.newPosition = aimDirection;
         }
 
-        Debug.DrawLine(camera.transform.position, new Vector3(x2, y2, 0f), Color.black);
+        Debug.DrawLine(cam.transform.position, new Vector3(x2, y2, 0f), Color.black);
     }
 
     void DrawLine(Vector2 endPos)

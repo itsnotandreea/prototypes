@@ -56,7 +56,9 @@ public class CamScript : MonoBehaviour
                 if (distance > 30.0f)
                 {
                     Vector3 playerPos = new Vector3(playerOne.transform.position.x, playerOne.transform.position.y, transform.position.z);
-                    transform.position = Vector3.MoveTowards(transform.position, playerPos - transform.TransformDirection(behindPos), Time.deltaTime * speed);
+                    Vector3 newPos = playerPos - transform.TransformDirection(behindPos);
+                    newPos += transform.TransformDirection(Vector3.up) * 10.0f;
+                    transform.position = Vector3.MoveTowards(transform.position, newPos, Time.deltaTime * speed);
                 }
             }
             else
@@ -70,7 +72,7 @@ public class CamScript : MonoBehaviour
         }
         else if (finishedMode)
         {
-            transform.position = finalPicturePos;
+            transform.position = Vector3.MoveTowards(transform.position, finalPicturePos, Time.deltaTime * 0.1f);
         }
     }
 }

@@ -23,9 +23,7 @@ public class PlayerTwoScript : MonoBehaviour
     public bool isGrounded,
                 held,
                 menuMode;
-
-    private GameObject line;
-   
+    
     private Rigidbody2D rb;
 
     private PlayerTwoSound pTwoSound;
@@ -59,7 +57,6 @@ public class PlayerTwoScript : MonoBehaviour
         isGrounded = true;
         held = false;
         pressedTime = 0.0f;
-        line = null;
 
         bounceDirection = new Vector3(1, 5, 0);
     }
@@ -209,7 +206,8 @@ public class PlayerTwoScript : MonoBehaviour
     private void Bounce()
     {
         //makes player bounce at 78.69 degrees
-        Vector3 direction = transform.TransformDirection(bounceDirection);
+        //Vector3 direction = transform.TransformDirection(bounceDirection);
+        Vector3 direction = transform.TransformDirection(Vector3.up * 5);
         rb.AddForce(direction * impulse, ForceMode2D.Impulse);
 
         animator.Play("playerTwoJump");

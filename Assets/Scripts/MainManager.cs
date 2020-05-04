@@ -71,7 +71,7 @@ public class MainManager : MonoBehaviour
         //take picture of game
         if (Input.GetKeyDown(KeyCode.A) == true)
         {
-            TakePicture.TakeScreenshot_Static(5000, 5000);
+            TakePicture.TakeScreenshot_Static(2000, 2000);
         }
 
         if (cdSystem.timer <= 0.0f)
@@ -83,8 +83,8 @@ public class MainManager : MonoBehaviour
             camScript.menuCurrentPos = camScript.finalPicturePos;
             camScript.finishedMode = true;
             camScript.gameObject.transform.position = camScript.finalPicturePos;
-            camScript.cam.orthographicSize = 700;
-            camScript.cam.transform.rotation = Quaternion.identity;
+            camScript.cam.orthographicSize = Mathf.Lerp(camScript.cam.orthographicSize, 700, Time.deltaTime * 0.1f);
+            camScript.cam.transform.rotation = Quaternion.Lerp(camScript.cam.transform.rotation, Quaternion.identity, Time.time * 0.3f);
 
             floor.SetActive(false);
             scoreUI.SetActive(false);
@@ -95,9 +95,9 @@ public class MainManager : MonoBehaviour
 
             if (takePicture)
             {
-                TakePicture.TakeScreenshot_Static(5000, 5000);
+                TakePicture.TakeScreenshot_Static(2000, 2000);
                 takePicture = false;
-                StartCoroutine(FinalPicture(10.0f));
+                //StartCoroutine(FinalPicture(10.0f));
             }
         }
     }
@@ -163,7 +163,7 @@ public class MainManager : MonoBehaviour
                 menuScript.gameObject.transform.Find("ScoreMode").transform.parent = null;
                 Destroy(menuScript.gameObject);
             }
-            else
+            if (composeMode)
             {
                 scoreUI.SetActive(false);
                 bestUI.SetActive(false);
