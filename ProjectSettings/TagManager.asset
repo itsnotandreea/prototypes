@@ -29,6 +29,7 @@ TagManager:
   - Line
   - Music
   - startingArea
+  - Clouds
   layers:
   - Default
   - TransparentFX

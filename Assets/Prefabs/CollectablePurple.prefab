@@ -65,22 +65,22 @@ PrefabInstance:
     - target: {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Name
-      value: CollectablePurple Variant
+      value: CollectablePurple
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.6
+      value: 0.7798126
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.4666667
+      value: 0.7089266
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.7058824
+      value: 0.8396226
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2950823c13ab9254aa86d07972669f54, type: 3}

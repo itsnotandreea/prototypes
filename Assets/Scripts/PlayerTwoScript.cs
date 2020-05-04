@@ -17,7 +17,8 @@ public class PlayerTwoScript : MonoBehaviour
                  minimPressedTime,
                  angleFriction;
     
-    public GameObject score;
+    public GameObject score,
+                      backgroundClouds;
     
     public bool isGrounded,
                 held,
@@ -165,6 +166,13 @@ public class PlayerTwoScript : MonoBehaviour
             Destroy(other.gameObject);
 
             musicSequenceScript.GetCollectable(other.gameObject);
+
+            backgroundClouds.GetComponent<BackgroundScript>().GetCollectable(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "Clouds")
+        {
+            backgroundClouds.GetComponent<BackgroundScript>().GetCloud(other.gameObject);
         }
     }
 
@@ -179,20 +187,6 @@ public class PlayerTwoScript : MonoBehaviour
                 held = true;
             }
         }
-        
-        /*
-        //make falling quicker
-        Vector2 ups = transform.TransformDirection(Vector3.up);
-
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += ups * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0)
-        {
-            rb.velocity += ups * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
-        */
     }
     
     private void Jump()
