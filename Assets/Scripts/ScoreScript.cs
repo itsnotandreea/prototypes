@@ -35,6 +35,7 @@ public class ScoreScript : MonoBehaviour
     
     void Update()
     {
+        Debug.Log(pOneScript.lineLength);
         scoreText.text = "Score: " + score.ToString();
     }
 
@@ -48,6 +49,9 @@ public class ScoreScript : MonoBehaviour
             PlayerPrefs.SetInt(savedScore, previousScore);
         }
 
-        pOneScript.lineLength += pOneScript.extraLength;
+        if(pOneScript.lineLength <= 45)
+        {
+            pOneScript.lineLength += pOneScript.extraLength;
+        }
     }
 }
