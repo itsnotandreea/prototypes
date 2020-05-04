@@ -17,6 +17,10 @@ public class BackgroundScript : MonoBehaviour
                     purpleCol,
                     whiteCol,
                     coraiCol,
+                    darkBlueCol,
+                    darkPinkCol,
+                    limeCol,
+                    marineCol,
                     originalColour,
                     firstColour,
                     secondColour,
@@ -33,14 +37,18 @@ public class BackgroundScript : MonoBehaviour
 
     void Start()
     {
-        orangeCol = new Color(0.81f, 0.56f, 0.37f, 1.0f);
-        blueCol = new Color(0.63f, 0.70f, 0.77f, 1.0f);
-        greenCol = new Color(0.59f, 0.75f, 0.36f, 1.0f);
-        yellowCol = new Color(0.95f, 0.87f, 0.53f, 1.0f);
-        pinkCol = new Color(0.82f, 0.62f, 0.66f, 1.0f);
-        purpleCol = new Color(0.49f, 0.43f, 0.54f, 1.0f);
-        whiteCol = new Color(0.79f, 0.79f, 0.79f, 1.0f);
-        coraiCol = new Color(0.80f, 0.70f, 0.56f, 1.0f);
+        orangeCol = new Color(1.0f, 0.12f, 0.29f, 1.0f);
+        blueCol = new Color(0.79f, 0.0f, 0.07f, 1.0f);
+        greenCol = new Color(0.24f, 0.89f, 0.94f, 1.0f);
+        yellowCol = new Color(1.0f, 0.72f, 0.27f, 1.0f);
+        pinkCol = new Color(0.92f, 0.38f, 0.47f, 1.0f);
+        purpleCol = new Color(0.80f, 0.51f, 1.0f, 1.0f);
+        whiteCol = new Color(0.76f, 0.99f, 1.0f, 1.0f);
+        coraiCol = new Color(0.53f, 0.26f, 0.53f, 1.0f);
+        darkBlueCol = new Color(0.76f, 0.76f, 1.0f, 1.0f);
+        darkPinkCol = new Color(1.0f, 0.20f, 0.58f, 1.0f);
+        limeCol = new Color(0.75f, 1.0f, 0.20f, 1.0f);
+        marineCol = new Color(0.35f, 0.85f, 0.67f, 1.0f);
 
         firstColour = secondColour = thirdColour = originalColour = new Color(0.20f, 0.25f, 0.25f, 1.0f);
 
@@ -102,6 +110,23 @@ public class BackgroundScript : MonoBehaviour
         {
             AddColour(yellowCol);
         }
+        else if (collectable.transform.name == "CollectableDarkBlue(Clone)")
+        {
+            AddColour(darkBlueCol);
+        }
+        else if (collectable.transform.name == "CollectableDarkPink(Clone)")
+        {
+            AddColour(darkPinkCol);
+        }
+        else if (collectable.transform.name == "CollectableLime(Clone)")
+        {
+            AddColour(limeCol);
+        }
+        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        {
+            AddColour(marineCol);
+        }
+
     }
 
     public void GetCloud(GameObject cloud)

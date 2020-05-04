@@ -65,22 +65,22 @@ PrefabInstance:
     - target: {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Name
-      value: CollectableYellow Variant
+      value: CollectableYellow
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.9960785
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.9686275
+      value: 0.7294118
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.62352943
+      value: 0.27450982
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
