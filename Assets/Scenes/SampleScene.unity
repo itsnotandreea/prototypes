@@ -1113,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: 8868013800017055456, guid: c65a1110d0722ca438aa79ef8b2dbb6c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8868013800017055456, guid: c65a1110d0722ca438aa79ef8b2dbb6c,
         type: 3}
@@ -1193,12 +1193,18 @@ MonoBehaviour:
   layerSix: 0
   layerSeven: 0
   layerEight: 0
-  sound: event:/KnotSounds/SOUND1/empty
-  A: event:/KnotSounds/SOUND1/A
-  C: event:/KnotSounds/SOUND1/C
-  D: event:/KnotSounds/SOUND1/D
-  E: event:/KnotSounds/SOUND1/E
-  G: event:/KnotSounds/SOUND1/G
+  layerNine: 0
+  layerTen: 0
+  layerEleven: 0
+  layerTwelve: 0
+  sound: event:/NewKnotSounds/Sounds/Empty
+  A: event:/NewKnotSounds/Sounds/A
+  B: event:/NewKnotSounds/Sounds/B
+  C: event:/NewKnotSounds/Sounds/C
+  D: event:/NewKnotSounds/Sounds/D
+  E: event:/NewKnotSounds/Sounds/E
+  F: event:/NewKnotSounds/Sounds/F
+  G: event:/NewKnotSounds/Sounds/G
   currentNote: 
 --- !u!1 &252759182
 GameObject:
@@ -2178,6 +2184,10 @@ MonoBehaviour:
   - {fileID: 5884669677433007117, guid: 66eb4c6b976d72849bd0e2bf527dbcea, type: 3}
   - {fileID: 5926171644741618310, guid: b92d79cdbd683c441aa18ee24be9d3c0, type: 3}
   - {fileID: 195838650160951578, guid: ce4dcc94378f2ae42943593cd351d857, type: 3}
+  - {fileID: 3788921197081985939, guid: 299943935c468c24da173d891e3f5e33, type: 3}
+  - {fileID: 6786654770897204595, guid: 2b817715007977a46949dd4f27cd9d67, type: 3}
+  - {fileID: 4614806309149941411, guid: 1e021c68eb55ea54d8bc57047dab2cfd, type: 3}
+  - {fileID: 1770382138488227556, guid: 5ab018f04554908488f90ef41c22aed2, type: 3}
 --- !u!114 &395853255
 MonoBehaviour:
   m_ObjectHideFlags: 0

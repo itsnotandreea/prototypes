@@ -18,7 +18,11 @@ public class MusicSequence : MonoBehaviour
                 layerFive,
                 layerSix,
                 layerSeven,
-                layerEight;
+                layerEight,
+                layerNine,
+                layerTen,
+                layerEleven,
+                layerTwelve;
 
     private bool started,
                  onScreen;
@@ -26,9 +30,11 @@ public class MusicSequence : MonoBehaviour
     [FMODUnity.EventRef]
     public string sound,
                   A,
+                  B,
                   C,
                   D,
                   E,
+                  F,
                   G;
 
     public string currentNote;
@@ -41,12 +47,14 @@ public class MusicSequence : MonoBehaviour
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-        sound = "event:/KnotSounds/SOUND1/empty";
-        A = "event:/KnotSounds/SOUND1/A";
-        C = "event:/KnotSounds/SOUND1/C";
-        D = "event:/KnotSounds/SOUND1/D";
-        E = "event:/KnotSounds/SOUND1/E";
-        G = "event:/KnotSounds/SOUND1/G";
+        sound = "event:/NewKnotSounds/Sounds/empty";
+        A = "event:/NewKnotSounds/Sounds/A";
+        B = "event:/NewKnotSounds/Sounds/B";
+        C = "event:/NewKnotSounds/Sounds/C";
+        D = "event:/NewKnotSounds/Sounds/D";
+        E = "event:/NewKnotSounds/Sounds/E";
+        F = "event:/NewKnotSounds/Sounds/F";
+        G = "event:/NewKnotSounds/Sounds/G";
 
         currentNote = null;
         
@@ -58,6 +66,10 @@ public class MusicSequence : MonoBehaviour
         layerSix = false;
         layerSeven = false;
         layerEight = false;
+        layerNine = false;
+        layerTen = false;
+        layerEleven = false;
+        layerTwelve = false;
 
         musicEvent = FMODUnity.RuntimeManager.CreateInstance(sound); 
 
@@ -126,71 +138,123 @@ public class MusicSequence : MonoBehaviour
         {
             layerEight = !layerEight;
         }
+        else if (collectable.transform.name == "CollectableDarkPink(Clone)")
+        {
+            layerNine = !layerNine;
+        }
+        else if (collectable.transform.name == "CollectableDarkBlue(Clone)")
+        {
+            layerTen = !layerTen;
+        }
+        else if (collectable.transform.name == "CollectableLime(Clone)")
+        {
+            layerEleven = !layerEleven;
+        }
+        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        {
+            layerTwelve = !layerTwelve;
+        }
     }
 
     public void AssignLayer()
     {
         if (layerTwo)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerTwo", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer2", 1f);
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerTwo", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer2", 0f);
         }
 
         if (layerThree)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerThree", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer3", 1f);
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerThree", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer3", 0f);
         }
 
         if (layerFour)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerFour", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer4", 1f);
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerFour", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 0f);
         }
 
         if (layerFive)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerFive", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 1f);
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerFive", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 0f);
         }
 
         if (layerSix)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerSix", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer6", 1f);
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerSix", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer6", 0f);
         }
 
         if (layerSeven)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerSeven", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer7", 1f);
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerSeven", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer7", 0f);
         }
 
         if (layerEight)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerEight", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer8", 1f);
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("layerEight", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer8", 0f);
+        }
+
+        if (layerNine)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer9", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer9", 0f);
+        }
+
+        if (layerTen)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer10", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer10", 0f);
+        }
+
+        if (layerEleven)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer11", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer11", 0f);
+        }
+
+        if (layerTwelve)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer12", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer12", 0f);
         }
     }
 
@@ -230,7 +294,7 @@ public class MusicSequence : MonoBehaviour
         }
         else if (knot.transform.name == "knotBlack" || knot.transform.name == "knotBlack(Clone)")
         {
-            currentNote = A;        //!!! not the right one, not enough notes for all seven knots
+            currentNote = B;
         }
         else if (knot.transform.name == "knotGreen" || knot.transform.name == "knotGreen(Clone)")
         {
@@ -246,7 +310,7 @@ public class MusicSequence : MonoBehaviour
         }
         else if (knot.transform.name == "knotRed" || knot.transform.name == "knotRed(Clone)")
         {
-            currentNote = E;        //!!! not the right one, not enough notes for all seven knots
+            currentNote = F;
         }
         else if (knot.transform.name == "knotYellow" || knot.transform.name == "knotYellow(Clone)")
         {
