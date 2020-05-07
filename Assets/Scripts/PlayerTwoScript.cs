@@ -19,7 +19,7 @@ public class PlayerTwoScript : MonoBehaviour
     
     public GameObject score,
                       backgroundClouds;
-    
+
     public bool isGrounded,
                 held,
                 menuMode;
@@ -41,6 +41,8 @@ public class PlayerTwoScript : MonoBehaviour
 
     private Animator animator;
 
+    private ParticleSystem particleSys;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -52,6 +54,8 @@ public class PlayerTwoScript : MonoBehaviour
         scoreScript = score.GetComponent<ScoreScript>();
 
         animator = GetComponent<Animator>();
+        
+        particleSys = GetComponent<ParticleSystem>();
 
         button = 100;
         isGrounded = true;
@@ -160,6 +164,9 @@ public class PlayerTwoScript : MonoBehaviour
         if (other.gameObject.tag == "Collectable")
         {
             scoreScript.IncreaseScore();
+            
+            particleSys.Play();
+
             Destroy(other.gameObject);
 
             musicSequenceScript.GetCollectable(other.gameObject);

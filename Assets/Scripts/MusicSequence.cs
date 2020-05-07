@@ -22,7 +22,12 @@ public class MusicSequence : MonoBehaviour
                 layerNine,
                 layerTen,
                 layerEleven,
-                layerTwelve;
+                layerTwelve,    
+                layerThirteen,
+                layerFourteen,
+                layerFifteen,
+                layerSixteen,
+                layerSeventeen;
 
     private bool started,
                  onScreen;
@@ -47,14 +52,14 @@ public class MusicSequence : MonoBehaviour
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-        sound = "event:/NewKnotSounds/Sounds/empty";
-        A = "event:/NewKnotSounds/Sounds/A";
-        B = "event:/NewKnotSounds/Sounds/B";
-        C = "event:/NewKnotSounds/Sounds/C";
-        D = "event:/NewKnotSounds/Sounds/D";
-        E = "event:/NewKnotSounds/Sounds/E";
-        F = "event:/NewKnotSounds/Sounds/F";
-        G = "event:/NewKnotSounds/Sounds/G";
+        sound = "event:/DUODEUSSOUND3/Empty";
+        A = "event:/DUODEUSSOUND3/A";
+        B = "event:/DUODEUSSOUND3/B";
+        C = "event:/DUODEUSSOUND3/C";
+        D = "event:/DUODEUSSOUND3/D";
+        E = "event:/DUODEUSSOUND3/E";
+        F = "event:/DUODEUSSOUND3/F";
+        G = "event:/DUODEUSSOUND3/G";
 
         currentNote = null;
         
@@ -70,6 +75,11 @@ public class MusicSequence : MonoBehaviour
         layerTen = false;
         layerEleven = false;
         layerTwelve = false;
+        layerThirteen = false;
+        layerFourteen = false;
+        layerFifteen = false;
+        layerSixteen = false;
+        layerSeventeen = false;
 
         musicEvent = FMODUnity.RuntimeManager.CreateInstance(sound); 
 
@@ -153,6 +163,26 @@ public class MusicSequence : MonoBehaviour
         else if (collectable.transform.name == "CollectableMarine(Clone)")
         {
             layerTwelve = !layerTwelve;
+        }
+        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        {
+            layerThirteen = !layerThirteen;
+        }
+        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        {
+            layerFourteen = !layerFourteen;
+        }
+        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        {
+            layerFifteen = !layerFifteen;
+        }
+        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        {
+            layerSixteen = !layerSixteen;
+        }
+        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        {
+            layerSeventeen = !layerSeventeen;
         }
     }
 
@@ -255,6 +285,51 @@ public class MusicSequence : MonoBehaviour
         else
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer12", 0f);
+        }
+
+        if (layerThirteen)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer13", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer13", 0f);
+        }
+
+        if (layerFourteen)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer14", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer14", 0f);
+        }
+
+        if (layerFifteen)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer15", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer15", 0f);
+        }
+
+        if (layerSixteen)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer16", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer16", 0f);
+        }
+
+        if (layerSeventeen)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer17", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer17", 0f);
         }
     }
 

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ScoreScript : MonoBehaviour
 {
     public int score,
-               previousScore;
+               previousScore,
+               limit;
 
     public GameObject previousScoreGO;
 
@@ -28,6 +29,8 @@ public class ScoreScript : MonoBehaviour
 
         pOneScript = playerOne.GetComponent<PlayerOneScript>();
 
+        savedScore = "savedScore";
+        
         score = 0;
         previousScore = PlayerPrefs.GetInt(savedScore);
         previousScoreText.text = "Best: " + previousScore.ToString();
@@ -35,7 +38,6 @@ public class ScoreScript : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(pOneScript.lineLength);
         scoreText.text = "Score: " + score.ToString();
     }
 
@@ -49,7 +51,8 @@ public class ScoreScript : MonoBehaviour
             PlayerPrefs.SetInt(savedScore, previousScore);
         }
 
-        if(pOneScript.lineLength <= 45)
+        //does this if not in menu/compose mode
+        if(pOneScript.lineLength <= limit)
         {
             pOneScript.lineLength += pOneScript.extraLength;
         }

@@ -343,6 +343,8 @@ public class PlayerOneScript : MonoBehaviour
             rotation *= -1.0f;
         }
 
+        newLine.GetComponent<Transform>().localScale = scaler;
+
         if (secondKnot.transform.name != "startKnot" && secondKnot.transform.name != "Compose" && secondKnot.transform.name != "ScoreMode" && secondKnot.transform.name != "Gallery")
         {
             newLine.transform.SetParent(secondKnot.transform);
@@ -352,8 +354,6 @@ public class PlayerOneScript : MonoBehaviour
             newLine.transform.name = "specialLine";
         }
         
-        newLine.GetComponent<Transform>().localScale = scaler;
-
         newLine.transform.eulerAngles = new Vector3(0.0f, 0.0f, rotation);
 
         newLine.AddComponent<BoxCollider2D>();

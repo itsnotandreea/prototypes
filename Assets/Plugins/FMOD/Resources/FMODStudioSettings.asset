@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../DUODEUSSOUND2/DUODEUSSOUND2/DUODEUSSOUND2.fspro
-  sourceBankPath: ..\DUODEUSSOUND2\DUODEUSSOUND2\Build
+  sourceProjectPath: ../DUODEUSSOUND3/DUODEUSSOUND3/DUODEUSSOUND3.fspro
+  sourceBankPath: ..\DUODEUSSOUND3\DUODEUSSOUND3\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0

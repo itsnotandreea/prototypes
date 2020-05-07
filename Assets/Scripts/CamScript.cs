@@ -33,9 +33,9 @@ public class CamScript : MonoBehaviour
 
         behindPos = new Vector3(1.0f, 1.0f, 0.0f) * 10.0f;
 
-        menuPosOne = new Vector3(21.5f, 19.0f, -10.0f);
-        menuPosTwo = new Vector3(71.0f, -22.0f, -10.0f);
-        menuPosThree = new Vector3(86.0f, -52.0f, -10.0f);
+        menuPosOne = new Vector3(-37.5f, 11.1f, -10.0f);
+        menuPosTwo = new Vector3(32.1f, 15.5f, -10.0f);
+        menuPosThree = new Vector3(59.6f, 1.2f, -10.0f);
         finalPicturePos = new Vector3(-89.0f, -131.0f, -10.0f);
 
         menuCurrentPos = menuPosOne;
