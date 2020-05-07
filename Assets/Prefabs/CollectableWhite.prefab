@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8686951281242398674}
   - component: {fileID: 8686951281242398677}
-  - component: {fileID: 5352751911094068225}
+  - component: {fileID: -741092246402088286}
   m_Layer: 0
   m_Name: CollectableWhite
   m_TagString: Collectable
@@ -82,8 +82,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5352751911094068225
-CircleCollider2D:
+--- !u!61 &-741092246402088286
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,5 +96,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6, y: 5.96}
+    newSize: {x: 1.875, y: 1.8625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.9375
+  m_Size: {x: 6, y: 5.96}
+  m_EdgeRadius: 0

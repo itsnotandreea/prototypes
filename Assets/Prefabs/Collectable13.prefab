@@ -1,21 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3077011449231627602
+--- !u!95 &-6679050226791025070
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788921197081985939}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8bfadbad10ef21a45b9a727abe8bc4d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &5483893318739221575
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -741092246402088286, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: -741092246402088286, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: -741092246402088286, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -741092246402088286, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -741092246402088286, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398674, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.6
+      value: 111.36551
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398674, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.4
+      value: 67.350876
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398674, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
@@ -62,25 +106,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8686951281242398674, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686951281242398674, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Name
-      value: CollectableGreen
+      value: Collectable13
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.24705884
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.89019614
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.9490197
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8686951281242398677, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 60a83e12b963a884698e0474b321672e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
+--- !u!1 &3788921197081985939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54,
+    type: 3}
+  m_PrefabInstance: {fileID: 5483893318739221575}
+  m_PrefabAsset: {fileID: 0}

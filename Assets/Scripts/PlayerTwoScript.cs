@@ -166,8 +166,13 @@ public class PlayerTwoScript : MonoBehaviour
             scoreScript.IncreaseScore();
             
             particleSys.Play();
-
-            Destroy(other.gameObject);
+            
+            if(other.gameObject.GetComponent<Animator>())
+            {
+                other.gameObject.GetComponent<Animator>().SetBool("playAnim", true);
+            }
+            
+            Destroy(other.gameObject, 2.0f);
 
             musicSequenceScript.GetCollectable(other.gameObject);
 

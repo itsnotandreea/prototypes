@@ -124,7 +124,7 @@ public class MusicSequence : MonoBehaviour
         {
             layerTwo = !layerTwo;
         }
-        else if (collectable.transform.name == "CollectablePink(Clone)")
+        else if (collectable.transform.name == "Collectable3(Clone)")
         {
             layerThree = !layerThree;
         }
@@ -132,11 +132,11 @@ public class MusicSequence : MonoBehaviour
         {
             layerFour = !layerFour;
         }
-        else if (collectable.transform.name == "CollectablePurple(Clone)")
+        else if (collectable.transform.name == "Collectable5(Clone)")
         {
             layerFive = !layerFive;
         }
-        else if (collectable.transform.name == "CollectableGreen(Clone)")
+        else if (collectable.transform.name == "Collectable6(Clone)")
         {
             layerSix = !layerSix;
         }
@@ -148,7 +148,7 @@ public class MusicSequence : MonoBehaviour
         {
             layerEight = !layerEight;
         }
-        else if (collectable.transform.name == "CollectableDarkPink(Clone)")
+        else if (collectable.transform.name == "Collectable9(Clone)")
         {
             layerNine = !layerNine;
         }
@@ -164,7 +164,7 @@ public class MusicSequence : MonoBehaviour
         {
             layerTwelve = !layerTwelve;
         }
-        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        else if (collectable.transform.name == "Collectable13(Clone)")
         {
             layerThirteen = !layerThirteen;
         }

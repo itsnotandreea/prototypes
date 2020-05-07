@@ -38,7 +38,7 @@ public class SpawnKnots : MonoBehaviour
 
         //select random knot
         randomKnot = Random.Range(0, knots.Length);
-        Instantiate(knots[randomKnot], position, Quaternion.identity);
+        Instantiate(knots[randomKnot], position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
     }
 
     IEnumerator KnotsWave()

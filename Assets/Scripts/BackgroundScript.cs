@@ -11,16 +11,16 @@ public class BackgroundScript : MonoBehaviour
 
     private Color orangeCol,
                     blueCol,
-                    greenCol,
+                    colSix,
                     yellowCol,
-                    pinkCol,
-                    purpleCol,
+                    colThree,
+                    colFive,
                     whiteCol,
                     coraiCol,
                     darkBlueCol,
-                    darkPinkCol,
+                    colNine,
                     limeCol,
-                    marineCol,
+                    colThirteen,
                     originalColour,
                     firstColour,
                     secondColour,
@@ -38,18 +38,19 @@ public class BackgroundScript : MonoBehaviour
     void Start()
     {
         //all colours the clouds can take
+        colThree = new Color(0.44f, 0.23f, 0.52f, 1.0f);
+        colFive = new Color(0.85f, 0.18f, 0.57f, 1.0f);
+        colSix = new Color(0.85f, 0.65f, 0.27f, 1.0f);
+        colNine = new Color(0.63f, 0.90f, 0.20f, 1.0f);
+        colThirteen = new Color(0.30f, 0.76f, 0.67f, 1.0f);
+
         orangeCol = new Color(1.0f, 0.12f, 0.29f, 1.0f);
         blueCol = new Color(0.79f, 0.0f, 0.07f, 1.0f);
-        greenCol = new Color(0.24f, 0.89f, 0.94f, 1.0f);
         yellowCol = new Color(1.0f, 0.72f, 0.27f, 1.0f);
-        pinkCol = new Color(0.92f, 0.38f, 0.47f, 1.0f);
-        purpleCol = new Color(0.80f, 0.51f, 1.0f, 1.0f);
         whiteCol = new Color(0.76f, 0.99f, 1.0f, 1.0f);
         coraiCol = new Color(0.53f, 0.26f, 0.53f, 1.0f);
-        darkBlueCol = new Color(0.76f, 0.76f, 1.0f, 1.0f);
-        darkPinkCol = new Color(1.0f, 0.20f, 0.58f, 1.0f);
+        darkBlueCol = new Color(1.0f, 0.20f, 0.58f, 1.0f);
         limeCol = new Color(0.75f, 1.0f, 0.20f, 1.0f);
-        marineCol = new Color(0.35f, 0.85f, 0.67f, 1.0f);
 
         //originally, all clouds will be the same colour
         firstColour = secondColour = thirdColour = originalColour = new Color(0.20f, 0.25f, 0.25f, 1.0f);
@@ -90,21 +91,21 @@ public class BackgroundScript : MonoBehaviour
         {
             AddColour(coraiCol);
         }
-        else if (collectable.transform.name == "CollectablePink(Clone)")
+        else if (collectable.transform.name == "Collectable3(Clone)")
         {
-            AddColour(pinkCol);
+            AddColour(colThree);
         }
         else if (collectable.transform.name == "CollectableOrange(Clone)")
         {
             AddColour(orangeCol);
         }
-        else if (collectable.transform.name == "CollectablePurple(Clone)")
+        else if (collectable.transform.name == "Collectable5(Clone)")
         {
-            AddColour(purpleCol);
+            AddColour(colFive);
         }
-        else if (collectable.transform.name == "CollectableGreen(Clone)")
+        else if (collectable.transform.name == "Collectable6(Clone)")
         {
-            AddColour(greenCol);
+            AddColour(colSix);
         }
         else if (collectable.transform.name == "CollectableBlue(Clone)")
         {
@@ -118,17 +119,17 @@ public class BackgroundScript : MonoBehaviour
         {
             AddColour(darkBlueCol);
         }
-        else if (collectable.transform.name == "CollectableDarkPink(Clone)")
+        else if (collectable.transform.name == "Collectable9(Clone)")
         {
-            AddColour(darkPinkCol);
+            AddColour(colNine);
         }
         else if (collectable.transform.name == "CollectableLime(Clone)")
         {
             AddColour(limeCol);
         }
-        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        else if (collectable.transform.name == "Collectable13(Clone)")
         {
-            AddColour(marineCol);
+            AddColour(colThirteen);
         }
     }
 
