@@ -9037,6 +9037,7 @@ MonoBehaviour:
   pressedTime: 0
   minimPressedTime: 0.32
   angleFriction: 0
+  offScreenLimit: 5
   score: {fileID: 1637350859}
   backgroundClouds: {fileID: 1175090002}
   isGrounded: 0

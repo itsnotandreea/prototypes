@@ -212,7 +212,7 @@ public class MusicSequence : MonoBehaviour
         }
         else
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 0f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer4", 0f);
         }
 
         if (layerFive)

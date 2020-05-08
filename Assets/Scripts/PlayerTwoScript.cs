@@ -15,7 +15,8 @@ public class PlayerTwoScript : MonoBehaviour
                  impulse,
                  pressedTime,
                  minimPressedTime,
-                 angleFriction;
+                 angleFriction,
+                 offScreenLimit;
     
     public GameObject score,
                       backgroundClouds;
@@ -23,6 +24,10 @@ public class PlayerTwoScript : MonoBehaviour
     public bool isGrounded,
                 held,
                 menuMode;
+
+    private float offScreenTime;
+
+    private bool onScreen;
     
     private Rigidbody2D rb;
 
@@ -43,6 +48,8 @@ public class PlayerTwoScript : MonoBehaviour
 
     private ParticleSystem particleSys;
 
+    private Camera cam;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,6 +63,8 @@ public class PlayerTwoScript : MonoBehaviour
         animator = GetComponent<Animator>();
         
         particleSys = GetComponent<ParticleSystem>();
+
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         button = 100;
         isGrounded = true;
@@ -81,25 +90,6 @@ public class PlayerTwoScript : MonoBehaviour
         moveAmount = Vector2.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, 0.15f);
     }
 
-    private void FixedUpdate()
-    {
-        //transforms the direction in the characte's local space
-        Vector2 moveAm = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
-        //adds the distance to the current rigidbody's position
-        rb.position += moveAm;
-    }
-
-    private void Flip()
-    {
-        //flips the sprite for when player is going towards the left side/right side
-        float newXScale = transform.localScale.x * -1.0f;
-        Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
-        transform.localScale = newScale;
-
-        //changes bounce direction accroding to the player's facing
-        bounceDirection.x *= -1.0f;
-    }
-    
     public void JumpInput()
     {
         //how long has the player been pressing the jump button
@@ -170,9 +160,12 @@ public class PlayerTwoScript : MonoBehaviour
             if(other.gameObject.GetComponent<Animator>())
             {
                 other.gameObject.GetComponent<Animator>().SetBool("playAnim", true);
+                Destroy(other.gameObject, 2.0f);
             }
-            
-            Destroy(other.gameObject, 2.0f);
+            else
+            {
+                Destroy(other.gameObject);
+            }
 
             musicSequenceScript.GetCollectable(other.gameObject);
 
@@ -185,6 +178,15 @@ public class PlayerTwoScript : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        //transforms the direction in the characte's local space
+        Vector2 moveAm = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
+
+        //adds the distance to the current rigidbody's position
+        rb.position += moveAm;
+    }
+    
     void Update()
     {
         if (pressedTime != 0)
@@ -196,6 +198,8 @@ public class PlayerTwoScript : MonoBehaviour
                 held = true;
             }
         }
+
+        CheckIfOnScreen();
     }
     
     private void Jump()
@@ -231,5 +235,48 @@ public class PlayerTwoScript : MonoBehaviour
         //sound
         button = 0;
         pTwoSound.AssignClip(button);
+    }
+
+    private void Flip()
+    {
+        //flips the sprite for when player is going towards the left side/right side
+        float newXScale = transform.localScale.x * -1.0f;
+        Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
+        transform.localScale = newScale;
+
+        //changes bounce direction accroding to the player's facing
+        bounceDirection.x *= -1.0f;
+    }
+
+    private void CheckIfOnScreen()
+    {
+        //RESWANS PLAYER 2 IF LEFT OFFSCREEN FOR A LONGER TIME PERIOD
+        Vector3 screenPoint = cam.WorldToViewportPoint(transform.position);
+
+        if (screenPoint.x > 0.0f && screenPoint.x < 1.0f && screenPoint.y > 0.0f && screenPoint.y < 1.0f)
+        {
+            if (!onScreen)
+            {
+                onScreen = true;
+                offScreenTime = 0.0f;
+            }
+        }
+        else
+        {
+            if (onScreen)
+            {
+                onScreen = false;
+            }
+        }
+
+        if (!onScreen)
+        {
+            offScreenTime += Time.deltaTime;
+        }
+
+        if (offScreenTime > offScreenLimit)
+        {
+            transform.position = cam.ViewportToWorldPoint(new Vector2(0.25f, 0.9f));
+        }
     }
 }
