@@ -5,7 +5,7 @@ using UnityEngine;
 public class MusicSequence : MonoBehaviour
 {
     public List<GameObject> sequence = new List<GameObject>();
-
+    
     public int i,
                j;
 
@@ -29,9 +29,6 @@ public class MusicSequence : MonoBehaviour
                 layerSixteen,
                 layerSeventeen;
 
-    private bool started,
-                 onScreen;
-
     [FMODUnity.EventRef]
     public string sound,
                   A,
@@ -44,7 +41,11 @@ public class MusicSequence : MonoBehaviour
 
     public string currentNote;
 
-    FMOD.Studio.EventInstance musicEvent;
+    public FMOD.Studio.EventInstance musicEvent;
+
+    private bool started,
+                 onScreen,
+                 cancelLayers;
     
     private Camera cam;
 
@@ -122,67 +123,179 @@ public class MusicSequence : MonoBehaviour
     {
         if (collectable.transform.name == "CollectableCorai(Clone)")
         {
-            layerTwo = !layerTwo;
+            if (layerTwo && cancelLayers)
+            {
+                layerTwo = false;
+            }
+            else if (!layerTwo)
+            {
+                layerTwo = true;
+            }
         }
         else if (collectable.transform.name == "Collectable3(Clone)")
         {
-            layerThree = !layerThree;
+            if (layerThree && cancelLayers)
+            {
+                layerThree = false;
+            }
+            else if (!layerThree)
+            {
+                layerThree = true;
+            }
         }
         else if (collectable.transform.name == "CollectableOrange(Clone)")
         {
-            layerFour = !layerFour;
+            if (layerFour && cancelLayers)
+            {
+                layerFour = false;
+            }
+            else if (!layerFour)
+            {
+                layerFour = true;
+            }
         }
         else if (collectable.transform.name == "Collectable5(Clone)")
         {
-            layerFive = !layerFive;
+            if (layerFive && cancelLayers)
+            {
+                layerFive = false;
+            }
+            else if (!layerFive)
+            {
+                layerFive = true;
+            }
         }
         else if (collectable.transform.name == "Collectable6(Clone)")
         {
-            layerSix = !layerSix;
+            if (layerSix && cancelLayers)
+            {
+                layerSix = false;
+            }
+            else if (!layerSix)
+            {
+                layerSix = true;
+            }
         }
         else if (collectable.transform.name == "CollectableBlue(Clone)")
         {
-            layerSeven = !layerSeven;
+            if (layerSeven && cancelLayers)
+            {
+                layerSeven = false;
+            }
+            else if (!layerSeven)
+            {
+                layerSeven = true;
+            }
         }
         else if (collectable.transform.name == "CollectableYellow(Clone)")
         {
-            layerEight = !layerEight;
+            if (layerEight && cancelLayers)
+            {
+                layerEight = false;
+            }
+            else if (!layerEight)
+            {
+                layerEight = true;
+            }
         }
         else if (collectable.transform.name == "Collectable9(Clone)")
         {
-            layerNine = !layerNine;
+            if (layerNine && cancelLayers)
+            {
+                layerNine = false;
+            }
+            else if (!layerNine)
+            {
+                layerNine = true;
+            }
         }
         else if (collectable.transform.name == "CollectableDarkBlue(Clone)")
         {
-            layerTen = !layerTen;
+            if (layerTen && cancelLayers)
+            {
+                layerTen = false;
+            }
+            else if (!layerTen)
+            {
+                layerTen = true;
+            }
         }
         else if (collectable.transform.name == "CollectableLime(Clone)")
         {
-            layerEleven = !layerEleven;
+            if (layerEleven && cancelLayers)
+            {
+                layerEleven = false;
+            }
+            else if (!layerEleven)
+            {
+                layerEleven = true;
+            }
         }
         else if (collectable.transform.name == "CollectableMarine(Clone)")
         {
-            layerTwelve = !layerTwelve;
+            if (layerTwelve && cancelLayers)
+            {
+                layerTwelve = false;
+            }
+            else if (!layerTwelve)
+            {
+                layerTwelve = true;
+            }
         }
         else if (collectable.transform.name == "Collectable13(Clone)")
         {
-            layerThirteen = !layerThirteen;
+            if (layerThirteen && cancelLayers)
+            {
+                layerThirteen = false;
+            }
+            else if (!layerThirteen)
+            {
+                layerThirteen = true;
+            }
         }
         else if (collectable.transform.name == "CollectableMarine(Clone)")
         {
-            layerFourteen = !layerFourteen;
+            if (layerFourteen && cancelLayers)
+            {
+                layerFourteen = false;
+            }
+            else if (!layerFourteen)
+            {
+                layerFourteen = true;
+            }
         }
         else if (collectable.transform.name == "CollectableMarine(Clone)")
         {
-            layerFifteen = !layerFifteen;
+            if (layerFifteen && cancelLayers)
+            {
+                layerFifteen = false;
+            }
+            else if (!layerFifteen)
+            {
+                layerFifteen = true;
+            }
         }
         else if (collectable.transform.name == "CollectableMarine(Clone)")
         {
-            layerSixteen = !layerSixteen;
+            if (layerSixteen && cancelLayers)
+            {
+                layerSixteen = false;
+            }
+            else if (!layerSixteen)
+            {
+                layerSixteen = true;
+            }
         }
         else if (collectable.transform.name == "CollectableMarine(Clone)")
         {
-            layerSeventeen = !layerSeventeen;
+            if (layerSeventeen && cancelLayers)
+            {
+                layerSeventeen = false;
+            }
+            else if (!layerSeventeen)
+            {
+                layerSeventeen = true;
+            }
         }
     }
 
@@ -363,31 +476,31 @@ public class MusicSequence : MonoBehaviour
 
     private void FindNote(GameObject knot)
     {
-        if (knot.transform.name == "knotBlue" || knot.transform.name == "knotBlue(Clone)")
+        if (knot.transform.name == "knotA" || knot.transform.name == "knotA(Clone)")
         {
             currentNote = A;
         }
-        else if (knot.transform.name == "knotBlack" || knot.transform.name == "knotBlack(Clone)")
+        else if (knot.transform.name == "knotB" || knot.transform.name == "knotB(Clone)")
         {
             currentNote = B;
         }
-        else if (knot.transform.name == "knotGreen" || knot.transform.name == "knotGreen(Clone)")
+        else if (knot.transform.name == "knotC" || knot.transform.name == "knotC(Clone)")
         {
             currentNote = C;
         }
-        else if (knot.transform.name == "knotOrange" || knot.transform.name == "knotOrange(Clone)")
+        else if (knot.transform.name == "knotD" || knot.transform.name == "knotD(Clone)")
         {
             currentNote = D;
         }
-        else if (knot.transform.name == "knotPurple" || knot.transform.name == "knotPurple(Clone)")
+        else if (knot.transform.name == "knotE" || knot.transform.name == "knotE(Clone)")
         {
             currentNote = E;
         }
-        else if (knot.transform.name == "knotRed" || knot.transform.name == "knotRed(Clone)")
+        else if (knot.transform.name == "knotF" || knot.transform.name == "knotF(Clone)")
         {
             currentNote = F;
         }
-        else if (knot.transform.name == "knotYellow" || knot.transform.name == "knotYellow(Clone)")
+        else if (knot.transform.name == "knotG" || knot.transform.name == "knotG(Clone)")
         {
             currentNote = G;
         }

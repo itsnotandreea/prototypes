@@ -39,6 +39,8 @@ public class PlayerOneScript : MonoBehaviour
 
     private MusicSequence musicSequence;
 
+    private RecorderScript recScript;
+
     private CamScript camScript;
 
     void Awake()
@@ -48,6 +50,8 @@ public class PlayerOneScript : MonoBehaviour
         //The music object and script to which the 'notes' are added to
         musicGO = GameObject.FindGameObjectWithTag("Music");
         musicSequence = musicGO.GetComponent<MusicSequence>();
+
+        recScript = GameObject.FindGameObjectWithTag("Recorder").GetComponent<RecorderScript>();
 
         lineRenderer = drawing.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, firstKnot.transform.position);
@@ -360,7 +364,10 @@ public class PlayerOneScript : MonoBehaviour
 
         newLine.GetComponent<BoxCollider2D>().size = new Vector2(newLine.GetComponent<BoxCollider2D>().size.x, 1.0f);
         
-        AddToMusicSequenceList(firstKnot, secondKnot);
+        if (!menuMode)
+        {
+            AddToMusicSequenceList(firstKnot, secondKnot);
+        }
     }
 
     bool IsIntersecting(GameObject prevLine, float lineTwoStartX, float lineTwoStartY, float lineTwoEndX, float lineTwoEndY)
@@ -405,12 +412,14 @@ public class PlayerOneScript : MonoBehaviour
             if (firstKnot.transform.name != "startKnot" && firstKnot.transform.name != "Compose" && firstKnot.transform.name != "ScoreMode" && firstKnot.transform.name != "Gallery")
             {
                 musicSequence.sequence.Add(firstKnot);
+                recScript.AddKnot(firstKnot);
             }
         }
 
         if (secondKnot.transform.name != "startKnot" && secondKnot.transform.name != "Compose" && secondKnot.transform.name != "ScoreMode" && secondKnot.transform.name != "Gallery")
         {
             musicSequence.sequence.Add(secondKnot);
+            recScript.AddKnot(secondKnot);
         }
     }
 }

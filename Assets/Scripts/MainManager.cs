@@ -27,6 +27,9 @@ public class MainManager : MonoBehaviour
     private PlayerTwoScript pTwoScript;
     private CamScript camScript;
     private MenuScript menuScript;
+    private MusicSequence musicSeq;
+    private RecorderScript recorderScript;
+    private MusicPlayerScript musicPlayerScript;
 
     void Awake()
     {
@@ -38,6 +41,12 @@ public class MainManager : MonoBehaviour
         camScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CamScript>();
 
         menuScript = GameObject.FindGameObjectWithTag("startingArea").GetComponent<MenuScript>();
+
+        musicSeq = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
+
+        recorderScript = GameObject.FindGameObjectWithTag("Recorder").GetComponent<RecorderScript>();
+
+        musicPlayerScript = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<MusicPlayerScript>();
 
         UIWinner.enabled = false;
 
@@ -67,18 +76,15 @@ public class MainManager : MonoBehaviour
         {
             Application.Quit();
         }
-
-        //take picture of game
-        if (Input.GetKeyDown(KeyCode.A) == true)
-        {
-            TakePicture.TakeScreenshot_Static(2000, 2000);
-        }
-
+        
         if (cdSystem.timer <= 0.0f)
         {
             pOneScript.enabled = false;
             pTwoScript.enabled = false;
             UIWinner.enabled = true;
+            musicSeq.musicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicSeq.enabled = false;
+            musicPlayerScript.enabled = true;       //plays song !!!!!!!!! DO THIS AFTER A WHILE
 
             camScript.menuCurrentPos = camScript.finalPicturePos;
             camScript.finishedMode = true;
@@ -92,7 +98,7 @@ public class MainManager : MonoBehaviour
             timeUI.SetActive(false);
             knotsZone.SetActive(false);
             collectablesZone.SetActive(false);
-
+            
             if (takePicture)
             {
                 TakePicture.TakeScreenshot_Static(2000, 2000);

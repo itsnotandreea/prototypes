@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2321476882795045742
+--- !u!1001 &7731672234835590793
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,38 +10,38 @@ PrefabInstance:
     - target: {fileID: 2268967290363231547, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.11764707
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290363231547, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.023529414
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290363231547, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.20784315
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290363231547, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 10bb261efc4cd9a4f8d0a33255d92deb,
+      objectReference: {fileID: 21300000, guid: cf6bb8e9c42274b4ab946a8e84da7e94,
         type: 3}
     - target: {fileID: 2268967290363231551, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_Name
-      value: knotBlack
+      value: knotOrange
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -56.4
+      value: -40.6
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.3
+      value: 29.1
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
@@ -91,18 +91,22 @@ PrefabInstance:
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.45
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.45
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8547331579278133565, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 63b9d96bc8b650842b866ba8a0334f26, type: 3}
-    m_RemovedComponents:
-    - {fileID: 8547331579278133565, guid: 5cc559e87750e904eb721f2133126939, type: 3}
+      objectReference: {fileID: 8300000, guid: d6a10642d611da64e849e7031d7e1258, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cc559e87750e904eb721f2133126939, type: 3}

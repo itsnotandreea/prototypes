@@ -30,6 +30,8 @@ TagManager:
   - Music
   - startingArea
   - Clouds
+  - Recorder
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

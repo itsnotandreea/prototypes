@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9102184355553424209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer8
+  m_EditorClassIdentifier: 
+  Name: Layer8
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-9087300865994975244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +243,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-8396337403426471394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/A
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/A
+  guid: f7b33cb76db95d45ad2f57f9e1522996
+  Banks:
+  - {fileID: -2498588506162571151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &-8383594122986344645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +511,46 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-7610873123334878820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer9
+  m_EditorClassIdentifier: 
+  Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-7587689032501490427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/C
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/C
+  guid: e25a3e631690ca4ea8639b7e304642bd
+  Banks:
+  - {fileID: -2498588506162571151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &-7524461760697747705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +755,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6853230317948617561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer14
+  m_EditorClassIdentifier: 
+  Name: Layer14
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-6829694821390985297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1408,6 +1505,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-4455074715366782355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/G
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/G
+  guid: 4947f821cd22674b9b77c6e557bf9ca8
+  Banks:
+  - {fileID: -2498588506162571151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &-4451012523810305749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1566,6 +1686,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-3984226785622904261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/D
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/D
+  guid: 7e1492b14f59f74286910d582f834623
+  Banks:
+  - {fileID: -2498588506162571151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &-3982002374294920831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,6 +1761,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-3830867175540287004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer1
+  m_EditorClassIdentifier: 
+  Name: Layer1
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3826947577867566502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,6 +1829,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-3588074291268356162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer11
+  m_EditorClassIdentifier: 
+  Name: Layer11
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3580933874069567375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,6 +1864,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-3553614086307555425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer6
+  m_EditorClassIdentifier: 
+  Name: Layer6
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3478295156522022385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,6 +1898,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-3408848239104626715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer3
+  m_EditorClassIdentifier: 
+  Name: Layer3
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3323196097256650573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2016,6 +2227,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-2498588506162571151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../DUODEUSSOUND3/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637248102214482366
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-2472781607962941776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2398,6 +2627,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-815062906666802960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/F
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/F
+  guid: 5ed8ef6071add54fb020f63776d6aa82
+  Banks:
+  - {fileID: -2498588506162571151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &-813212766442946324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2582,40 +2834,40 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 8675878876258405750}
-  - {fileID: 4181161337710220758}
+  - {fileID: 3512353304770439182}
+  - {fileID: -2498588506162571151}
   EditorEvents:
-  - {fileID: 5310010693687065331}
-  - {fileID: 4232985396462337708}
-  - {fileID: -7975349110711996151}
-  - {fileID: 3596199166543668917}
-  - {fileID: 5942918197803275071}
-  - {fileID: -2785912385489561293}
-  - {fileID: -6497087279680130231}
-  - {fileID: -7126668122141686609}
+  - {fileID: 7644830566800731767}
+  - {fileID: 1361443904143615149}
+  - {fileID: -4455074715366782355}
+  - {fileID: -815062906666802960}
+  - {fileID: 3545697381841220813}
+  - {fileID: -3984226785622904261}
+  - {fileID: -7587689032501490427}
+  - {fileID: -8396337403426471394}
   EditorParameters:
-  - {fileID: 6726276115999020295}
-  - {fileID: 6943537159887091949}
-  - {fileID: -88017100278712953}
-  - {fileID: 5679090019455027150}
-  - {fileID: -3218799318894470449}
-  - {fileID: -1066059025197294240}
-  - {fileID: 4839045719406153164}
-  - {fileID: 2319175964190193460}
-  - {fileID: -7936403493726481086}
-  - {fileID: -5857523409756601500}
-  - {fileID: 1561917697427104629}
-  - {fileID: -1341728130097484271}
-  - {fileID: -9048012013747033129}
-  - {fileID: 6134954410033874730}
-  - {fileID: -8103308451369870839}
-  - {fileID: 1069069166943925748}
-  - {fileID: 1197181377021233191}
+  - {fileID: 3032737718607909984}
+  - {fileID: 3134045343828838921}
+  - {fileID: -9102184355553424209}
+  - {fileID: 3014083440390588507}
+  - {fileID: 6509169078315258224}
+  - {fileID: 2909782127757586748}
+  - {fileID: -7610873123334878820}
+  - {fileID: 3845694420280146414}
+  - {fileID: 649071899195162486}
+  - {fileID: -3553614086307555425}
+  - {fileID: 982926365254604742}
+  - {fileID: -3830867175540287004}
+  - {fileID: 1310997290589519808}
+  - {fileID: -3588074291268356162}
+  - {fileID: -6853230317948617561}
+  - {fileID: 7667899510375227425}
+  - {fileID: -3408848239104626715}
   MasterBanks:
-  - {fileID: 4181161337710220758}
+  - {fileID: -2498588506162571151}
   StringsBanks:
-  - {fileID: 8675878876258405750}
-  stringsBankWriteTime: 637243841576189718
+  - {fileID: 3512353304770439182}
+  stringsBankWriteTime: 637248102214627395
   cacheVersion: 3
 --- !u!114 &84537333353683843
 MonoBehaviour:
@@ -2804,6 +3056,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &649071899195162486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer16
+  m_EditorClassIdentifier: 
+  Name: Layer16
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &657989624170620145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2907,6 +3176,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &982926365254604742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer15
+  m_EditorClassIdentifier: 
+  Name: Layer15
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &994242321572833536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,6 +3283,46 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &1310997290589519808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer7
+  m_EditorClassIdentifier: 
+  Name: Layer7
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &1361443904143615149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/B
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/B
+  guid: 35a05e5164ebb84f9ac478752f9e3452
+  Banks:
+  - {fileID: -2498588506162571151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &1389500508409022622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3590,6 +3916,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &2909782127757586748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer5
+  m_EditorClassIdentifier: 
+  Name: Layer5
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &2973933666942675764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3607,6 +3950,40 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &3014083440390588507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer4
+  m_EditorClassIdentifier: 
+  Name: Layer4
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &3032737718607909984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer12
+  m_EditorClassIdentifier: 
+  Name: Layer12
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3110549465048890399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3624,6 +4001,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &3134045343828838921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer10
+  m_EditorClassIdentifier: 
+  Name: Layer10
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3192629518413974259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3691,6 +4085,49 @@ MonoBehaviour:
   Path: event:/KnotSounds/SOUND1/empty
   guid: 61e717c8b178a647b832f1018a37c35d
   Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &3512353304770439182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../DUODEUSSOUND3/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637248102214627395
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1586
+  Exists: 1
+--- !u!114 &3545697381841220813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/Empty
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/Empty
+  guid: 6ba0eb619dacf84bad6b509a04462363
+  Banks:
+  - {fileID: -2498588506162571151}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3909,6 +4346,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &3845694420280146414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer13
+  m_EditorClassIdentifier: 
+  Name: Layer13
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3851078528877197369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4880,6 +5334,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6509169078315258224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer2
+  m_EditorClassIdentifier: 
+  Name: Layer2
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &6539271296439188233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5188,6 +5659,46 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &7644830566800731767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/DUODEUSSOUND3/E
+  m_EditorClassIdentifier: 
+  Path: event:/DUODEUSSOUND3/E
+  guid: 23a737f04fbc3a42b40c1dbffbab688a
+  Banks:
+  - {fileID: -2498588506162571151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
+--- !u!114 &7667899510375227425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer17
+  m_EditorClassIdentifier: 
+  Name: Layer17
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &7673260757742122723
 MonoBehaviour:
   m_ObjectHideFlags: 0
