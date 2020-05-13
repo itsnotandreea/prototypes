@@ -1,21 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class MusicPlayerScript : MonoBehaviour
 {
+    public static List<List<string>> playList = new List<List<string>>();
+
     public float timeInSeconds;
     
     FMOD.Studio.EventInstance musicEvent;
 
-    private int i;
+    private List<string> currentLine = new List<string>();
 
-    private RecorderScript recScript;
+    private int index;
     
     void Start()
     {
-        recScript = GameObject.FindGameObjectWithTag("Recorder").GetComponent<RecorderScript>();
-
+        ReadTxtFile();
+        
         musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/DUODEUSSOUND3/Empty");
 
         musicEvent.start();
@@ -23,32 +26,91 @@ public class MusicPlayerScript : MonoBehaviour
         StartCoroutine(Play(timeInSeconds));
     }
 
+    private void ReadTxtFile()
+    {
+        string path = Application.dataPath + "/Recording.txt";
+
+        using (StreamReader reader = new StreamReader(path))
+        {
+            string allText = reader.ReadToEnd();
+            char[] temp = new char[30];
+
+            int k;
+            k = 0;
+
+            bool newLine = true;
+
+            for (int i = 0; i < allText.Length; i++)
+            {
+                char currentChar = allText[i];
+
+                if (currentChar == ' ')
+                {
+                    string tempo = new string(temp);
+
+                    if (newLine)
+                    {
+                        List<string> noteList = new List<string>
+                        {
+                            "event:/DUODEUSSOUND3/" + tempo
+                        };
+
+                        playList.Add(noteList);
+
+                        index = playList.Count - 1;
+                        newLine = false;
+                    }
+                    else
+                    {
+                        playList[index].Add("Layer" + tempo);
+                    }
+
+                    for (int j = 0; j < k; j++)
+                    {
+                        temp[j] = '\0';
+                    }
+                    k = 0;
+                }
+                else if (currentChar == '\n')
+                {
+                    newLine = true;
+                }
+                else
+                {
+                    temp[k] = currentChar;
+                    k++;
+                }
+            }
+        }
+        index = 0;
+    }
+
     IEnumerator Play(float time)
     {
-        while (i < RecorderScript.clipsList.Count)
+        while (index < playList.Count)
         {
-            Layers(i);
+            Layers(index);
 
-            FMODUnity.RuntimeManager.CreateInstance(RecorderScript.clipsList[i]);
-            FMODUnity.RuntimeManager.PlayOneShot(RecorderScript.clipsList[i], transform.position);
+            FMODUnity.RuntimeManager.CreateInstance(playList[index][0]);
+            FMODUnity.RuntimeManager.PlayOneShot(playList[index][0], transform.position);
             
             yield return new WaitForSeconds(time);
             
-            i++;
+            index++;
         }
     }
 
-    private void Layers(int index)
+    private void Layers(int noteIndex)
     {
         for (int j = 0; j < 17; j++)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer" + j.ToString(), 0f);
         }
         
-        for (int k = 0; k < RecorderScript.layersArray[index].Length; k++)
+        for (int k = 1; k < playList[noteIndex].Count; k++)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(RecorderScript.layersArray[index][k], 1f);
-            Debug.Log(RecorderScript.layersArray[index][k]);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 1f);
+            //Debug.Log(playList[noteIndex][k]);
         }
     }
 }

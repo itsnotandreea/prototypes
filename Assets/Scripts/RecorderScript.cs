@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class RecorderScript : MonoBehaviour
 {
-    public static List<string> clipsList = new List<string>(); // Static List instance
-
-    public static string[][] layersArray = new string[101][];
-
+    public static List<List<string>> playList = new List<List<string>>();
+    
     private string A,
                    B,
                    C,
@@ -26,241 +25,157 @@ public class RecorderScript : MonoBehaviour
     {
         musicSeq = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
 
-        A = "event:/DUODEUSSOUND3/A";
-        B = "event:/DUODEUSSOUND3/B";
-        C = "event:/DUODEUSSOUND3/C";
-        D = "event:/DUODEUSSOUND3/D";
-        E = "event:/DUODEUSSOUND3/E";
-        F = "event:/DUODEUSSOUND3/F";
-        G = "event:/DUODEUSSOUND3/G";
+        string path = Application.dataPath + "/Recording.txt";
+
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
     }
 
     public void AddKnot(GameObject knot)
     {
         if (knot.transform.name == "knotA" || knot.transform.name == "knotA(Clone)")
         {
-            AddToRecording(A);
+            AddToRecording("A");
         }
         else if (knot.transform.name == "knotB" || knot.transform.name == "knotB(Clone)")
         {
-            AddToRecording(B);
+            AddToRecording("B");
         }
         else if (knot.transform.name == "knotC" || knot.transform.name == "knotC(Clone)")
         {
-            AddToRecording(C);
+            AddToRecording("C");
         }
         else if (knot.transform.name == "knotD" || knot.transform.name == "knotD(Clone)")
         {
-            AddToRecording(D);
+            AddToRecording("D");
         }
         else if (knot.transform.name == "knotE" || knot.transform.name == "knotE(Clone)")
         {
-            AddToRecording(E);
+            AddToRecording("E");
         }
         else if (knot.transform.name == "knotF" || knot.transform.name == "knotF(Clone)")
         {
-            AddToRecording(F);
+            AddToRecording("F");
         }
         else if (knot.transform.name == "knotG" || knot.transform.name == "knotG(Clone)")
         {
-            AddToRecording(G);
+            AddToRecording("G");
         }
     }
 
     private void AddToRecording(string newNote)
     {
-        clipsList.Add(newNote);
+        List<string> noteList = new List<string>
+        {
+            newNote
+        };
 
-        index = clipsList.Count - 1;
+        playList.Add(noteList);
+
+        index = playList.Count - 1;
 
         GetLayers();
+
+        WriteTxtFile();
     }
 
     private void GetLayers()
     {
-        int count = 0;
-
         if (musicSeq.layerTwo)
         {
-            count++;
+            playList[index].Add("2");
         }
 
         if (musicSeq.layerThree)
         {
-            count++;
+            playList[index].Add("3");
         }
 
         if (musicSeq.layerFour)
         {
-            count++;
+            playList[index].Add("4");
         }
 
         if (musicSeq.layerFive)
         {
-            count++;
+            playList[index].Add("5");
         }
 
         if (musicSeq.layerSix)
         {
-            count++;
+            playList[index].Add("6");
         }
 
         if (musicSeq.layerSeven)
         {
-            count++;
+            playList[index].Add("7");
         }
 
         if (musicSeq.layerEight)
         {
-            count++;
+            playList[index].Add("8");
         }
 
         if (musicSeq.layerNine)
         {
-            count++;
+            playList[index].Add("9");
         }
 
         if (musicSeq.layerTen)
         {
-            count++;
+            playList[index].Add("10");
         }
 
         if (musicSeq.layerEleven)
         {
-            count++;
+            playList[index].Add("11");
         }
 
         if (musicSeq.layerTwelve)
         {
-            count++;
+            playList[index].Add("12");
         }
 
         if (musicSeq.layerThirteen)
         {
-            count++;
+            playList[index].Add("13");
         }
 
         if (musicSeq.layerFourteen)
         {
-            count++;
+            playList[index].Add("14");
         }
 
         if (musicSeq.layerFifteen)
         {
-            count++;
+            playList[index].Add("15");
         }
 
         if (musicSeq.layerSixteen)
         {
-            count++;
+            playList[index].Add("16");
         }
 
         if (musicSeq.layerSeventeen)
         {
-            count++;
+            playList[index].Add("17");
         }
+    }
 
+    public void WriteTxtFile()
+    {
+        string path = Application.dataPath + "/Recording.txt";
         
-        layersArray[index] = new string[count];
+        StreamWriter writer = new StreamWriter(path, true);
 
-        j = 0;
-
-
-
-        if (musicSeq.layerTwo)
+        for (int i = 0; i < playList[index].Count; i++)
         {
-            layersArray[index][j] = "Layer2";
-            j++;
+            writer.Write(playList[index][i] + " ");
         }
 
-        if (musicSeq.layerThree)
-        {
-            layersArray[index][j] = "Layer3";
-            j++;
-        }
-
-        if (musicSeq.layerFour)
-        {
-            layersArray[index][j] = "Layer4";
-            j++;
-        }
-
-        if (musicSeq.layerFive)
-        {
-            layersArray[index][j] = "Layer5";
-            j++;
-        }
-
-        if (musicSeq.layerSix)
-        {
-            layersArray[index][j] = "Layer6";
-            j++;
-        }
-
-        if (musicSeq.layerSeven)
-        {
-            layersArray[index][j] = "Layer7";
-            j++;
-        }
-
-        if (musicSeq.layerEight)
-        {
-            layersArray[index][j] = "Layer8";
-            j++;
-        }
-
-        if (musicSeq.layerNine)
-        {
-            layersArray[index][j] = "Layer9";
-            j++;
-        }
-
-        if (musicSeq.layerTen)
-        {
-            layersArray[index][j] = "Layer10";
-            j++;
-        }
-
-        if (musicSeq.layerEleven)
-        {
-            layersArray[index][j] = "Layer11";
-            j++;
-        }
-
-        if (musicSeq.layerTwelve)
-        {
-            layersArray[index][j] = "Layer12";
-            j++;
-        }
-
-        if (musicSeq.layerThirteen)
-        {
-            layersArray[index][j] = "Layer13";
-            j++;
-        }
-
-        if (musicSeq.layerFourteen)
-        {
-            layersArray[index][j] = "Layer14";
-            j++;
-        }
-
-        if (musicSeq.layerFifteen)
-        {
-            layersArray[index][j] = "Layer15";
-            j++;
-        }
-
-        if (musicSeq.layerSixteen)
-        {
-            layersArray[index][j] = "Layer16";
-            j++;
-        }
-
-        if (musicSeq.layerSeventeen)
-        {
-            layersArray[index][j] = "Layer17";
-            j++;
-        }
+        writer.Write("\n");
+        writer.Close();
     }
 }
