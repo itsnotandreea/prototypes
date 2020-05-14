@@ -52,6 +52,22 @@
                     "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "CancelLayers",
+                    "type": "Button",
+                    "id": "9c554529-b31f-4dea-81c9-ddb8186b1801",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "CancelLayersRelease",
+                    "type": "Button",
+                    "id": "1a3a4063-5154-471e-8c37-7b9170a7861c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -129,6 +145,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "CameraMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80b1a2d3-5279-471c-91b2-2b7eaa33d218",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelLayers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd88b305-3526-4dc1-b942-48f3985c7ffd",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelLayersRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

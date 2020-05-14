@@ -76,82 +76,82 @@ public class RecorderScript : MonoBehaviour
 
     private void GetLayers()
     {
-        if (musicSeq.layerTwo)
+        if (musicSeq.layersArray[0])
         {
             playList[index].Add("2");
         }
 
-        if (musicSeq.layerThree)
+        if (musicSeq.layersArray[1])
         {
             playList[index].Add("3");
         }
 
-        if (musicSeq.layerFour)
+        if (musicSeq.layersArray[2])
         {
             playList[index].Add("4");
         }
 
-        if (musicSeq.layerFive)
+        if (musicSeq.layersArray[3])
         {
             playList[index].Add("5");
         }
 
-        if (musicSeq.layerSix)
+        if (musicSeq.layersArray[4])
         {
             playList[index].Add("6");
         }
 
-        if (musicSeq.layerSeven)
+        if (musicSeq.layersArray[5])
         {
             playList[index].Add("7");
         }
 
-        if (musicSeq.layerEight)
+        if (musicSeq.layersArray[6])
         {
             playList[index].Add("8");
         }
 
-        if (musicSeq.layerNine)
+        if (musicSeq.layersArray[7])
         {
             playList[index].Add("9");
         }
 
-        if (musicSeq.layerTen)
+        if (musicSeq.layersArray[8])
         {
             playList[index].Add("10");
         }
 
-        if (musicSeq.layerEleven)
+        if (musicSeq.layersArray[9])
         {
             playList[index].Add("11");
         }
 
-        if (musicSeq.layerTwelve)
+        if (musicSeq.layersArray[10])
         {
             playList[index].Add("12");
         }
 
-        if (musicSeq.layerThirteen)
+        if (musicSeq.layersArray[11])
         {
             playList[index].Add("13");
         }
 
-        if (musicSeq.layerFourteen)
+        if (musicSeq.layersArray[12])
         {
             playList[index].Add("14");
         }
 
-        if (musicSeq.layerFifteen)
+        if (musicSeq.layersArray[13])
         {
             playList[index].Add("15");
         }
 
-        if (musicSeq.layerSixteen)
+        if (musicSeq.layersArray[14])
         {
             playList[index].Add("16");
         }
 
-        if (musicSeq.layerSeventeen)
+        if (musicSeq.layersArray[15])
         {
             playList[index].Add("17");
         }

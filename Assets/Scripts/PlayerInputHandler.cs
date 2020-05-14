@@ -110,4 +110,20 @@ public class PlayerInputHandler : MonoBehaviour
             pTwoScript.JumpReleaseInput();
         }
     }
+
+    private void OnCancelLayers()
+    {
+        if (index == 1)
+        {
+            pTwoScript.CancelLayersInput();
+        }
+    }
+
+    private void OnCancelLayersRelease()
+    {
+        if (index == 1)
+        {
+            pTwoScript.CancelLayersReleaseInput();
+        }
+    }
 }

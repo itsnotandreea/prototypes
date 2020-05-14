@@ -1109,33 +1109,12 @@ MonoBehaviour:
   sequence: []
   i: 0
   j: 0
+  activeLayers: 0
+  activeLayersLimit: 7
   timeInSeconds: 1.013
-  layerOne: 0
-  layerTwo: 0
-  layerThree: 0
-  layerFour: 0
-  layerFive: 0
-  layerSix: 0
-  layerSeven: 0
-  layerEight: 0
-  layerNine: 0
-  layerTen: 0
-  layerEleven: 0
-  layerTwelve: 0
-  layerThirteen: 0
-  layerFourteen: 0
-  layerFifteen: 0
-  layerSixteen: 0
-  layerSeventeen: 0
-  sound: event:/DUODEUSSOUND3/Empty
-  A: event:/DUODEUSSOUND3/A
-  B: event:/DUODEUSSOUND3/B
-  C: event:/DUODEUSSOUND3/C
-  D: event:/DUODEUSSOUND3/D
-  E: event:/DUODEUSSOUND3/E
-  F: event:/DUODEUSSOUND3/F
-  G: event:/DUODEUSSOUND3/G
+  cancelLayers: 0
   currentNote: 
+  layersArray: 00000000000000000000000000000000
 --- !u!1 &252759182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,18 +2085,22 @@ MonoBehaviour:
   moveUpSpeed: 2.3
   collectablesCount: 0
   collectables:
-  - {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
-  - {fileID: 196570943614750437, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}
   - {fileID: 2386048657860232595, guid: 28046f16971529045aec9a020f16fa6d, type: 3}
-  - {fileID: 5048021516274959236, guid: 752e25e5be1d6944daa0928b59a1ecfd, type: 3}
   - {fileID: 515940484768499681, guid: 7c932d2ccba824c4baa05966d1f032ce, type: 3}
+  - {fileID: 6939923653154813385, guid: dd02ef25dc4a2514abb80e455e66a1b5, type: 3}
   - {fileID: 5884669677433007117, guid: 66eb4c6b976d72849bd0e2bf527dbcea, type: 3}
   - {fileID: 5926171644741618310, guid: b92d79cdbd683c441aa18ee24be9d3c0, type: 3}
-  - {fileID: 195838650160951578, guid: ce4dcc94378f2ae42943593cd351d857, type: 3}
+  - {fileID: 2078099621532612764, guid: fd8ebc7b25d977e4e8b41febe4e2b83c, type: 3}
+  - {fileID: 5080471676612380051, guid: 673bf5db5d9be1d4a8beac357d256807, type: 3}
+  - {fileID: 1785474743}
+  - {fileID: 1237018990292328781, guid: 77a699ab177f36e499ee72fa827609c8, type: 3}
+  - {fileID: 3064200075309708422, guid: 89206431fa9132344aa244715e472727, type: 3}
+  - {fileID: 1770382138488227556, guid: 5ab018f04554908488f90ef41c22aed2, type: 3}
   - {fileID: 3788921197081985939, guid: 299943935c468c24da173d891e3f5e33, type: 3}
   - {fileID: 6786654770897204595, guid: 2b817715007977a46949dd4f27cd9d67, type: 3}
-  - {fileID: 4614806309149941411, guid: 1e021c68eb55ea54d8bc57047dab2cfd, type: 3}
-  - {fileID: 1770382138488227556, guid: 5ab018f04554908488f90ef41c22aed2, type: 3}
+  - {fileID: 5048021516274959236, guid: 752e25e5be1d6944daa0928b59a1ecfd, type: 3}
+  - {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
+  - {fileID: 196570943614750437, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}
 --- !u!114 &395853255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8965,7 +8948,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416259305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.7, y: -14.9, z: 0}
+  m_LocalPosition: {x: -59.5, y: -13, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children:
   - {fileID: 1473348648}

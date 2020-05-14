@@ -5,31 +5,25 @@ using UnityEngine;
 public class MusicSequence : MonoBehaviour
 {
     public List<GameObject> sequence = new List<GameObject>();
-    
+
     public int i,
-               j;
+               j,
+               activeLayers,
+               activeLayersLimit;
 
     public float timeInSeconds;
-    
-    public bool layerOne,
-                layerTwo,
-                layerThree,
-                layerFour,
-                layerFive,
-                layerSix,
-                layerSeven,
-                layerEight,
-                layerNine,
-                layerTen,
-                layerEleven,
-                layerTwelve,    
-                layerThirteen,
-                layerFourteen,
-                layerFifteen,
-                layerSixteen,
-                layerSeventeen;
 
-    [FMODUnity.EventRef]
+    public bool cancelLayers;
+
+    public string currentNote;
+
+    public FMOD.Studio.EventInstance musicEvent;
+
+    public bool[] layersArray = new bool[16];
+
+    private bool started,
+                 onScreen;
+    
     private string sound,
                   A,
                   B,
@@ -38,14 +32,6 @@ public class MusicSequence : MonoBehaviour
                   E,
                   F,
                   G;
-
-    public string currentNote;
-
-    public FMOD.Studio.EventInstance musicEvent;
-
-    private bool started,
-                 onScreen,
-                 cancelLayers;
     
     private Camera cam;
 
@@ -64,23 +50,10 @@ public class MusicSequence : MonoBehaviour
 
         currentNote = null;
         
-        layerOne = true;
-        layerTwo = false;
-        layerThree = false;
-        layerFour = false;
-        layerFive = false;
-        layerSix = false;
-        layerSeven = false;
-        layerEight = false;
-        layerNine = false;
-        layerTen = false;
-        layerEleven = false;
-        layerTwelve = false;
-        layerThirteen = false;
-        layerFourteen = false;
-        layerFifteen = false;
-        layerSixteen = false;
-        layerSeventeen = false;
+        for (int i = 0; i < 16; i++)
+        {
+            layersArray[i] = false;
+        }
 
         musicEvent = FMODUnity.RuntimeManager.CreateInstance(sound); 
 
@@ -91,8 +64,8 @@ public class MusicSequence : MonoBehaviour
         onScreen = false;
 
         i = 0;
-
         j = 0;
+        activeLayers = 0;
     }
     
     void Update()
@@ -115,193 +88,497 @@ public class MusicSequence : MonoBehaviour
         {
             j = 0;
         }
+    }
 
-        AssignLayer();
+    private void DeleteRandomLayer()
+    {
+        bool cancelledLayer = false;
+
+        while (!cancelledLayer)
+        {
+            int DeleteRandomLayer = Random.Range(0, 16);
+            
+            if (layersArray[DeleteRandomLayer] == true)
+            {
+                layersArray[DeleteRandomLayer] = false;
+                cancelledLayer = true;
+            }
+        }
     }
 
     public void GetCollectable(GameObject collectable)
     {
-        if (collectable.transform.name == "CollectableCorai(Clone)")
+        if (collectable.transform.name == "Collectable2(Clone)")
         {
-            if (layerTwo && cancelLayers)
+            if (cancelLayers)
             {
-                layerTwo = false;
+                //cancel the layer
+                if (layersArray[0])
+                {
+                    layersArray[0] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerTwo)
+            else
             {
-                layerTwo = true;
+                //add the layer
+                if (!layersArray[0])
+                {
+                    if(activeLayers < activeLayersLimit)
+                    {
+                        layersArray[0] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[0] = true;
+                    }
+                }
             }
         }
         else if (collectable.transform.name == "Collectable3(Clone)")
         {
-            if (layerThree && cancelLayers)
+            if (cancelLayers)
             {
-                layerThree = false;
+                //cancel the layer
+                if (layersArray[1])
+                {
+                    layersArray[1] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerThree)
+            else
             {
-                layerThree = true;
+                //add the layer
+                if (!layersArray[1])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[1] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[1] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableOrange(Clone)")
+        else if (collectable.transform.name == "Collectable4(Clone)")
         {
-            if (layerFour && cancelLayers)
+            if (cancelLayers)
             {
-                layerFour = false;
+                //cancel the layer
+                if (layersArray[2])
+                {
+                    layersArray[2] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerFour)
+            else
             {
-                layerFour = true;
+                //add the layer
+                if (!layersArray[2])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[2] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[2] = true;
+                    }
+                }
             }
         }
         else if (collectable.transform.name == "Collectable5(Clone)")
         {
-            if (layerFive && cancelLayers)
+            if (cancelLayers)
             {
-                layerFive = false;
+                //cancel the layer
+                if (layersArray[3])
+                {
+                    layersArray[3] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerFive)
+            else
             {
-                layerFive = true;
+                //add the layer
+                if (!layersArray[3])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[3] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[3] = true;
+                    }
+                }
             }
         }
         else if (collectable.transform.name == "Collectable6(Clone)")
         {
-            if (layerSix && cancelLayers)
+            if (cancelLayers)
             {
-                layerSix = false;
+                //cancel the layer
+                if (layersArray[4])
+                {
+                    layersArray[4] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerSix)
+            else
             {
-                layerSix = true;
+                //add the layer
+                if (!layersArray[4])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[4] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[4] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableBlue(Clone)")
+        else if (collectable.transform.name == "Collectable7(Clone)")
         {
-            if (layerSeven && cancelLayers)
+            if (cancelLayers)
             {
-                layerSeven = false;
+                //cancel the layer
+                if (layersArray[5])
+                {
+                    layersArray[5] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerSeven)
+            else
             {
-                layerSeven = true;
+                //add the layer
+                if (!layersArray[5])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[5] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[5] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableYellow(Clone)")
+        else if (collectable.transform.name == "Collectable8(Clone)")
         {
-            if (layerEight && cancelLayers)
+            if (cancelLayers)
             {
-                layerEight = false;
+                //cancel the layer
+                if (layersArray[6])
+                {
+                    layersArray[6] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerEight)
+            else
             {
-                layerEight = true;
+                //add the layer
+                if (!layersArray[6])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[6] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[6] = true;
+                    }
+                }
             }
         }
         else if (collectable.transform.name == "Collectable9(Clone)")
         {
-            if (layerNine && cancelLayers)
+            if (cancelLayers)
             {
-                layerNine = false;
+                //cancel the layer
+                if (layersArray[7])
+                {
+                    layersArray[7] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerNine)
+            else
             {
-                layerNine = true;
-            }
-        }
-        else if (collectable.transform.name == "CollectableDarkBlue(Clone)")
-        {
-            if (layerTen && cancelLayers)
-            {
-                layerTen = false;
-            }
-            else if (!layerTen)
-            {
-                layerTen = true;
-            }
-        }
-        else if (collectable.transform.name == "CollectableLime(Clone)")
-        {
-            if (layerEleven && cancelLayers)
-            {
-                layerEleven = false;
-            }
-            else if (!layerEleven)
-            {
-                layerEleven = true;
+                //add the layer
+                if (!layersArray[7])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[7] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[7] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        else if (collectable.transform.name == "Collectable10(Clone)")
         {
-            if (layerTwelve && cancelLayers)
+            if (cancelLayers)
             {
-                layerTwelve = false;
+                //cancel the layer
+                if (layersArray[8])
+                {
+                    layersArray[8] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerTwelve)
+            else
             {
-                layerTwelve = true;
+                //add the layer
+                if (!layersArray[8])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[8] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[8] = true;
+                    }
+                }
+            }
+        }
+        else if (collectable.transform.name == "Collectable11(Clone)")
+        {
+            if (cancelLayers)
+            {
+                //cancel the layer
+                if (layersArray[9])
+                {
+                    layersArray[9] = false;
+                    activeLayers--;
+                }
+            }
+            else
+            {
+                //add the layer
+                if (!layersArray[9])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[9] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[9] = true;
+                    }
+                }
+            }
+        }
+        else if (collectable.transform.name == "Collectable12(Clone)")
+        {
+            if (cancelLayers)
+            {
+                //cancel the layer
+                if (layersArray[10])
+                {
+                    layersArray[10] = false;
+                    activeLayers--;
+                }
+            }
+            else
+            {
+                //add the layer
+                if (!layersArray[10])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[10] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[10] = true;
+                    }
+                }
             }
         }
         else if (collectable.transform.name == "Collectable13(Clone)")
         {
-            if (layerThirteen && cancelLayers)
+            if (cancelLayers)
             {
-                layerThirteen = false;
+                //cancel the layer
+                if (layersArray[11])
+                {
+                    layersArray[11] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerThirteen)
+            else
             {
-                layerThirteen = true;
+                //add the layer
+                if (!layersArray[11])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[11] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[11] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        else if (collectable.transform.name == "Collectable14(Clone)")
         {
-            if (layerFourteen && cancelLayers)
+            if (cancelLayers)
             {
-                layerFourteen = false;
+                //cancel the layer
+                if (layersArray[12])
+                {
+                    layersArray[12] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerFourteen)
+            else
             {
-                layerFourteen = true;
+                //add the layer
+                if (!layersArray[12])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[12] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[12] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        else if (collectable.transform.name == "Collectable15(Clone)")
         {
-            if (layerFifteen && cancelLayers)
+            if (cancelLayers)
             {
-                layerFifteen = false;
+                //cancel the layer
+                if (layersArray[13])
+                {
+                    layersArray[13] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerFifteen)
+            else
             {
-                layerFifteen = true;
+                //add the layer
+                if (!layersArray[13])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[13] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[13] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        else if (collectable.transform.name == "Collectable16(Clone)")
         {
-            if (layerSixteen && cancelLayers)
+            if (cancelLayers)
             {
-                layerSixteen = false;
+                //cancel the layer
+                if (layersArray[14])
+                {
+                    layersArray[14] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerSixteen)
+            else
             {
-                layerSixteen = true;
+                //add the layer
+                if (!layersArray[14])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[14] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[14] = true;
+                    }
+                }
             }
         }
-        else if (collectable.transform.name == "CollectableMarine(Clone)")
+        else if (collectable.transform.name == "Collectable17(Clone)")
         {
-            if (layerSeventeen && cancelLayers)
+            if (cancelLayers)
             {
-                layerSeventeen = false;
+                //cancel the layer
+                if (layersArray[15])
+                {
+                    layersArray[15] = false;
+                    activeLayers--;
+                }
             }
-            else if (!layerSeventeen)
+            else
             {
-                layerSeventeen = true;
+                //add the layer
+                if (!layersArray[15])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        layersArray[15] = true;
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                        layersArray[15] = true;
+                    }
+                }
             }
         }
+
+        AssignLayer();
     }
 
     public void AssignLayer()
     {
-        if (layerTwo)
+        if (layersArray[0])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer2", 1f);
         }
@@ -310,7 +587,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer2", 0f);
         }
 
-        if (layerThree)
+        if (layersArray[1])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer3", 1f);
         }
@@ -319,7 +596,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer3", 0f);
         }
 
-        if (layerFour)
+        if (layersArray[2])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer4", 1f);
         }
@@ -328,7 +605,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer4", 0f);
         }
 
-        if (layerFive)
+        if (layersArray[3])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 1f);
         }
@@ -337,7 +614,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 0f);
         }
 
-        if (layerSix)
+        if (layersArray[4])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer6", 1f);
         }
@@ -346,7 +623,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer6", 0f);
         }
 
-        if (layerSeven)
+        if (layersArray[5])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer7", 1f);
         }
@@ -355,7 +632,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer7", 0f);
         }
 
-        if (layerEight)
+        if (layersArray[6])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer8", 1f);
         }
@@ -364,7 +641,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer8", 0f);
         }
 
-        if (layerNine)
+        if (layersArray[7])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer9", 1f);
         }
@@ -373,7 +650,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer9", 0f);
         }
 
-        if (layerTen)
+        if (layersArray[8])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer10", 1f);
         }
@@ -382,7 +659,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer10", 0f);
         }
 
-        if (layerEleven)
+        if (layersArray[9])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer11", 1f);
         }
@@ -391,7 +668,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer11", 0f);
         }
 
-        if (layerTwelve)
+        if (layersArray[10])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer12", 1f);
         }
@@ -400,7 +677,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer12", 0f);
         }
 
-        if (layerThirteen)
+        if (layersArray[11])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer13", 1f);
         }
@@ -409,7 +686,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer13", 0f);
         }
 
-        if (layerFourteen)
+        if (layersArray[12])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer14", 1f);
         }
@@ -418,7 +695,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer14", 0f);
         }
 
-        if (layerFifteen)
+        if (layersArray[13])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer15", 1f);
         }
@@ -427,7 +704,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer15", 0f);
         }
 
-        if (layerSixteen)
+        if (layersArray[14])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer16", 1f);
         }
@@ -436,7 +713,7 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer16", 0f);
         }
 
-        if (layerSeventeen)
+        if (layersArray[15])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer17", 1f);
         }

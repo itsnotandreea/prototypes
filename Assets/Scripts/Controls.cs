@@ -65,6 +65,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CancelLayers"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c554529-b31f-4dea-81c9-ddb8186b1801"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CancelLayersRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a3a4063-5154-471e-8c37-7b9170a7861c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -144,6 +160,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""CameraMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80b1a2d3-5279-471c-91b2-2b7eaa33d218"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelLayers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd88b305-3526-4dc1-b942-48f3985c7ffd"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelLayersRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -158,6 +196,8 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerOne_JumpRelease = m_PlayerOne.FindAction("JumpRelease", throwIfNotFound: true);
         m_PlayerOne_Move = m_PlayerOne.FindAction("Move", throwIfNotFound: true);
         m_PlayerOne_CameraMovement = m_PlayerOne.FindAction("CameraMovement", throwIfNotFound: true);
+        m_PlayerOne_CancelLayers = m_PlayerOne.FindAction("CancelLayers", throwIfNotFound: true);
+        m_PlayerOne_CancelLayersRelease = m_PlayerOne.FindAction("CancelLayersRelease", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -213,6 +253,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerOne_JumpRelease;
     private readonly InputAction m_PlayerOne_Move;
     private readonly InputAction m_PlayerOne_CameraMovement;
+    private readonly InputAction m_PlayerOne_CancelLayers;
+    private readonly InputAction m_PlayerOne_CancelLayersRelease;
     public struct PlayerOneActions
     {
         private @Controls m_Wrapper;
@@ -223,6 +265,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @JumpRelease => m_Wrapper.m_PlayerOne_JumpRelease;
         public InputAction @Move => m_Wrapper.m_PlayerOne_Move;
         public InputAction @CameraMovement => m_Wrapper.m_PlayerOne_CameraMovement;
+        public InputAction @CancelLayers => m_Wrapper.m_PlayerOne_CancelLayers;
+        public InputAction @CancelLayersRelease => m_Wrapper.m_PlayerOne_CancelLayersRelease;
         public InputActionMap Get() { return m_Wrapper.m_PlayerOne; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -250,6 +294,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CameraMovement.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCameraMovement;
                 @CameraMovement.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCameraMovement;
                 @CameraMovement.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCameraMovement;
+                @CancelLayers.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayers;
+                @CancelLayers.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayers;
+                @CancelLayers.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayers;
+                @CancelLayersRelease.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayersRelease;
+                @CancelLayersRelease.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayersRelease;
+                @CancelLayersRelease.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayersRelease;
             }
             m_Wrapper.m_PlayerOneActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +322,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CameraMovement.started += instance.OnCameraMovement;
                 @CameraMovement.performed += instance.OnCameraMovement;
                 @CameraMovement.canceled += instance.OnCameraMovement;
+                @CancelLayers.started += instance.OnCancelLayers;
+                @CancelLayers.performed += instance.OnCancelLayers;
+                @CancelLayers.canceled += instance.OnCancelLayers;
+                @CancelLayersRelease.started += instance.OnCancelLayersRelease;
+                @CancelLayersRelease.performed += instance.OnCancelLayersRelease;
+                @CancelLayersRelease.canceled += instance.OnCancelLayersRelease;
             }
         }
     }
@@ -284,5 +340,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnJumpRelease(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnCameraMovement(InputAction.CallbackContext context);
+        void OnCancelLayers(InputAction.CallbackContext context);
+        void OnCancelLayersRelease(InputAction.CallbackContext context);
     }
 }

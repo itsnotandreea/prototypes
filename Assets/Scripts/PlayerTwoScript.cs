@@ -119,7 +119,23 @@ public class PlayerTwoScript : MonoBehaviour
         pressedTime = 0;
         held = false;
     }
-    
+
+    public void CancelLayersInput()
+    {
+        if(!musicSequenceScript.cancelLayers)
+        {
+            musicSequenceScript.cancelLayers = true;
+        }
+    }
+
+    public void CancelLayersReleaseInput()
+    {
+        if (musicSequenceScript.cancelLayers)
+        {
+            musicSequenceScript.cancelLayers = false;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (((other.gameObject.tag == "Floor") || (other.gameObject.tag == "Line")) && isGrounded == false)
@@ -159,8 +175,12 @@ public class PlayerTwoScript : MonoBehaviour
             
             if(other.gameObject.GetComponent<Animator>())
             {
-                other.gameObject.GetComponent<Animator>().SetBool("playAnim", true);
-                Destroy(other.gameObject, 2.0f);
+                Animator animator = other.gameObject.GetComponent<Animator>();
+                float clipLength = animator.runtimeAnimatorController.animationClips[0].length;
+
+                animator.SetBool("playAnim", true);
+
+                Destroy(other.gameObject, clipLength + 0.2f);
             }
             else
             {

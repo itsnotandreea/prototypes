@@ -9,24 +9,28 @@ public class BackgroundScript : MonoBehaviour
                third,
                cloudIndex;
 
-    private Color orangeCol,
-                    blueCol,
-                    colSix,
-                    yellowCol,
-                    colThree,
-                    colFive,
-                    whiteCol,
-                    coraiCol,
-                    darkBlueCol,
-                    colNine,
-                    limeCol,
-                    colThirteen,
-                    originalColour,
-                    firstColour,
-                    secondColour,
-                    thirdColour,
-                    newColour,
-                    currentColour;
+    private Color colTwo,
+                  colThree,
+                  colFour,
+                  colFive,
+                  colSix,
+                  colSeven,
+                  colEight,
+                  colNine,
+                  colTen,
+                  colEleven,
+                  colTwelve,
+                  colThirteen,
+                  colFourteen,
+                  colFifteen,
+                  colSixteen,
+                  colSeventeen,
+                  originalColour,
+                  firstColour,
+                  secondColour,
+                  thirdColour,
+                  newColour,
+                  currentColour;
 
     public List<GameObject> cloudsList = new List<GameObject>();
 
@@ -38,12 +42,24 @@ public class BackgroundScript : MonoBehaviour
     void Start()
     {
         //all colours the clouds can take
-        colThree = new Color(0.44f, 0.23f, 0.52f, 1.0f);
-        colFive = new Color(0.85f, 0.18f, 0.57f, 1.0f);
-        colSix = new Color(0.85f, 0.65f, 0.27f, 1.0f);
-        colNine = new Color(0.63f, 0.90f, 0.20f, 1.0f);
-        colThirteen = new Color(0.30f, 0.76f, 0.67f, 1.0f);
+        colTwo = new Color(0.93f, 0.14f, 0.69f, 1.0f);
+        colThree = new Color(0.93f, 0.14f, 0.69f, 1.0f);
+        colFour = new Color(0.93f, 0.14f, 0.69f, 1.0f);
+        colFive = new Color(0.93f, 0.14f, 0.69f, 1.0f);
+        colSix = new Color(0.41f, 0.90f, 0.63f, 1.0f);
+        colSeven = new Color(0.41f, 0.90f, 0.63f, 1.0f);
+        colEight = new Color(0.41f, 0.90f, 0.63f, 1.0f);
+        colNine = new Color(0.41f, 0.90f, 0.63f, 1.0f);
+        colTen = new Color(0.39f, 0.78f, 0.81f, 1.0f);
+        colEleven = new Color(0.39f, 0.78f, 0.81f, 1.0f);
+        colTwelve = new Color(0.39f, 0.78f, 0.81f, 1.0f);
+        colThirteen = new Color(0.39f, 0.78f, 0.81f, 1.0f);
+        colFourteen = new Color(0.81f, 0.20f, 0.20f, 1.0f);
+        colFifteen = new Color(0.81f, 0.20f, 0.20f, 1.0f);
+        colSixteen = new Color(0.81f, 0.20f, 0.20f, 1.0f);
+        colSeventeen = new Color(0.81f, 0.20f, 0.20f, 1.0f);
 
+        /*
         orangeCol = new Color(1.0f, 0.12f, 0.29f, 1.0f);
         blueCol = new Color(0.79f, 0.0f, 0.07f, 1.0f);
         yellowCol = new Color(1.0f, 0.72f, 0.27f, 1.0f);
@@ -51,6 +67,7 @@ public class BackgroundScript : MonoBehaviour
         coraiCol = new Color(0.53f, 0.26f, 0.53f, 1.0f);
         darkBlueCol = new Color(1.0f, 0.20f, 0.58f, 1.0f);
         limeCol = new Color(0.75f, 1.0f, 0.20f, 1.0f);
+        */
 
         //originally, all clouds will be the same colour
         firstColour = secondColour = thirdColour = originalColour = new Color(0.20f, 0.25f, 0.25f, 1.0f);
@@ -87,17 +104,17 @@ public class BackgroundScript : MonoBehaviour
     public void GetCollectable(GameObject collectable)
     {
         //gets input from the second player collectable
-        if (collectable.transform.name == "CollectableCorai(Clone)")
+        if (collectable.transform.name == "Collectable2(Clone)")
         {
-            AddColour(coraiCol);
+            AddColour(colTwo);
         }
         else if (collectable.transform.name == "Collectable3(Clone)")
         {
             AddColour(colThree);
         }
-        else if (collectable.transform.name == "CollectableOrange(Clone)")
+        else if (collectable.transform.name == "Collectable4(Clone)")
         {
-            AddColour(orangeCol);
+            AddColour(colFour);
         }
         else if (collectable.transform.name == "Collectable5(Clone)")
         {
@@ -107,29 +124,49 @@ public class BackgroundScript : MonoBehaviour
         {
             AddColour(colSix);
         }
-        else if (collectable.transform.name == "CollectableBlue(Clone)")
+        else if (collectable.transform.name == "Collectable7(Clone)")
         {
-            AddColour(blueCol);
+            AddColour(colSeven);
         }
-        else if (collectable.transform.name == "CollectableYellow(Clone)")
+        else if (collectable.transform.name == "Collectable8(Clone)")
         {
-            AddColour(yellowCol);
-        }
-        else if (collectable.transform.name == "CollectableDarkBlue(Clone)")
-        {
-            AddColour(darkBlueCol);
+            AddColour(colEight);
         }
         else if (collectable.transform.name == "Collectable9(Clone)")
         {
             AddColour(colNine);
         }
-        else if (collectable.transform.name == "CollectableLime(Clone)")
+        else if (collectable.transform.name == "Collectable10(Clone)")
         {
-            AddColour(limeCol);
+            AddColour(colTen);
+        }
+        else if (collectable.transform.name == "Collectable11(Clone)")
+        {
+            AddColour(colEleven);
+        }
+        else if (collectable.transform.name == "Collectable12(Clone)")
+        {
+            AddColour(colTwelve);
         }
         else if (collectable.transform.name == "Collectable13(Clone)")
         {
             AddColour(colThirteen);
+        }
+        else if (collectable.transform.name == "Collectable14(Clone)")
+        {
+            AddColour(colFourteen);
+        }
+        else if (collectable.transform.name == "Collectable15(Clone)")
+        {
+            AddColour(colFifteen);
+        }
+        else if (collectable.transform.name == "Collectable16(Clone)")
+        {
+            AddColour(colSixteen);
+        }
+        else if (collectable.transform.name == "Collectable17(Clone)")
+        {
+            AddColour(colSeventeen);
         }
     }
 
