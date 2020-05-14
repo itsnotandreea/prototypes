@@ -6,18 +6,10 @@ using System.IO;
 public class RecorderScript : MonoBehaviour
 {
     public static List<List<string>> playList = new List<List<string>>();
-    
-    private string A,
-                   B,
-                   C,
-                   D,
-                   E,
-                   F,
-                   G;
 
-    private int index,
-                i,
-                j;
+    private int index;
+
+    private string path;
 
     private MusicSequence musicSeq;
   
@@ -25,11 +17,12 @@ public class RecorderScript : MonoBehaviour
     {
         musicSeq = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
 
-        string path = Application.dataPath + "/Recording.txt";
+        path = Application.dataPath + "/Recording.txt";
 
         if (File.Exists(path))
         {
             File.Delete(path);
+            File.Delete(Application.dataPath + "/Recording.meta");
         }
     }
 
@@ -166,8 +159,6 @@ public class RecorderScript : MonoBehaviour
 
     public void WriteTxtFile()
     {
-        string path = Application.dataPath + "/Recording.txt";
-        
         StreamWriter writer = new StreamWriter(path, true);
 
         for (int i = 0; i < playList[index].Count; i++)

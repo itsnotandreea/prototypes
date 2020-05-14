@@ -30,7 +30,7 @@ public class MusicSequence : MonoBehaviour
                 layerSeventeen;
 
     [FMODUnity.EventRef]
-    public string sound,
+    private string sound,
                   A,
                   B,
                   C,
@@ -53,14 +53,14 @@ public class MusicSequence : MonoBehaviour
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-        sound = "event:/DUODEUSSOUND3/Empty";
-        A = "event:/DUODEUSSOUND3/A";
-        B = "event:/DUODEUSSOUND3/B";
-        C = "event:/DUODEUSSOUND3/C";
-        D = "event:/DUODEUSSOUND3/D";
-        E = "event:/DUODEUSSOUND3/E";
-        F = "event:/DUODEUSSOUND3/F";
-        G = "event:/DUODEUSSOUND3/G";
+        sound = "event:/SOUND4/Empty";
+        A = "event:/SOUND4/A";
+        B = "event:/SOUND4/B";
+        C = "event:/SOUND4/C";
+        D = "event:/SOUND4/D";
+        E = "event:/SOUND4/E";
+        F = "event:/SOUND4/F";
+        G = "event:/SOUND4/G";
 
         currentNote = null;
         

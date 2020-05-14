@@ -10,16 +10,18 @@ public class MusicPlayerScript : MonoBehaviour
     public float timeInSeconds;
     
     FMOD.Studio.EventInstance musicEvent;
-
-    private List<string> currentLine = new List<string>();
-
+    
     private int index;
+
+    private string path;
     
     void Start()
     {
+        path = Application.dataPath + "/Recording.txt";
+
         ReadTxtFile();
         
-        musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/DUODEUSSOUND3/Empty");
+        musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SOUND4/Empty");
 
         musicEvent.start();
 
@@ -28,8 +30,6 @@ public class MusicPlayerScript : MonoBehaviour
 
     private void ReadTxtFile()
     {
-        string path = Application.dataPath + "/Recording.txt";
-
         using (StreamReader reader = new StreamReader(path))
         {
             string allText = reader.ReadToEnd();
@@ -52,7 +52,7 @@ public class MusicPlayerScript : MonoBehaviour
                     {
                         List<string> noteList = new List<string>
                         {
-                            "event:/DUODEUSSOUND3/" + tempo
+                            "event:/SOUND4/" + tempo
                         };
 
                         playList.Add(noteList);
@@ -102,7 +102,7 @@ public class MusicPlayerScript : MonoBehaviour
 
     private void Layers(int noteIndex)
     {
-        for (int j = 0; j < 17; j++)
+        for (int j = 2; j < 18; j++)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer" + j.ToString(), 0f);
         }
@@ -110,7 +110,6 @@ public class MusicPlayerScript : MonoBehaviour
         for (int k = 1; k < playList[noteIndex].Count; k++)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 1f);
-            //Debug.Log(playList[noteIndex][k]);
         }
     }
 }

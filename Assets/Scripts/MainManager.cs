@@ -20,7 +20,8 @@ public class MainManager : MonoBehaviour
     private bool takePicture,
                  scoreMode,
                  composeMode,
-                 menuMode;
+                 menuMode,
+                 finishOnce;
 
     private CountdownSystem cdSystem;
     private PlayerOneScript pOneScript;
@@ -62,6 +63,8 @@ public class MainManager : MonoBehaviour
         pTwoScript.menuMode = true;
 
         camScript.menuMode = true;
+
+        finishOnce = true;
     }
 
     void Update()
@@ -79,31 +82,37 @@ public class MainManager : MonoBehaviour
         
         if (cdSystem.timer <= 0.0f)
         {
-            pOneScript.enabled = false;
-            pTwoScript.enabled = false;
-            UIWinner.enabled = true;
-            musicSeq.musicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            musicSeq.enabled = false;
-            musicPlayerScript.enabled = true;       //plays song !!!!!!!!! DO THIS AFTER A WHILE
+            if (finishOnce)
+            {
+                pOneScript.enabled = false;
+                pTwoScript.enabled = false;
+                UIWinner.enabled = true;
+                musicSeq.musicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                musicSeq.enabled = false;
+                StartCoroutine(WaitMusic(5.0f));
 
-            camScript.menuCurrentPos = camScript.finalPicturePos;
-            camScript.finishedMode = true;
+                floor.SetActive(false);
+                scoreUI.SetActive(false);
+                bestUI.SetActive(false);
+                timeUI.SetActive(false);
+                knotsZone.SetActive(false);
+                collectablesZone.SetActive(false);
+
+                finishOnce = false;
+
+                camScript.menuCurrentPos = camScript.finalPicturePos;
+                camScript.finishedMode = true;
+            }
+            
             camScript.gameObject.transform.position = camScript.finalPicturePos;
             camScript.cam.orthographicSize = Mathf.Lerp(camScript.cam.orthographicSize, 700, Time.deltaTime * 0.1f);
             camScript.cam.transform.rotation = Quaternion.Lerp(camScript.cam.transform.rotation, Quaternion.identity, Time.time * 0.3f);
-
-            floor.SetActive(false);
-            scoreUI.SetActive(false);
-            bestUI.SetActive(false);
-            timeUI.SetActive(false);
-            knotsZone.SetActive(false);
-            collectablesZone.SetActive(false);
             
             if (takePicture)
             {
                 TakePicture.TakeScreenshot_Static(2000, 2000);
                 takePicture = false;
-                //StartCoroutine(FinalPicture(10.0f));
+                //pictureHolder.GetComponent<RawImage>().enabled = true;
             }
         }
     }
@@ -180,10 +189,10 @@ public class MainManager : MonoBehaviour
         }
     }
     
-    IEnumerator FinalPicture(float waitTime)
+    IEnumerator WaitMusic(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
 
-        pictureHolder.GetComponent<RawImage>().enabled = true;
+        musicPlayerScript.enabled = true;
     }
 }
