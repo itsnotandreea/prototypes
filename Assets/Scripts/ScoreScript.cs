@@ -11,24 +11,22 @@ public class ScoreScript : MonoBehaviour
 
     public GameObject previousScoreGO;
 
+    public bool scoreMode;
+
     private string savedScore;
 
     private Text scoreText,
                  previousScoreText;
-
-    private GameObject playerOne;
-
+    
     private PlayerOneScript pOneScript;
 
-    void Start()
+    void Awake()
     {
+        pOneScript = GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOneScript>();
+
         scoreText = GetComponent<Text>();
         previousScoreText = previousScoreGO.GetComponent<Text>();
-
-        playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
-
-        pOneScript = playerOne.GetComponent<PlayerOneScript>();
-
+        
         savedScore = "savedScore";
         
         score = 0;
@@ -38,23 +36,31 @@ public class ScoreScript : MonoBehaviour
     
     void Update()
     {
-        scoreText.text = "Score: " + score.ToString();
+        if (scoreMode)
+        {
+            scoreText.text = "Score: " + score.ToString();
+        }
     }
 
     public void IncreaseScore()
     {
-        score += 1;
-        
-        if(score > previousScore)
+        if (scoreMode)
         {
-            previousScore = score;
-            PlayerPrefs.SetInt(savedScore, previousScore);
-        }
+            score += 1;
 
-        //does this if not in menu/compose mode
-        if(pOneScript.lineLength <= limit)
+            if (score > previousScore)
+            {
+                previousScore = score;
+                PlayerPrefs.SetInt(savedScore, previousScore);
+            }
+        }
+        
+        if(pOneScript.menuMode == false)
         {
-            pOneScript.lineLength += pOneScript.extraLength;
+            if(pOneScript.lineLength <= limit)
+            {
+                pOneScript.lineLength += pOneScript.extraLength;
+            }
         }
     }
 }

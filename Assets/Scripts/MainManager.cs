@@ -31,6 +31,7 @@ public class MainManager : MonoBehaviour
     private MusicSequence musicSeq;
     private RecorderScript recorderScript;
     private MusicPlayerScript musicPlayerScript;
+    private ScoreScript scoreScript;
 
     void Awake()
     {
@@ -48,6 +49,8 @@ public class MainManager : MonoBehaviour
         recorderScript = GameObject.FindGameObjectWithTag("Recorder").GetComponent<RecorderScript>();
 
         musicPlayerScript = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<MusicPlayerScript>();
+
+        scoreScript = scoreUI.GetComponent<ScoreScript>();
 
         UIWinner.enabled = false;
 
@@ -127,6 +130,7 @@ public class MainManager : MonoBehaviour
         {
             scoreMode = true;
             composeMode = false;
+            scoreScript.scoreMode = true;
 
             camScript.menuCurrentPos = camScript.menuPosThree;
             StartGame();
@@ -135,6 +139,7 @@ public class MainManager : MonoBehaviour
         {
             composeMode = true;
             scoreMode = false;
+            scoreScript.scoreMode = false;
 
             camScript.menuCurrentPos = camScript.menuPosThree;
             StartGame();
@@ -180,7 +185,8 @@ public class MainManager : MonoBehaviour
             }
             if (composeMode)
             {
-                scoreUI.SetActive(false);
+                scoreUI.SetActive(true);
+                scoreUI.GetComponent<Text>().enabled = false;
                 bestUI.SetActive(false);
 
                 menuScript.gameObject.transform.Find("Compose").transform.parent = null;

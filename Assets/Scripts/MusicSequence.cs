@@ -55,6 +55,8 @@ public class MusicSequence : MonoBehaviour
             layersArray[i] = false;
         }
 
+        AssignLayer();
+
         musicEvent = FMODUnity.RuntimeManager.CreateInstance(sound); 
 
         musicEvent.start();

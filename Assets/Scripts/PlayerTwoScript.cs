@@ -176,11 +176,10 @@ public class PlayerTwoScript : MonoBehaviour
             if(other.gameObject.GetComponent<Animator>())
             {
                 Animator animator = other.gameObject.GetComponent<Animator>();
-                float clipLength = animator.runtimeAnimatorController.animationClips[0].length;
+                //float clipLength = animator.runtimeAnimatorController.animationClips[0].length;
 
                 animator.SetBool("playAnim", true);
-
-                Destroy(other.gameObject, clipLength + 0.2f);
+                //Destroy(other.gameObject, clipLength + 0.2f);
             }
             else
             {
@@ -246,7 +245,7 @@ public class PlayerTwoScript : MonoBehaviour
         Vector3 direction = transform.TransformDirection(Vector3.up * 5);
         rb.AddForce(direction * impulse, ForceMode2D.Impulse);
 
-        animator.Play("playerTwoJump");
+        animator.Play("playerTwoBounce");
 
         //grounding
         isGrounded = false;
