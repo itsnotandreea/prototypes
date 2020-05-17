@@ -42,10 +42,10 @@ public class BackgroundScript : MonoBehaviour
     void Start()
     {
         //all colours the clouds can take
-        colTwo = new Color(0.93f, 0.14f, 0.69f, 1.0f);
-        colThree = new Color(0.93f, 0.14f, 0.69f, 1.0f);
-        colFour = new Color(0.93f, 0.14f, 0.69f, 1.0f);
-        colFive = new Color(0.93f, 0.14f, 0.69f, 1.0f);
+        colTwo = new Color(1.0f, 0.53f, 0.66f, 1.0f);
+        colThree = new Color(1.0f, 0.53f, 0.66f, 1.0f);
+        colFour = new Color(1.0f, 0.53f, 0.66f, 1.0f);
+        colFive = new Color(1.0f, 0.53f, 0.66f, 1.0f);
         colSix = new Color(0.41f, 0.90f, 0.63f, 1.0f);
         colSeven = new Color(0.41f, 0.90f, 0.63f, 1.0f);
         colEight = new Color(0.41f, 0.90f, 0.63f, 1.0f);

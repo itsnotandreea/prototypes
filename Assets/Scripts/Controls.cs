@@ -27,6 +27,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""NavigateKnotsMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""11f8bfb5-69f4-4a9c-bdbb-e045ec5ca23c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""CreateLineButton"",
                     ""type"": ""Button"",
                     ""id"": ""3776b342-52ab-4c77-a349-21992fc2a00e"",
@@ -81,6 +89,38 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""MoveA"",
+                    ""type"": ""Button"",
+                    ""id"": ""e35ace46-7c98-4e3d-a9e5-39d2ee253134"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""MoveARelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""92896173-8a70-40ea-8f50-c87b42bf458f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""MoveD"",
+                    ""type"": ""Button"",
+                    ""id"": ""57f9ff9e-05bb-4ebf-a921-111bfc123c05"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""MoveDRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""eaeb6b21-d092-47cb-b02f-933bc945718f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -108,6 +148,17 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6ef4e017-5e1d-4d60-a26b-8a03f3a3f6d3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CreateLineButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""81821cfc-1e8a-4e0a-a4a5-4ed78e57a6f5"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -119,8 +170,30 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d08df723-68a7-485a-bacb-70406eb7172f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""236c7517-43de-4f0c-a045-eb2b2b764554"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fbced12-2e46-4e9e-8582-66fbe22aef72"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -174,12 +247,133 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""583733c5-1fef-4ad8-b337-9bded945faaf"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelLayers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bd88b305-3526-4dc1-b942-48f3985c7ffd"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CancelLayersRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6977666c-2f53-4189-826b-2a9d51948fb6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelLayersRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f7c8dde-3abd-4b71-bce4-ba4a2000795f"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a03d469-f4c8-4e73-a69f-9780f90aef1a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32b19466-c59a-4925-81e8-e16a1ea6a808"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb00aade-d9bc-4081-89e3-92a44ee9b8aa"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a38c606-9abf-4ae8-83f7-c2e0e5615036"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveARelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0af91f8b-b34d-4ca6-98bb-54b9dadb1f07"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveARelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03d22cd9-fb95-4cae-b829-8284523c70d1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f3cb3e8-f080-400c-a584-807173a0b3d5"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0eaa419b-53f9-468c-b562-e70e0a5687a2"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateKnotsMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -191,6 +385,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // PlayerOne
         m_PlayerOne = asset.FindActionMap("PlayerOne", throwIfNotFound: true);
         m_PlayerOne_NavigateKnots = m_PlayerOne.FindAction("NavigateKnots", throwIfNotFound: true);
+        m_PlayerOne_NavigateKnotsMouse = m_PlayerOne.FindAction("NavigateKnotsMouse", throwIfNotFound: true);
         m_PlayerOne_CreateLineButton = m_PlayerOne.FindAction("CreateLineButton", throwIfNotFound: true);
         m_PlayerOne_Jump = m_PlayerOne.FindAction("Jump", throwIfNotFound: true);
         m_PlayerOne_JumpRelease = m_PlayerOne.FindAction("JumpRelease", throwIfNotFound: true);
@@ -198,6 +393,10 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerOne_CameraMovement = m_PlayerOne.FindAction("CameraMovement", throwIfNotFound: true);
         m_PlayerOne_CancelLayers = m_PlayerOne.FindAction("CancelLayers", throwIfNotFound: true);
         m_PlayerOne_CancelLayersRelease = m_PlayerOne.FindAction("CancelLayersRelease", throwIfNotFound: true);
+        m_PlayerOne_MoveA = m_PlayerOne.FindAction("MoveA", throwIfNotFound: true);
+        m_PlayerOne_MoveARelease = m_PlayerOne.FindAction("MoveARelease", throwIfNotFound: true);
+        m_PlayerOne_MoveD = m_PlayerOne.FindAction("MoveD", throwIfNotFound: true);
+        m_PlayerOne_MoveDRelease = m_PlayerOne.FindAction("MoveDRelease", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -248,6 +447,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerOne;
     private IPlayerOneActions m_PlayerOneActionsCallbackInterface;
     private readonly InputAction m_PlayerOne_NavigateKnots;
+    private readonly InputAction m_PlayerOne_NavigateKnotsMouse;
     private readonly InputAction m_PlayerOne_CreateLineButton;
     private readonly InputAction m_PlayerOne_Jump;
     private readonly InputAction m_PlayerOne_JumpRelease;
@@ -255,11 +455,16 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerOne_CameraMovement;
     private readonly InputAction m_PlayerOne_CancelLayers;
     private readonly InputAction m_PlayerOne_CancelLayersRelease;
+    private readonly InputAction m_PlayerOne_MoveA;
+    private readonly InputAction m_PlayerOne_MoveARelease;
+    private readonly InputAction m_PlayerOne_MoveD;
+    private readonly InputAction m_PlayerOne_MoveDRelease;
     public struct PlayerOneActions
     {
         private @Controls m_Wrapper;
         public PlayerOneActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @NavigateKnots => m_Wrapper.m_PlayerOne_NavigateKnots;
+        public InputAction @NavigateKnotsMouse => m_Wrapper.m_PlayerOne_NavigateKnotsMouse;
         public InputAction @CreateLineButton => m_Wrapper.m_PlayerOne_CreateLineButton;
         public InputAction @Jump => m_Wrapper.m_PlayerOne_Jump;
         public InputAction @JumpRelease => m_Wrapper.m_PlayerOne_JumpRelease;
@@ -267,6 +472,10 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @CameraMovement => m_Wrapper.m_PlayerOne_CameraMovement;
         public InputAction @CancelLayers => m_Wrapper.m_PlayerOne_CancelLayers;
         public InputAction @CancelLayersRelease => m_Wrapper.m_PlayerOne_CancelLayersRelease;
+        public InputAction @MoveA => m_Wrapper.m_PlayerOne_MoveA;
+        public InputAction @MoveARelease => m_Wrapper.m_PlayerOne_MoveARelease;
+        public InputAction @MoveD => m_Wrapper.m_PlayerOne_MoveD;
+        public InputAction @MoveDRelease => m_Wrapper.m_PlayerOne_MoveDRelease;
         public InputActionMap Get() { return m_Wrapper.m_PlayerOne; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -279,6 +488,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @NavigateKnots.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnNavigateKnots;
                 @NavigateKnots.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnNavigateKnots;
                 @NavigateKnots.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnNavigateKnots;
+                @NavigateKnotsMouse.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnNavigateKnotsMouse;
+                @NavigateKnotsMouse.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnNavigateKnotsMouse;
+                @NavigateKnotsMouse.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnNavigateKnotsMouse;
                 @CreateLineButton.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCreateLineButton;
                 @CreateLineButton.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCreateLineButton;
                 @CreateLineButton.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCreateLineButton;
@@ -300,6 +512,18 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CancelLayersRelease.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayersRelease;
                 @CancelLayersRelease.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayersRelease;
                 @CancelLayersRelease.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnCancelLayersRelease;
+                @MoveA.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveA;
+                @MoveA.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveA;
+                @MoveA.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveA;
+                @MoveARelease.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveARelease;
+                @MoveARelease.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveARelease;
+                @MoveARelease.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveARelease;
+                @MoveD.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveD;
+                @MoveD.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveD;
+                @MoveD.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveD;
+                @MoveDRelease.started -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveDRelease;
+                @MoveDRelease.performed -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveDRelease;
+                @MoveDRelease.canceled -= m_Wrapper.m_PlayerOneActionsCallbackInterface.OnMoveDRelease;
             }
             m_Wrapper.m_PlayerOneActionsCallbackInterface = instance;
             if (instance != null)
@@ -307,6 +531,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @NavigateKnots.started += instance.OnNavigateKnots;
                 @NavigateKnots.performed += instance.OnNavigateKnots;
                 @NavigateKnots.canceled += instance.OnNavigateKnots;
+                @NavigateKnotsMouse.started += instance.OnNavigateKnotsMouse;
+                @NavigateKnotsMouse.performed += instance.OnNavigateKnotsMouse;
+                @NavigateKnotsMouse.canceled += instance.OnNavigateKnotsMouse;
                 @CreateLineButton.started += instance.OnCreateLineButton;
                 @CreateLineButton.performed += instance.OnCreateLineButton;
                 @CreateLineButton.canceled += instance.OnCreateLineButton;
@@ -328,6 +555,18 @@ public class @Controls : IInputActionCollection, IDisposable
                 @CancelLayersRelease.started += instance.OnCancelLayersRelease;
                 @CancelLayersRelease.performed += instance.OnCancelLayersRelease;
                 @CancelLayersRelease.canceled += instance.OnCancelLayersRelease;
+                @MoveA.started += instance.OnMoveA;
+                @MoveA.performed += instance.OnMoveA;
+                @MoveA.canceled += instance.OnMoveA;
+                @MoveARelease.started += instance.OnMoveARelease;
+                @MoveARelease.performed += instance.OnMoveARelease;
+                @MoveARelease.canceled += instance.OnMoveARelease;
+                @MoveD.started += instance.OnMoveD;
+                @MoveD.performed += instance.OnMoveD;
+                @MoveD.canceled += instance.OnMoveD;
+                @MoveDRelease.started += instance.OnMoveDRelease;
+                @MoveDRelease.performed += instance.OnMoveDRelease;
+                @MoveDRelease.canceled += instance.OnMoveDRelease;
             }
         }
     }
@@ -335,6 +574,7 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerOneActions
     {
         void OnNavigateKnots(InputAction.CallbackContext context);
+        void OnNavigateKnotsMouse(InputAction.CallbackContext context);
         void OnCreateLineButton(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnJumpRelease(InputAction.CallbackContext context);
@@ -342,5 +582,9 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnCameraMovement(InputAction.CallbackContext context);
         void OnCancelLayers(InputAction.CallbackContext context);
         void OnCancelLayersRelease(InputAction.CallbackContext context);
+        void OnMoveA(InputAction.CallbackContext context);
+        void OnMoveARelease(InputAction.CallbackContext context);
+        void OnMoveD(InputAction.CallbackContext context);
+        void OnMoveDRelease(InputAction.CallbackContext context);
     }
 }

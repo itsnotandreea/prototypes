@@ -21,6 +21,9 @@ public class PlayerOneScript : MonoBehaviour
 
     public bool autoCamera,
                 menuMode;
+
+    private float x2,
+                  y2;
     
     private bool canConnect;
 
@@ -64,6 +67,10 @@ public class PlayerOneScript : MonoBehaviour
         closestKnot = null;
 
         canConnect = true;
+
+        x2 = transform.position.x;
+        y2 = transform.position.y;
+        Navigate();
     }
 
     void Update()
@@ -72,9 +79,41 @@ public class PlayerOneScript : MonoBehaviour
         MoveCamera();
     }
 
-    public void NavigateKnotsInput(Vector2 value)
+    public void NavigateKnotsMouseInput(Vector2 value)
+    {
+        x2 = value.x;
+        y2 = value.y;
+    }
+
+    public void NavigateKnotsJoystickInput(Vector2 value)
     {
         leftStickInput = value;
+
+        //Calculates angle between start position and current position
+        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 50.0f);
+        Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(transform.position.x, transform.position.y);
+
+        if (transform.position.x > 0)
+        {
+            adjustAngle = 360.0f - Vector2.Angle(initialPos, currentPos);
+        }
+        else
+        {
+            adjustAngle = Vector2.Angle(initialPos, currentPos);
+        }
+
+        //Takes Input from Joystick axis
+        float x = leftStickInput.x;
+        float y = leftStickInput.y;
+
+        //Converts to radians and calculates cos and sin
+        float angle = adjustAngle * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(angle);
+        float sin = Mathf.Sin(angle);
+
+        //applies the new input to the player's position, respecting the radius
+        x2 = transform.position.x + (lineLength * (x * cos - y * sin));
+        y2 = transform.position.y + (lineLength * (x * sin + y * cos));
     }
 
     public void MoveCameraInput(Vector2 value)
@@ -226,32 +265,6 @@ public class PlayerOneScript : MonoBehaviour
 
     void Navigate()
     {
-        //Calculates angle between start position and current position
-        Vector2 initialPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(floor.transform.position.x, floor.transform.position.y + 50.0f);
-        Vector2 currentPos = new Vector2(floor.transform.position.x, floor.transform.position.y) - new Vector2(transform.position.x, transform.position.y);
-
-        if(transform.position.x > 0)
-        {
-            adjustAngle = 360.0f - Vector2.Angle(initialPos, currentPos);
-        }
-        else
-        {
-            adjustAngle = Vector2.Angle(initialPos, currentPos);
-        }
-
-        //Takes Input from Joystick axis
-        float x = leftStickInput.x;
-        float y = leftStickInput.y;
-
-        //Converts to radians and calculates cos and sin
-        float angle = adjustAngle * Mathf.Deg2Rad;
-        float cos = Mathf.Cos(angle);
-        float sin = Mathf.Sin(angle);
-
-        //applies the new input to the player's position, respecting the radius
-        float x2 = transform.position.x + (lineLength * (x * cos - y * sin));
-        float y2 = transform.position.y + (lineLength * (x * sin + y * cos));
-
         aimDirection = new Vector3(x2, y2, transform.position.z);
         
         DrawLine(aimDirection);

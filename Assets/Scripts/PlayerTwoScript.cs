@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerTwoScript : MonoBehaviour
 {
     public int button,
-               jumped;
+               jumped,
+               gettingInputFromXSources;
 
     public float moveSpeed,
                  jumpHeight,
@@ -25,11 +26,16 @@ public class PlayerTwoScript : MonoBehaviour
                 held,
                 menuMode;
 
-    private float offScreenTime;
+    private float offScreenTime,
+                  xOne,
+                  xTwo,
+                  xFinal;
 
     private bool onScreen;
     
     private Rigidbody2D rb;
+
+    private SpriteRenderer spriteR;
 
     private PlayerTwoSound pTwoSound;
 
@@ -54,6 +60,8 @@ public class PlayerTwoScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        spriteR = GetComponent<SpriteRenderer>();
+
         pTwoSound = GetComponent<PlayerTwoSound>();
 
         musicSequenceScript = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
@@ -72,18 +80,45 @@ public class PlayerTwoScript : MonoBehaviour
         pressedTime = 0.0f;
 
         bounceDirection = new Vector3(1, 5, 0);
+
+        gettingInputFromXSources = 0;
     }
 
-    public void RunInputUpdate(float xInput)
+    public void RunInputUpdate(float xInput, int source)
     {
-        //checks if the player should be flipped to face the right direction
-        if ((xInput > 0 && transform.localScale.x < 0) || (xInput < 0 && transform.localScale.x > 0))
+        if (source == 1)
         {
-            Flip();
+            xOne = xInput;
+        }
+        if (source == 2)
+        {
+            xTwo = xInput;
+        }
+
+        if (xOne == 0.0f && xTwo == 0.0f)
+        {
+            xFinal = 0.0f;
+        }
+        else if (xOne != 0)
+        {
+            xFinal = xOne;
+        }
+        else if (xTwo != 0)
+        {
+            xFinal = xTwo;
+        }
+        
+        if (xFinal > 0 && spriteR.flipX == true)
+        {
+            spriteR.flipX = false;
+        }
+        else if (xFinal < 0 && spriteR.flipX == false)
+        {
+            spriteR.flipX = true;
         }
 
         //gets input from PlayerInputHandler from Left Stick X Axis
-        moveDir = new Vector3(xInput, 0, 0) * 10f;
+        moveDir = new Vector3(xFinal, 0, 0) * 10f;
         //adds speed
         targetMoveAmount = moveDir * moveSpeed;
         //adds a smoothing effect between the current and desired amount of 'moving' the player wants
@@ -254,17 +289,6 @@ public class PlayerTwoScript : MonoBehaviour
         //sound
         button = 0;
         pTwoSound.AssignClip(button);
-    }
-
-    private void Flip()
-    {
-        //flips the sprite for when player is going towards the left side/right side
-        float newXScale = transform.localScale.x * -1.0f;
-        Vector3 newScale = new Vector3(newXScale, transform.localScale.y, transform.localScale.z);
-        transform.localScale = newScale;
-
-        //changes bounce direction accroding to the player's facing
-        bounceDirection.x *= -1.0f;
     }
 
     private void CheckIfOnScreen()

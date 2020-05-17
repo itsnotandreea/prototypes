@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class MainManager : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = false;
+
         cdSystem = countdown.GetComponent<CountdownSystem>();
 
         pOneScript = GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOneScript>();
@@ -81,6 +84,11 @@ public class MainManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) == true)
         {
             Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) == true)
+        {
+            SceneManager.LoadScene("SampleScene");
         }
         
         if (cdSystem.timer <= 0.0f)
@@ -173,7 +181,7 @@ public class MainManager : MonoBehaviour
             knotsZone.SetActive(true);
 
             timeUI.SetActive(true);
-            restartUI.SetActive(true);
+            //restartUI.SetActive(true);
 
             if (scoreMode)
             {

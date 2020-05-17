@@ -7508,7 +7508,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395853252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.4, y: 17.400002, z: 0}
+  m_LocalPosition: {x: 23.8, y: 17.100002, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -32361,6 +32361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: 0
   jumped: 0
+  gettingInputFromXSources: 0
   moveSpeed: 4
   jumpHeight: 160
   fallMultiplier: 7.5
@@ -50516,7 +50517,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
   - {x: 87.9, y: 9, z: 0}
   - {x: 87.9, y: 19, z: 0}
@@ -54775,7 +54776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101650200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.4, y: 17.4, z: 0}
+  m_LocalPosition: {x: 23.8, y: 17.1, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58045,7 +58046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: 2
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:

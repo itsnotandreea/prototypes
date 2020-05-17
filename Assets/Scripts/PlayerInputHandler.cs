@@ -6,10 +6,11 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    private int index;
+    private int index,
+                playerTwoIndex;
 
     private float xInput;
-
+    
     private PlayerInput playerInput;
 
     private GameObject pOne,
@@ -23,21 +24,38 @@ public class PlayerInputHandler : MonoBehaviour
     private Vector2 moveInput,
                     cameraInput;
 
+    private Camera cam;
+
     private void Awake()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
         playerInput = GetComponent<PlayerInput>();
         index = playerInput.playerIndex;
         
-        if (index == 0)
+        if (playerInput.devices[0].ToString() == "Mouse:/Mouse")
         {
-            pOne = GameObject.FindWithTag("PlayerOne");
-            pOneScript = pOne.GetComponent<PlayerOneScript>();
+            index = 0;
         }
+        else if (playerInput.devices[0].ToString() == "Keyboard:/Keyboard")
+        {
+            index = 1;
+        }
+        else
+        {
+            index = index % 2;
+        }
+
+        pOne = GameObject.FindWithTag("PlayerOne");
+        pOneScript = pOne.GetComponent<PlayerOneScript>();
+        
+        pTwo = GameObject.FindWithTag("PlayerTwo");
+        pTwoScript = pTwo.GetComponent<PlayerTwoScript>();
 
         if (index == 1)
         {
-            pTwo = GameObject.FindWithTag("PlayerTwo");
-            pTwoScript = pTwo.GetComponent<PlayerTwoScript>();
+            pTwoScript.gettingInputFromXSources++;
+            playerTwoIndex = pTwoScript.gettingInputFromXSources;
         }
     }
 
@@ -45,7 +63,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (index == 1)
         {
-            pTwoScript.RunInputUpdate(xInput);
+            pTwoScript.RunInputUpdate(xInput, playerTwoIndex);
         }
 
         if (index == 0)
@@ -54,11 +72,19 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    private void OnNavigateKnotsMouse(InputValue value)
+    {
+        if (index == 0)
+        {
+            pOneScript.NavigateKnotsMouseInput(cam.ScreenToWorldPoint(value.Get<Vector2>()));
+        }
+    }
+
     private void OnNavigateKnots(InputValue value)
     {
         if (index == 0)
         {
-            pOneScript.NavigateKnotsInput(value.Get<Vector2>());
+            pOneScript.NavigateKnotsJoystickInput(value.Get<Vector2>());
         }
     }
 
@@ -92,6 +118,38 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 xInput = -1.0f;
             }
+        }
+    }
+
+    private void OnMoveA()
+    {
+        if (index == 1)
+        {
+            xInput = -1.0f;
+        }
+    }
+
+    private void OnMoveD()
+    {
+        if (index == 1)
+        {
+            xInput = 1.0f;
+        }
+    }
+
+    private void OnMoveARelease()
+    {
+        if (index == 1)
+        {
+            xInput = 0.0f;
+        }
+    }
+
+    private void OnMoveDRelease()
+    {
+        if (index == 1)
+        {
+            xInput = 0.0f;
         }
     }
 

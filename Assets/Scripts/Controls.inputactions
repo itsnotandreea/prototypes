@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "NavigateKnotsMouse",
+                    "type": "Value",
+                    "id": "11f8bfb5-69f4-4a9c-bdbb-e045ec5ca23c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "CreateLineButton",
                     "type": "Button",
                     "id": "3776b342-52ab-4c77-a349-21992fc2a00e",
@@ -68,6 +76,38 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "MoveA",
+                    "type": "Button",
+                    "id": "e35ace46-7c98-4e3d-a9e5-39d2ee253134",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "MoveARelease",
+                    "type": "Button",
+                    "id": "92896173-8a70-40ea-8f50-c87b42bf458f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "MoveD",
+                    "type": "Button",
+                    "id": "57f9ff9e-05bb-4ebf-a921-111bfc123c05",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "MoveDRelease",
+                    "type": "Button",
+                    "id": "eaeb6b21-d092-47cb-b02f-933bc945718f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -95,6 +135,17 @@
                 },
                 {
                     "name": "",
+                    "id": "6ef4e017-5e1d-4d60-a26b-8a03f3a3f6d3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CreateLineButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "81821cfc-1e8a-4e0a-a4a5-4ed78e57a6f5",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -106,8 +157,30 @@
                 },
                 {
                     "name": "",
+                    "id": "d08df723-68a7-485a-bacb-70406eb7172f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "236c7517-43de-4f0c-a045-eb2b2b764554",
                     "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fbced12-2e46-4e9e-8582-66fbe22aef72",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -161,12 +234,133 @@
                 },
                 {
                     "name": "",
+                    "id": "583733c5-1fef-4ad8-b337-9bded945faaf",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelLayers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bd88b305-3526-4dc1-b942-48f3985c7ffd",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "CancelLayersRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6977666c-2f53-4189-826b-2a9d51948fb6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelLayersRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f7c8dde-3abd-4b71-bce4-ba4a2000795f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a03d469-f4c8-4e73-a69f-9780f90aef1a",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32b19466-c59a-4925-81e8-e16a1ea6a808",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb00aade-d9bc-4081-89e3-92a44ee9b8aa",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a38c606-9abf-4ae8-83f7-c2e0e5615036",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveARelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0af91f8b-b34d-4ca6-98bb-54b9dadb1f07",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveARelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03d22cd9-fb95-4cae-b829-8284523c70d1",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveDRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f3cb3e8-f080-400c-a584-807173a0b3d5",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveDRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0eaa419b-53f9-468c-b562-e70e0a5687a2",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateKnotsMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
