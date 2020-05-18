@@ -204,6 +204,8 @@ public class PlayerTwoScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectable")
         {
+            other.enabled = false;
+
             scoreScript.IncreaseScore();
             
             particleSys.Play();

@@ -7,8 +7,9 @@ public class SpawnKnots : MonoBehaviour
     public float respawnTime,
                  size,
                  moveSpeed,
-                 moveUpSpeed,
-                 knotsCount = 0;
+                 moveUpSpeed;
+
+    public GameObject parent;
 
     public GameObject[] knots;
 
@@ -38,7 +39,8 @@ public class SpawnKnots : MonoBehaviour
 
         //select random knot
         randomKnot = Random.Range(0, knots.Length);
-        Instantiate(knots[randomKnot], position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+        GameObject newKnot = Instantiate(knots[randomKnot], position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+        newKnot.transform.parent = parent.transform;
     }
 
     IEnumerator KnotsWave()
@@ -46,8 +48,7 @@ public class SpawnKnots : MonoBehaviour
         while(addKnots)
         {
             yield return new WaitForSeconds(respawnTime);
-
-            knotsCount += 1;
+            
             SpawnKnot();
         }
     }

@@ -21,7 +21,7 @@ public class MusicPlayerScript : MonoBehaviour
 
         ReadTxtFile();
         
-        musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SOUND4/Empty");
+        musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SOUND6/Empty");
 
         musicEvent.start();
 
@@ -33,7 +33,7 @@ public class MusicPlayerScript : MonoBehaviour
         using (StreamReader reader = new StreamReader(path))
         {
             string allText = reader.ReadToEnd();
-            char[] temp = new char[30];
+            char[] temp = new char[10];
 
             int k;
             k = 0;
@@ -52,7 +52,7 @@ public class MusicPlayerScript : MonoBehaviour
                     {
                         List<string> noteList = new List<string>
                         {
-                            "event:/SOUND4/" + tempo
+                            "event:/SOUND6/" + tempo
                         };
 
                         playList.Add(noteList);
@@ -102,14 +102,46 @@ public class MusicPlayerScript : MonoBehaviour
 
     private void Layers(int noteIndex)
     {
-        for (int j = 2; j < 18; j++)
+        bool sacred = false;
+
+        for (int j = 2; j < 21; j++)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer" + j.ToString(), 0f);
         }
         
-        for (int k = 1; k < playList[noteIndex].Count; k++)
+        for (int k = playList[noteIndex].Count - 1; k > 0; k--)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 1f);
+            char[] temp = new char[8];
+            string tempo = new string(temp);
+            
+            if (playList[noteIndex][k].Equals("Layer20" + tempo))
+            {
+                sacred = true;
+            }
+
+            if (sacred)
+            {
+                if (playList[noteIndex][k].Equals("Layer20" + tempo) || playList[noteIndex][k].Equals("Layer19" + tempo) || playList[noteIndex][k].Equals("Layer18" + tempo))
+                {
+                    FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 1f);
+                }
+                else
+                {
+                    FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 0.5f);
+                }
+            }
+            else
+            {
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 1f);
+            }
+        }
+        if (sacred)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 0.5f);
+        }
+        else
+        {
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 1f);
         }
     }
 }

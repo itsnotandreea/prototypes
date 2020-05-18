@@ -26,22 +26,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cf6bb8e9c42274b4ab946a8e84da7e94,
+      objectReference: {fileID: 21300000, guid: c5bf1087ed92d0e418ef27d9c0694326,
         type: 3}
     - target: {fileID: 2268967290363231551, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_Name
-      value: knotOrange
+      value: knotD
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.6
+      value: -60.4
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.1
+      value: 17.946121
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}

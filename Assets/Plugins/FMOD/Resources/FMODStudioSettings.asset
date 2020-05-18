@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../SOUND4/SOUND4.fspro
-  sourceBankPath: ..\SOUND4\Build
+  sourceProjectPath: ../SOUND6/SOUND6/SOUND6.fspro
+  sourceBankPath: ..\SOUND6\SOUND6\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0

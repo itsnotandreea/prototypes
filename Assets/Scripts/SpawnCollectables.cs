@@ -7,8 +7,7 @@ public class SpawnCollectables : MonoBehaviour
     public float respawnTime,
                  size,
                  moveSpeed,
-                 moveUpSpeed,
-                 collectablesCount = 0;
+                 moveUpSpeed;
 
     public GameObject[] collectables;
 
@@ -37,7 +36,7 @@ public class SpawnCollectables : MonoBehaviour
         Vector3 position = transform.position + new Vector3(pos.x, pos.y, 0.0f);
 
         //instantiate collectable
-        randomCollectable = Random.Range(0, collectables.Length);
+        randomCollectable = Random.Range(0, 16);
         Instantiate(collectables[randomCollectable], position, Quaternion.identity);
     }
 
@@ -46,8 +45,7 @@ public class SpawnCollectables : MonoBehaviour
         while (addCollectables)
         {
             yield return new WaitForSeconds(respawnTime);
-
-            collectablesCount += 1;
+            
             SpawnCollectable();
         }
     }

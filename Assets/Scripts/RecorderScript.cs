@@ -56,6 +56,34 @@ public class RecorderScript : MonoBehaviour
         {
             AddToRecording("G");
         }
+        else if (knot.transform.name == "knotShintoC" || knot.transform.name == "knotShintoC(Clone)")
+        {
+            AddToRecording("C");
+        }
+        else if (knot.transform.name == "knotShintoCsharp" || knot.transform.name == "knotShintoCsharp(Clone)")
+        {
+            AddToRecording("Csharp");
+        }
+        else if (knot.transform.name == "knotShintoF" || knot.transform.name == "knotShintoF(Clone)")
+        {
+            AddToRecording("F");
+        }
+        else if (knot.transform.name == "knotShintoG" || knot.transform.name == "knotShintoG(Clone)")
+        {
+            AddToRecording("G");
+        }
+        else if (knot.transform.name == "knotShintoGsharp" || knot.transform.name == "knotShintoGsharp(Clone)")
+        {
+            AddToRecording("Gsharp");
+        }
+        else if (knot.transform.name == "knotShintoCC" || knot.transform.name == "knotShintoCC(Clone)")
+        {
+            AddToRecording("CC");
+        }
+        else if (knot.transform.name == "knotShintoCCsharp" || knot.transform.name == "knotShintoCCsharp(Clone)")
+        {
+            AddToRecording("CCsharp");
+        }
     }
 
     private void AddToRecording(string newNote)
@@ -154,6 +182,21 @@ public class RecorderScript : MonoBehaviour
         if (musicSeq.layersArray[15])
         {
             playList[index].Add("17");
+        }
+
+        if (musicSeq.layersArray[16])
+        {
+            playList[index].Add("18");
+        }
+
+        if (musicSeq.layersArray[17])
+        {
+            playList[index].Add("19");
+        }
+
+        if (musicSeq.layersArray[18])
+        {
+            playList[index].Add("20");
         }
     }
 

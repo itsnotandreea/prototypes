@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5720624752744409425
+--- !u!1001 &1410932328519618077
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.38
+      value: -64.24331
       objectReference: {fileID: 0}
     - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.05
+      value: 13.679655
       objectReference: {fileID: 0}
     - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
@@ -25,17 +25,17 @@ PrefabInstance:
     - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
@@ -62,26 +62,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 504393610640676719, guid: ef6e6c9b5676246498e79b7db9d091aa,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 504393612249318657, guid: ef6e6c9b5676246498e79b7db9d091aa,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 504393612249318659, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_Color.r
@@ -90,33 +70,17 @@ PrefabInstance:
     - target: {fileID: 504393612249318659, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 504393612249318659, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.55
       objectReference: {fileID: 0}
-    - target: {fileID: 504393612249318659, guid: ef6e6c9b5676246498e79b7db9d091aa,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cf6bb8e9c42274b4ab946a8e84da7e94,
-        type: 3}
     - target: {fileID: 504393612249318663, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_Name
-      value: knotG
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006610837908648197, guid: ef6e6c9b5676246498e79b7db9d091aa,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8ac77876d6c293442a8cca324d367420, type: 3}
-    - target: {fileID: 8006610837908648197, guid: ef6e6c9b5676246498e79b7db9d091aa,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
+      value: knotShintoF
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6e6c9b5676246498e79b7db9d091aa, type: 3}
