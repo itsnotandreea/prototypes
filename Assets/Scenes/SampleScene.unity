@@ -6593,6 +6593,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable14(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6786654770897204595, guid: 2b817715007977a46949dd4f27cd9d67,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6786654770897204597, guid: 2b817715007977a46949dd4f27cd9d67,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8244,6 +8249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable16(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 8686951281242398676, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
 --- !u!1 &490718360
@@ -9676,6 +9686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Collectable2(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386048657860232595, guid: 28046f16971529045aec9a020f16fa6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2386048657860232597, guid: 28046f16971529045aec9a020f16fa6d,
         type: 3}
@@ -38861,6 +38876,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable3(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 515940484768499681, guid: 7c932d2ccba824c4baa05966d1f032ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 515940484768499687, guid: 7c932d2ccba824c4baa05966d1f032ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -51871,6 +51891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Collectable15(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048021516274959236, guid: 752e25e5be1d6944daa0928b59a1ecfd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 752e25e5be1d6944daa0928b59a1ecfd, type: 3}

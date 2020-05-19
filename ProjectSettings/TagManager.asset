@@ -33,6 +33,7 @@ TagManager:
   - Recorder
   - MusicPlayer
   - Score
+  - ToDestroy
   layers:
   - Default
   - TransparentFX

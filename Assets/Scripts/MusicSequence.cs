@@ -720,7 +720,7 @@ public class MusicSequence : MonoBehaviour
         {
             if (!sacredCollectable)
             {
-                Vector3 newPos = new Vector3(transform.position.x + Random.Range(-15.0f, 15.0f), transform.position.y + Random.Range(25.0f, 50.0f), 0.0f);
+                Vector3 newPos = new Vector3(transform.position.x + Random.Range(-15.0f, 15.0f), transform.position.y + Random.Range(25.0f, 35.0f), 0.0f);
                 Instantiate(shintoCollectable, newPos, transform.rotation);
                 sacredCollectable = true;
             }
@@ -1026,7 +1026,21 @@ public class MusicSequence : MonoBehaviour
 
             yield return new WaitForSeconds(time);
 
-            sRenderer.color = originalColor;
+            if (originalColor == new Color(1.0f, 1.0f, 1.0f, 1.0f))
+            {
+                sRenderer.color = originalColor;
+            }
+            else
+            {
+                if (sacred)
+                {
+                    sRenderer.color = originalColor;
+                }
+                else
+                {
+                    sRenderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                }
+            }
             
             i++;
         }
@@ -1108,7 +1122,7 @@ public class MusicSequence : MonoBehaviour
         }
 
         //removes sacred knots from sequence if the time expired
-        if (knot.GetComponent<SpriteRenderer>().color == new Color(0.0f, 0.0f, 0.0f, 0.0f))
+        if (knot.transform.tag == "ToDestroy")
         {
             if (!sacred)
             {
@@ -1120,7 +1134,7 @@ public class MusicSequence : MonoBehaviour
         {
             sequence.Remove(knot);
 
-            if(i > 0)
+            if (i > 0)
             {
                 i--;
             }
@@ -1134,6 +1148,8 @@ public class MusicSequence : MonoBehaviour
         yield return new WaitForSeconds(endSacredTime);
 
         //sacredObject.SetActive(false);
+
+        sacredObject.GetComponent<SpawnKnots>().addKnots = false;
 
         layersArray[16] = false;
         layersArray[17] = false;
@@ -1153,7 +1169,6 @@ public class MusicSequence : MonoBehaviour
             child.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         }
 
-        sacredObject.GetComponent<SpawnKnots>().addKnots = false;
-        shintoGO.SetActive(true);
+        shintoGO.SetActive(false);
     }
 }
