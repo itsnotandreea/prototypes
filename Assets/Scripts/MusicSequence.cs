@@ -693,7 +693,10 @@ public class MusicSequence : MonoBehaviour
                     layersArray[18] = true;
 
                     shintoGO.SetActive(true);
-                    shintoGO.transform.position = new Vector3(transform.position.x, transform.position.y, shintoGO.transform.position.z);
+                    shintoGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
+                                                              transform.position.y + transform.TransformDirection(Vector2.up * 11.0f).y,
+                                                              shintoGO.transform.position.z);
+
                     shintoGO.GetComponent<SpawnKnots>().addKnots = true;
                     StartCoroutine(shintoGO.GetComponent<SpawnKnots>().KnotsWave());
                     
@@ -720,7 +723,10 @@ public class MusicSequence : MonoBehaviour
         {
             if (!sacredCollectable)
             {
-                Vector3 newPos = new Vector3(transform.position.x + Random.Range(-15.0f, 15.0f), transform.position.y + Random.Range(25.0f, 35.0f), 0.0f);
+                Vector2 pos = new Vector2(Random.Range(-15.0f, 15.0f), Random.Range(20.0f, 30.0f));
+                Vector3 newPos = new Vector3(transform.position.x + transform.TransformDirection(pos).x,
+                                             transform.position.y + transform.TransformDirection(pos).y,
+                                             0.0f);
                 Instantiate(shintoCollectable, newPos, transform.rotation);
                 sacredCollectable = true;
             }
