@@ -12,15 +12,20 @@ public class SpawnKnots : MonoBehaviour
     public GameObject parent;
 
     public GameObject[] knots;
-
+    
     private int randomKnot;
 
-    private bool addKnots;
+    public bool addKnots,
+                startAutomatically;
 
-    void Start()
+    void Awake()
     {
         addKnots = true;
-        StartCoroutine(KnotsWave());
+        
+        if(startAutomatically)
+        {
+            StartCoroutine(KnotsWave());
+        }
     }
 
     void FixedUpdate()
@@ -43,9 +48,9 @@ public class SpawnKnots : MonoBehaviour
         newKnot.transform.parent = parent.transform;
     }
 
-    IEnumerator KnotsWave()
+    public IEnumerator KnotsWave()
     {
-        while(addKnots)
+        while (addKnots)
         {
             yield return new WaitForSeconds(respawnTime);
             

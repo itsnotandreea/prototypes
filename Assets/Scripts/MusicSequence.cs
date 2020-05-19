@@ -690,8 +690,10 @@ public class MusicSequence : MonoBehaviour
                     layersArray[17] = true;
                     layersArray[18] = true;
 
-                    shintoGO.transform.position = new Vector3(transform.position.x, transform.position.y, shintoGO.transform.position.z);
                     shintoGO.SetActive(true);
+                    shintoGO.transform.position = new Vector3(transform.position.x, transform.position.y, shintoGO.transform.position.z);
+                    shintoGO.GetComponent<SpawnKnots>().addKnots = true;
+                    StartCoroutine(shintoGO.GetComponent<SpawnKnots>().KnotsWave());
 
                     StartCoroutine(EndSacred(shintoGO));
                 }
@@ -1123,7 +1125,7 @@ public class MusicSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(endSacredTime);
 
-        sacredObject.SetActive(false);
+        //sacredObject.SetActive(false);
 
         layersArray[16] = false;
         layersArray[17] = false;
@@ -1137,8 +1139,13 @@ public class MusicSequence : MonoBehaviour
 
         foreach (Transform child in shintosParent.transform)
         {
-            child.gameObject.tag = "Untagged";
+            child.gameObject.layer = 0;
+            Destroy(child.gameObject.GetComponent<Collider2D>());
+            Destroy(child.gameObject.GetComponent<ParticleSystem>());
             child.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         }
+
+        sacredObject.GetComponent<SpawnKnots>().addKnots = false;
+        shintoGO.SetActive(true);
     }
 }
