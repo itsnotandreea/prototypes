@@ -249,7 +249,7 @@ public class PlayerOneScript : MonoBehaviour
                 if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
                 {
                     var main = closestKnot.GetComponent<ParticleSystem>().main;
-                    main.startColor = new Color(255f, 225f, 0f, 255f);
+                    main.startColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
 
                     closestKnot.GetComponent<ParticleSystem>().Play();
                 }

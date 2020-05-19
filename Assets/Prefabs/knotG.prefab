@@ -103,6 +103,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: cf6bb8e9c42274b4ab946a8e84da7e94,
         type: 3}
+    - target: {fileID: 504393612249318662, guid: ef6e6c9b5676246498e79b7db9d091aa,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504393612249318662, guid: ef6e6c9b5676246498e79b7db9d091aa,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504393612249318662, guid: ef6e6c9b5676246498e79b7db9d091aa,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 504393612249318663, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_Name

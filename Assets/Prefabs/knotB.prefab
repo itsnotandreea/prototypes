@@ -28,10 +28,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f5534e6c4a02e9b4ca939e57c2af8401,
         type: 3}
+    - target: {fileID: 2268967290363231550, guid: 5cc559e87750e904eb721f2133126939,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268967290363231550, guid: 5cc559e87750e904eb721f2133126939,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268967290363231550, guid: 5cc559e87750e904eb721f2133126939,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2268967290363231551, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}
       propertyPath: m_Name
-      value: knotBlack
+      value: knotB
       objectReference: {fileID: 0}
     - target: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
         type: 3}

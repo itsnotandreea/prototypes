@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 504393612249318663, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}
       propertyPath: m_Name
-      value: knotGreen
+      value: knotC
       objectReference: {fileID: 0}
     - target: {fileID: 1598522246784295094, guid: ef6e6c9b5676246498e79b7db9d091aa,
         type: 3}

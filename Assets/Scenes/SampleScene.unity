@@ -6705,6 +6705,7 @@ MonoBehaviour:
   endSacredTime: 15
   cancelLayers: 0
   sacred: 0
+  sacredCollectable: 0
   currentNote: 
   layersArray: 00000000000000000000000000000000000000
   code: 0000000000000000000000000000000000000000
@@ -47368,7 +47369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b4b34fd04e16a4cacb9da6c0da4841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeInSeconds: 1.013
+  timeInSeconds: 0.9799
 --- !u!1 &1756749791
 GameObject:
   m_ObjectHideFlags: 0

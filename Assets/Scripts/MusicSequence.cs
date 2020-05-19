@@ -18,7 +18,8 @@ public class MusicSequence : MonoBehaviour
                  endSacredTime;
 
     public bool cancelLayers,
-                sacred;
+                sacred,
+                sacredCollectable;
 
     public string currentNote;
 
@@ -94,6 +95,7 @@ public class MusicSequence : MonoBehaviour
         activeLayers = 0;
 
         sacred = false;
+        sacredCollectable = false;
     }
     
     void Update()
@@ -694,6 +696,8 @@ public class MusicSequence : MonoBehaviour
                     shintoGO.transform.position = new Vector3(transform.position.x, transform.position.y, shintoGO.transform.position.z);
                     shintoGO.GetComponent<SpawnKnots>().addKnots = true;
                     StartCoroutine(shintoGO.GetComponent<SpawnKnots>().KnotsWave());
+                    
+                    sacredCollectable = false;
 
                     StartCoroutine(EndSacred(shintoGO));
                 }
@@ -714,8 +718,12 @@ public class MusicSequence : MonoBehaviour
 
         if (codeS == "44411" || codeS == "14441" || codeS == "11444" || codeS == "41144" || codeS == "44114")
         {
-            Vector3 newPos = new Vector3(transform.position.x + Random.Range(-5.0f, 5.0f), transform.position.y + Random.Range(2.0f, 7.0f), 0.0f);
-            Instantiate(shintoCollectable, newPos, transform.rotation);
+            if (!sacredCollectable)
+            {
+                Vector3 newPos = new Vector3(transform.position.x + Random.Range(-15.0f, 15.0f), transform.position.y + Random.Range(25.0f, 50.0f), 0.0f);
+                Instantiate(shintoCollectable, newPos, transform.rotation);
+                sacredCollectable = true;
+            }
         }
     }
 

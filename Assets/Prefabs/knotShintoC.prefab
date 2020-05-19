@@ -82,5 +82,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: knotShintoC
       objectReference: {fileID: 0}
+    - target: {fileID: 8372358095660417975, guid: 8c9c920262505e64bbac0fdd053e807d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372358095660417975, guid: 8c9c920262505e64bbac0fdd053e807d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372358095660417975, guid: 8c9c920262505e64bbac0fdd053e807d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9c920262505e64bbac0fdd053e807d, type: 3}
