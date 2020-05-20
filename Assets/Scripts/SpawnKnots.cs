@@ -13,7 +13,7 @@ public class SpawnKnots : MonoBehaviour
 
     public GameObject[] knots;
 
-    private string tag = "ToDestroy";
+    private string tagString = "ToDestroy";
     
     private int randomKnot;
 
@@ -51,7 +51,7 @@ public class SpawnKnots : MonoBehaviour
 
         if (!startAutomatically)
         {
-            newKnot.transform.tag = tag;
+            newKnot.transform.tag = tagString;
         }
     }
 

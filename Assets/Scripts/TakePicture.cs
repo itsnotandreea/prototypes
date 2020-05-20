@@ -10,8 +10,12 @@ public class TakePicture : MonoBehaviour
 
     private bool takeScreenshotOnNextFrame;
 
+    private MainManager mainManager;
+
     private void Awake()
     {
+        mainManager = GameObject.FindGameObjectWithTag("MainManager").GetComponent<MainManager>();
+
         instance = this;
         cam = GetComponent<Camera>();
     }
@@ -28,7 +32,8 @@ public class TakePicture : MonoBehaviour
             renderResult.ReadPixels(rect, 0, 0);
 
             byte[] byteArray = renderResult.EncodeToPNG();
-            System.IO.File.WriteAllBytes(Application.dataPath + "/CameraScreenshot.png", byteArray);
+            string path = Application.dataPath + "/Resources/Artwork/Art" + mainManager.gallerySize + ".png";
+            System.IO.File.WriteAllBytes(path, byteArray);
             Debug.Log("Saved CameraScreenshot.png");
 
             RenderTexture.ReleaseTemporary(renderTexture);

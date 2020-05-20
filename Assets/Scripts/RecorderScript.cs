@@ -12,17 +12,21 @@ public class RecorderScript : MonoBehaviour
     private string path;
 
     private MusicSequence musicSeq;
-  
+
+    private MainManager mainManager;
+
     private void Start()
     {
-        musicSeq = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
+        mainManager = GameObject.FindGameObjectWithTag("MainManager").GetComponent<MainManager>();
 
-        path = Application.dataPath + "/Recording.txt";
+        musicSeq = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
+        
+        path = Application.dataPath + "/Resources/Artwork/Art" + (mainManager.gallerySize + 1) + ".txt";
 
         if (File.Exists(path))
         {
             File.Delete(path);
-            File.Delete(Application.dataPath + "/Recording.meta");
+            File.Delete(Application.dataPath + "/Resources/Artwork/Art" + (mainManager.gallerySize + 1) + ".txt");
         }
     }
 

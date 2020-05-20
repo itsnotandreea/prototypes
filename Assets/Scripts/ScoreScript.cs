@@ -30,7 +30,7 @@ public class ScoreScript : MonoBehaviour
         savedScore = "savedScore";
         
         score = 0;
-        previousScore = PlayerPrefs.GetInt(savedScore);
+        previousScore = PlayerPrefs.GetInt(savedScore, 0);
         previousScoreText.text = "Best: " + previousScore.ToString();
     }
     

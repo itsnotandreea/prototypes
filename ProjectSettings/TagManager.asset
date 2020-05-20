@@ -34,6 +34,7 @@ TagManager:
   - MusicPlayer
   - Score
   - ToDestroy
+  - MainManager
   layers:
   - Default
   - TransparentFX

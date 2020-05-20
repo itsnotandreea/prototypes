@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+    public int gallerySize;
+
     public Text UIWinner;
 
     public GameObject countdown,
@@ -34,8 +36,13 @@ public class MainManager : MonoBehaviour
     private MusicPlayerScript musicPlayerScript;
     private ScoreScript scoreScript;
 
+    private string noOfArtworks;
+
     void Awake()
     {
+        noOfArtworks = "noOfArtworks";
+        gallerySize = PlayerPrefs.GetInt(noOfArtworks, 0);
+
         Cursor.visible = false;
 
         cdSystem = countdown.GetComponent<CountdownSystem>();
@@ -121,6 +128,8 @@ public class MainManager : MonoBehaviour
             
             if (takePicture)
             {
+                gallerySize++;
+                PlayerPrefs.SetInt(noOfArtworks, gallerySize);
                 TakePicture.TakeScreenshot_Static(2000, 2000);
                 takePicture = false;
                 //pictureHolder.GetComponent<RawImage>().enabled = true;
