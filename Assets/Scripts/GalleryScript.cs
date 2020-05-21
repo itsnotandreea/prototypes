@@ -50,7 +50,7 @@ public class GalleryScript : MonoBehaviour
         placeholder[4].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - 3];
         placeholder[5].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - 4];
 
-        firstVisible = gallerySize - (gallerySize - 1);
+        firstVisible = gallerySize - (gallerySize);
         lastVisible = gallerySize - 4;
         
         for (int i = 0; i < 6; i++)
@@ -83,33 +83,29 @@ public class GalleryScript : MonoBehaviour
 
             rotations += -1;
             StartCoroutine(Double(-1));
-
+            
+            //THE INDEX OF THE SPRITE ON THE LAST POSITION (5)
             if (lastVisible >= 0)
             {
                 lastVisible = lastVisible - 2;
             }
-
-            if (gallerySize % 2 == 0)
+            
+            if (lastVisible == -1)
             {
-                if (lastVisible < 0)
-                {
-                    lastVisible = gallerySize - 2;
-                }
-            }
-            else
-            {
-                if (lastVisible == -2)
-                {
-                    lastVisible = gallerySize - 1;
-                }
-
-                if (lastVisible > gallerySize - 2)
-                {
-                    lastVisible = gallerySize - 2;
-                }
+                lastVisible = gallerySize - 2;
             }
 
+            if (lastVisible == -2)
+            {
+                lastVisible = gallerySize - 1;
+            }
 
+            if (lastVisible == gallerySize - 1)
+            {
+                lastVisible = gallerySize - 2;
+            }
+
+            //THE INDEX OF THE SPRITE ON THE FIRST POSITION (0)
             if (firstVisible >= 0)
             {
                 firstVisible = firstVisible - 2;
@@ -134,7 +130,6 @@ public class GalleryScript : MonoBehaviour
                     firstVisible = gallerySize - 2;
                 }
             }
-            Debug.Log(firstVisible);
 
             for (int i = 0; i < 6; i++)
             {
@@ -142,10 +137,14 @@ public class GalleryScript : MonoBehaviour
                 {
                     placeholder[i].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[lastVisible + 1];
 
-                    if (gallerySize % 2 != 0 && lastVisible < 0)
+                    if (lastVisible < 0)
                     {
                         lastVisible = gallerySize - 1;
-                        firstVisible = firstVisible - 1;
+
+                        if(lastVisible < -1)
+                        {
+                            firstVisible = firstVisible - 1;
+                        }
                     }
 
                     placeholder[(i + 1) % 6].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[lastVisible];
@@ -153,34 +152,78 @@ public class GalleryScript : MonoBehaviour
                     break;
                 }
             }
+
+            Debug.Log(firstVisible);
         }
 
         if (Input.GetKeyDown(KeyCode.N) == true)
         {
             rotations += 1;
             StartCoroutine(Double(+1));
-            /*
+
+            //THE INDEX OF THE SPRITE ON THE FIRST POSITION (0)
+            if (firstVisible <= gallerySize - 1)
+            {
+                firstVisible = firstVisible + 2;
+            }
+            
+            if (firstVisible == gallerySize + 1)
+            {
+                firstVisible = 1;
+            }
+
+            if (firstVisible == gallerySize)
+            {
+                firstVisible = 0;
+            }
+
+            //THE INDEX OF THE SPRITE ON THE LAST POSITION (5)
             if (lastVisible <= gallerySize - 1)
             {
                 lastVisible = lastVisible + 2;
             }
 
-            if (lastVisible < gallerySize - 1)
+            if (gallerySize % 2 == 0)
             {
-                lastVisible = gallerySize + 2;
+                if (lastVisible > gallerySize - 1)
+                {
+                    lastVisible = 0;
+                }
             }
-            
+            else
+            {
+                if (lastVisible == gallerySize)
+                {
+                    lastVisible = 0;
+                }
+
+                if (lastVisible == gallerySize + 1)
+                {
+                    lastVisible = 1;
+                }
+            }
+
             for (int i = 0; i < 6; i++)
             {
-                if (placeholder[i].transform.position == positions[0])
+                if (placeholder[i].transform.position == positions[5])
                 {
-                    placeholder[i].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[lastVisible + 1];
-                    placeholder[i + 1].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[lastVisible];
+                    placeholder[i % 6].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[firstVisible];
+
+                    if (firstVisible > gallerySize - 2)
+                    {
+                        firstVisible = -1;
+
+                        if (firstVisible > gallerySize - 1)
+                        {
+                            lastVisible = lastVisible + 1;
+                        }
+                    }
+
+                    placeholder[(i - 1) % 6].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[firstVisible + 1];
 
                     break;
                 }
             }
-            */
         }
 
         for (int i = 0; i < 6; i++)
