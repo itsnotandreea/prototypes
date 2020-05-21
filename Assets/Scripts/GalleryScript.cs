@@ -43,6 +43,32 @@ public class GalleryScript : MonoBehaviour
 
         gallerySize = spritesList.Count;
 
+        if (gallerySize < 7)
+        {
+            Sprite[] backUpSprites = new Sprite[6];
+            backUpSprites = Resources.LoadAll<Sprite>("BackUp");
+
+            int j = 0;
+
+            while (gallerySize < 7)
+            {
+                spritesList.Add(backUpSprites[j] as Sprite);
+                j++;
+                gallerySize = spritesList.Count;
+            }
+        }
+
+        gallerySize = spritesList.Count;
+
+        if (gallerySize % 2 == 0)
+        {
+            Sprite[] backUpSprites = new Sprite[6];
+            backUpSprites = Resources.LoadAll<Sprite>("BackUp");
+
+            spritesList.Add(backUpSprites[1] as Sprite);
+            gallerySize = spritesList.Count;
+        }
+        
         placeholder[0].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - (gallerySize - 1)];
         placeholder[1].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - (gallerySize)];
         placeholder[2].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - 1];
@@ -89,18 +115,8 @@ public class GalleryScript : MonoBehaviour
             {
                 lastVisible = lastVisible - 2;
             }
-            
-            if (lastVisible == -1)
-            {
-                lastVisible = gallerySize - 2;
-            }
 
             if (lastVisible == -2)
-            {
-                lastVisible = gallerySize - 1;
-            }
-
-            if (lastVisible == gallerySize - 1)
             {
                 lastVisible = gallerySize - 2;
             }
@@ -152,8 +168,6 @@ public class GalleryScript : MonoBehaviour
                     break;
                 }
             }
-
-            Debug.Log(firstVisible);
         }
 
         if (Input.GetKeyDown(KeyCode.N) == true)

@@ -38449,9 +38449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14540aa0e86f1044684aaa428cd07435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
-  formatSpeed: 11
-  time: 0.825
+  moveSpeed: 40
+  formatSpeed: 14
+  time: 0.605
   placeholder:
   - {fileID: 1464885589}
   - {fileID: 262320444}
