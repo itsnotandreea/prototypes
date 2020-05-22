@@ -35,6 +35,7 @@ TagManager:
   - Score
   - ToDestroy
   - MainManager
+  - Gallery
   layers:
   - Default
   - TransparentFX

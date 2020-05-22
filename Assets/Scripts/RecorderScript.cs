@@ -7,6 +7,8 @@ public class RecorderScript : MonoBehaviour
 {
     public static List<List<string>> playList = new List<List<string>>();
 
+    public TextAsset songFile;
+
     private int index;
 
     private string path;
@@ -21,13 +23,17 @@ public class RecorderScript : MonoBehaviour
 
         musicSeq = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
         
-        path = Application.dataPath + "/Resources/Artwork/Art" + (mainManager.gallerySize + 1) + ".txt";
+        path = Path.Combine(Application.persistentDataPath, "Art" + (mainManager.gallerySize + 1) + ".txt");
 
+        //path = Application.dataPath + "/Resources/Artwork/Art" + (mainManager.gallerySize + 1) + ".txt";
+
+        /*
         if (File.Exists(path))
         {
             File.Delete(path);
             File.Delete(Application.dataPath + "/Resources/Artwork/Art" + (mainManager.gallerySize + 1) + ".txt");
         }
+        */
     }
 
     public void AddKnot(GameObject knot)

@@ -24,6 +24,7 @@ public class MainManager : MonoBehaviour
                  scoreMode,
                  composeMode,
                  menuMode,
+                 galleryMode,
                  finishOnce;
 
     private CountdownSystem cdSystem;
@@ -41,7 +42,7 @@ public class MainManager : MonoBehaviour
     void Awake()
     {
         noOfArtworks = "noOfArtworks";
-        gallerySize = PlayerPrefs.GetInt(noOfArtworks, 0);
+        gallerySize = PlayerPrefs.GetInt(noOfArtworks, 100);
 
         Cursor.visible = false;
 
@@ -69,9 +70,10 @@ public class MainManager : MonoBehaviour
         scoreMode = false;
         composeMode = false;
         menuMode = true;
+        galleryMode = false;
 
         pOneScript.menuMode = true;
-        pOneScript.lineLength = 45;
+        pOneScript.lineLength = 60;
 
         pTwoScript.menuMode = true;
 
@@ -132,7 +134,6 @@ public class MainManager : MonoBehaviour
                 PlayerPrefs.SetInt(noOfArtworks, gallerySize);
                 TakePicture.TakeScreenshot_Static(2000, 2000);
                 takePicture = false;
-                //pictureHolder.GetComponent<RawImage>().enabled = true;
             }
         }
     }
@@ -160,6 +161,10 @@ public class MainManager : MonoBehaviour
 
             camScript.menuCurrentPos = camScript.menuPosThree;
             StartGame();
+        }
+        else if (menuScript.galleryButton)
+        {
+            camScript.menuCurrentPos = camScript.galleryPos;
         }
         else
         {
@@ -211,11 +216,32 @@ public class MainManager : MonoBehaviour
             }
         }
     }
-    
+
     IEnumerator WaitMusic(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        
+        string filePath = System.IO.Path.Combine(Application.persistentDataPath, "Art" + (gallerySize) + ".png");
+        
+        TextAsset song = LoadText(filePath);
 
+        musicPlayerScript.songFile = song;
         musicPlayerScript.enabled = true;
+    }  
+    
+    private TextAsset LoadText(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            return null;
+        }
+
+        if (System.IO.File.Exists(path))
+        {
+            TextAsset newText = new TextAsset(System.IO.File.ReadAllText(path));
+            return newText;
+        }
+
+        return null;
     }
 }

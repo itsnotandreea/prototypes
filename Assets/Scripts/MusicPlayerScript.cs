@@ -9,16 +9,21 @@ public class MusicPlayerScript : MonoBehaviour
 
     public float timeInSeconds;
     
-    FMOD.Studio.EventInstance musicEvent;
+    public FMOD.Studio.EventInstance musicEvent;
+
+    public TextAsset songFile;
     
     private int index;
-
-    private string path;
     
-    void Start()
+    void OnEnable()
     {
-        path = Application.dataPath + "/Recording.txt";
+        index = 0;
 
+        if (playList.Count > 0)
+        {
+            playList.Clear();
+        }
+        
         ReadTxtFile();
         
         musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SOUND6/Empty");
@@ -28,58 +33,65 @@ public class MusicPlayerScript : MonoBehaviour
         StartCoroutine(Play(timeInSeconds));
     }
 
+    private void OnDisable()
+    {
+        musicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        if (playList.Count > 0)
+        {
+            playList.Clear();
+        }
+    }
+
     private void ReadTxtFile()
     {
-        using (StreamReader reader = new StreamReader(path))
+        string allText = songFile.ToString();
+        char[] temp = new char[10];
+
+        int k;
+        k = 0;
+
+        bool newLine = true;
+
+        for (int i = 0; i < allText.Length; i++)
         {
-            string allText = reader.ReadToEnd();
-            char[] temp = new char[10];
+            char currentChar = allText[i];
 
-            int k;
-            k = 0;
-
-            bool newLine = true;
-
-            for (int i = 0; i < allText.Length; i++)
+            if (currentChar == ' ')
             {
-                char currentChar = allText[i];
+                string tempo = new string(temp);
 
-                if (currentChar == ' ')
+                if (newLine)
                 {
-                    string tempo = new string(temp);
-
-                    if (newLine)
+                    List<string> noteList = new List<string>
                     {
-                        List<string> noteList = new List<string>
-                        {
-                            "event:/SOUND6/" + tempo
-                        };
+                        "event:/SOUND6/" + tempo
+                    };
 
-                        playList.Add(noteList);
+                    playList.Add(noteList);
 
-                        index = playList.Count - 1;
-                        newLine = false;
-                    }
-                    else
-                    {
-                        playList[index].Add("Layer" + tempo);
-                    }
-
-                    for (int j = 0; j < k; j++)
-                    {
-                        temp[j] = '\0';
-                    }
-                    k = 0;
-                }
-                else if (currentChar == '\n')
-                {
-                    newLine = true;
+                    index = playList.Count - 1;
+                    newLine = false;
                 }
                 else
                 {
-                    temp[k] = currentChar;
-                    k++;
+                    playList[index].Add("Layer" + tempo);
                 }
+
+                for (int j = 0; j < k; j++)
+                {
+                    temp[j] = '\0';
+                }
+                k = 0;
+            }
+            else if (currentChar == '\n')
+            {
+                newLine = true;
+            }
+            else
+            {
+                temp[k] = currentChar;
+                k++;
             }
         }
         index = 0;
@@ -141,7 +153,7 @@ public class MusicPlayerScript : MonoBehaviour
         }
         else
         {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 1f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 1f);
         }
     }
 }

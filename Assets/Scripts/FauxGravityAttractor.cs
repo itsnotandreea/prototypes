@@ -19,7 +19,8 @@ public class FauxGravityAttractor : MonoBehaviour
         bodyUp  = body.transform.up;
 
         //adds a force in the direction from the center of the planet to the player
-        if(body.transform.name != "Main Camera" && body.transform.name != "Player1" && body.transform.name != "collectablesZone" && body.transform.name != "knotsZone" && body.transform.name != "shintoKnotsZone")
+        if(body.transform.name != "Main Camera" && body.transform.name != "Player1" && body.transform.name != "collectablesZone"
+           && body.transform.name != "knotsZone" && body.transform.name != "shintoKnotsZone")
         {
             rb.AddForce(gravityUp * gravity);
         }

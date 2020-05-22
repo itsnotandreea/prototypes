@@ -46,6 +46,8 @@ public class PlayerOneScript : MonoBehaviour
 
     private CamScript camScript;
 
+    private GalleryScript galleryScript;
+
     void Awake()
     {
         transform.position = firstKnot.transform.position;
@@ -62,6 +64,8 @@ public class PlayerOneScript : MonoBehaviour
 
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         camScript = cam.GetComponent<CamScript>();
+
+        galleryScript = GameObject.FindGameObjectWithTag("Gallery").GetComponent<GalleryScript>();
 
         closestKnotDist = 1000f;
         closestKnot = null;
@@ -156,15 +160,39 @@ public class PlayerOneScript : MonoBehaviour
 
                 if (canConnect)             //if there is no such line, a connection is possible and it creates one.
                 {
-                    CreateLine();
+                    if (secondKnot.transform.name != "play" && secondKnot.transform.name != "prev" && secondKnot.transform.name != "back" && secondKnot.transform.name != "next")
+                    {
+                        CreateLine();
 
-                    firstKnot = secondKnot;
-                    secondKnot = null;
+                        firstKnot = secondKnot;
+                        secondKnot = null;
 
-                    transform.position = firstKnot.transform.position;
+                        transform.position = firstKnot.transform.position;
 
-                    lineRenderer.SetPosition(0, firstKnot.transform.position);
-                    lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
+                        lineRenderer.SetPosition(0, firstKnot.transform.position);
+                        lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
+                    }
+                    else if (secondKnot.transform.name == "next")
+                    {
+                        if (galleryScript.moving == false)
+                        {
+                            galleryScript.next = true;
+                        }
+                        secondKnot = null;
+                    }
+                    else if (secondKnot.transform.name == "prev")
+                    {
+                        if (galleryScript.moving == false)
+                        {
+                            galleryScript.prev = true;
+                        }
+                        secondKnot = null;
+                    }
+                    else if (secondKnot.transform.name == "play")
+                    {
+                        galleryScript.PlayThisSong(secondKnot);
+                        secondKnot = null;
+                    }
 
                     canConnect = true;
                 }
@@ -177,15 +205,17 @@ public class PlayerOneScript : MonoBehaviour
             }
             else
             {
-                CreateLine();
+                if (secondKnot.transform.name != "back" && secondKnot.transform.name != "prev" && secondKnot.transform.name != "play" && secondKnot.transform.name != "next")
+                {
+                    CreateLine();
 
-                firstKnot = secondKnot;
-                secondKnot = null;
+                    firstKnot = secondKnot;
+                    secondKnot = null;
 
-                transform.position = firstKnot.transform.position;
-
-                lineRenderer.SetPosition(0, firstKnot.transform.position);
-
+                    transform.position = firstKnot.transform.position;
+                    lineRenderer.SetPosition(0, firstKnot.transform.position);
+                }
+                
                 canConnect = true;
             }
         }
@@ -224,7 +254,8 @@ public class PlayerOneScript : MonoBehaviour
         //stops particle effect system for all knots but the closestKnot
         foreach (Collider2D knot in knotsList)
         {
-            if (knot.transform.name != "startKnot" && knot.transform.name != "Compose" && knot.transform.name != "ScoreMode" && knot.transform.name != "Gallery")
+            if (knot.transform.name != "startKnot" && knot.transform.name != "Compose" && knot.transform.name != "ScoreMode" && knot.transform.name != "Gallery" &&
+                knot.transform.name != "next" && knot.transform.name != "prev" && knot.transform.name != "play" && knot.transform.name != "back")
             {
                 if (knot.gameObject != closestKnot)
                 {
@@ -239,12 +270,20 @@ public class PlayerOneScript : MonoBehaviour
                     knot.gameObject.GetComponent<ButtonsAnimations>().glow = false;
                 }
             }
+            else if (knot.transform.name == "play")
+            {
+                if (knot.gameObject != closestKnot)
+                {
+                    knot.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                }
+            }
         }
 
         //if the particle system of the closest knot is not already playing, it starts playing it
         if (closestKnot != null)
         {
-            if (closestKnot.transform.name != "startKnot" && closestKnot.transform.name != "Compose" && closestKnot.transform.name != "ScoreMode" && closestKnot.transform.name != "Gallery")
+            if (closestKnot.transform.name != "startKnot" && closestKnot.transform.name != "Compose" && closestKnot.transform.name != "ScoreMode" && closestKnot.transform.name != "Gallery"
+                && closestKnot.transform.name != "prev" && closestKnot.transform.name != "next" && closestKnot.transform.name != "play" && closestKnot.transform.name != "back")
             {
                 if (!closestKnot.GetComponent<ParticleSystem>().isPlaying)
                 {
@@ -259,6 +298,10 @@ public class PlayerOneScript : MonoBehaviour
                 closestKnot.GetComponent<ButtonsAnimations>().glow = true;
                 closestKnot.GetComponent<ButtonsAnimations>().idle = false;
                 closestKnot.GetComponent<ButtonsAnimations>().selected = false;
+            }
+            else if (closestKnot.transform.name == "play")
+            {
+                closestKnot.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             }
         }
     }
@@ -362,7 +405,8 @@ public class PlayerOneScript : MonoBehaviour
 
         newLine.GetComponent<Transform>().localScale = scaler;
 
-        if (secondKnot.transform.name != "startKnot" && secondKnot.transform.name != "Compose" && secondKnot.transform.name != "ScoreMode" && secondKnot.transform.name != "Gallery")
+        if (secondKnot.transform.name != "startKnot" && secondKnot.transform.name != "Compose" && secondKnot.transform.name != "ScoreMode" && secondKnot.transform.name != "Gallery" &&
+            secondKnot.transform.name != "prev" && secondKnot.transform.name != "next" && secondKnot.transform.name != "play" && secondKnot.transform.name != "back")
         {
             newLine.transform.SetParent(secondKnot.transform);
         }

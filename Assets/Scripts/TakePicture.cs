@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class TakePicture : MonoBehaviour
 {
@@ -32,8 +33,10 @@ public class TakePicture : MonoBehaviour
             renderResult.ReadPixels(rect, 0, 0);
 
             byte[] byteArray = renderResult.EncodeToPNG();
-            string path = Application.dataPath + "/Resources/Artwork/Art" + mainManager.gallerySize + ".png";
-            System.IO.File.WriteAllBytes(path, byteArray);
+
+            string path = Path.Combine(Application.persistentDataPath, "Art" + mainManager.gallerySize + ".png");
+            
+            File.WriteAllBytes(path, byteArray);
             Debug.Log("Saved CameraScreenshot.png");
 
             RenderTexture.ReleaseTemporary(renderTexture);

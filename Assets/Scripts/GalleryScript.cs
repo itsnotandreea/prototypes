@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GalleryScript : MonoBehaviour
 {
@@ -14,12 +15,18 @@ public class GalleryScript : MonoBehaviour
                       objMinus50,
                       objPlus50,
                       obj180;
+
+    public bool next,
+                prev,
+                moving;
     
     private Vector3[] positions = new Vector3[6];
 
-    private Sprite[] sprites;
-
     private List<Sprite> spritesList = new List<Sprite>();
+
+    private Dictionary<string, TextAsset> songsDict = new Dictionary<string, TextAsset>();
+
+    private bool doOnce;
     
     private int rotations,
                 gallerySize,
@@ -31,44 +38,79 @@ public class GalleryScript : MonoBehaviour
 
     private Color bigPictureCol,
                   smallPictureCol;
+
+    private MusicPlayerScript musicPlayerScript;
     
     void Awake()
     {
-        sprites = Resources.LoadAll<Sprite>("Artwork");
+        string filePath = Application.persistentDataPath;
 
-        foreach (Sprite sprite in sprites)
+        int l = 0;
+
+        DirectoryInfo dir = new DirectoryInfo(@filePath);
+        FileInfo[] imageFiles = dir.GetFiles("*.png");
+
+        Sprite[] sprites = new Sprite[imageFiles.Length];
+
+        foreach (FileInfo f in imageFiles)
         {
-            spritesList.Add(sprite as Sprite);
+            string fileFPath = Path.Combine(Application.persistentDataPath, f.Name);
+            sprites[l] = LoadSprite(fileFPath, f.Name.Substring(0, f.Name.IndexOf(".")));
+            
+            l++;
         }
+        
+        int m = 0;
 
-        gallerySize = spritesList.Count;
+        DirectoryInfo songDir = new DirectoryInfo(@filePath);
+        FileInfo[] songFiles = dir.GetFiles("*.txt");
 
-        if (gallerySize < 7)
+        TextAsset[] songs = new TextAsset[songFiles.Length];
+
+        foreach (FileInfo s in songFiles)
+        {
+            string fileSPath = Path.Combine(Application.persistentDataPath, s.Name);
+            songs[m] = LoadText(fileSPath);
+            
+            m++;
+        }
+        
+        gallerySize = sprites.Length;
+
+        int differenceToAdd = 7 - gallerySize;
+
+        if (differenceToAdd > 0)
         {
             Sprite[] backUpSprites = new Sprite[6];
             backUpSprites = Resources.LoadAll<Sprite>("BackUp");
 
             int j = 0;
 
-            while (gallerySize < 7)
+            while (differenceToAdd > 0)
             {
                 spritesList.Add(backUpSprites[j] as Sprite);
                 j++;
-                gallerySize = spritesList.Count;
+                differenceToAdd--;
             }
+            
+            gallerySize = sprites.Length;
         }
-
-        gallerySize = spritesList.Count;
-
-        if (gallerySize % 2 == 0)
+        else if (gallerySize % 2 == 0)
         {
             Sprite[] backUpSprites = new Sprite[6];
             backUpSprites = Resources.LoadAll<Sprite>("BackUp");
 
             spritesList.Add(backUpSprites[1] as Sprite);
-            gallerySize = spritesList.Count;
         }
         
+        for (int k = 0; k < sprites.Length; k++)
+        {
+            spritesList.Add(sprites[k]);
+            songsDict.Add(sprites[k].name, songs[k]);
+        }
+        
+        gallerySize = spritesList.Count;
+
         placeholder[0].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - (gallerySize - 1)];
         placeholder[1].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - (gallerySize)];
         placeholder[2].transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = spritesList[gallerySize - 1];
@@ -96,12 +138,69 @@ public class GalleryScript : MonoBehaviour
         {
             ArrangePictureFormat(i, placeholder[i].transform.position);
         }
+
+        doOnce = true;
+        next = false;
+        prev = false;
+        moving = false;
+
+        musicPlayerScript = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<MusicPlayerScript>();
+    }
+
+    private Sprite LoadSprite(string path, string name)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            return null;
+        }
+        
+        if (File.Exists(path))
+        {
+            byte[] bytes = File.ReadAllBytes(path);
+            Texture2D texture = new Texture2D(1, 1);
+            texture.LoadImage(bytes);
+            Sprite newSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            newSprite.name = name;
+            return newSprite;
+        }
+        
+        return null;
+    }
+
+    private TextAsset LoadText(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            return null;
+        }
+
+        if (File.Exists(path))
+        {
+            TextAsset newText = new TextAsset(File.ReadAllText(path));
+            return newText;
+        }
+
+        return null;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) == true)
+        if (doOnce)
         {
+            for (int i = 0; i < 6; i++)
+            {
+                Move(i);
+                ArrangePictureFormat(i, positions[(i + rotations) % 6]);
+
+                StartCoroutine(FirstArrangement());
+            }
+        }
+
+        if (next)
+        {
+            next = false;
+            moving = true;
+
             if (rotations <= 0)
             {
                 rotations = 6;
@@ -170,8 +269,11 @@ public class GalleryScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.N) == true)
+        if (prev)
         {
+            prev = false;
+            moving = true;
+
             rotations += 1;
             StartCoroutine(Double(+1));
 
@@ -247,6 +349,13 @@ public class GalleryScript : MonoBehaviour
                 Move(i);
                 ArrangePictureFormat(i, positions[(i + rotations) % 6]);
             }
+            else
+            {
+                if (i == 5)
+                {
+                    moving = false;
+                }
+            }
         }
     }
 
@@ -262,24 +371,28 @@ public class GalleryScript : MonoBehaviour
                 Vector3 targetDirection = obj180.transform.position - placeholder[i].transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(placeholder[i].transform.forward, targetDirection, Time.deltaTime * formatSpeed / 4.0f, 0.0f);
                 placeholder[i].transform.rotation = Quaternion.LookRotation(newDirection);
+                placeholder[i].layer = 0;
             }
             else if (nextPos == positions[1])
             {
                 Vector3 targetDirection = objPlus50.transform.position - placeholder[i].transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(placeholder[i].transform.forward, targetDirection, Time.deltaTime * formatSpeed / 4.0f, 0.0f);
                 placeholder[i].transform.rotation = Quaternion.LookRotation(newDirection);
+                placeholder[i].layer = 0;
             }
             else if (nextPos == positions[4])
             {
                 Vector3 targetDirection = objMinus50.transform.position - placeholder[i].transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(placeholder[i].transform.forward, targetDirection, Time.deltaTime * formatSpeed / 4.0f, 0.0f);
                 placeholder[i].transform.rotation = Quaternion.LookRotation(newDirection);
+                placeholder[i].layer = 0;
             }
             else if (nextPos == positions[5])
             {
                 Vector3 targetDirection = obj180.transform.position - placeholder[i].transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(placeholder[i].transform.forward, targetDirection, Time.deltaTime * formatSpeed / 4.0f, 0.0f);
                 placeholder[i].transform.rotation = Quaternion.LookRotation(newDirection);
+                placeholder[i].layer = 0;
             }
         }
 
@@ -293,12 +406,14 @@ public class GalleryScript : MonoBehaviour
                 Vector3 targetDirection = obj0.transform.position - placeholder[i].transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(placeholder[i].transform.forward, targetDirection, Time.deltaTime * formatSpeed / 4.0f, 0.0f);
                 placeholder[i].transform.rotation = Quaternion.LookRotation(newDirection);
+                placeholder[i].layer = 8;
             }
             else if (nextPos == positions[3])
             {
                 Vector3 targetDirection = obj0.transform.position - placeholder[i].transform.position;
                 Vector3 newDirection = Vector3.RotateTowards(placeholder[i].transform.forward, targetDirection, Time.deltaTime * formatSpeed / 4.0f, 0.0f);
                 placeholder[i].transform.rotation = Quaternion.LookRotation(newDirection);
+                placeholder[i].layer = 8;
             }
         }
     }
@@ -308,10 +423,39 @@ public class GalleryScript : MonoBehaviour
         placeholder[i].transform.position = Vector3.MoveTowards(placeholder[i].transform.position, positions[(i + rotations) % 6], Time.deltaTime * moveSpeed);
     }
 
+    public void PlayThisSong(GameObject song)
+    {
+        musicPlayerScript.musicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        musicPlayerScript.enabled = false;
+
+        string artwork = song.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name;
+
+        //string songPath = Application.dataPath + "/Resources/Artwork/" + artwork + ".txt";
+
+        musicPlayerScript.songFile = songsDict[artwork];
+
+        //musicPlayerScript.path = songPath;
+        StartCoroutine(Wait());
+    }
+
     private IEnumerator Double(int x)
     {
         yield return new WaitForSeconds(time);
 
         rotations += x;
+    }
+
+    private IEnumerator FirstArrangement()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        doOnce = false;
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.0f);
+        
+        musicPlayerScript.enabled = true;
     }
 }

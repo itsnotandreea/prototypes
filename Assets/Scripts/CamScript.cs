@@ -20,6 +20,7 @@ public class CamScript : MonoBehaviour
                    menuPosOne,
                    menuPosTwo,
                    menuPosThree,
+                   galleryPos,
                    menuCurrentPos,
                    finalPicturePos;
     
@@ -37,6 +38,7 @@ public class CamScript : MonoBehaviour
         menuPosTwo = new Vector3(32.1f, 15.5f, -10.0f);
         menuPosThree = new Vector3(59.6f, 1.2f, -10.0f);
         finalPicturePos = new Vector3(-89.0f, -131.0f, -10.0f);
+        galleryPos = new Vector3(0.0f, 63.0f, -10.0f);
 
         menuCurrentPos = menuPosOne;
 
