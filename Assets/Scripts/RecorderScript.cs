@@ -24,9 +24,7 @@ public class RecorderScript : MonoBehaviour
         musicSeq = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
         
         path = Path.Combine(Application.persistentDataPath, "Art" + (mainManager.gallerySize + 1) + ".txt");
-
-        //path = Application.dataPath + "/Resources/Artwork/Art" + (mainManager.gallerySize + 1) + ".txt";
-
+        
         /*
         if (File.Exists(path))
         {
@@ -108,8 +106,6 @@ public class RecorderScript : MonoBehaviour
         index = playList.Count - 1;
 
         GetLayers();
-
-        WriteTxtFile();
     }
 
     private void GetLayers()
@@ -214,12 +210,16 @@ public class RecorderScript : MonoBehaviour
     {
         StreamWriter writer = new StreamWriter(path, true);
 
-        for (int i = 0; i < playList[index].Count; i++)
+        for (int i = 0; i < playList.Count; i++)
         {
-            writer.Write(playList[index][i] + " ");
+            for (int j = 0; j < playList[i].Count; j++)
+            {
+                writer.Write(playList[i][j] + " ");
+            }
+            writer.Write("\n");
         }
 
-        writer.Write("\n");
         writer.Close();
+        writer.Dispose();
     }
 }

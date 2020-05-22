@@ -124,6 +124,16 @@ public class MusicSequence : MonoBehaviour
             currentDigit = 0;
         }
     }
+    
+    private void OnDisable()
+    {
+        musicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        if (sequence.Count > 0)
+        {
+            sequence.Clear();
+        }
+    }
 
     private void DeleteRandomLayer()
     {

@@ -160,7 +160,7 @@ public class PlayerOneScript : MonoBehaviour
 
                 if (canConnect)             //if there is no such line, a connection is possible and it creates one.
                 {
-                    if (secondKnot.transform.name != "play" && secondKnot.transform.name != "prev" && secondKnot.transform.name != "back" && secondKnot.transform.name != "next")
+                    if (secondKnot.transform.name != "play" && secondKnot.transform.name != "prev" && secondKnot.transform.name != "next")
                     {
                         CreateLine();
 
@@ -205,7 +205,7 @@ public class PlayerOneScript : MonoBehaviour
             }
             else
             {
-                if (secondKnot.transform.name != "back" && secondKnot.transform.name != "prev" && secondKnot.transform.name != "play" && secondKnot.transform.name != "next")
+                if (secondKnot.transform.name != "prev" && secondKnot.transform.name != "play" && secondKnot.transform.name != "next")
                 {
                     CreateLine();
 
@@ -406,7 +406,8 @@ public class PlayerOneScript : MonoBehaviour
         newLine.GetComponent<Transform>().localScale = scaler;
 
         if (secondKnot.transform.name != "startKnot" && secondKnot.transform.name != "Compose" && secondKnot.transform.name != "ScoreMode" && secondKnot.transform.name != "Gallery" &&
-            secondKnot.transform.name != "prev" && secondKnot.transform.name != "next" && secondKnot.transform.name != "play" && secondKnot.transform.name != "back")
+            secondKnot.transform.name != "prev" && secondKnot.transform.name != "next" && secondKnot.transform.name != "play" && secondKnot.transform.name != "back"
+            /*&& secondKnot.transform.name != "special"*/)
         {
             newLine.transform.SetParent(secondKnot.transform);
         }
@@ -417,9 +418,11 @@ public class PlayerOneScript : MonoBehaviour
         
         newLine.transform.eulerAngles = new Vector3(0.0f, 0.0f, rotation);
 
-        newLine.AddComponent<BoxCollider2D>();
-
-        newLine.GetComponent<BoxCollider2D>().size = new Vector2(newLine.GetComponent<BoxCollider2D>().size.x, 1.0f);
+        //if (newLine.transform.name != "specialLine")
+        {
+            newLine.AddComponent<BoxCollider2D>();
+            newLine.GetComponent<BoxCollider2D>().size = new Vector2(newLine.GetComponent<BoxCollider2D>().size.x, 1.0f);
+        }
         
         if (!menuMode)
         {

@@ -74,7 +74,7 @@ public class CamScript : MonoBehaviour
         }
         else if (finishedMode)
         {
-            transform.position = Vector3.MoveTowards(transform.position, finalPicturePos, Time.deltaTime * 0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, menuCurrentPos, Time.deltaTime * speed);
         }
     }
 }

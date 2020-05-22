@@ -18,13 +18,13 @@ public class MainManager : MonoBehaviour
                       collectablesZone,
                       knotsZone,
                       floor,
-                      pictureHolder;
+                      pictureHolder,
+                      galleryArea;
 
     private bool takePicture,
                  scoreMode,
                  composeMode,
                  menuMode,
-                 galleryMode,
                  finishOnce;
 
     private CountdownSystem cdSystem;
@@ -70,7 +70,6 @@ public class MainManager : MonoBehaviour
         scoreMode = false;
         composeMode = false;
         menuMode = true;
-        galleryMode = false;
 
         pOneScript.menuMode = true;
         pOneScript.lineLength = 60;
@@ -80,6 +79,11 @@ public class MainManager : MonoBehaviour
         camScript.menuMode = true;
 
         finishOnce = true;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(DeactivateGalleryArea(false));
     }
 
     void Update()
@@ -107,9 +111,8 @@ public class MainManager : MonoBehaviour
                 pOneScript.enabled = false;
                 pTwoScript.enabled = false;
                 UIWinner.enabled = true;
-                musicSeq.musicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 musicSeq.enabled = false;
-                StartCoroutine(WaitMusic(5.0f));
+                StartCoroutine(WaitMusic(2.0f));
 
                 floor.SetActive(false);
                 scoreUI.SetActive(false);
@@ -119,21 +122,33 @@ public class MainManager : MonoBehaviour
                 collectablesZone.SetActive(false);
 
                 finishOnce = false;
-
-                camScript.menuCurrentPos = camScript.finalPicturePos;
-                camScript.finishedMode = true;
             }
-            
-            camScript.gameObject.transform.position = camScript.finalPicturePos;
-            camScript.cam.orthographicSize = Mathf.Lerp(camScript.cam.orthographicSize, 700, Time.deltaTime * 0.1f);
-            camScript.cam.transform.rotation = Quaternion.Lerp(camScript.cam.transform.rotation, Quaternion.identity, Time.time * 0.3f);
             
             if (takePicture)
             {
+                Vector3 tempPosition = camScript.gameObject.transform.position;
+                camScript.gameObject.transform.position = camScript.finalPicturePos;
+
+                float tempSize = camScript.cam.orthographicSize;
+                camScript.cam.orthographicSize = 700.0f;
+
+                Quaternion tempRotation = camScript.cam.transform.rotation;
+                camScript.cam.transform.rotation = Quaternion.identity;
+
+
                 gallerySize++;
+                recorderScript.WriteTxtFile();
                 PlayerPrefs.SetInt(noOfArtworks, gallerySize);
                 TakePicture.TakeScreenshot_Static(2000, 2000);
                 takePicture = false;
+
+                StartCoroutine(WaitPicture(tempPosition, tempSize, tempRotation));
+            }
+            else
+            {
+                //camScript.gameObject.transform.position = camScript.finalPicturePos;
+                camScript.cam.orthographicSize = Mathf.Lerp(camScript.cam.orthographicSize, 700, Time.deltaTime * 0.1f);
+                camScript.cam.transform.rotation = Quaternion.Lerp(camScript.cam.transform.rotation, Quaternion.identity, Time.time * 0.3f);
             }
         }
     }
@@ -143,6 +158,11 @@ public class MainManager : MonoBehaviour
         if (menuScript.playButton)
         {
             camScript.menuCurrentPos = camScript.menuPosTwo;
+
+            if (galleryArea.activeSelf)
+            {
+                StartCoroutine(DeactivateGalleryArea(true));
+            }
         }
         else if (menuScript.scoreButton)
         {
@@ -152,6 +172,11 @@ public class MainManager : MonoBehaviour
 
             camScript.menuCurrentPos = camScript.menuPosThree;
             StartGame();
+
+            if (galleryArea.activeSelf)
+            {
+                StartCoroutine(DeactivateGalleryArea(true));
+            }
         }
         else if (menuScript.composeButton)
         {
@@ -161,16 +186,27 @@ public class MainManager : MonoBehaviour
 
             camScript.menuCurrentPos = camScript.menuPosThree;
             StartGame();
+
+            if (galleryArea.activeSelf)
+            {
+                StartCoroutine(DeactivateGalleryArea(true));
+            }
         }
         else if (menuScript.galleryButton)
         {
             camScript.menuCurrentPos = camScript.galleryPos;
+            StartCoroutine(ActivateGalleryArea());
         }
         else
         {
             if (menuMode)
             {
                 camScript.menuCurrentPos = camScript.menuPosOne;
+
+                if (galleryArea.activeSelf)
+                {
+                    StartCoroutine(DeactivateGalleryArea(true));
+                }
             }
         }
     }
@@ -221,7 +257,7 @@ public class MainManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         
-        string filePath = System.IO.Path.Combine(Application.persistentDataPath, "Art" + (gallerySize) + ".png");
+        string filePath = System.IO.Path.Combine(Application.persistentDataPath, "Art" + (gallerySize) + ".txt");
         
         TextAsset song = LoadText(filePath);
 
@@ -243,5 +279,71 @@ public class MainManager : MonoBehaviour
         }
 
         return null;
+    }
+    
+    IEnumerator WaitPicture(Vector3 tempPosition, float tempSize, Quaternion tempRotation)
+    {
+        yield return new WaitForSeconds(0.0f);
+        
+        camScript.gameObject.transform.position = tempPosition;
+        camScript.cam.orthographicSize = tempSize;
+        camScript.cam.transform.rotation = tempRotation;
+
+        camScript.menuCurrentPos = camScript.finalPicturePos;
+        camScript.finishedMode = true;
+
+        takePicture = false;
+    }
+
+    private IEnumerator DeactivateGalleryArea(bool wait)
+    {
+        if (wait)
+        {
+            yield return new WaitForSeconds(4.0f);
+        }
+
+        galleryArea.SetActive(false);
+
+        for (int i = 0; i < galleryArea.transform.childCount; i++)
+        {
+            galleryArea.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator ActivateGalleryArea()
+    {
+        galleryArea.SetActive(true);
+
+        yield return new WaitForSeconds(3.5f);
+
+        galleryArea.transform.GetChild(5).gameObject.SetActive(true);
+        
+        yield return new WaitForSeconds(0.3f);
+        
+        galleryArea.transform.GetChild(0).gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.3f);
+
+        galleryArea.transform.GetChild(1).gameObject.SetActive(true);
+        
+        yield return new WaitForSeconds(0.3f);
+
+        galleryArea.transform.GetChild(2).gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.3f);
+
+        galleryArea.transform.GetChild(3).gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.3f);
+
+        galleryArea.transform.GetChild(4).gameObject.SetActive(true);
+
+
+        yield return new WaitForSeconds(0.9f);
+
+        for (int i = 6; i < galleryArea.transform.childCount; i++)
+        {
+            galleryArea.transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 }
