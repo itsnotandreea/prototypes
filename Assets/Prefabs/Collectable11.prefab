@@ -88,6 +88,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable11
       objectReference: {fileID: 0}
+    - target: {fileID: 567609892035433142, guid: 15e47b8fa27dea64ca5db1d222e766c0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 336452fdb428e4b41a769a83b66735bc, type: 2}
     - target: {fileID: 1117737777361425299, guid: 15e47b8fa27dea64ca5db1d222e766c0,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -113,6 +118,5 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 567609892035433142, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}

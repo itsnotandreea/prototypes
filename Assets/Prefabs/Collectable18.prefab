@@ -73,11 +73,21 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 196570943614750436, guid: 15e47b8fa27dea64ca5db1d222e766c0,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 196570943614750437, guid: 15e47b8fa27dea64ca5db1d222e766c0,
         type: 3}
       propertyPath: m_Name
       value: Collectable18
       objectReference: {fileID: 0}
+    - target: {fileID: 567609892035433142, guid: 15e47b8fa27dea64ca5db1d222e766c0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9a2acdba13a386a4ebafd3a080223b18, type: 2}
     - target: {fileID: 1117737777361425299, guid: 15e47b8fa27dea64ca5db1d222e766c0,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -108,6 +118,5 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.25
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 567609892035433142, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}

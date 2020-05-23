@@ -32,6 +32,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 3.12
       objectReference: {fileID: 0}
+    - target: {fileID: -156339412844362873, guid: 2950823c13ab9254aa86d07972669f54,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 881965faefb8ffa49962c731a020a4fd, type: 2}
     - target: {fileID: 8686951281242398674, guid: 2950823c13ab9254aa86d07972669f54,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -123,6 +128,5 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 95ed3a0a3c9554446854607a46c33458,
         type: 3}
-    m_RemovedComponents:
-    - {fileID: -156339412844362873, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2950823c13ab9254aa86d07972669f54, type: 3}

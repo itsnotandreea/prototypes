@@ -302,6 +302,8 @@ public class MainManager : MonoBehaviour
             yield return new WaitForSeconds(4.0f);
         }
 
+        musicPlayerScript.enabled = false;
+
         galleryArea.SetActive(false);
 
         for (int i = 0; i < galleryArea.transform.childCount; i++)
