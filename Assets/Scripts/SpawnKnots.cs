@@ -9,17 +9,18 @@ public class SpawnKnots : MonoBehaviour
                  moveSpeed,
                  moveUpSpeed;
 
+    public bool addKnots,
+                startAutomatically;
+
     public GameObject parent;
 
     public GameObject[] knots;
 
     private string tagString = "ToDestroy";
     
-    private int randomKnot;
-
-    public bool addKnots,
-                startAutomatically;
-
+    private int randomKnot,
+                knotObjectsCount;
+    
     void Awake()
     {
         addKnots = true;
@@ -28,6 +29,8 @@ public class SpawnKnots : MonoBehaviour
         {
             StartCoroutine(KnotsWave());
         }
+
+        knotObjectsCount = knots.Length;
     }
 
     void FixedUpdate()
@@ -61,7 +64,7 @@ public class SpawnKnots : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnTime);
             
-            if (addKnots)
+            if (addKnots && knotObjectsCount > 0)
             {
                 SpawnKnot();
             }

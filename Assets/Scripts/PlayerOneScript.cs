@@ -177,6 +177,7 @@ public class PlayerOneScript : MonoBehaviour
                         if (galleryScript.moving == false)
                         {
                             galleryScript.next = true;
+                            secondKnot.GetComponent<Animator>().SetTrigger("playAnimTrigger");
                         }
                         secondKnot = null;
                     }
@@ -185,6 +186,7 @@ public class PlayerOneScript : MonoBehaviour
                         if (galleryScript.moving == false)
                         {
                             galleryScript.prev = true;
+                            secondKnot.GetComponent<Animator>().SetTrigger("playAnimTrigger");
                         }
                         secondKnot = null;
                     }
@@ -277,6 +279,13 @@ public class PlayerOneScript : MonoBehaviour
                     knot.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
+            else if (knot.transform.name == "prev" || knot.transform.name == "next")
+            {
+                if (knot.gameObject != closestKnot)
+                {
+                    knot.GetComponent<Animator>().SetBool("playHoverAnim", false);
+                }
+            }
         }
 
         //if the particle system of the closest knot is not already playing, it starts playing it
@@ -302,6 +311,10 @@ public class PlayerOneScript : MonoBehaviour
             else if (closestKnot.transform.name == "play")
             {
                 closestKnot.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            else if (closestKnot.transform.name == "prev" || closestKnot.transform.name == "next")
+            {
+                closestKnot.GetComponent<Animator>().SetBool("playHoverAnim", true);
             }
         }
     }

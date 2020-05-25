@@ -126,7 +126,7 @@ public class MusicPlayerScript : MonoBehaviour
             char[] temp = new char[8];
             string tempo = new string(temp);
             
-            if (playList[noteIndex][k].Equals("Layer20" + tempo))
+            if (playList[noteIndex][k].Equals("Layer20" + tempo) || playList[noteIndex][k].Equals("Layer19" + tempo) || playList[noteIndex][k].Equals("Layer18" + tempo))
             {
                 sacred = true;
             }
@@ -139,7 +139,7 @@ public class MusicPlayerScript : MonoBehaviour
                 }
                 else
                 {
-                    FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 0.5f);
+                    FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 0.0f);
                 }
             }
             else
@@ -147,9 +147,10 @@ public class MusicPlayerScript : MonoBehaviour
                 FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 1f);
             }
         }
+
         if (sacred)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 0.5f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 0.0f);
         }
         else
         {

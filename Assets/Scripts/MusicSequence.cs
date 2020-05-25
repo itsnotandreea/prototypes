@@ -5,7 +5,11 @@ using UnityEngine;
 public class MusicSequence : MonoBehaviour
 {
     public GameObject shintoGO,
-                      shintoCollectable;
+                      shintoCollectable,
+                      taoismGO,
+                      taoismCollectable,
+                      christianityGO,
+                      christianityCollectable;
 
     public List<GameObject> sequence = new List<GameObject>();
 
@@ -38,13 +42,12 @@ public class MusicSequence : MonoBehaviour
                    A,
                    B,
                    C,
+                   CC,
                    D,
                    E,
                    F,
                    G,
                    Csharp,
-                   CC,
-                   CCsharp,
                    Gsharp;
     
     private Camera cam;
@@ -57,13 +60,12 @@ public class MusicSequence : MonoBehaviour
         A = "event:/SOUND6/A";
         B = "event:/SOUND6/B";
         C = "event:/SOUND6/C";
+        C = "event:/SOUND6/CC";
         D = "event:/SOUND6/D";
         E = "event:/SOUND6/E";
         F = "event:/SOUND6/F";
         G = "event:/SOUND6/G";
         Csharp = "event:/SOUND6/Csharp";
-        CC = "event:/SOUND6/CC";
-        CCsharp = "event:/SOUND6/CCsharp";
         Gsharp = "event:/SOUND6/Gsharp";
 
         currentNote = null;
@@ -679,8 +681,6 @@ public class MusicSequence : MonoBehaviour
                 if (layersArray[16])
                 {
                     layersArray[16] = false;
-                    layersArray[17] = false;
-                    layersArray[18] = false;
                     activeLayers--;
                 }
             }
@@ -699,8 +699,6 @@ public class MusicSequence : MonoBehaviour
                     }
 
                     layersArray[16] = true;
-                    layersArray[17] = true;
-                    layersArray[18] = true;
 
                     shintoGO.SetActive(true);
                     shintoGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
@@ -709,13 +707,102 @@ public class MusicSequence : MonoBehaviour
 
                     shintoGO.GetComponent<SpawnKnots>().addKnots = true;
                     StartCoroutine(shintoGO.GetComponent<SpawnKnots>().KnotsWave());
-                    
-                    sacredCollectable = false;
 
                     StartCoroutine(EndSacred(shintoGO));
                 }
             }
         }
+        else if (collectable.transform.name == "Collectable19(Clone)")
+        {
+            //TAOISM COLLECTABLE
+            code[currentDigit] = 0;
+            currentDigit++;
+
+            sacred = true;
+
+            if (cancelLayers)
+            {
+                //cancel the layer
+                if (layersArray[17])
+                {
+                    layersArray[17] = false;
+                    activeLayers--;
+                }
+            }
+            else
+            {
+                //add the layer
+                if (!layersArray[17])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                    }
+
+                    layersArray[17] = true;
+
+                    taoismGO.SetActive(true);
+                    taoismGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
+                                                              transform.position.y + transform.TransformDirection(Vector2.up * 11.0f).y,
+                                                              taoismGO.transform.position.z);
+
+                    taoismGO.GetComponent<SpawnKnots>().addKnots = true;
+                    StartCoroutine(taoismGO.GetComponent<SpawnKnots>().KnotsWave());
+
+                    StartCoroutine(EndSacred(taoismGO));
+                }
+            }
+        }
+        else if (collectable.transform.name == "Collectable20(Clone)")
+        {
+            //TAOISM COLLECTABLE
+            code[currentDigit] = 0;
+            currentDigit++;
+
+            sacred = true;
+
+            if (cancelLayers)
+            {
+                //cancel the layer
+                if (layersArray[18])
+                {
+                    layersArray[18] = false;
+                    activeLayers--;
+                }
+            }
+            else
+            {
+                //add the layer
+                if (!layersArray[18])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                    }
+
+                    layersArray[18] = true;
+
+                    christianityGO.SetActive(true);
+                    christianityGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
+                                                                    transform.position.y + transform.TransformDirection(Vector2.up * 11.0f).y,
+                                                                    christianityGO.transform.position.z);
+
+                    christianityGO.GetComponent<SpawnKnots>().addKnots = true;
+                    StartCoroutine(christianityGO.GetComponent<SpawnKnots>().KnotsWave());
+
+                    StartCoroutine(EndSacred(christianityGO));
+                }
+            }
+        }
+
 
         CheckCode();
         AssignLayer();
@@ -741,6 +828,32 @@ public class MusicSequence : MonoBehaviour
                 sacredCollectable = true;
             }
         }
+        
+        if (codeS == "33311" || codeS == "13331" || codeS == "11333" || codeS == "31133" || codeS == "33113")
+        {
+            if (!sacredCollectable)
+            {
+                Vector2 pos = new Vector2(Random.Range(-15.0f, 15.0f), Random.Range(20.0f, 30.0f));
+                Vector3 newPos = new Vector3(transform.position.x + transform.TransformDirection(pos).x,
+                                             transform.position.y + transform.TransformDirection(pos).y,
+                                             0.0f);
+                Instantiate(taoismCollectable, newPos, transform.rotation);
+                sacredCollectable = true;
+            }
+        }
+
+        if (codeS == "22244" || codeS == "42224" || codeS == "44222" || codeS == "24422" || codeS == "22442")
+        {
+            if (!sacredCollectable)
+            {
+                Vector2 pos = new Vector2(Random.Range(-15.0f, 15.0f), Random.Range(20.0f, 30.0f));
+                Vector3 newPos = new Vector3(transform.position.x + transform.TransformDirection(pos).x,
+                                             transform.position.y + transform.TransformDirection(pos).y,
+                                             0.0f);
+                Instantiate(christianityCollectable, newPos, transform.rotation);
+                sacredCollectable = true;
+            }
+        }
     }
 
     public void AssignLayer()
@@ -749,7 +862,7 @@ public class MusicSequence : MonoBehaviour
 
         if (sacred && value != 0.5f)
         {
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 0.5f);
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 0.0f);
         }
         else if (!sacred && value != 1f)
         {
@@ -764,7 +877,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer2", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer2", 0.0f);
             }
         }
         else
@@ -780,7 +893,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer3", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer3", 0.0f);
             }
         }
         else
@@ -796,7 +909,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer4", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer4", 0.0f);
             }
         }
         else
@@ -812,7 +925,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer5", 0.0f);
             }
         }
         else
@@ -828,7 +941,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer6", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer6", 0.0f);
             }
         }
         else
@@ -844,7 +957,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer7", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer7", 0.0f);
             }
         }
         else
@@ -860,7 +973,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer8", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer8", 0.0f);
             }
         }
         else
@@ -876,7 +989,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer9", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer9", 0.0f);
             }
         }
         else
@@ -892,7 +1005,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer10", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer10", 0.0f);
             }
         }
         else
@@ -908,7 +1021,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer11", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer11", 0.0f);
             }
         }
         else
@@ -924,7 +1037,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer12", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer12", 0.0f);
             }
         }
         else
@@ -940,7 +1053,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer13", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer13", 0.0f);
             }
         }
         else
@@ -956,7 +1069,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer14", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer14", 0.0f);
             }
         }
         else
@@ -972,7 +1085,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer15", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer15", 0.0f);
             }
         }
         else
@@ -988,7 +1101,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer16", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer16", 0.0f);
             }
         }
         else
@@ -1004,7 +1117,7 @@ public class MusicSequence : MonoBehaviour
             }
             else
             {
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer17", 0.5f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer17", 0.0f);
             }
         }
         else
@@ -1015,13 +1128,27 @@ public class MusicSequence : MonoBehaviour
         if (layersArray[16])
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer18", 1f);
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer19", 1f);
-            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer20", 1f);
         }
         else
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer18", 0f);
+        }
+
+        if (layersArray[17])
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer19", 1f);
+        }
+        else
+        {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer19", 0f);
+        }
+
+        if (layersArray[18])
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer20", 1f);
+        }
+        else
+        {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer20", 0f);
         }
     }
@@ -1106,6 +1233,14 @@ public class MusicSequence : MonoBehaviour
         {
             currentNote = Csharp;
         }
+        else if (knot.transform.name == "knotShintoD" || knot.transform.name == "knotShintoD(Clone)")
+        {
+            currentNote = D;
+        }
+        else if (knot.transform.name == "knotShintoE" || knot.transform.name == "knotShintoD(Clone)")
+        {
+            currentNote = E;
+        }
         else if (knot.transform.name == "knotShintoF" || knot.transform.name == "knotShintoF(Clone)")
         {
             currentNote = F;
@@ -1118,13 +1253,29 @@ public class MusicSequence : MonoBehaviour
         {
             currentNote = Gsharp;
         }
-        else if (knot.transform.name == "knotShintoCC" || knot.transform.name == "knotShintoCC(Clone)")
+        else if (knot.transform.name == "knotTaoismA" || knot.transform.name == "knotTaoismA(Clone)")
+        {
+            currentNote = A;
+        }
+        else if (knot.transform.name == "knotTaoismC" || knot.transform.name == "knotTaoismC(Clone)")
+        {
+            currentNote = C;
+        }
+        else if (knot.transform.name == "knotTaoismD" || knot.transform.name == "knotTaoismD(Clone)")
+        {
+            currentNote = D;
+        }
+        else if (knot.transform.name == "knotTaoismE" || knot.transform.name == "knotTaoismE(Clone)")
+        {
+            currentNote = E;
+        }
+        else if (knot.transform.name == "knotTaoismCC" || knot.transform.name == "knotTaoismCC(Clone)")
         {
             currentNote = CC;
         }
-        else if (knot.transform.name == "knotShintoCCsharp" || knot.transform.name == "knotShintoCCsharp(Clone)")
+        else if (knot.transform.name == "knotTaoismG" || knot.transform.name == "knotTaoismG(Clone)")
         {
-            currentNote = CCsharp;
+            currentNote = G;
         }
     }
 
@@ -1162,22 +1313,29 @@ public class MusicSequence : MonoBehaviour
     private IEnumerator EndSacred(GameObject sacredObject)
     {
         yield return new WaitForSeconds(endSacredTime);
-
-        //sacredObject.SetActive(false);
-
+        
         sacredObject.GetComponent<SpawnKnots>().addKnots = false;
 
-        layersArray[16] = false;
-        layersArray[17] = false;
-        layersArray[18] = false;
+        if (sacredObject.transform.name == "shintoKnotsZone")
+        {
+            layersArray[16] = false;
+        }
+        else if (sacredObject.transform.name == "taoismKnotsZone")
+        {
+            layersArray[17] = false;
+        }
+        else if (sacredObject.transform.name == "christianityKnotsZone")
+        {
+            layersArray[18] = false;
+        }
 
         sacred = false;
 
         AssignLayer();
 
-        GameObject shintosParent = sacredObject.GetComponent<SpawnKnots>().parent;
+        GameObject sacredObjectsParent = sacredObject.GetComponent<SpawnKnots>().parent;
 
-        foreach (Transform child in shintosParent.transform)
+        foreach (Transform child in sacredObjectsParent.transform)
         {
             child.gameObject.layer = 0;
             Destroy(child.gameObject.GetComponent<Collider2D>());
@@ -1185,6 +1343,8 @@ public class MusicSequence : MonoBehaviour
             child.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         }
 
-        shintoGO.SetActive(false);
+        sacredObject.SetActive(false);
+
+        sacredCollectable = false;
     }
 }

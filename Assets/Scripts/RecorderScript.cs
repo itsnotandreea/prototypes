@@ -92,6 +92,58 @@ public class RecorderScript : MonoBehaviour
         {
             AddToRecording("CCsharp");
         }
+        else if (knot.transform.name == "knotShintoC" || knot.transform.name == "knotShintoC(Clone)")
+        {
+            AddToRecording("C");
+        }
+        else if (knot.transform.name == "knotShintoCsharp" || knot.transform.name == "knotShintoCsharp(Clone)")
+        {
+            AddToRecording("Csharp");
+        }
+        else if (knot.transform.name == "knotShintoD" || knot.transform.name == "knotShintoD(Clone)")
+        {
+            AddToRecording("D");
+        }
+        else if (knot.transform.name == "knotShintoE" || knot.transform.name == "knotShintoD(Clone)")
+        {
+            AddToRecording("E");
+        }
+        else if (knot.transform.name == "knotShintoF" || knot.transform.name == "knotShintoF(Clone)")
+        {
+            AddToRecording("F");
+        }
+        else if (knot.transform.name == "knotShintoG" || knot.transform.name == "knotShintoG(Clone)")
+        {
+            AddToRecording("G");
+        }
+        else if (knot.transform.name == "knotShintoGsharp" || knot.transform.name == "knotShintoGsharp(Clone)")
+        {
+            AddToRecording("Gsharp");
+        }
+        else if (knot.transform.name == "knotTaoismA" || knot.transform.name == "knotTaoismA(Clone)")
+        {
+            AddToRecording("A");
+        }
+        else if (knot.transform.name == "knotTaoismC" || knot.transform.name == "knotTaoismC(Clone)")
+        {
+            AddToRecording("C");
+        }
+        else if (knot.transform.name == "knotTaoismD" || knot.transform.name == "knotTaoismD(Clone)")
+        {
+            AddToRecording("D");
+        }
+        else if (knot.transform.name == "knotTaoismE" || knot.transform.name == "knotTaoismE(Clone)")
+        {
+            AddToRecording("E");
+        }
+        else if (knot.transform.name == "knotTaoismCC" || knot.transform.name == "knotTaoismCC(Clone)")
+        {
+            AddToRecording("CC");
+        }
+        else if (knot.transform.name == "knotTaoismG" || knot.transform.name == "knotTaoismG(Clone)")
+        {
+            AddToRecording("G");
+        }
     }
 
     private void AddToRecording(string newNote)

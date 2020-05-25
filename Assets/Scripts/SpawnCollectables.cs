@@ -13,12 +13,16 @@ public class SpawnCollectables : MonoBehaviour
 
     private int randomCollectable;
 
+    private float zPosition;
+
     private bool addCollectables;
 
     void Start()
     {
         addCollectables = true;
         StartCoroutine(CollectablesWave());
+
+        zPosition = 0;
     }
 
     void FixedUpdate()
@@ -33,11 +37,13 @@ public class SpawnCollectables : MonoBehaviour
     {
         //selects random position within circle of 1 unit, then adds the position to the spawn area's position
         Vector2 pos = Random.insideUnitCircle * (size);
-        Vector3 position = transform.position + new Vector3(pos.x, pos.y, 0.0f);
+        Vector3 position = transform.position + new Vector3(pos.x, pos.y, zPosition);
 
         //instantiate collectable
         randomCollectable = Random.Range(0, 16);
         Instantiate(collectables[randomCollectable], position, Quaternion.identity);
+
+        zPosition -= 0.01f;
     }
 
     IEnumerator CollectablesWave()
