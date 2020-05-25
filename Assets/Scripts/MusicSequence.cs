@@ -33,6 +33,8 @@ public class MusicSequence : MonoBehaviour
 
     public int[] code = new int[5];
 
+    public PlayerTwoSoundEffects playerTwoSE;
+
     private int currentDigit;
 
     private bool started,
@@ -60,7 +62,7 @@ public class MusicSequence : MonoBehaviour
         A = "event:/SOUND6/A";
         B = "event:/SOUND6/B";
         C = "event:/SOUND6/C";
-        C = "event:/SOUND6/CC";
+        CC = "event:/SOUND6/CC";
         D = "event:/SOUND6/D";
         E = "event:/SOUND6/E";
         F = "event:/SOUND6/F";
@@ -670,6 +672,9 @@ public class MusicSequence : MonoBehaviour
         else if (collectable.transform.name == "Collectable18(Clone)")
         {
             //JAPANESE COLLECTABLE
+            
+            playerTwoSE.PlayStartSoundEffect(collectable);
+
             code[currentDigit] = 0;
             currentDigit++;
 
@@ -715,6 +720,9 @@ public class MusicSequence : MonoBehaviour
         else if (collectable.transform.name == "Collectable19(Clone)")
         {
             //TAOISM COLLECTABLE
+            
+            playerTwoSE.PlayStartSoundEffect(collectable);
+
             code[currentDigit] = 0;
             currentDigit++;
 
@@ -759,7 +767,10 @@ public class MusicSequence : MonoBehaviour
         }
         else if (collectable.transform.name == "Collectable20(Clone)")
         {
-            //TAOISM COLLECTABLE
+            //CHRISTIANITY COLLECTABLE
+
+            playerTwoSE.PlayStartSoundEffect(collectable);
+
             code[currentDigit] = 0;
             currentDigit++;
 
@@ -1314,6 +1325,8 @@ public class MusicSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(endSacredTime);
         
+        playerTwoSE.PlayEndSoundEffect(sacredObject);
+
         sacredObject.GetComponent<SpawnKnots>().addKnots = false;
 
         if (sacredObject.transform.name == "shintoKnotsZone")

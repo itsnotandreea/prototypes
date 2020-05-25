@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8920449662666935458}
   - component: {fileID: 3112215163370598585}
   - component: {fileID: 56317401332707164}
+  - component: {fileID: 2451933422924086596}
   m_Layer: 0
   m_Name: Collectable20
   m_TagString: Collectable
@@ -108,3 +109,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 11.446729, y: 12.741915}
   m_EdgeRadius: 0
+--- !u!95 &2451933422924086596
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771339058755040475}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc2d23b3e0c60c14e8d40a822cfd86aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
