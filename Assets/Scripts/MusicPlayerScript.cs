@@ -107,6 +107,31 @@ public class MusicPlayerScript : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot(playList[index][0], transform.position);
             
             yield return new WaitForSeconds(time);
+
+            if (playList[index][0] == "shintoStart")
+            {
+                yield return new WaitForSeconds(0.38f);
+            }
+            else if (playList[index][0] == "shintoEnd")
+            {
+                yield return new WaitForSeconds(0.38f);
+            }
+            else if (playList[index][0] == "taoismStart")
+            {
+                yield return new WaitForSeconds(0.38f);
+            }
+            else if (playList[index][0] == "taoismEnd")
+            {
+                yield return new WaitForSeconds(0.38f);
+            }
+            else if (playList[index][0] == "christianityStart")
+            {
+                yield return new WaitForSeconds(0.98f);
+            }
+            else if (playList[index][0] == "christianityEnd")
+            {
+                yield return new WaitForSeconds(1.6f);
+            }
             
             index++;
         }

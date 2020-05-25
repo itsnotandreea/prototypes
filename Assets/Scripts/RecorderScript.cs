@@ -144,6 +144,30 @@ public class RecorderScript : MonoBehaviour
         {
             AddToRecording("G");
         }
+        else if (knot.transform.name == "shintoStart")
+        {
+            AddToRecording("sStart");
+        }
+        else if (knot.transform.name == "shintoEnd")
+        {
+            AddToRecording("sEnd");
+        }
+        else if (knot.transform.name == "taoismStart")
+        {
+            AddToRecording("tStart");
+        }
+        else if (knot.transform.name == "taoismEnd")
+        {
+            AddToRecording("tEnd");
+        }
+        else if (knot.transform.name == "christianityStart")
+        {
+            AddToRecording("cStart");
+        }
+        else if (knot.transform.name == "christianityEnd")
+        {
+            AddToRecording("cEnd");
+        }
     }
 
     private void AddToRecording(string newNote)

@@ -7136,6 +7136,18 @@ MonoBehaviour:
   christianityGO: {fileID: 346382988}
   christianityCollectable: {fileID: 3771339058755040475, guid: c5676056cb7e2e9499b09596926a22ea,
     type: 3}
+  shintoStart: {fileID: 4097697836677160927, guid: 7533b0cbf6311d647ba300d31597fbef,
+    type: 3}
+  shintoEnd: {fileID: 5549017648917870402, guid: b8d635da0a992ce44b8ef5036d4a55f1,
+    type: 3}
+  taoismStart: {fileID: 5746262977689953343, guid: de99eff2ca9e9144fb66abceb1df7f37,
+    type: 3}
+  taoismEnd: {fileID: 254555572997207976, guid: 371756afcc333ce45bdfa3e7c9b903d7,
+    type: 3}
+  christianityStart: {fileID: 3439717002759428771, guid: 01ec25a97c308e84f89f420f23ba81ba,
+    type: 3}
+  christianityEnd: {fileID: 7659108261617247710, guid: 3dc3b7036d2261645bfccd7a81904937,
+    type: 3}
   sequence: []
   i: 0
   j: 0
@@ -7149,6 +7161,7 @@ MonoBehaviour:
   currentNote: 
   layersArray: 00000000000000000000000000000000000000
   code: 0000000000000000000000000000000000000000
+  recScript: {fileID: 1989914250}
   playerTwoSE: {fileID: 1292988078}
 --- !u!1 &252759182
 GameObject:
