@@ -26,6 +26,10 @@ public class PlayerInputHandler : MonoBehaviour
 
     private Camera cam;
 
+    private TutorialScript tutorialScript;
+
+    private MainManager mainManager;
+
     private void Awake()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -45,6 +49,11 @@ public class PlayerInputHandler : MonoBehaviour
         {
             index = index % 2;
         }
+
+        tutorialScript = GameObject.FindGameObjectWithTag("Tutorial").GetComponent<TutorialScript>();
+        tutorialScript.GetControllerType(index, playerInput.devices[0].ToString());
+
+        mainManager = GameObject.FindGameObjectWithTag("MainManager").GetComponent<MainManager>();
 
         pOne = GameObject.FindWithTag("PlayerOne");
         pOneScript = pOne.GetComponent<PlayerOneScript>();
@@ -77,6 +86,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 0)
         {
             pOneScript.NavigateKnotsMouseInput(cam.ScreenToWorldPoint(value.Get<Vector2>()));
+            SendInfo();
         }
     }
 
@@ -85,6 +95,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 0)
         {
             pOneScript.NavigateKnotsJoystickInput(value.Get<Vector2>());
+            SendInfo();
         }
     }
 
@@ -93,6 +104,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 0)
         {
             pOneScript.CreateLineButtonInput();
+            SendInfo();
         }
     }
 
@@ -101,6 +113,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 0)
         {
             cameraInput = value.Get<Vector2>();
+            SendInfo();
         }
     }
 
@@ -118,6 +131,8 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 xInput = -1.0f;
             }
+
+            SendInfo();
         }
     }
 
@@ -126,6 +141,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             xInput = -1.0f;
+            SendInfo();
         }
     }
 
@@ -134,6 +150,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             xInput = 1.0f;
+            SendInfo();
         }
     }
 
@@ -142,6 +159,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             xInput = 0.0f;
+            SendInfo();
         }
     }
 
@@ -150,6 +168,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             xInput = 0.0f;
+            SendInfo();
         }
     }
 
@@ -158,6 +177,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             pTwoScript.JumpInput();
+            SendInfo();
         }
     }
 
@@ -166,6 +186,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             pTwoScript.JumpReleaseInput();
+            SendInfo();
         }
     }
 
@@ -174,6 +195,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             pTwoScript.CancelLayersInput();
+            SendInfo();
         }
     }
 
@@ -182,6 +204,15 @@ public class PlayerInputHandler : MonoBehaviour
         if (index == 1)
         {
             pTwoScript.CancelLayersReleaseInput();
+            SendInfo();
+        }
+    }
+
+    private void SendInfo()
+    {
+        if (mainManager.tutorialMode)
+        {
+            tutorialScript.GetControllerType(index, playerInput.devices[0].ToString());
         }
     }
 }

@@ -36,6 +36,8 @@ TagManager:
   - ToDestroy
   - MainManager
   - Gallery
+  - CollectableOG
+  - Tutorial
   layers:
   - Default
   - TransparentFX

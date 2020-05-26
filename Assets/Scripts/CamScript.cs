@@ -9,7 +9,8 @@ public class CamScript : MonoBehaviour
 
     public bool autoCamera,
                 menuMode,
-                finishedMode;
+                finishedMode,
+                tutorialMode;
     
     public GameObject floor,
                       playerOne,
@@ -17,6 +18,7 @@ public class CamScript : MonoBehaviour
 
     public Vector3 newPosition,
                    behindPos,
+                   menuPosZero,
                    menuPosOne,
                    menuPosTwo,
                    menuPosThree,
@@ -34,6 +36,7 @@ public class CamScript : MonoBehaviour
 
         behindPos = new Vector3(1.0f, 1.0f, 0.0f) * 10.0f;
 
+        menuPosZero = new Vector3(0.0f, 193.3f, -10.0f);
         menuPosOne = new Vector3(-37.5f, 11.1f, -10.0f);
         menuPosTwo = new Vector3(32.1f, 15.5f, -10.0f);
         menuPosThree = new Vector3(59.6f, 1.2f, -10.0f);
@@ -68,9 +71,13 @@ public class CamScript : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, newPosition, Time.deltaTime * speed);
             }
         }
-        else if (menuMode && !finishedMode)
+        else if (menuMode && !tutorialMode && !finishedMode)
         {
             transform.position = Vector3.MoveTowards(transform.position, menuCurrentPos, Time.deltaTime * speed);
+        }
+        else if (menuMode && tutorialMode && !finishedMode)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, menuPosZero, Time.deltaTime * speed);
         }
         else if (finishedMode)
         {

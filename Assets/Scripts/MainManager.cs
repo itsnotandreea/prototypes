@@ -19,13 +19,19 @@ public class MainManager : MonoBehaviour
                       knotsZone,
                       floor,
                       pictureHolder,
-                      galleryArea;
+                      galleryArea,
+                      firstKnotMenuArea,
+                      firstKnotTutorialArea,
+                      tutorialArea;
+
+    public bool tutorialMode;
 
     private bool takePicture,
                  scoreMode,
                  composeMode,
                  menuMode,
-                 finishOnce;
+                 finishOnce,
+                 doOnce;
 
     private CountdownSystem cdSystem;
     private PlayerOneScript pOneScript;
@@ -70,15 +76,20 @@ public class MainManager : MonoBehaviour
         scoreMode = false;
         composeMode = false;
         menuMode = true;
+        tutorialMode = true;
 
+        menuScript.tutorial = true;
+
+        pOneScript.firstKnot = firstKnotTutorialArea;
         pOneScript.menuMode = true;
-        pOneScript.lineLength = 60;
+        pOneScript.lineLength = 25.0f;
 
         pTwoScript.menuMode = true;
 
         camScript.menuMode = true;
 
         finishOnce = true;
+        doOnce = true;
     }
 
     private void Start()
@@ -88,9 +99,34 @@ public class MainManager : MonoBehaviour
 
     void Update()
     {
+        if (menuScript.tutorial == true && tutorialMode == false)
+        {
+            menuScript.tutorial = false;
+        }
+        else if (menuScript.tutorial == false && tutorialMode == true)
+        {
+            menuScript.tutorial = true;
+        }
+        
         if (menuMode)
         {
             GetMode();
+        }
+
+        if (menuMode && !tutorialMode && pOneScript.lineLength != 60.0f && doOnce)
+        {
+            pOneScript.lineLength = 60.0f;
+            pOneScript.firstKnot = firstKnotMenuArea;
+            pOneScript.Reposition();
+
+            pTwoScript.gameObject.transform.position = new Vector3(-80.0f, 25.0f, 0.0f);
+
+            tutorialArea.transform.GetChild(tutorialArea.transform.childCount - 1).gameObject.transform.position = camScript.menuPosOne;
+
+            camScript.gameObject.transform.position = camScript.menuPosOne;
+
+            StartCoroutine(WaitASec());
+            doOnce = false;
         }
 
         //quit game in built
@@ -103,7 +139,12 @@ public class MainManager : MonoBehaviour
         {
             SceneManager.LoadScene("SampleScene");
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.T) == true)
+        {
+            PlayerPrefs.SetInt(noOfArtworks, 100);
+        }
+
         if (cdSystem.timer <= 0.0f)
         {
             if (finishOnce)
@@ -197,11 +238,25 @@ public class MainManager : MonoBehaviour
             camScript.menuCurrentPos = camScript.galleryPos;
             StartCoroutine(ActivateGalleryArea());
         }
-        else
+        else if (!menuScript.tutorial)
         {
             if (menuMode)
             {
                 camScript.menuCurrentPos = camScript.menuPosOne;
+                camScript.cam.orthographicSize = 30.0f;
+
+                if (galleryArea.activeSelf)
+                {
+                    StartCoroutine(DeactivateGalleryArea(true));
+                }
+            }
+        }
+        else if (menuScript.tutorial)
+        {
+            if (menuMode)
+            {
+                camScript.menuCurrentPos = camScript.menuPosZero;
+                camScript.cam.orthographicSize = 30.0f;
 
                 if (galleryArea.activeSelf)
                 {
@@ -253,7 +308,7 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    IEnumerator WaitMusic(float waitTime)
+    private IEnumerator WaitMusic(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         
@@ -281,7 +336,7 @@ public class MainManager : MonoBehaviour
         return null;
     }
     
-    IEnumerator WaitPicture(Vector3 tempPosition, float tempSize, Quaternion tempRotation)
+    private IEnumerator WaitPicture(Vector3 tempPosition, float tempSize, Quaternion tempRotation)
     {
         yield return new WaitForSeconds(0.0f);
         
@@ -345,5 +400,12 @@ public class MainManager : MonoBehaviour
         {
             galleryArea.transform.GetChild(i).gameObject.SetActive(true);
         }
+    }
+    
+    private IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(10.0f);
+
+        Destroy(tutorialArea);
     }
 }

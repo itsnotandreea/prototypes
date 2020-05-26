@@ -26,6 +26,8 @@ public class PlayerTwoScript : MonoBehaviour
                 held,
                 menuMode;
 
+    public TutorialScript tutorialScript;
+    
     private float offScreenTime,
                   xOne,
                   xTwo,
@@ -213,10 +215,8 @@ public class PlayerTwoScript : MonoBehaviour
             if(other.gameObject.GetComponent<Animator>())
             {
                 Animator animator = other.gameObject.GetComponent<Animator>();
-                //float clipLength = animator.runtimeAnimatorController.animationClips[0].length;
 
                 animator.SetBool("playAnim", true);
-                //Destroy(other.gameObject, clipLength + 0.2f);
             }
             else
             {
@@ -226,6 +226,18 @@ public class PlayerTwoScript : MonoBehaviour
             musicSequenceScript.GetCollectable(other.gameObject);
 
             backgroundClouds.GetComponent<BackgroundScript>().GetCollectable(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "CollectableOG")
+        {
+            if (!musicSequenceScript.cancelLayers)
+            {
+                other.gameObject.SetActive(false);
+
+                tutorialScript.collectedTheOne = true;
+
+                particleSys.Play();
+            }
         }
 
         if (other.gameObject.tag == "Clouds")

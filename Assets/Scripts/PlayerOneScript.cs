@@ -20,8 +20,9 @@ public class PlayerOneScript : MonoBehaviour
                       line;
 
     public bool autoCamera,
-                menuMode;
-
+                menuMode,
+                connectedOne;
+    
     private float x2,
                   y2;
     
@@ -50,17 +51,11 @@ public class PlayerOneScript : MonoBehaviour
 
     void Awake()
     {
-        transform.position = firstKnot.transform.position;
-
         //The music object and script to which the 'notes' are added to
         musicGO = GameObject.FindGameObjectWithTag("Music");
         musicSequence = musicGO.GetComponent<MusicSequence>();
 
         recScript = GameObject.FindGameObjectWithTag("Recorder").GetComponent<RecorderScript>();
-
-        lineRenderer = drawing.GetComponent<LineRenderer>();
-        lineRenderer.SetPosition(0, firstKnot.transform.position);
-        lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
 
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         camScript = cam.GetComponent<CamScript>();
@@ -72,6 +67,22 @@ public class PlayerOneScript : MonoBehaviour
 
         canConnect = true;
 
+        connectedOne = false;
+    }
+
+    private void Start()
+    {
+        Reposition();
+    }
+
+    public void Reposition()
+    {
+        transform.position = firstKnot.transform.position;
+
+        lineRenderer = drawing.GetComponent<LineRenderer>();
+        lineRenderer.SetPosition(0, firstKnot.transform.position);
+        lineRenderer.SetPosition(1, firstKnot.transform.position + new Vector3(lineLength, 0, 0));
+        
         x2 = transform.position.x;
         y2 = transform.position.y;
         Navigate();
@@ -219,6 +230,8 @@ public class PlayerOneScript : MonoBehaviour
                 }
                 
                 canConnect = true;
+
+                connectedOne = true;
             }
         }
     }

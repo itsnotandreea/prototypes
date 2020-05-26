@@ -7,7 +7,8 @@ public class MenuScript : MonoBehaviour
     public bool playButton,
                 composeButton,
                 scoreButton,
-                galleryButton;
+                galleryButton,
+                tutorial;
 
     public GameObject playButtonGO,
                       composeButtonGO,
