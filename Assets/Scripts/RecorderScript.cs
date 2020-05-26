@@ -92,34 +92,6 @@ public class RecorderScript : MonoBehaviour
         {
             AddToRecording("CCsharp");
         }
-        else if (knot.transform.name == "knotShintoC" || knot.transform.name == "knotShintoC(Clone)")
-        {
-            AddToRecording("C");
-        }
-        else if (knot.transform.name == "knotShintoCsharp" || knot.transform.name == "knotShintoCsharp(Clone)")
-        {
-            AddToRecording("Csharp");
-        }
-        else if (knot.transform.name == "knotShintoD" || knot.transform.name == "knotShintoD(Clone)")
-        {
-            AddToRecording("D");
-        }
-        else if (knot.transform.name == "knotShintoE" || knot.transform.name == "knotShintoD(Clone)")
-        {
-            AddToRecording("E");
-        }
-        else if (knot.transform.name == "knotShintoF" || knot.transform.name == "knotShintoF(Clone)")
-        {
-            AddToRecording("F");
-        }
-        else if (knot.transform.name == "knotShintoG" || knot.transform.name == "knotShintoG(Clone)")
-        {
-            AddToRecording("G");
-        }
-        else if (knot.transform.name == "knotShintoGsharp" || knot.transform.name == "knotShintoGsharp(Clone)")
-        {
-            AddToRecording("Gsharp");
-        }
         else if (knot.transform.name == "knotTaoismA" || knot.transform.name == "knotTaoismA(Clone)")
         {
             AddToRecording("A");
@@ -167,6 +139,14 @@ public class RecorderScript : MonoBehaviour
         else if (knot.transform.name == "christianityEnd")
         {
             AddToRecording("cEnd");
+        }
+        else if (knot.transform.name == "robotsStart")
+        {
+            AddToRecording("rStart");
+        }
+        else if (knot.transform.name == "robotsEnd")
+        {
+            AddToRecording("rEnd");
         }
     }
 
@@ -279,6 +259,11 @@ public class RecorderScript : MonoBehaviour
         if (musicSeq.layersArray[18])
         {
             playList[index].Add("20");
+        }
+
+        if (musicSeq.layersArray[19])
+        {
+            playList[index].Add("21");
         }
     }
 

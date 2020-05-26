@@ -203,7 +203,13 @@ public class PlayerOneScript : MonoBehaviour
                     }
                     else if (secondKnot.transform.name == "play")
                     {
-                        galleryScript.PlayThisSong(secondKnot);
+                        string name = secondKnot.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite.name;
+
+                        if (name != "MoreArt1" && name != "MoreArt2" && name != "MoreArt3" && name != "MoreArt4" && name != "MoreArt5" && name != "MoreArt6" && name != "MoreArt7")
+                        {
+                            galleryScript.PlayThisSong(secondKnot);
+                        }
+
                         secondKnot = null;
                     }
 
@@ -323,7 +329,12 @@ public class PlayerOneScript : MonoBehaviour
             }
             else if (closestKnot.transform.name == "play")
             {
-                closestKnot.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                string name = closestKnot.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite.name;
+
+                if (name != "MoreArt1" && name != "MoreArt2" && name != "MoreArt3" && name != "MoreArt4" && name != "MoreArt5" && name != "MoreArt6" && name != "MoreArt7")
+                {
+                    closestKnot.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                }
             }
             else if (closestKnot.transform.name == "prev" || closestKnot.transform.name == "next")
             {

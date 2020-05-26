@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7403532418686926552
+--- !u!1001 &545118573806167205
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -25,17 +25,17 @@ PrefabInstance:
     - target: {fileID: 5304196607447395414, guid: b818ae8614ed0684fbd1d136a01a24cb,
         type: 3}
       propertyPath: m_Name
-      value: knotShintoG
+      value: knotShintoCCsharp
       objectReference: {fileID: 0}
     - target: {fileID: 5304196607981780542, guid: b818ae8614ed0684fbd1d136a01a24cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -60.34295
+      value: -45.59
       objectReference: {fileID: 0}
     - target: {fileID: 5304196607981780542, guid: b818ae8614ed0684fbd1d136a01a24cb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.679655
+      value: 13.02
       objectReference: {fileID: 0}
     - target: {fileID: 5304196607981780542, guid: b818ae8614ed0684fbd1d136a01a24cb,
         type: 3}
@@ -81,6 +81,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304196607981780542, guid: b818ae8614ed0684fbd1d136a01a24cb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304196607981780542, guid: b818ae8614ed0684fbd1d136a01a24cb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b818ae8614ed0684fbd1d136a01a24cb, type: 3}

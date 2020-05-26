@@ -41,6 +41,8 @@ public class MusicPlayerScript : MonoBehaviour
         {
             playList.Clear();
         }
+
+        index = 0;
     }
 
     private void ReadTxtFile()
@@ -108,31 +110,43 @@ public class MusicPlayerScript : MonoBehaviour
             
             yield return new WaitForSeconds(time);
 
-            if (playList[index][0] == "shintoStart")
+            if (index > 0)
             {
-                yield return new WaitForSeconds(0.38f);
-            }
-            else if (playList[index][0] == "shintoEnd")
-            {
-                yield return new WaitForSeconds(0.38f);
-            }
-            else if (playList[index][0] == "taoismStart")
-            {
-                yield return new WaitForSeconds(0.38f);
-            }
-            else if (playList[index][0] == "taoismEnd")
-            {
-                yield return new WaitForSeconds(0.38f);
-            }
-            else if (playList[index][0] == "christianityStart")
-            {
-                yield return new WaitForSeconds(0.98f);
-            }
-            else if (playList[index][0] == "christianityEnd")
-            {
-                yield return new WaitForSeconds(1.6f);
+                if (playList[index][0] == "shintoStart")
+                {
+                    yield return new WaitForSeconds(0.38f);
+                }
+                else if (playList[index][0] == "shintoEnd")
+                {
+                    yield return new WaitForSeconds(0.38f);
+                }
+                else if (playList[index][0] == "taoismStart")
+                {
+                    yield return new WaitForSeconds(0.38f);
+                }
+                else if (playList[index][0] == "taoismEnd")
+                {
+                    yield return new WaitForSeconds(0.38f);
+                }
+                else if (playList[index][0] == "christianityStart")
+                {
+                    yield return new WaitForSeconds(0.98f);
+                }
+                else if (playList[index][0] == "christianityEnd")
+                {
+                    yield return new WaitForSeconds(1.5f);
+                }
+                else if (playList[index][0] == "robotsStart")
+                {
+                    yield return new WaitForSeconds(1.15f);
+                }
+                else if (playList[index][0] == "robotsEnd")
+                {
+                    yield return new WaitForSeconds(1.15f);
+                }
             }
             
+
             index++;
         }
     }
@@ -141,7 +155,7 @@ public class MusicPlayerScript : MonoBehaviour
     {
         bool sacred = false;
 
-        for (int j = 2; j < 21; j++)
+        for (int j = 2; j < 22; j++)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer" + j.ToString(), 0f);
         }
@@ -151,14 +165,14 @@ public class MusicPlayerScript : MonoBehaviour
             char[] temp = new char[8];
             string tempo = new string(temp);
             
-            if (playList[noteIndex][k].Equals("Layer20" + tempo) || playList[noteIndex][k].Equals("Layer19" + tempo) || playList[noteIndex][k].Equals("Layer18" + tempo))
+            if (playList[noteIndex][k].Equals("Layer21" + tempo) || playList[noteIndex][k].Equals("Layer20" + tempo) || playList[noteIndex][k].Equals("Layer19" + tempo) || playList[noteIndex][k].Equals("Layer18" + tempo))
             {
                 sacred = true;
             }
 
             if (sacred)
             {
-                if (playList[noteIndex][k].Equals("Layer20" + tempo) || playList[noteIndex][k].Equals("Layer19" + tempo) || playList[noteIndex][k].Equals("Layer18" + tempo))
+                if (playList[noteIndex][k].Equals("Layer21" + tempo) || playList[noteIndex][k].Equals("Layer20" + tempo) || playList[noteIndex][k].Equals("Layer19" + tempo) || playList[noteIndex][k].Equals("Layer18" + tempo))
                 {
                     FMODUnity.RuntimeManager.StudioSystem.setParameterByName(playList[noteIndex][k], 1f);
                 }

@@ -50,11 +50,14 @@ public class PlayerInputHandler : MonoBehaviour
             index = index % 2;
         }
 
-        tutorialScript = GameObject.FindGameObjectWithTag("Tutorial").GetComponent<TutorialScript>();
-        tutorialScript.GetControllerType(index, playerInput.devices[0].ToString());
-
         mainManager = GameObject.FindGameObjectWithTag("MainManager").GetComponent<MainManager>();
-
+        
+        if (mainManager.tutorialMode)
+        {
+            tutorialScript = GameObject.FindGameObjectWithTag("Tutorial").GetComponent<TutorialScript>();
+            tutorialScript.GetControllerType(index, playerInput.devices[0].ToString());
+        }
+        
         pOne = GameObject.FindWithTag("PlayerOne");
         pOneScript = pOne.GetComponent<PlayerOneScript>();
         

@@ -1968,7 +1968,7 @@ Transform:
   - {fileID: 452571091}
   - {fileID: 610926677}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &71433242
 MonoBehaviour:
@@ -4069,6 +4069,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &144125742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144125743}
+  m_Layer: 0
+  m_Name: RobotsObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144125743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144125742}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &144761074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5304196607981780542, guid: b818ae8614ed0684fbd1d136a01a24cb,
@@ -7372,6 +7402,9 @@ MonoBehaviour:
   christianityGO: {fileID: 346382988}
   christianityCollectable: {fileID: 3771339058755040475, guid: c5676056cb7e2e9499b09596926a22ea,
     type: 3}
+  robotsGO: {fileID: 987514026}
+  robotsCollectable: {fileID: 7318441394026106047, guid: 1ef89995429ab50429d688ad03c02142,
+    type: 3}
   shintoStart: {fileID: 4097697836677160927, guid: 7533b0cbf6311d647ba300d31597fbef,
     type: 3}
   shintoEnd: {fileID: 5549017648917870402, guid: b8d635da0a992ce44b8ef5036d4a55f1,
@@ -7384,6 +7417,10 @@ MonoBehaviour:
     type: 3}
   christianityEnd: {fileID: 7659108261617247710, guid: 3dc3b7036d2261645bfccd7a81904937,
     type: 3}
+  robotsStart: {fileID: 6496243250071711356, guid: 15ad0cf5a7ad9a442bac5404a7c459ee,
+    type: 3}
+  robotsEnd: {fileID: 3032807879766757068, guid: ec93175f26b225440a636d1969c77bdb,
+    type: 3}
   sequence: []
   i: 0
   j: 0
@@ -7395,7 +7432,7 @@ MonoBehaviour:
   sacred: 0
   sacredCollectable: 0
   currentNote: 
-  layersArray: 00000000000000000000000000000000000000
+  layersArray: 0000000000000000000000000000000000000000
   code: 0000000000000000000000000000000000000000
   recScript: {fileID: 1989914250}
   playerTwoSE: {fileID: 1292988078}
@@ -8616,7 +8653,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &386481249
 GameObject:
@@ -8765,7 +8802,6 @@ MonoBehaviour:
   - {fileID: 4141201839149674392, guid: 752e25e5be1d6944daa0928b59a1ecfd, type: 3}
   - {fileID: 6089083591526914010, guid: 2950823c13ab9254aa86d07972669f54, type: 3}
   - {fileID: 99023191983421491, guid: 15e47b8fa27dea64ca5db1d222e766c0, type: 3}
-  - {fileID: 2158436048236603765, guid: 058179c6bfb1039499fed95711c4edfa, type: 3}
 --- !u!114 &395853255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8952,7 +8988,7 @@ RectTransform:
   - {fileID: 940208856}
   - {fileID: 1862496286}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15629,7 +15665,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.74}
 --- !u!114 &783097458
 MonoBehaviour:
@@ -18401,7 +18437,7 @@ Transform:
   - {fileID: 1965236440}
   - {fileID: 1077111607}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.74}
 --- !u!1 &844293347
 GameObject:
@@ -19749,6 +19785,7 @@ MonoBehaviour:
   - {fileID: 3928886990240027361, guid: fc6950640d48aed46b7af50b8598a9bd, type: 3}
   - {fileID: 7297466503707227633, guid: 41a7889a229d947418fd81122e79fac0, type: 3}
   - {fileID: 7592218039411059246, guid: 1a89e878c639dc14296aad652063502d, type: 3}
+  - {fileID: 1068910749771302573, guid: 728aab4dad9008848947d4b02d6dcd58, type: 3}
 --- !u!4 &982736487
 Transform:
   m_ObjectHideFlags: 0
@@ -20132,6 +20169,94 @@ PolygonCollider2D:
       - {x: 13.384062, y: 7.922435}
       - {x: 13.47976, y: 8.236872}
       - {x: 13.47976, y: 8.510295}
+--- !u!1 &987514026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987514030}
+  - component: {fileID: 987514029}
+  - component: {fileID: 987514028}
+  - component: {fileID: 987514027}
+  m_Layer: 0
+  m_Name: robotsKnotsZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &987514027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987514026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73cda384057f134aa0f4aae3b116c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractor: {fileID: 1663019012}
+  rb: {fileID: 0}
+--- !u!50 &987514028
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987514026}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &987514029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987514026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c6186023e299246b8698982e0b70ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTime: 0.45
+  size: 21
+  moveSpeed: 24
+  moveUpSpeed: 2.3
+  addKnots: 0
+  startAutomatically: 0
+  parent: {fileID: 144125742}
+  knots: []
+--- !u!4 &987514030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987514026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.8, y: 17.1, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &990242809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2268967290902589271, guid: 5cc559e87750e904eb721f2133126939,
@@ -25607,7 +25732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1252641614
 PrefabInstance:
@@ -28976,6 +29101,8 @@ MonoBehaviour:
   taoismEnd: {fileID: 8300000, guid: 722ae83bafbc90e4580f36be6ac80085, type: 3}
   christianityStart: {fileID: 8300000, guid: a08c51dbcdce4764abd5ddb0fce944bc, type: 3}
   christianityEnd: {fileID: 8300000, guid: cbe7b48815d9cc04ea0737179b623abc, type: 3}
+  robotsStart: {fileID: 8300000, guid: c6466557d2648cc4cbb3e83fa3e61922, type: 3}
+  robotsEnd: {fileID: 8300000, guid: 04a3819738484004ebfb399870183808, type: 3}
 --- !u!82 &1292988079
 AudioSource:
   m_ObjectHideFlags: 0
@@ -33775,7 +33902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396519837
 GameObject:
@@ -35083,7 +35210,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1416259312
 AudioSource:
@@ -40337,7 +40464,7 @@ Transform:
   - {fileID: 171450657}
   - {fileID: 1058771263}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1438893315
 SpriteRenderer:
@@ -51141,7 +51268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1789647178
 GameObject:
@@ -51569,7 +51696,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1824148634 stripped
 Transform:
@@ -53362,7 +53489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901822570
 GameObject:
@@ -54496,7 +54623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951499502
 GameObject:
@@ -57745,7 +57872,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2074482890
 GameObject:
@@ -62341,5 +62468,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -10,12 +10,16 @@ public class MusicSequence : MonoBehaviour
                       taoismCollectable,
                       christianityGO,
                       christianityCollectable,
+                      robotsGO,
+                      robotsCollectable,
                       shintoStart,
                       shintoEnd,
                       taoismStart,
                       taoismEnd,
                       christianityStart,
-                      christianityEnd;
+                      christianityEnd,
+                      robotsStart,
+                      robotsEnd;
 
     public List<GameObject> sequence = new List<GameObject>();
 
@@ -47,17 +51,18 @@ public class MusicSequence : MonoBehaviour
 
     private bool started,
                  onScreen;
-    
+
     private string sound,
                    A,
                    B,
                    C,
+                   Csharp,
                    CC,
+                   CCsharp,
                    D,
                    E,
                    F,
                    G,
-                   Csharp,
                    Gsharp;
     
     private Camera cam;
@@ -70,12 +75,13 @@ public class MusicSequence : MonoBehaviour
         A = "event:/SOUND6/A";
         B = "event:/SOUND6/B";
         C = "event:/SOUND6/C";
+        Csharp = "event:/SOUND6/Csharp";
         CC = "event:/SOUND6/CC";
+        CCsharp = "event:/SOUND6/CCsharp";
         D = "event:/SOUND6/D";
         E = "event:/SOUND6/E";
         F = "event:/SOUND6/F";
         G = "event:/SOUND6/G";
-        Csharp = "event:/SOUND6/Csharp";
         Gsharp = "event:/SOUND6/Gsharp";
         
         currentNote = null;
@@ -824,8 +830,56 @@ public class MusicSequence : MonoBehaviour
                 }
             }
         }
+        else if (collectable.transform.name == "Collectable21(Clone)")
+        {
+            //CHIPTUNE COLLECTABLE
 
+            playerTwoSE.PlayStartSoundEffect(collectable);
+            recScript.AddKnot(robotsStart);
 
+            code[currentDigit] = 0;
+            currentDigit++;
+
+            sacred = true;
+
+            if (cancelLayers)
+            {
+                //cancel the layer
+                if (layersArray[19])
+                {
+                    layersArray[19] = false;
+                    activeLayers--;
+                }
+            }
+            else
+            {
+                //add the layer
+                if (!layersArray[19])
+                {
+                    if (activeLayers <= activeLayersLimit)
+                    {
+                        activeLayers++;
+                    }
+                    else
+                    {
+                        DeleteRandomLayer();
+                    }
+
+                    layersArray[19] = true;
+
+                    robotsGO.SetActive(true);
+                    robotsGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
+                                                              transform.position.y + transform.TransformDirection(Vector2.up * 11.0f).y,
+                                                              robotsGO.transform.position.z);
+
+                    robotsGO.GetComponent<SpawnKnots>().addKnots = true;
+                    StartCoroutine(robotsGO.GetComponent<SpawnKnots>().KnotsWave());
+
+                    StartCoroutine(EndSacred(robotsGO));
+                }
+            }
+        }
+        
         CheckCode();
         AssignLayer();
     }
@@ -873,6 +927,19 @@ public class MusicSequence : MonoBehaviour
                                              transform.position.y + transform.TransformDirection(pos).y,
                                              0.0f);
                 Instantiate(christianityCollectable, newPos, transform.rotation);
+                sacredCollectable = true;
+            }
+        }
+
+        if (codeS == "33322" || codeS == "23332" || codeS == "22333" || codeS == "32233" || codeS == "33223")
+        {
+            if (!sacredCollectable)
+            {
+                Vector2 pos = new Vector2(Random.Range(-15.0f, 15.0f), Random.Range(20.0f, 30.0f));
+                Vector3 newPos = new Vector3(transform.position.x + transform.TransformDirection(pos).x,
+                                             transform.position.y + transform.TransformDirection(pos).y,
+                                             0.0f);
+                Instantiate(robotsCollectable, newPos, transform.rotation);
                 sacredCollectable = true;
             }
         }
@@ -1173,6 +1240,15 @@ public class MusicSequence : MonoBehaviour
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer20", 0f);
         }
+
+        if (layersArray[19])
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer21", 1f);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer21", 0f);
+        }
     }
 
     private IEnumerator Play(float time)
@@ -1256,13 +1332,13 @@ public class MusicSequence : MonoBehaviour
         {
             currentNote = Csharp;
         }
-        else if (knot.transform.name == "knotShintoD" || knot.transform.name == "knotShintoD(Clone)")
+        else if (knot.transform.name == "knotShintoCC" || knot.transform.name == "knotShintoCC(Clone)")
         {
-            currentNote = D;
+            currentNote = CC;
         }
-        else if (knot.transform.name == "knotShintoE" || knot.transform.name == "knotShintoD(Clone)")
+        else if (knot.transform.name == "knotShintoCCsharp" || knot.transform.name == "knotShintoCCsharp(Clone)")
         {
-            currentNote = E;
+            currentNote = CCsharp;
         }
         else if (knot.transform.name == "knotShintoF" || knot.transform.name == "knotShintoF(Clone)")
         {
@@ -1358,7 +1434,14 @@ public class MusicSequence : MonoBehaviour
             layersArray[18] = false;
             playerTwoSE.PlayEndSoundEffect(sacredObject);
             recScript.AddKnot(christianityEnd);
-            yield return new WaitForSeconds(1.6f);
+            yield return new WaitForSeconds(1.5f);
+        }
+        else if (sacredObject.transform.name == "robotsKnotsZone")
+        {
+            layersArray[19] = false;
+            playerTwoSE.PlayEndSoundEffect(sacredObject);
+            recScript.AddKnot(robotsEnd);
+            yield return new WaitForSeconds(1.15f);
         }
 
         sacred = false;

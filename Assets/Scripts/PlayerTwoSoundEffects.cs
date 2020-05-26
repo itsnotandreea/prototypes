@@ -10,7 +10,9 @@ public class PlayerTwoSoundEffects : MonoBehaviour
                      taoismStart,
                      taoismEnd,
                      christianityStart,
-                     christianityEnd;
+                     christianityEnd,
+                     robotsStart,
+                     robotsEnd;
 
     private AudioSource audioSource;
 
@@ -33,6 +35,10 @@ public class PlayerTwoSoundEffects : MonoBehaviour
         {
             currentClip = christianityStart;
         }
+        else if (collectable.transform.name == "Collectable21(Clone)")
+        {
+            currentClip = robotsStart;
+        }
 
         audioSource.PlayOneShot(currentClip);
     }
@@ -50,6 +56,10 @@ public class PlayerTwoSoundEffects : MonoBehaviour
         else if (zone.transform.name == "christianityKnotsZone")
         {
             currentClip = christianityEnd;
+        }
+        else if (zone.transform.name == "robotsKnotsZone")
+        {
+            currentClip = robotsEnd;
         }
 
         audioSource.PlayOneShot(currentClip);

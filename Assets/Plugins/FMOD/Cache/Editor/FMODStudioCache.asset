@@ -135,7 +135,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-9048012013747033129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +255,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-8925233044922772011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer9
+  m_EditorClassIdentifier: 
+  Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-8925061693987752986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +339,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-8805558013799405867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +374,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-8741310391800920197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SOUND6/Csharp
+  m_EditorClassIdentifier: 
+  Path: event:/SOUND6/Csharp
+  guid: 6d714244d9369b47a360202da91b9b20
+  Banks:
+  - {fileID: 1718259129695645971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &-8712510376302401142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +414,7 @@ MonoBehaviour:
   lastModified: 637260141831972324
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-8655337561194373320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,6 +1039,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-7800174751128846778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer2
+  m_EditorClassIdentifier: 
+  Name: Layer2
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-7795204123712073370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +1197,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-7626983399017233548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer1
+  m_EditorClassIdentifier: 
+  Name: Layer1
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-7610873123334878820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,6 +1305,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-7515919931220104384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer1
+  m_EditorClassIdentifier: 
+  Name: Layer1
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-7512752256381319878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1374,23 @@ MonoBehaviour:
   m_Name: Layer22
   m_EditorClassIdentifier: 
   Name: Layer22
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-7411538725644830626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer10
+  m_EditorClassIdentifier: 
+  Name: Layer10
   Min: 0
   Max: 1
   Default: 0
@@ -1436,7 +1544,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 2058
-  Exists: 1
+  Exists: 0
 --- !u!114 &-7179421379440080752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,6 +1608,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-7095818362666304141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer15
+  m_EditorClassIdentifier: 
+  Name: Layer15
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-7095556508862142339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1581,9 +1706,9 @@ MonoBehaviour:
   m_Name: event:/SOUND6/tStart
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/tStart
-  guid: d46c5246e0e67143a8a873172e123c40
+  guid: fbf51dd75b50ea4abb6a7cfa23ceb2fd
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1608,6 +1733,23 @@ MonoBehaviour:
   lastModified: 637219711150732817
   LoadResult: 0
   FileSizes: []
+  Exists: 0
+--- !u!114 &-6889629112607979179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer15
+  m_EditorClassIdentifier: 
+  Name: Layer15
+  Min: 0
+  Max: 1
+  Default: 0
   Exists: 0
 --- !u!114 &-6888507218225884559
 MonoBehaviour:
@@ -1729,6 +1871,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6745217358119249221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer1
+  m_EditorClassIdentifier: 
+  Name: Layer1
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-6709139497053809456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,6 +1905,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6701816810237708613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SOUND6/rEnd
+  m_EditorClassIdentifier: 
+  Path: event:/SOUND6/rEnd
+  guid: c9d5b5e72d71c440b29423aa4e2d6657
+  Banks:
+  - {fileID: 1718259129695645971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2156
 --- !u!114 &-6696449292863247436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,6 +1979,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6591191232379758863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer10
+  m_EditorClassIdentifier: 
+  Name: Layer10
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-6590840118877169613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,6 +2138,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6459230321735849843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer3
+  m_EditorClassIdentifier: 
+  Name: Layer3
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-6342809646195526555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,6 +2228,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6228601517136505837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer16
+  m_EditorClassIdentifier: 
+  Name: Layer16
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-6197830377808482621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,6 +2296,40 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6119021255478147438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer16
+  m_EditorClassIdentifier: 
+  Name: Layer16
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-6089208889006871172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer13
+  m_EditorClassIdentifier: 
+  Name: Layer13
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-6087204841573003431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,6 +2360,23 @@ MonoBehaviour:
   m_Name: Layer9
   m_EditorClassIdentifier: 
   Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-6010037289921938279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer5
+  m_EditorClassIdentifier: 
+  Name: Layer5
   Min: 0
   Max: 1
   Default: 0
@@ -2221,6 +2505,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &-5845576710011621861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer18
+  m_EditorClassIdentifier: 
+  Name: Layer18
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-5809386257904290782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,6 +2590,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-5734308005004317338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer3
+  m_EditorClassIdentifier: 
+  Name: Layer3
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-5730352608873359830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,6 +2620,23 @@ MonoBehaviour:
   m_Name: Layer9
   m_EditorClassIdentifier: 
   Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-5691530063711213403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer15
+  m_EditorClassIdentifier: 
+  Name: Layer15
   Min: 0
   Max: 1
   Default: 0
@@ -2390,7 +2725,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5448665213519516291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2436,6 +2771,23 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/E/Layer10
+  m_EditorClassIdentifier: 
+  Name: Layer10
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-5354540869166944256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer10
   m_EditorClassIdentifier: 
   Name: Layer10
   Min: 0
@@ -2666,6 +3018,40 @@ MonoBehaviour:
   m_Name: parameter:/A/Layer4
   m_EditorClassIdentifier: 
   Name: Layer4
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-5058048377615376830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer4
+  m_EditorClassIdentifier: 
+  Name: Layer4
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-5008530773202621276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer14
+  m_EditorClassIdentifier: 
+  Name: Layer14
   Min: 0
   Max: 1
   Default: 0
@@ -3086,6 +3472,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-4591318886013638976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer19
+  m_EditorClassIdentifier: 
+  Name: Layer19
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-4570242391321719433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3099,6 +3502,23 @@ MonoBehaviour:
   m_Name: parameter:/A/Layer6
   m_EditorClassIdentifier: 
   Name: Layer6
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-4545430298811907251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer3
+  m_EditorClassIdentifier: 
+  Name: Layer3
   Min: 0
   Max: 1
   Default: 0
@@ -3322,6 +3742,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-4235411039944318144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer7
+  m_EditorClassIdentifier: 
+  Name: Layer7
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-4234131650976960902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3338,7 +3775,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-4224036946427093355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3474,6 +3911,24 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+  Exists: 0
+--- !u!114 &-4000278464170400192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../SOUND9/SOUND9/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637261303854100255
+  LoadResult: 0
+  FileSizes: []
   Exists: 0
 --- !u!114 &-3991873025503750891
 MonoBehaviour:
@@ -3828,6 +4283,40 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-3521184683479522459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer9
+  m_EditorClassIdentifier: 
+  Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-3490902029121651927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer12
+  m_EditorClassIdentifier: 
+  Name: Layer12
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3478295156522022385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3858,6 +4347,23 @@ MonoBehaviour:
   m_Name: Layer3
   m_EditorClassIdentifier: 
   Name: Layer3
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-3367963814344351527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer9
+  m_EditorClassIdentifier: 
+  Name: Layer9
   Min: 0
   Max: 1
   Default: 0
@@ -4004,6 +4510,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &-3128088845349693318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer21
+  m_EditorClassIdentifier: 
+  Name: Layer21
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-3106007805022849215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4088,7 +4611,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2785912385489561293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4128,6 +4651,24 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+  Exists: 0
+--- !u!114 &-2782099058741612149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../SOUND9/SOUND9/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637261277945812423
+  LoadResult: 0
+  FileSizes: []
   Exists: 0
 --- !u!114 &-2745537786870887678
 MonoBehaviour:
@@ -4213,7 +4754,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2658173399642509098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4278,6 +4819,23 @@ MonoBehaviour:
   m_Name: parameter:/B/Layer9
   m_EditorClassIdentifier: 
   Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-2629165946233773532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer5
+  m_EditorClassIdentifier: 
+  Name: Layer5
   Min: 0
   Max: 1
   Default: 0
@@ -4365,7 +4923,7 @@ MonoBehaviour:
   Path: event:/SOUND6/E
   guid: e58309536a99ab4e9fc0272da9e3cdf4
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4373,6 +4931,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &-2552059791836944819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer14
+  m_EditorClassIdentifier: 
+  Name: Layer14
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-2501049261376026366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4424,6 +4999,23 @@ MonoBehaviour:
   lastModified: 637248102214482366
   LoadResult: 0
   FileSizes: []
+  Exists: 0
+--- !u!114 &-2488663874167829841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer3
+  m_EditorClassIdentifier: 
+  Name: Layer3
+  Min: 0
+  Max: 1
+  Default: 0
   Exists: 0
 --- !u!114 &-2472781607962941776
 MonoBehaviour:
@@ -4498,7 +5090,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2331149221941333081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4512,9 +5104,9 @@ MonoBehaviour:
   m_Name: event:/SOUND6/CEnd
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/CEnd
-  guid: 7630387f7fcb1f41ad129af201fa502c
+  guid: 9690aedd981a7040bcff8236b4c48b25
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4537,7 +5129,7 @@ MonoBehaviour:
   Path: event:/SOUND6/B
   guid: 3dfd944d554f754e859bb3f0cd3324b0
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4545,6 +5137,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &-2272811234248604853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer4
+  m_EditorClassIdentifier: 
+  Name: Layer4
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-2231532448631512241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4590,6 +5199,23 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/C/Layer8
+  m_EditorClassIdentifier: 
+  Name: Layer8
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-2106423391626386464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer8
   m_EditorClassIdentifier: 
   Name: Layer8
   Min: 0
@@ -4664,6 +5290,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-1911039105598742163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer7
+  m_EditorClassIdentifier: 
+  Name: Layer7
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-1901509339723000738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4680,7 +5323,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1901313824328068199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4750,6 +5393,23 @@ MonoBehaviour:
   m_Name: parameter:/C/Layer9
   m_EditorClassIdentifier: 
   Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-1718763076035640077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer7
+  m_EditorClassIdentifier: 
+  Name: Layer7
   Min: 0
   Max: 1
   Default: 0
@@ -5104,6 +5764,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-1233517551166660221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer12
+  m_EditorClassIdentifier: 
+  Name: Layer12
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-1188584781348713301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5120,7 +5797,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1180349566897075953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5206,6 +5883,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-1076831184407512844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SOUND6/Cstart
+  m_EditorClassIdentifier: 
+  Path: event:/SOUND6/Cstart
+  guid: afa08a149802304780e0345f178ec424
+  Banks:
+  - {fileID: 1718259129695645971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
 --- !u!114 &-1075912240629585908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5502,7 +6202,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-673096724183473951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5628,6 +6328,26 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-500403100374407026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../SOUND9/SOUND9/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637261305441925053
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 2220
+  Exists: 1
 --- !u!114 &-491814664191056008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5662,7 +6382,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-444205634811665512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5714,6 +6434,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-307906855547408658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer17
+  m_EditorClassIdentifier: 
+  Name: Layer17
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-293694138004535397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5830,6 +6567,23 @@ MonoBehaviour:
   m_Name: parameter:/E/Layer12
   m_EditorClassIdentifier: 
   Name: Layer12
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-91335766675454794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer8
+  m_EditorClassIdentifier: 
+  Name: Layer8
   Min: 0
   Max: 1
   Default: 0
@@ -5954,8 +6708,8 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -7193964847969158401}
-  - {fileID: -8712510376302401142}
+  - {fileID: -500403100374407026}
+  - {fileID: 1718259129695645971}
   EditorEvents:
   - {fileID: 9147122567154773886}
   - {fileID: 7147730004364280984}
@@ -5968,38 +6722,42 @@ MonoBehaviour:
   - {fileID: -2553453665031872057}
   - {fileID: 42865160497720490}
   - {fileID: 7991952132663941116}
-  - {fileID: 8181590029171037854}
-  - {fileID: 8268124167370634578}
   - {fileID: -2331149221941333081}
   - {fileID: 2824620786843438651}
   - {fileID: 2963278031139968298}
   - {fileID: -6955215367862371587}
+  - {fileID: 6842572262248036698}
+  - {fileID: -8741310391800920197}
+  - {fileID: 9180687815233825848}
+  - {fileID: -1076831184407512844}
+  - {fileID: -6701816810237708613}
   EditorParameters:
-  - {fileID: -1188584781348713301}
-  - {fileID: 100770212475659436}
-  - {fileID: -8836045716137956787}
-  - {fileID: -5563266911668342587}
-  - {fileID: -726677871511533326}
-  - {fileID: -2332334353789729697}
-  - {fileID: 6647953459102322122}
-  - {fileID: 578874624345176755}
-  - {fileID: 252148056068847128}
-  - {fileID: 3180132530503645249}
-  - {fileID: 1167706167537472264}
-  - {fileID: -4234131650976960902}
-  - {fileID: -9054353695083014913}
-  - {fileID: 3121638238121221503}
-  - {fileID: 511349220329371055}
-  - {fileID: -1901509339723000738}
-  - {fileID: -448523177062125511}
-  - {fileID: -2786045136166793884}
-  - {fileID: -2667040254050928273}
-  - {fileID: 1713539105720749719}
+  - {fileID: 3549158340770175078}
+  - {fileID: -7515919931220104384}
+  - {fileID: 4303093751942610074}
+  - {fileID: 3380940224023657995}
+  - {fileID: 6305309350559187717}
+  - {fileID: -3490902029121651927}
+  - {fileID: -6089208889006871172}
+  - {fileID: 2563566555610586069}
+  - {fileID: -3521184683479522459}
+  - {fileID: 9129906390104253327}
+  - {fileID: 4662927332400739614}
+  - {fileID: 593539341268427837}
+  - {fileID: -5058048377615376830}
+  - {fileID: 7179823019470079677}
+  - {fileID: -6591191232379758863}
+  - {fileID: 6489276538160753850}
+  - {fileID: -307906855547408658}
+  - {fileID: -6459230321735849843}
+  - {fileID: 6168763311885606354}
+  - {fileID: 6533255226079261104}
+  - {fileID: -1911039105598742163}
   MasterBanks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   StringsBanks:
-  - {fileID: -7193964847969158401}
-  stringsBankWriteTime: 637260141832091996
+  - {fileID: -500403100374407026}
+  stringsBankWriteTime: 637261305441925053
   cacheVersion: 3
 --- !u!114 &6901388613150446
 MonoBehaviour:
@@ -6050,7 +6808,7 @@ MonoBehaviour:
   Path: event:/SOUND6/F
   guid: f75654d10ff81b4d8fe48344bdfb1250
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -6058,6 +6816,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &48123203509647537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer13
+  m_EditorClassIdentifier: 
+  Name: Layer13
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &84537333353683843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6071,6 +6846,23 @@ MonoBehaviour:
   m_Name: parameter:/C/Layer9
   m_EditorClassIdentifier: 
   Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &92791729258266019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer17
+  m_EditorClassIdentifier: 
+  Name: Layer17
   Min: 0
   Max: 1
   Default: 0
@@ -6091,7 +6883,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &133023206806743624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6210,7 +7002,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &274933937757290385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6296,6 +7088,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &395310992127792087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer2
+  m_EditorClassIdentifier: 
+  Name: Layer2
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &409153831837475348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6346,7 +7155,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &515392593174576743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6411,6 +7220,23 @@ MonoBehaviour:
   m_Name: Layer18
   m_EditorClassIdentifier: 
   Name: Layer18
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &593539341268427837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer16
+  m_EditorClassIdentifier: 
+  Name: Layer16
   Min: 0
   Max: 1
   Default: 0
@@ -6569,6 +7395,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &720813604836542147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer1
+  m_EditorClassIdentifier: 
+  Name: Layer1
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &742512784490500881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6652,7 +7495,7 @@ MonoBehaviour:
   Path: event:/SOUND6/D
   guid: d187379e210d394db1d5475eb53aad2d
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -6660,6 +7503,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &905772615017063678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer6
+  m_EditorClassIdentifier: 
+  Name: Layer6
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &906526122087277988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6802,6 +7662,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &1078095014656283383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer11
+  m_EditorClassIdentifier: 
+  Name: Layer11
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &1135984403304205819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6869,7 +7746,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &1179686687195016874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7075,6 +7952,23 @@ MonoBehaviour:
   m_Name: layerFive
   m_EditorClassIdentifier: 
   Name: layerFive
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &1424168718123394174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer13
+  m_EditorClassIdentifier: 
+  Name: Layer13
   Min: 0
   Max: 1
   Default: 0
@@ -7288,6 +8182,41 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+  Exists: 0
+--- !u!114 &1717234881756698262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer9
+  m_EditorClassIdentifier: 
+  Name: Layer9
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &1718259129695645971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../SOUND9/SOUND9/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637261305441805375
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &1720372196265308138
 MonoBehaviour:
@@ -7527,6 +8456,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &2048058503374650015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer18
+  m_EditorClassIdentifier: 
+  Name: Layer18
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &2077796059795057212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7557,6 +8503,23 @@ MonoBehaviour:
   m_Name: parameter:/F/Layer1
   m_EditorClassIdentifier: 
   Name: Layer1
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &2136103158761733936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer8
+  m_EditorClassIdentifier: 
+  Name: Layer8
   Min: 0
   Max: 1
   Default: 0
@@ -7827,6 +8790,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &2480969399169004991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer14
+  m_EditorClassIdentifier: 
+  Name: Layer14
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &2487043462221127136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7912,6 +8892,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &2563566555610586069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer18
+  m_EditorClassIdentifier: 
+  Name: Layer18
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &2584230261417104349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8133,9 +9130,9 @@ MonoBehaviour:
   m_Name: event:/SOUND6/tEnd
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/tEnd
-  guid: 8f93ad8ea813d449910f618b82fb29a8
+  guid: 96d35cccd1abd84ab2b97a7d012559fd
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -8190,9 +9187,9 @@ MonoBehaviour:
   m_Name: event:/SOUND6/sEnd
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/sEnd
-  guid: a60d96b0805eeb4e8f6cd407b5ade002
+  guid: c77eea08fa6a2b4f8a47eb9633bec77f
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -8213,6 +9210,23 @@ MonoBehaviour:
   m_Name: parameter:/E/Layer2
   m_EditorClassIdentifier: 
   Name: Layer2
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &3006528897272259788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer10
+  m_EditorClassIdentifier: 
+  Name: Layer10
   Min: 0
   Max: 1
   Default: 0
@@ -8268,6 +9282,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &3090616262332123361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer20
+  m_EditorClassIdentifier: 
+  Name: Layer20
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &3110549465048890399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8301,7 +9332,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &3134045343828838921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8357,7 +9388,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &3192629518413974259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8450,6 +9481,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &3380940224023657995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer5
+  m_EditorClassIdentifier: 
+  Name: Layer5
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3464080604868136860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8463,6 +9511,40 @@ MonoBehaviour:
   m_Name: Layer18
   m_EditorClassIdentifier: 
   Name: Layer18
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &3492130109660637404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer6
+  m_EditorClassIdentifier: 
+  Name: Layer6
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &3497540985014072120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer20
+  m_EditorClassIdentifier: 
+  Name: Layer20
   Min: 0
   Max: 1
   Default: 0
@@ -8548,6 +9630,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &3549158340770175078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer8
+  m_EditorClassIdentifier: 
+  Name: Layer8
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3557815147727706894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8759,6 +9858,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &3732077766327185390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer20
+  m_EditorClassIdentifier: 
+  Name: Layer20
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &3738764254600214044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8878,6 +9994,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &3898918135815740466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer11
+  m_EditorClassIdentifier: 
+  Name: Layer11
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &3920740284003057148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8893,7 +10026,7 @@ MonoBehaviour:
   Path: event:/SOUND6/A
   guid: c5860bb050467f4780a961c82ba16404
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -9068,6 +10201,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &4303093751942610074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer20
+  m_EditorClassIdentifier: 
+  Name: Layer20
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &4337617724463699586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9100,7 +10250,7 @@ MonoBehaviour:
   Path: event:/SOUND6/G
   guid: 7381cb75bda5314fbba1d12f4be134cf
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -9193,6 +10343,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &4495397460119725748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer11
+  m_EditorClassIdentifier: 
+  Name: Layer11
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &4521042040868728725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9206,6 +10373,23 @@ MonoBehaviour:
   m_Name: parameter:/F/Layer8
   m_EditorClassIdentifier: 
   Name: Layer8
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &4546458393725017619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer19
+  m_EditorClassIdentifier: 
+  Name: Layer19
   Min: 0
   Max: 1
   Default: 0
@@ -9227,6 +10411,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &4568299111495662768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer16
+  m_EditorClassIdentifier: 
+  Name: Layer16
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &4573621305453284794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9280,6 +10481,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &4662927332400739614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer2
+  m_EditorClassIdentifier: 
+  Name: Layer2
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &4675378313088133795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9363,7 +10581,7 @@ MonoBehaviour:
   Path: event:/SOUND6/C
   guid: 5257ae2c33b46b4380f6d5ef73a15d41
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -9450,6 +10668,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &4863278341492830440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer4
+  m_EditorClassIdentifier: 
+  Name: Layer4
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &4889544162817481139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9569,6 +10804,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &5213479949997500129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer19
+  m_EditorClassIdentifier: 
+  Name: Layer19
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &5244304074861855221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9600,6 +10852,23 @@ MonoBehaviour:
   m_Name: parameter:/A/Layer5
   m_EditorClassIdentifier: 
   Name: Layer5
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &5254987687434975022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer6
+  m_EditorClassIdentifier: 
+  Name: Layer6
   Min: 0
   Max: 1
   Default: 0
@@ -9907,6 +11176,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &5581163529536783968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer13
+  m_EditorClassIdentifier: 
+  Name: Layer13
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &5600134761456707194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9992,6 +11278,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &5720371241911889914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer12
+  m_EditorClassIdentifier: 
+  Name: Layer12
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &5728810058769558056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10300,6 +11603,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6124828718088337046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer12
+  m_EditorClassIdentifier: 
+  Name: Layer12
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &6134297348102559613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10374,6 +11694,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &6168763311885606354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer19
+  m_EditorClassIdentifier: 
+  Name: Layer19
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &6200713710828287201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10459,6 +11796,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6305309350559187717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer14
+  m_EditorClassIdentifier: 
+  Name: Layer14
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &6332888597601359212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10588,6 +11942,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6489276538160753850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer6
+  m_EditorClassIdentifier: 
+  Name: Layer6
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &6509169078315258224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10605,6 +11976,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6533255226079261104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer21
+  m_EditorClassIdentifier: 
+  Name: Layer21
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &6539271296439188233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10723,7 +12111,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &6649232474154028800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10797,6 +12185,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6696236852430762797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../SOUND9/SOUND9/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637261275764998729
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &6709454996205339767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10810,6 +12216,23 @@ MonoBehaviour:
   m_Name: parameter:/E/Layer7
   m_EditorClassIdentifier: 
   Name: Layer7
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &6710014639176126813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer5
+  m_EditorClassIdentifier: 
+  Name: Layer5
   Min: 0
   Max: 1
   Default: 0
@@ -10882,6 +12305,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6782942042581744018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer18
+  m_EditorClassIdentifier: 
+  Name: Layer18
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &6830877866268850552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10899,6 +12339,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &6842572262248036698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SOUND6/rStart
+  m_EditorClassIdentifier: 
+  Path: event:/SOUND6/rStart
+  guid: 368af5d7bdf2644e991072a41e91547b
+  Banks:
+  - {fileID: 1718259129695645971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2156
 --- !u!114 &6844079758860545355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11154,7 +12617,7 @@ MonoBehaviour:
   Path: event:/SOUND6/CC
   guid: 2da6a94c39b8ed4e928a6a49afb2ab6b
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -11196,6 +12659,40 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &7160123801548018073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer7
+  m_EditorClassIdentifier: 
+  Name: Layer7
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &7179823019470079677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer11
+  m_EditorClassIdentifier: 
+  Name: Layer11
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &7181054108630248732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11209,6 +12706,23 @@ MonoBehaviour:
   m_Name: Layer11
   m_EditorClassIdentifier: 
   Name: Layer11
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &7231821774640310282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer17
+  m_EditorClassIdentifier: 
+  Name: Layer17
   Min: 0
   Max: 1
   Default: 0
@@ -11377,6 +12891,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &7557524198973900285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer4
+  m_EditorClassIdentifier: 
+  Name: Layer4
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &7575899644234949147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11641,9 +13172,9 @@ MonoBehaviour:
   m_Name: event:/SOUND6/sStart
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/sStart
-  guid: 1beab7d91763b548af059ea217532227
+  guid: 2bccc56bb5e41847a91e5ef8e9982163
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -11770,6 +13301,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &8141862953772070756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../SOUND9/SOUND9/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637261254308874222
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &8153913719519495297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11836,8 +13385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/CStart
   guid: 4a13c2838f0ec543b39e2b98bd8cc0b2
-  Banks:
-  - {fileID: -8712510376302401142}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -11927,8 +13475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/CSharp
   guid: 6d714244d9369b47a360202da91b9b20
-  Banks:
-  - {fileID: -8712510376302401142}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -12255,6 +13802,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &8702266411297202923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer21
+  m_EditorClassIdentifier: 
+  Name: Layer21
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &8705037293036563363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12270,7 +13834,7 @@ MonoBehaviour:
   Path: event:/SOUND6/Gsharp
   guid: 983e297ee57f0947bf00c1eea613041f
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -12278,6 +13842,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &8728213249952697955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer21
+  m_EditorClassIdentifier: 
+  Name: Layer21
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &8731738575993938338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12592,6 +14173,40 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &9111499647394748038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer17
+  m_EditorClassIdentifier: 
+  Name: Layer17
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &9129906390104253327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer15
+  m_EditorClassIdentifier: 
+  Name: Layer15
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &9134768943812980446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12622,9 +14237,9 @@ MonoBehaviour:
   m_Name: event:/SOUND6/Empty
   m_EditorClassIdentifier: 
   Path: event:/SOUND6/Empty
-  guid: 0f8ae2d2eabb034eac2bb0d6bd5c1311
+  guid: a6ebc61af4aa0f479d6fad68fd7c04b2
   Banks:
-  - {fileID: -8712510376302401142}
+  - {fileID: 1718259129695645971}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -12632,3 +14247,43 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &9180687815233825848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SOUND6/CCsharp
+  m_EditorClassIdentifier: 
+  Path: event:/SOUND6/CCsharp
+  guid: 8863afe19139024eaee2bd4fe8ad1b63
+  Banks:
+  - {fileID: 1718259129695645971}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
+--- !u!114 &9201654329098337407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Layer2
+  m_EditorClassIdentifier: 
+  Name: Layer2
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
