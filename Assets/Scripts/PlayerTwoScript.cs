@@ -33,13 +33,16 @@ public class PlayerTwoScript : MonoBehaviour
                   xTwo,
                   xFinal;
 
-    private bool onScreen;
+    private bool onScreen,
+                 moveShinto;
     
     private Rigidbody2D rb;
 
+    private GameObject shintoAnimObject;
+
     private SpriteRenderer spriteR;
 
-    private PlayerTwoSound pTwoSound;
+    private PlayerTwoSE pTwoSE;
 
     private MusicSequence musicSequenceScript;
 
@@ -64,7 +67,7 @@ public class PlayerTwoScript : MonoBehaviour
 
         spriteR = GetComponent<SpriteRenderer>();
 
-        pTwoSound = GetComponent<PlayerTwoSound>();
+        pTwoSE = GetComponent<PlayerTwoSE>();
 
         musicSequenceScript = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicSequence>();
 
@@ -84,6 +87,8 @@ public class PlayerTwoScript : MonoBehaviour
         bounceDirection = new Vector3(1, 5, 0);
 
         gettingInputFromXSources = 0;
+
+        moveShinto = false;
     }
 
     public void RunInputUpdate(float xInput, int source)
@@ -204,6 +209,7 @@ public class PlayerTwoScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //NORMAL + SACRED COLLECTABLES
         if (other.gameObject.tag == "Collectable")
         {
             other.enabled = false;
@@ -217,6 +223,11 @@ public class PlayerTwoScript : MonoBehaviour
                 Animator animator = other.gameObject.GetComponent<Animator>();
 
                 animator.SetBool("playAnim", true);
+
+                if (other.gameObject.transform.name == "Collectable18(Clone)")
+                {
+                    StartCoroutine(WaitShinto(other.gameObject));
+                }
             }
             else
             {
@@ -226,8 +237,11 @@ public class PlayerTwoScript : MonoBehaviour
             musicSequenceScript.GetCollectable(other.gameObject);
 
             backgroundClouds.GetComponent<BackgroundScript>().GetCollectable(other.gameObject);
+
+            pTwoSE.PlaySoundEffect(3);
         }
 
+        //FIRST COLLECTABLE
         if (other.gameObject.tag == "CollectableOG")
         {
             if (!musicSequenceScript.cancelLayers)
@@ -238,6 +252,8 @@ public class PlayerTwoScript : MonoBehaviour
 
                 particleSys.Play();
             }
+
+            pTwoSE.PlaySoundEffect(3);
         }
 
         if (other.gameObject.tag == "Clouds")
@@ -263,11 +279,23 @@ public class PlayerTwoScript : MonoBehaviour
 
             if (pressedTime > minimPressedTime)
             {
+                if (held == false)
+                {
+                    pTwoSE.PlaySoundEffect(2);
+                }
+
                 held = true;
             }
+
         }
 
         CheckIfOnScreen();
+
+        if (moveShinto)
+        {
+            shintoAnimObject.transform.position = cam.gameObject.transform.position;
+            shintoAnimObject.transform.rotation = cam.gameObject.transform.rotation;
+        }
     }
     
     private void Jump()
@@ -284,7 +312,7 @@ public class PlayerTwoScript : MonoBehaviour
 
         //sound
         button = 0;
-        pTwoSound.AssignClip(button);
+        pTwoSE.PlaySoundEffect(1);
     }
     
     private void Bounce()
@@ -302,7 +330,7 @@ public class PlayerTwoScript : MonoBehaviour
 
         //sound
         button = 0;
-        pTwoSound.AssignClip(button);
+        pTwoSE.PlaySoundEffect(1);
     }
 
     private void CheckIfOnScreen()
@@ -335,5 +363,20 @@ public class PlayerTwoScript : MonoBehaviour
         {
             transform.position = cam.ViewportToWorldPoint(new Vector2(0.25f, 0.9f));
         }
+    }
+
+    private IEnumerator WaitShinto(GameObject other)
+    {
+        yield return new WaitForSeconds(0.7f); //NEED TO CHANGE WHEN I HAVE ANIMATION
+
+        shintoAnimObject = other;
+        moveShinto = true;
+
+        yield return new WaitForSeconds(19.0f);
+
+        moveShinto = false;
+        shintoAnimObject.GetComponent<Animator>().SetBool("playAnim", false);
+        shintoAnimObject.GetComponent<SpriteRenderer>().enabled = false;
+        shintoAnimObject = null;
     }
 }

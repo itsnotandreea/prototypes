@@ -29,6 +29,11 @@ public class MusicSequence : MonoBehaviour
                activeLayersLimit;
 
     public float timeInSeconds,
+                 regularTime,
+                 shintoTime,
+                 taoismTime,
+                 christianityTime,
+                 robotsTime,
                  endSacredTime;
 
     public bool cancelLayers,
@@ -45,10 +50,10 @@ public class MusicSequence : MonoBehaviour
 
     public RecorderScript recScript;
 
-    public PlayerTwoSoundEffects playerTwoSE;
+    public StartEndSoundEffects startEndSE;
 
     private int currentDigit;
-
+    
     private bool started,
                  onScreen;
 
@@ -114,6 +119,7 @@ public class MusicSequence : MonoBehaviour
 
         sacred = false;
         sacredCollectable = false;
+        timeInSeconds = regularTime;
     }
     
     void Update()
@@ -121,7 +127,7 @@ public class MusicSequence : MonoBehaviour
         if (sequence.Count > 0 && started == false)
         {
             started = true;
-            StartCoroutine(Play(timeInSeconds));
+            StartCoroutine(Play());
         }
 
         while (j < sequence.Count)
@@ -687,7 +693,9 @@ public class MusicSequence : MonoBehaviour
         {
             //JAPANESE COLLECTABLE
 
-            playerTwoSE.PlayStartSoundEffect(collectable);
+            timeInSeconds = shintoTime;
+
+            startEndSE.PlayStartSoundEffect(collectable);
             recScript.AddKnot(shintoStart);
 
             code[currentDigit] = 0;
@@ -736,7 +744,9 @@ public class MusicSequence : MonoBehaviour
         {
             //TAOISM COLLECTABLE
 
-            playerTwoSE.PlayStartSoundEffect(collectable);
+            timeInSeconds = taoismTime;
+
+            startEndSE.PlayStartSoundEffect(collectable);
             recScript.AddKnot(taoismStart);
 
             code[currentDigit] = 0;
@@ -785,7 +795,9 @@ public class MusicSequence : MonoBehaviour
         {
             //CHRISTIANITY COLLECTABLE
 
-            playerTwoSE.PlayStartSoundEffect(collectable);
+            timeInSeconds = christianityTime;
+
+            startEndSE.PlayStartSoundEffect(collectable);
             recScript.AddKnot(christianityStart);
 
             code[currentDigit] = 0;
@@ -834,7 +846,9 @@ public class MusicSequence : MonoBehaviour
         {
             //CHIPTUNE COLLECTABLE
 
-            playerTwoSE.PlayStartSoundEffect(collectable);
+            timeInSeconds = robotsTime;
+
+            startEndSE.PlayStartSoundEffect(collectable);
             recScript.AddKnot(robotsStart);
 
             code[currentDigit] = 0;
@@ -1251,7 +1265,7 @@ public class MusicSequence : MonoBehaviour
         }
     }
 
-    private IEnumerator Play(float time)
+    private IEnumerator Play()
     {
         while (i < sequence.Count)
         {
@@ -1264,9 +1278,9 @@ public class MusicSequence : MonoBehaviour
             SpriteRenderer sRenderer = sequence[i].GetComponent<SpriteRenderer>();
             Color originalColor = sRenderer.color;
             sRenderer.color = new Color(1.0f, 1.0f, 1.0f);
-
-            yield return new WaitForSeconds(time);
-                
+            
+            yield return new WaitForSeconds(timeInSeconds);
+            
             if (originalColor == new Color(1.0f, 1.0f, 1.0f, 1.0f))
             {
                 sRenderer.color = originalColor;
@@ -1418,32 +1432,34 @@ public class MusicSequence : MonoBehaviour
         if (sacredObject.transform.name == "shintoKnotsZone")
         {
             layersArray[16] = false;
-            playerTwoSE.PlayEndSoundEffect(sacredObject);
+            startEndSE.PlayEndSoundEffect(sacredObject);
             recScript.AddKnot(shintoEnd);
             yield return new WaitForSeconds(0.38f);
         }
         else if (sacredObject.transform.name == "taoismKnotsZone")
         {
             layersArray[17] = false;
-            playerTwoSE.PlayEndSoundEffect(sacredObject);
+            startEndSE.PlayEndSoundEffect(sacredObject);
             recScript.AddKnot(taoismEnd);
             yield return new WaitForSeconds(0.38f);
         }
         else if (sacredObject.transform.name == "christianityKnotsZone")
         {
             layersArray[18] = false;
-            playerTwoSE.PlayEndSoundEffect(sacredObject);
+            startEndSE.PlayEndSoundEffect(sacredObject);
             recScript.AddKnot(christianityEnd);
             yield return new WaitForSeconds(1.5f);
         }
         else if (sacredObject.transform.name == "robotsKnotsZone")
         {
             layersArray[19] = false;
-            playerTwoSE.PlayEndSoundEffect(sacredObject);
+            startEndSE.PlayEndSoundEffect(sacredObject);
             recScript.AddKnot(robotsEnd);
             yield return new WaitForSeconds(1.15f);
         }
-
+        
+        timeInSeconds = regularTime;
+        
         sacred = false;
 
         AssignLayer();

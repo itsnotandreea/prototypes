@@ -34,8 +34,8 @@ public class BackgroundScript : MonoBehaviour
 
     public List<GameObject> cloudsList = new List<GameObject>();
 
-    public Color[,] coloursArray= new Color[30,4];
-    public int[,] elementsArray= new int[30,3];
+    public Color[,] coloursArray= new Color[50,4];
+    public int[,] elementsArray= new int[50,3];
 
     private GameObject currentCloud;
 
@@ -58,37 +58,21 @@ public class BackgroundScript : MonoBehaviour
         colFifteen = new Color(0.81f, 0.20f, 0.20f, 1.0f);
         colSixteen = new Color(0.81f, 0.20f, 0.20f, 1.0f);
         colSeventeen = new Color(0.81f, 0.20f, 0.20f, 1.0f);
-
-        /*
-        orangeCol = new Color(1.0f, 0.12f, 0.29f, 1.0f);
-        blueCol = new Color(0.79f, 0.0f, 0.07f, 1.0f);
-        yellowCol = new Color(1.0f, 0.72f, 0.27f, 1.0f);
-        whiteCol = new Color(0.76f, 0.99f, 1.0f, 1.0f);
-        coraiCol = new Color(0.53f, 0.26f, 0.53f, 1.0f);
-        darkBlueCol = new Color(1.0f, 0.20f, 0.58f, 1.0f);
-        limeCol = new Color(0.75f, 1.0f, 0.20f, 1.0f);
-        */
-
+        
         //originally, all clouds will be the same colour
-        firstColour = secondColour = thirdColour = originalColour = new Color(0.20f, 0.25f, 0.25f, 1.0f);
-
-        newColour = originalColour;
+        //firstColour = secondColour = thirdColour = originalColour = new Color(0.20f, 0.25f, 0.25f, 1.0f);
+        //newColour = originalColour;
 
         //initially, the clouds have no extra colours
         first = second = third = 0;
 
         cloudIndex = 0;
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 50; i++)
         {
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 3; j++)
             {
-                coloursArray[i, j] = originalColour;
-
-                if (j < 3)
-                {
-                    elementsArray[i, j] = 0;
-                }
+                elementsArray[i, j] = 0;
             }
         }
     }
@@ -194,6 +178,12 @@ public class BackgroundScript : MonoBehaviour
             {
                 //if not found, adds the cloud to the list
                 cloudsList.Add(cloud);
+
+                for (int j = 0; j < 4; j++)
+                {
+                    coloursArray[cloudsList.Count, j] = cloud.GetComponent<SpriteRenderer>().color;
+                }
+
                 currentCloud = cloudsList[cloudsList.Count - 1];
 
                 //saves its index
@@ -204,6 +194,12 @@ public class BackgroundScript : MonoBehaviour
         {
             //if there are not, directly adds new and first cloud
             cloudsList.Add(cloud);
+            
+            for (int j = 0; j < 4; j++)
+            {
+                coloursArray[cloudsList.Count, j] = cloud.GetComponent<SpriteRenderer>().color;
+            }
+            
             currentCloud = cloudsList[cloudsList.Count - 1];
 
             //saves index

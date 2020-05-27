@@ -7,7 +7,12 @@ public class MusicPlayerScript : MonoBehaviour
 {
     public static List<List<string>> playList = new List<List<string>>();
 
-    public float timeInSeconds;
+    public float timeInSeconds,
+                 regularTime,
+                 shintoTime,
+                 taoismTime,
+                 christianityTime,
+                 robotsTime;
     
     public FMOD.Studio.EventInstance musicEvent;
 
@@ -30,7 +35,9 @@ public class MusicPlayerScript : MonoBehaviour
 
         musicEvent.start();
 
-        StartCoroutine(Play(timeInSeconds));
+        timeInSeconds = regularTime;
+
+        StartCoroutine(Play());
     }
 
     private void OnDisable()
@@ -99,7 +106,7 @@ public class MusicPlayerScript : MonoBehaviour
         index = 0;
     }
 
-    IEnumerator Play(float time)
+    IEnumerator Play()
     {
         while (index < playList.Count)
         {
@@ -108,45 +115,52 @@ public class MusicPlayerScript : MonoBehaviour
             FMODUnity.RuntimeManager.CreateInstance(playList[index][0]);
             FMODUnity.RuntimeManager.PlayOneShot(playList[index][0], transform.position);
             
-            yield return new WaitForSeconds(time);
-
+            yield return new WaitForSeconds(timeInSeconds);
             if (index > 0)
             {
-                if (playList[index][0] == "shintoStart")
+                if (playList[index][0].Substring(0, 20) == "event:/SOUND6/sStart")
                 {
+                    timeInSeconds = shintoTime;
                     yield return new WaitForSeconds(0.38f);
                 }
-                else if (playList[index][0] == "shintoEnd")
+                else if (playList[index][0].Substring(0, 18) == "event:/SOUND6/sEnd")
                 {
                     yield return new WaitForSeconds(0.38f);
+                    timeInSeconds = regularTime;
                 }
-                else if (playList[index][0] == "taoismStart")
+                else if (playList[index][0].Substring(0, 20) == "event:/SOUND6/tStart")
                 {
+                    timeInSeconds = taoismTime;
                     yield return new WaitForSeconds(0.38f);
                 }
-                else if (playList[index][0] == "taoismEnd")
+                else if (playList[index][0].Substring(0, 18) == "event:/SOUND6/tEnd")
                 {
                     yield return new WaitForSeconds(0.38f);
+                    timeInSeconds = regularTime;
                 }
-                else if (playList[index][0] == "christianityStart")
+                else if (playList[index][0].Substring(0, 20) == "event:/SOUND6/cStart")
                 {
+                    timeInSeconds = christianityTime;
                     yield return new WaitForSeconds(0.98f);
                 }
-                else if (playList[index][0] == "christianityEnd")
+                else if (playList[index][0].Substring(0, 18) == "event:/SOUND6/cEnd")
                 {
                     yield return new WaitForSeconds(1.5f);
+                    timeInSeconds = regularTime;
                 }
-                else if (playList[index][0] == "robotsStart")
+                else if (playList[index][0].Substring(0, 20) == "event:/SOUND6/rStart")
                 {
+                    timeInSeconds = robotsTime;
                     yield return new WaitForSeconds(1.15f);
                 }
-                else if (playList[index][0] == "robotsEnd")
+                else if (playList[index][0].Substring(0, 18) == "event:/SOUND6/rEnd")
                 {
                     yield return new WaitForSeconds(1.15f);
+                    timeInSeconds = regularTime;
                 }
             }
             
-
+            Debug.Log(timeInSeconds);
             index++;
         }
     }
