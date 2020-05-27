@@ -42,11 +42,8 @@ public class TutorialScript : MonoBehaviour
             {
                 if (playerTwo.GetComponent<SpriteRenderer>().enabled == false)
                 {
-                    transform.GetChild(2).transform.position = new Vector3(playerTwo.transform.position.x - 8.0f, playerTwo.transform.position.y + 10.0f, playerTwo.transform.position.z);
-                    transform.GetChild(3).transform.position = new Vector3(playerTwo.transform.position.x + 9.0f, playerTwo.transform.position.y + 10.0f, playerTwo.transform.position.z);
-                
-                    gameObject.transform.GetChild(2).gameObject.SetActive(true);
-                    gameObject.transform.GetChild(3).gameObject.SetActive(true);
+                    transform.GetChild(2).transform.position = new Vector3(playerTwo.transform.position.x - 5.0f, playerTwo.transform.position.y + 8.0f, playerTwo.transform.position.z);
+                    transform.GetChild(3).transform.position = new Vector3(playerTwo.transform.position.x + 5.0f, playerTwo.transform.position.y + 8.0f, playerTwo.transform.position.z);
 
                     StartCoroutine(CreateNewKnots());
 
@@ -56,19 +53,19 @@ public class TutorialScript : MonoBehaviour
             
                 if (playerTwoInput == 0)
                 {
-                    transform.GetChild(2).transform.position = new Vector3(playerTwo.transform.position.x - 8.0f, playerTwo.transform.position.y + 8.0f, playerTwo.transform.position.z);
-                    transform.GetChild(3).transform.position = new Vector3(playerTwo.transform.position.x + 9.0f, playerTwo.transform.position.y + 8.0f, playerTwo.transform.position.z);
+                    transform.GetChild(2).transform.position = new Vector3(playerTwo.transform.position.x - 5.0f, playerTwo.transform.position.y + 10.0f, -1.0f);
+                    transform.GetChild(3).transform.position = new Vector3(playerTwo.transform.position.x + 5.0f, playerTwo.transform.position.y + 10.0f, -1.0f);
                 }
                 else if (playerTwoInput == 1)
                 {
                     transform.GetChild(2).gameObject.SetActive(true);
-                    transform.GetChild(2).transform.position = new Vector3(playerTwo.transform.position.x, playerTwo.transform.position.y + 8.0f, playerTwo.transform.position.z);
+                    transform.GetChild(2).transform.position = new Vector3(playerTwo.transform.position.x, playerTwo.transform.position.y + 10.0f, -1.0f);
                     transform.GetChild(3).gameObject.SetActive(false);
                 }
                 else if (playerTwoInput == 2)
                 {
                     transform.GetChild(3).gameObject.SetActive(true);
-                    transform.GetChild(3).transform.position = new Vector3(playerTwo.transform.position.x, playerTwo.transform.position.y + 8.0f, playerTwo.transform.position.z);
+                    transform.GetChild(3).transform.position = new Vector3(playerTwo.transform.position.x, playerTwo.transform.position.y + 10.0f, -1.0f);
                     transform.GetChild(2).gameObject.SetActive(false);
                 }
             }
@@ -82,24 +79,24 @@ public class TutorialScript : MonoBehaviour
         
             if (playerOneInput == 0)
             {
-                transform.GetChild(0).transform.position = new Vector3(playerOne.transform.position.x - 8.0f, playerOne.transform.position.y + 15.0f, playerOne.transform.position.z);
-                transform.GetChild(1).transform.position = new Vector3(playerOne.transform.position.x + 5.0f, playerOne.transform.position.y + 15.0f, playerOne.transform.position.z);
+                transform.GetChild(0).transform.position = new Vector3(playerOne.transform.position.x - 5.0f, playerOne.transform.position.y + 10.0f, -1.0f);
+                transform.GetChild(1).transform.position = new Vector3(playerOne.transform.position.x + 3.0f, playerOne.transform.position.y + 10.0f, -1.0f);
             }
             else if (playerOneInput == 1)
             {
                 transform.GetChild(0).gameObject.SetActive(true);
-                transform.GetChild(0).transform.position = new Vector3(playerOne.transform.position.x, playerOne.transform.position.y + 15.0f, playerOne.transform.position.z);
+                transform.GetChild(0).transform.position = new Vector3(playerOne.transform.position.x, playerOne.transform.position.y + 10.0f, -1.0f);
                 transform.GetChild(1).gameObject.SetActive(false);
             }
             else if (playerOneInput == 2)
             {
                 transform.GetChild(1).gameObject.SetActive(true);
-                transform.GetChild(1).transform.position = new Vector3(playerOne.transform.position.x, playerOne.transform.position.y + 15.0f, playerOne.transform.position.z);
+                transform.GetChild(1).transform.position = new Vector3(playerOne.transform.position.x, playerOne.transform.position.y + 10.0f, -1.0f);
                 transform.GetChild(0).gameObject.SetActive(false);
             }
         }
  
-        if (collectedTheOne || PlayerPrefs.GetInt("noOfArtworks", 100) > 100)
+        if (collectedTheOne || mainManager.tutorial != 0)
         {
             //fade out / fade in screen
 
@@ -112,7 +109,7 @@ public class TutorialScript : MonoBehaviour
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 gameObject.transform.GetChild(3).gameObject.SetActive(false);
                 
-                if (PlayerPrefs.GetInt("noOfArtworks", 100) > 100)
+                if (mainManager.tutorial != 0)
                 {
                     colour = new Color(0.0f, 0.0f, 0.0f, 1.0f);
                     gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
@@ -161,9 +158,15 @@ public class TutorialScript : MonoBehaviour
         {
             gameObject.transform.GetChild(i).gameObject.SetActive(true);
 
+            if (i > 5)
+            {
+                gameObject.transform.GetChild(2).gameObject.SetActive(true);
+                gameObject.transform.GetChild(3).gameObject.SetActive(true);
+            }
+            
             yield return new WaitForSeconds(0.15f);
         }
-
+        
         yield return new WaitForSeconds(0.60f);
 
         gameObject.transform.GetChild(gameObject.transform.childCount - 2).gameObject.SetActive(true);

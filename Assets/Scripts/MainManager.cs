@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
-    public int gallerySize;
+    public int gallerySize,
+               tutorial;
 
     public Text UIWinner;
 
@@ -49,6 +50,8 @@ public class MainManager : MonoBehaviour
     {
         noOfArtworks = "noOfArtworks";
         gallerySize = PlayerPrefs.GetInt(noOfArtworks, 100);
+
+        tutorial = PlayerPrefs.GetInt("tutorial", 0);
 
         Cursor.visible = false;
 
@@ -135,14 +138,17 @@ public class MainManager : MonoBehaviour
             Application.Quit();
         }
 
+        //RESTART GAME
         if (Input.GetKeyDown(KeyCode.R) == true)
         {
             SceneManager.LoadScene("SampleScene");
         }
 
+        //SEE TUTORIAL AGAIN
         if (Input.GetKeyDown(KeyCode.T) == true)
         {
-            PlayerPrefs.SetInt(noOfArtworks, 100);
+            PlayerPrefs.SetInt("tutorial", 0);
+            SceneManager.LoadScene("SampleScene");
         }
 
         if (cdSystem.timer <= 0.0f)
@@ -175,19 +181,20 @@ public class MainManager : MonoBehaviour
 
                 Quaternion tempRotation = camScript.cam.transform.rotation;
                 camScript.cam.transform.rotation = Quaternion.identity;
-
-
+                
                 gallerySize++;
                 recorderScript.WriteTxtFile();
                 PlayerPrefs.SetInt(noOfArtworks, gallerySize);
+                PlayerPrefs.SetInt("tutorial", 1);
                 TakePicture.TakeScreenshot_Static(2000, 2000);
                 takePicture = false;
-
+                
+                Cursor.visible = true;
+                
                 StartCoroutine(WaitPicture(tempPosition, tempSize, tempRotation));
             }
             else
             {
-                //camScript.gameObject.transform.position = camScript.finalPicturePos;
                 camScript.cam.orthographicSize = Mathf.Lerp(camScript.cam.orthographicSize, 700, Time.deltaTime * 0.1f);
                 camScript.cam.transform.rotation = Quaternion.Lerp(camScript.cam.transform.rotation, Quaternion.identity, Time.time * 0.3f);
             }
@@ -286,7 +293,6 @@ public class MainManager : MonoBehaviour
             knotsZone.SetActive(true);
 
             timeUI.SetActive(true);
-            //restartUI.SetActive(true);
 
             if (scoreMode)
             {
@@ -317,9 +323,12 @@ public class MainManager : MonoBehaviour
         TextAsset song = LoadText(filePath);
 
         musicPlayerScript.songFile = song;
+        musicPlayerScript.repeat = true;
         musicPlayerScript.enabled = true;
-    }  
-    
+        
+        restartUI.SetActive(true);
+    }
+
     private TextAsset LoadText(string path)
     {
         if (string.IsNullOrEmpty(path))

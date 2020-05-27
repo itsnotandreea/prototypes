@@ -17,6 +17,8 @@ public class MusicPlayerScript : MonoBehaviour
     public FMOD.Studio.EventInstance musicEvent;
 
     public TextAsset songFile;
+
+    public bool repeat;
     
     private int index;
     
@@ -116,6 +118,7 @@ public class MusicPlayerScript : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot(playList[index][0], transform.position);
             
             yield return new WaitForSeconds(timeInSeconds);
+
             if (index > 0)
             {
                 if (playList[index][0].Substring(0, 20) == "event:/SOUND6/sStart")
@@ -160,8 +163,12 @@ public class MusicPlayerScript : MonoBehaviour
                 }
             }
             
-            Debug.Log(timeInSeconds);
             index++;
+
+            if (index >= playList.Count && repeat)
+            {
+                index = 0;
+            }
         }
     }
 

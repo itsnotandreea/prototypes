@@ -429,12 +429,10 @@ public class GalleryScript : MonoBehaviour
         musicPlayerScript.enabled = false;
 
         string artwork = song.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name;
-
-        //string songPath = Application.dataPath + "/Resources/Artwork/" + artwork + ".txt";
-
+        
         musicPlayerScript.songFile = songsDict[artwork];
-
-        //musicPlayerScript.path = songPath;
+        musicPlayerScript.repeat = false;
+        
         StartCoroutine(Wait());
     }
 
