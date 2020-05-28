@@ -147,6 +147,11 @@ public class GalleryScript : MonoBehaviour
         musicPlayerScript = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<MusicPlayerScript>();
     }
 
+    private void OnDisable()
+    {
+        musicPlayerScript.enabled = false;
+    }
+
     private Sprite LoadSprite(string path, string name)
     {
         if (string.IsNullOrEmpty(path))

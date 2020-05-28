@@ -9,6 +9,12 @@ public class TutorialScript : MonoBehaviour
     public GameObject firstScreen,
                       secondScreen;
 
+    public AudioSource tutorialMusicSource,
+                       menuMusicSource;
+
+    public AudioClip tutorial,
+                     tutorialAndMenu;
+
     private int playerOneInput,
                 playerTwoInput;
 
@@ -149,9 +155,11 @@ public class TutorialScript : MonoBehaviour
         if (collectedTheOne)
         {
             //fade out / fade in screen
-
             if (doOnce)
             {
+                menuMusicSource.clip = tutorialAndMenu;
+                menuMusicSource.Play();
+
                 playerTwo.GetComponent<SpriteRenderer>().enabled = true;
 
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
@@ -180,6 +188,20 @@ public class TutorialScript : MonoBehaviour
                 if (colour != new Color(0.000f, 0.000f, 0.000f, 0.000f))
                 {
                     StartCoroutine(WaitASec(false, 1.4f));
+                }
+            }
+            
+            //MUSIC SWAP
+            if (tutorialMusicSource != null)
+            {
+                if (tutorialMusicSource.volume > 0.0f)
+                {
+                    tutorialMusicSource.volume -= Time.deltaTime * 0.4f;
+                    menuMusicSource.volume += Time.deltaTime * 0.4f;
+                }
+                else
+                {
+                    Destroy(tutorialMusicSource.gameObject);
                 }
             }
         }
@@ -332,6 +354,9 @@ public class TutorialScript : MonoBehaviour
         headphonesFadeOut = true;
 
         yield return new WaitForSeconds(0.5f);
+        
+        tutorialMusicSource.clip = tutorial;
+        tutorialMusicSource.Play();
 
         headphonesBackgroundFadeOut = true;
 

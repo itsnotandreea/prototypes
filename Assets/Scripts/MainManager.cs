@@ -25,6 +25,8 @@ public class MainManager : MonoBehaviour
                       firstKnotTutorialArea,
                       tutorialArea;
 
+    public AudioSource menuAudioSource;
+
     public bool tutorialMode;
 
     private bool takePicture,
@@ -199,6 +201,24 @@ public class MainManager : MonoBehaviour
                 camScript.cam.transform.rotation = Quaternion.Lerp(camScript.cam.transform.rotation, Quaternion.identity, Time.time * 0.3f);
             }
         }
+
+        if (menuAudioSource != null)
+        {
+            if (cdSystem.mainTimer - 6.0f < cdSystem.timer && cdSystem.timer < cdSystem.mainTimer)
+            {
+                if (menuAudioSource != null)
+                {
+                    if (menuAudioSource.volume > 0.0f)
+                    {
+                        menuAudioSource.volume -= Time.deltaTime * 0.3f;
+                    }
+                }
+            }
+            else if (cdSystem.timer < cdSystem.mainTimer - 6.0f && cdSystem.timer != 0)
+            {
+                Destroy(menuAudioSource.gameObject);
+            }
+        }
     }
 
     private void GetMode()
@@ -206,7 +226,7 @@ public class MainManager : MonoBehaviour
         if (menuScript.playButton)
         {
             camScript.menuCurrentPos = camScript.menuPosTwo;
-
+            
             if (galleryArea.activeSelf)
             {
                 StartCoroutine(DeactivateGalleryArea(true));
@@ -276,7 +296,7 @@ public class MainManager : MonoBehaviour
     private void StartGame()
     {
         pOneScript.lineLength = 25.0f;
-
+        
         float smoothness = Mathf.Lerp(camScript.cam.orthographicSize, 40, Time.deltaTime);
         camScript.cam.orthographicSize = smoothness;
 
@@ -365,7 +385,15 @@ public class MainManager : MonoBehaviour
         {
             yield return new WaitForSeconds(4.0f);
         }
-
+        
+        if (menuAudioSource != null)
+        {
+            if (menuAudioSource.volume < 1.0f)
+            {
+                menuAudioSource.volume += Time.deltaTime * 0.4f;
+            }
+        }
+        
         if (!menuScript.galleryButton)
         {
             galleryArea.SetActive(false);
@@ -381,6 +409,14 @@ public class MainManager : MonoBehaviour
     {
         galleryArea.SetActive(true);
 
+        if (menuAudioSource != null)
+        {
+            if (menuAudioSource.volume > 0.0f)
+            {
+                menuAudioSource.volume -= Time.deltaTime * 0.4f;
+            }
+        }
+        
         yield return new WaitForSeconds(3.5f);
 
         galleryArea.transform.GetChild(5).gameObject.SetActive(true);
