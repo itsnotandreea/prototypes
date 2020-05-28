@@ -269,7 +269,7 @@ public class RecorderScript : MonoBehaviour
 
     public void WriteTxtFile()
     {
-        StreamWriter writer = new StreamWriter(path, true);
+        StreamWriter writer = new StreamWriter(path, false);
 
         for (int i = 0; i < playList.Count; i++)
         {

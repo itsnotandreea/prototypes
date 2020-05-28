@@ -117,7 +117,7 @@ public class MusicPlayerScript : MonoBehaviour
             FMODUnity.RuntimeManager.CreateInstance(playList[index][0]);
             FMODUnity.RuntimeManager.PlayOneShot(playList[index][0], transform.position);
             
-            yield return new WaitForSeconds(timeInSeconds);
+            yield return new WaitForSecondsRealtime(timeInSeconds);
 
             if (index > 0)
             {

@@ -6,21 +6,40 @@ public class TutorialScript : MonoBehaviour
 {
     public bool collectedTheOne;
 
+    public GameObject firstScreen,
+                      secondScreen;
+
     private int playerOneInput,
                 playerTwoInput;
 
-    private bool doOnce;
+    private bool doOnce,
+                 firstScreensDone,
+                 changeScale,
+                 changeColour,
+                 changeHeadphonesColour,
+                 headphonesFadeIn,
+                 headphonesFadeOut,
+                 headphonesBackgroundFadeOut;
+
+    private float speed;
 
     private Color colour;
 
     private GameObject playerTwo,
-                       playerOne;
+                       playerOne,
+                       cam;
 
     private MainManager mainManager;
+
+    private PlayerOneScript pOneScript;
     
     void Awake()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
+
         mainManager = GameObject.FindGameObjectWithTag("MainManager").GetComponent<MainManager>();
+
+        pOneScript = GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOneScript>();
 
         playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
         playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo");
@@ -32,10 +51,41 @@ public class TutorialScript : MonoBehaviour
 
         colour = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         doOnce = true;
+
+        firstScreensDone = false;
+
+        headphonesBackgroundFadeOut = false;
+        headphonesFadeIn = false;
+        headphonesFadeOut = false;
+        changeHeadphonesColour = false;
+        changeScale = false;
+        changeColour = false;
+        StartCoroutine(FirstScreens());
     }
     
     void Update()
     {
+        if (firstScreen != null)
+        {
+            firstScreen.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, firstScreen.transform.position.z);
+            firstScreen.transform.rotation = cam.transform.rotation;
+        }
+
+        if (secondScreen != null)
+        {
+            secondScreen.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, secondScreen.transform.position.z);
+            secondScreen.transform.rotation = cam.transform.rotation;
+        }
+
+        if (pOneScript.canTakeInput && !firstScreensDone)
+        {
+            pOneScript.canTakeInput = false;
+        }
+        else if (!pOneScript.canTakeInput && firstScreensDone)
+        {
+            pOneScript.canTakeInput = true;
+        }
+
         if (doOnce)
         {
             if (playerOne.GetComponent<PlayerOneScript>().connectedOne == true)
@@ -96,7 +146,7 @@ public class TutorialScript : MonoBehaviour
             }
         }
  
-        if (collectedTheOne || mainManager.tutorial != 0)
+        if (collectedTheOne)
         {
             //fade out / fade in screen
 
@@ -131,6 +181,80 @@ public class TutorialScript : MonoBehaviour
                 {
                     StartCoroutine(WaitASec(false, 1.4f));
                 }
+            }
+        }
+
+        if (headphonesBackgroundFadeOut)
+        {
+            SpriteRenderer spriteRen0 = secondScreen.GetComponent<SpriteRenderer>();
+
+            spriteRen0.color = Color.Lerp(spriteRen0.color, new Color(spriteRen0.color.r, spriteRen0.color.g, spriteRen0.color.b, 0.0f), Time.deltaTime * 4f);
+        }
+
+        if (headphonesFadeIn)
+        {
+            SpriteRenderer spriteRen2 = secondScreen.transform.GetChild(0).gameObject.transform.GetComponent<SpriteRenderer>();
+            
+            spriteRen2.color = Color.Lerp(spriteRen2.color, new Color(spriteRen2.color.r, spriteRen2.color.g, spriteRen2.color.b, 1.0f), Time.deltaTime * 0.5f);
+            
+            if (spriteRen2.color.a > 0.98f || headphonesFadeOut)
+            {
+                headphonesFadeIn = false;
+            }
+        }
+
+        if (headphonesFadeOut)
+        {
+            SpriteRenderer spriteRen2 = secondScreen.transform.GetChild(0).gameObject.transform.GetComponent<SpriteRenderer>();
+            
+            spriteRen2.color = Color.Lerp(spriteRen2.color, new Color(spriteRen2.color.r, spriteRen2.color.g, spriteRen2.color.b, 0.0f), Time.deltaTime * 4.0f);
+
+            if (spriteRen2.color.a <= 0.05f)
+            {
+                secondScreen.transform.GetChild(0).gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(spriteRen2.color.r, spriteRen2.color.g, spriteRen2.color.b, 0.0f);
+                headphonesFadeOut = false;
+            }
+        }
+
+        if (changeHeadphonesColour)
+        {
+            SpriteRenderer spriteRen = secondScreen.GetComponent<SpriteRenderer>();
+
+            spriteRen.color = Color.Lerp(spriteRen.color, new Color(0.1607843f, 0.2196079f, 0.2392157f, 1.0f), Time.deltaTime * 1.0f);
+        }
+
+        if (changeScale)
+        {
+            firstScreen.transform.localScale = Vector3.Lerp(firstScreen.transform.localScale, new Vector3(270.0f, 270.0f, 1.0f), Time.deltaTime * speed);
+            
+            if (speed < 0.2)
+            {
+                speed = speed + Time.deltaTime * 0.025f;
+            }
+            
+            if (firstScreen.transform.localScale.x > 250.0f)
+            {
+                changeScale = false;
+            }
+        }
+
+        if (changeColour)
+        {
+            SpriteRenderer spriteRen = firstScreen.GetComponent<SpriteRenderer>();
+            
+            spriteRen.color = Color.Lerp(spriteRen.color, new Color(spriteRen.color.r, spriteRen.color.g, spriteRen.color.b, 0.0f), Time.deltaTime * 0.5f);
+            
+            if (spriteRen.color.a < 0.4f && !firstScreensDone)
+            {
+                firstScreensDone = true;
+            }
+
+            if (spriteRen.color.a < 0.01f)
+            {
+                changeColour = false;
+                changeScale = false;
+                
+                Destroy(firstScreen);
             }
         }
     }
@@ -196,5 +320,40 @@ public class TutorialScript : MonoBehaviour
                 playerTwoInput = 2;
             }
         }
+    }
+
+    private IEnumerator FirstScreens()
+    {
+        headphonesFadeIn = true;
+        changeHeadphonesColour = true;
+
+        yield return new WaitForSeconds(4.0f);
+
+        headphonesFadeOut = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        headphonesBackgroundFadeOut = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        headphonesBackgroundFadeOut = false;
+        changeHeadphonesColour = false;
+        Destroy(secondScreen);
+
+        yield return new WaitForSeconds(1.5f);
+        
+        if (mainManager.tutorial != 0)
+        {
+            collectedTheOne = true;
+        }
+
+        speed = 0.01f;
+
+        changeScale = true;
+        
+        yield return new WaitForSeconds(1.0f);
+        
+        changeColour = true;
     }
 }

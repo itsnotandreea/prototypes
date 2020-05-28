@@ -1279,8 +1279,8 @@ public class MusicSequence : MonoBehaviour
             Color originalColor = sRenderer.color;
             sRenderer.color = new Color(1.0f, 1.0f, 1.0f);
             
-            yield return new WaitForSeconds(timeInSeconds);
-            
+            yield return new WaitForSecondsRealtime(timeInSeconds);
+
             if (originalColor == new Color(1.0f, 1.0f, 1.0f, 1.0f))
             {
                 sRenderer.color = originalColor;
