@@ -141,14 +141,15 @@ public class MusicPlayerScript : MonoBehaviour
                     yield return new WaitForSeconds(0.38f);
                     timeInSeconds = regularTime;
                 }
+                /*
                 else if (playList[index][0].Substring(0, 20) == "event:/SOUND6/cStart")
                 {
                     timeInSeconds = christianityTime;
-                    yield return new WaitForSeconds(0.98f);
+                    yield return new WaitForSeconds(0.25f);
                 }
                 else if (playList[index][0].Substring(0, 18) == "event:/SOUND6/cEnd")
                 {
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(0.25f);
                     timeInSeconds = regularTime;
                 }
                 else if (playList[index][0].Substring(0, 20) == "event:/SOUND6/rStart")
@@ -161,6 +162,7 @@ public class MusicPlayerScript : MonoBehaviour
                     yield return new WaitForSeconds(1.15f);
                     timeInSeconds = regularTime;
                 }
+                */
             }
             
             index++;

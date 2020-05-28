@@ -1988,9 +1988,9 @@ MonoBehaviour:
   activeLayersLimit: 7
   timeInSeconds: 0
   regularTime: 0.9793
-  shintoTime: 0.9612
+  shintoTime: 0.969
   taoismTime: 0.91
-  christianityTime: 0.9603
+  christianityTime: 0.9879
   robotsTime: 0.9799
   endSacredTime: 20
   cancelLayers: 0
@@ -2000,7 +2000,6 @@ MonoBehaviour:
   layersArray: 0000000000000000000000000000000000000000
   code: 0000000000000000000000000000000000000000
   recScript: {fileID: 1989914250}
-  startEndSE: {fileID: 1292988078}
 --- !u!1 &262320444
 GameObject:
   m_ObjectHideFlags: 0
@@ -9858,7 +9857,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17982,9 +17981,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInSeconds: 0
   regularTime: 0.9793
-  shintoTime: 0.95
-  taoismTime: 0.87
-  christianityTime: 0.9485
+  shintoTime: 0.969
+  taoismTime: 0.91
+  christianityTime: 0.9879
   robotsTime: 0.9799
   songFile: {fileID: 0}
   repeat: 0

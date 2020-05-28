@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1405146027866255509}
   m_Layer: 0
   m_Name: shintoStart
-  m_TagString: ToDestroy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

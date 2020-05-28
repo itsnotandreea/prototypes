@@ -49,9 +49,7 @@ public class MusicSequence : MonoBehaviour
     public int[] code = new int[5];
 
     public RecorderScript recScript;
-
-    public StartEndSoundEffects startEndSE;
-
+    
     private int currentDigit;
     
     private bool started,
@@ -68,7 +66,15 @@ public class MusicSequence : MonoBehaviour
                    E,
                    F,
                    G,
-                   Gsharp;
+                   Gsharp,
+                   sStart,
+                   sEnd,
+                   tStart,
+                   tEnd,
+                   cStart,
+                   cEnd,
+                   rStart,
+                   rEnd;
     
     private Camera cam;
 
@@ -88,6 +94,14 @@ public class MusicSequence : MonoBehaviour
         F = "event:/SOUND6/F";
         G = "event:/SOUND6/G";
         Gsharp = "event:/SOUND6/Gsharp";
+        sStart = "event:/SOUND6/sStart";
+        sEnd = "event:/SOUND6/sEnd";
+        tStart = "event:/SOUND6/tStart";
+        tEnd = "event:/SOUND6/tEnd";
+        cStart = "event:/SOUND6/cStart";
+        cEnd = "event:/SOUND6/cEnd";
+        rStart = "event:/SOUND6/rStart";
+        rEnd = "event:/SOUND6/rEnd";
         
         currentNote = null;
         
@@ -693,16 +707,6 @@ public class MusicSequence : MonoBehaviour
         {
             //JAPANESE COLLECTABLE
 
-            timeInSeconds = shintoTime;
-
-            startEndSE.PlayStartSoundEffect(collectable);
-            recScript.AddKnot(shintoStart);
-
-            code[currentDigit] = 0;
-            currentDigit++;
-
-            sacred = true;
-
             if (cancelLayers)
             {
                 //cancel the layer
@@ -717,6 +721,21 @@ public class MusicSequence : MonoBehaviour
                 //add the layer
                 if (!layersArray[16])
                 {
+                    timeInSeconds = shintoTime;
+                    
+                    if (i + 1 <= sequence.Count - 1)
+                    {
+                        sequence.Insert(i + 1, shintoStart);
+                    }
+                    else
+                    {
+                        sequence.Insert(0, shintoStart);
+                    }
+                    
+                    code[currentDigit] = 0;
+                    currentDigit++;
+            
+
                     if (activeLayers <= activeLayersLimit)
                     {
                         activeLayers++;
@@ -725,9 +744,7 @@ public class MusicSequence : MonoBehaviour
                     {
                         DeleteRandomLayer();
                     }
-
-                    layersArray[16] = true;
-
+                    
                     shintoGO.SetActive(true);
                     shintoGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
                                                               transform.position.y + transform.TransformDirection(Vector2.up * 11.0f).y,
@@ -743,17 +760,7 @@ public class MusicSequence : MonoBehaviour
         else if (collectable.transform.name == "Collectable19(Clone)")
         {
             //TAOISM COLLECTABLE
-
-            timeInSeconds = taoismTime;
-
-            startEndSE.PlayStartSoundEffect(collectable);
-            recScript.AddKnot(taoismStart);
-
-            code[currentDigit] = 0;
-            currentDigit++;
-
-            sacred = true;
-
+            
             if (cancelLayers)
             {
                 //cancel the layer
@@ -768,6 +775,21 @@ public class MusicSequence : MonoBehaviour
                 //add the layer
                 if (!layersArray[17])
                 {
+                    timeInSeconds = taoismTime;
+                    
+                    if (i + 1 <= sequence.Count - 1)
+                    {
+                        sequence.Insert(i + 1, taoismStart);
+                    }
+                    else
+                    {
+                        sequence.Insert(0, taoismStart);
+                    }
+                    
+                    code[currentDigit] = 0;
+                    currentDigit++;
+
+
                     if (activeLayers <= activeLayersLimit)
                     {
                         activeLayers++;
@@ -776,9 +798,7 @@ public class MusicSequence : MonoBehaviour
                     {
                         DeleteRandomLayer();
                     }
-
-                    layersArray[17] = true;
-
+                    
                     taoismGO.SetActive(true);
                     taoismGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
                                                               transform.position.y + transform.TransformDirection(Vector2.up * 11.0f).y,
@@ -795,16 +815,6 @@ public class MusicSequence : MonoBehaviour
         {
             //CHRISTIANITY COLLECTABLE
 
-            timeInSeconds = christianityTime;
-
-            startEndSE.PlayStartSoundEffect(collectable);
-            recScript.AddKnot(christianityStart);
-
-            code[currentDigit] = 0;
-            currentDigit++;
-
-            sacred = true;
-
             if (cancelLayers)
             {
                 //cancel the layer
@@ -819,6 +829,21 @@ public class MusicSequence : MonoBehaviour
                 //add the layer
                 if (!layersArray[18])
                 {
+                    timeInSeconds = christianityTime;
+                    
+                    if (i + 1 <= sequence.Count - 1)
+                    {
+                        sequence.Insert(i + 1, christianityStart);
+                    }
+                    else
+                    {
+                        sequence.Insert(0, christianityStart);
+                    }
+                    
+                    code[currentDigit] = 0;
+                    currentDigit++;
+
+            
                     if (activeLayers <= activeLayersLimit)
                     {
                         activeLayers++;
@@ -827,8 +852,6 @@ public class MusicSequence : MonoBehaviour
                     {
                         DeleteRandomLayer();
                     }
-
-                    layersArray[18] = true;
 
                     christianityGO.SetActive(true);
                     christianityGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
@@ -846,16 +869,6 @@ public class MusicSequence : MonoBehaviour
         {
             //CHIPTUNE COLLECTABLE
 
-            timeInSeconds = robotsTime;
-
-            startEndSE.PlayStartSoundEffect(collectable);
-            recScript.AddKnot(robotsStart);
-
-            code[currentDigit] = 0;
-            currentDigit++;
-
-            sacred = true;
-
             if (cancelLayers)
             {
                 //cancel the layer
@@ -870,6 +883,21 @@ public class MusicSequence : MonoBehaviour
                 //add the layer
                 if (!layersArray[19])
                 {
+                    timeInSeconds = robotsTime;
+            
+                    if (i + 1 <= sequence.Count - 1)
+                    {
+                        sequence.Insert(i + 1, robotsStart);
+                    }
+                    else
+                    {
+                        sequence.Insert(0, robotsStart);
+                    }
+                    
+                    code[currentDigit] = 0;
+                    currentDigit++;
+
+            
                     if (activeLayers <= activeLayersLimit)
                     {
                         activeLayers++;
@@ -878,9 +906,7 @@ public class MusicSequence : MonoBehaviour
                     {
                         DeleteRandomLayer();
                     }
-
-                    layersArray[19] = true;
-
+                    
                     robotsGO.SetActive(true);
                     robotsGO.transform.position = new Vector3(transform.position.x + transform.TransformDirection(Vector2.up * 11.0f).x,
                                                               transform.position.y + transform.TransformDirection(Vector2.up * 11.0f).y,
@@ -963,7 +989,7 @@ public class MusicSequence : MonoBehaviour
     {
         FMODUnity.RuntimeManager.StudioSystem.getParameterByName("Layer1", out float value);
 
-        if (sacred && value != 0.5f)
+        if (sacred && value != 0.0f)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Layer1", 0.0f);
         }
@@ -1273,14 +1299,94 @@ public class MusicSequence : MonoBehaviour
 
             FMODUnity.RuntimeManager.CreateInstance(currentNote);
             FMODUnity.RuntimeManager.PlayOneShot(currentNote, transform.position);
-            
+
+            /*
             //Changes colour of the knot so you can eye-track the music
             SpriteRenderer sRenderer = sequence[i].GetComponent<SpriteRenderer>();
             Color originalColor = sRenderer.color;
             sRenderer.color = new Color(1.0f, 1.0f, 1.0f);
-            
+            */
+
             yield return new WaitForSecondsRealtime(timeInSeconds);
 
+            if (currentNote == sStart)
+            {
+                yield return new WaitForSecondsRealtime(0.38f);
+                sequence.RemoveAt(i);
+
+                layersArray[16] = true;
+                recScript.AddKnot(shintoStart);
+                sacred = true;
+                AssignLayer();
+            }
+            else if (currentNote == sEnd)
+            {
+                yield return new WaitForSecondsRealtime(0.38f);
+                sequence.RemoveAt(i);
+
+                layersArray[16] = false;
+                recScript.AddKnot(shintoEnd);
+                sacred = false;
+                AssignLayer();
+            }
+            else if (currentNote == tStart)
+            {
+                yield return new WaitForSecondsRealtime(0.38f);
+                sequence.RemoveAt(i);
+
+                layersArray[17] = true;
+                recScript.AddKnot(taoismStart);
+                sacred = true;
+                AssignLayer();
+            }
+            else if (currentNote == tEnd)
+            {
+                yield return new WaitForSecondsRealtime(0.38f);
+                sequence.RemoveAt(i);
+                
+                layersArray[17] = false;
+                recScript.AddKnot(taoismEnd);
+                sacred = false;
+                AssignLayer();
+            }
+            else if (currentNote == cStart)
+            {
+                sequence.RemoveAt(i);
+
+                layersArray[18] = true;
+                recScript.AddKnot(christianityStart);
+                sacred = true;
+                AssignLayer();
+            }
+            else if (currentNote == cEnd)
+            {
+                sequence.RemoveAt(i);
+
+                layersArray[18] = false;
+                recScript.AddKnot(christianityEnd);
+                sacred = false;
+                AssignLayer();
+            }
+            else if (currentNote == rStart)
+            {
+                sequence.RemoveAt(i);
+
+                layersArray[19] = true;
+                recScript.AddKnot(robotsStart);
+                sacred = true;
+                AssignLayer();
+            }
+            else if (currentNote == rEnd)
+            {
+                sequence.RemoveAt(i);
+                
+                layersArray[19] = false;
+                recScript.AddKnot(robotsEnd);
+                sacred = false;
+                AssignLayer();
+            }
+
+            /*
             if (originalColor == new Color(1.0f, 1.0f, 1.0f, 1.0f))
             {
                 sRenderer.color = originalColor;
@@ -1296,7 +1402,7 @@ public class MusicSequence : MonoBehaviour
                     sRenderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
                 }
             }
-
+            */
             i++;
         }
 
@@ -1305,7 +1411,6 @@ public class MusicSequence : MonoBehaviour
             i = 0;
             started = false;
         }
-
     }
 
     private void FindNote(GameObject knot)
@@ -1390,6 +1495,38 @@ public class MusicSequence : MonoBehaviour
         {
             currentNote = G;
         }
+        else if (knot.transform.name == "shintoStart")
+        {
+            currentNote = sStart;
+        }
+        else if (knot.transform.name == "shintoEnd")
+        {
+            currentNote = sEnd;
+        }
+        else if (knot.transform.name == "taoismStart")
+        {
+            currentNote = tStart;
+        }
+        else if (knot.transform.name == "taoismEnd")
+        {
+            currentNote = tEnd;
+        }
+        else if (knot.transform.name == "christianityStart")
+        {
+            currentNote = cStart;
+        }
+        else if (knot.transform.name == "christianityEnd")
+        {
+            currentNote = cEnd;
+        }
+        else if (knot.transform.name == "robotsStart")
+        {
+            currentNote = rStart;
+        }
+        else if (knot.transform.name == "robotsEnd")
+        {
+            currentNote = rEnd;
+        }
     }
 
     private void CheckIfOnScreen(GameObject knot)
@@ -1409,7 +1546,13 @@ public class MusicSequence : MonoBehaviour
                 onScreen = false;
             }
         }
-
+        
+        if (knot.transform.name == "shintoStart" || knot.transform.name == "shintoEnd" || knot.transform.name == "taoismStart" || knot.transform.name == "taoismEnd" ||
+            knot.transform.name == "christianityStart" || knot.transform.name == "christianityEnd" || knot.transform.name == "robotsStart" || knot.transform.name == "robotsEnd")
+        {
+            onScreen = true;
+        }
+        
         if (!onScreen)
         {
             sequence.Remove(knot);
@@ -1431,38 +1574,50 @@ public class MusicSequence : MonoBehaviour
 
         if (sacredObject.transform.name == "shintoKnotsZone")
         {
-            layersArray[16] = false;
-            startEndSE.PlayEndSoundEffect(sacredObject);
-            recScript.AddKnot(shintoEnd);
-            yield return new WaitForSeconds(0.38f);
+            if (i + 1 <= sequence.Count - 1)
+            {
+                sequence.Insert(i + 1, shintoEnd);
+            }
+            else
+            {
+                sequence.Insert(0, shintoEnd);
+            }
         }
         else if (sacredObject.transform.name == "taoismKnotsZone")
         {
-            layersArray[17] = false;
-            startEndSE.PlayEndSoundEffect(sacredObject);
-            recScript.AddKnot(taoismEnd);
-            yield return new WaitForSeconds(0.38f);
+            if (i + 1 <= sequence.Count - 1)
+            {
+                sequence.Insert(i + 1, taoismEnd);
+            }
+            else
+            {
+                sequence.Insert(0, taoismEnd);
+            }
         }
         else if (sacredObject.transform.name == "christianityKnotsZone")
         {
-            layersArray[18] = false;
-            startEndSE.PlayEndSoundEffect(sacredObject);
-            recScript.AddKnot(christianityEnd);
-            yield return new WaitForSeconds(1.5f);
+            if (i + 1 <= sequence.Count - 1)
+            {
+                sequence.Insert(i + 1, christianityEnd);
+            }
+            else
+            {
+                sequence.Insert(0, christianityEnd);
+            }
         }
         else if (sacredObject.transform.name == "robotsKnotsZone")
         {
-            layersArray[19] = false;
-            startEndSE.PlayEndSoundEffect(sacredObject);
-            recScript.AddKnot(robotsEnd);
-            yield return new WaitForSeconds(1.15f);
+            if (i + 1 <= sequence.Count - 1)
+            {
+                sequence.Insert(i + 1, robotsEnd);
+            }
+            else
+            {
+                sequence.Insert(0, robotsEnd);
+            }
         }
         
         timeInSeconds = regularTime;
-        
-        sacred = false;
-
-        AssignLayer();
 
         GameObject sacredObjectsParent = sacredObject.GetComponent<SpawnKnots>().parent;
 
