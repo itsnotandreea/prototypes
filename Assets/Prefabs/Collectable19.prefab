@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3529965968948810634}
   - component: {fileID: 1946731566935526511}
   - component: {fileID: -2430030432350791212}
+  - component: {fileID: -8088222628961036567}
   m_Layer: 0
   m_Name: Collectable19
   m_TagString: Collectable
@@ -128,3 +129,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8088222628961036567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430131648094984168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322edace717b37c4b97dcc695107bd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3030327698545358022}
   - component: {fileID: 8860516137958328541}
   - component: {fileID: 5840670813519173432}
+  - component: {fileID: 1672520630733717737}
+  - component: {fileID: -8696426169194317650}
   m_Layer: 0
   m_Name: Collectable21
   m_TagString: Collectable
@@ -108,3 +110,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.447132, y: 4.38}
   m_EdgeRadius: 0
+--- !u!95 &1672520630733717737
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318441394026106047}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50b0c898464865e41b35f9bf5ee9f102, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8696426169194317650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318441394026106047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322edace717b37c4b97dcc695107bd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

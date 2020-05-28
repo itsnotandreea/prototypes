@@ -367,12 +367,12 @@ public class PlayerTwoScript : MonoBehaviour
 
     private IEnumerator WaitShinto(GameObject other)
     {
-        yield return new WaitForSeconds(0.7f); //NEED TO CHANGE WHEN I HAVE ANIMATION
+        yield return new WaitForSeconds(1.7f);
 
         shintoAnimObject = other;
         moveShinto = true;
 
-        yield return new WaitForSeconds(19.0f);
+        yield return new WaitForSeconds(18.0f);
 
         moveShinto = false;
         shintoAnimObject.GetComponent<Animator>().SetBool("playAnim", false);
