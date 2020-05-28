@@ -1300,12 +1300,17 @@ public class MusicSequence : MonoBehaviour
             FMODUnity.RuntimeManager.CreateInstance(currentNote);
             FMODUnity.RuntimeManager.PlayOneShot(currentNote, transform.position);
 
-            /*
-            //Changes colour of the knot so you can eye-track the music
-            SpriteRenderer sRenderer = sequence[i].GetComponent<SpriteRenderer>();
-            Color originalColor = sRenderer.color;
-            sRenderer.color = new Color(1.0f, 1.0f, 1.0f);
-            */
+            Debug.Log(sequence[i].transform.childCount);
+            if (sequence[i].transform.childCount > 0)
+            {
+                if (sequence[i].transform.GetChild(0).GetComponent<Animator>())
+                {
+                    Animator animator = sequence[i].transform.GetChild(0).GetComponent<Animator>();
+
+                    animator.SetTrigger("playIdle");
+                }
+            }
+
 
             yield return new WaitForSecondsRealtime(timeInSeconds);
 
@@ -1385,24 +1390,7 @@ public class MusicSequence : MonoBehaviour
                 sacred = false;
                 AssignLayer();
             }
-
-            /*
-            if (originalColor == new Color(1.0f, 1.0f, 1.0f, 1.0f))
-            {
-                sRenderer.color = originalColor;
-            }
-            else
-            {
-                if (sacred)
-                {
-                    sRenderer.color = originalColor;
-                }
-                else
-                {
-                    sRenderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-                }
-            }
-            */
+            
             i++;
         }
 
