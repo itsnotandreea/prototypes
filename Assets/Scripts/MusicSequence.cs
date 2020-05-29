@@ -1299,8 +1299,7 @@ public class MusicSequence : MonoBehaviour
 
             FMODUnity.RuntimeManager.CreateInstance(currentNote);
             FMODUnity.RuntimeManager.PlayOneShot(currentNote, transform.position);
-
-            Debug.Log(sequence[i].transform.childCount);
+            
             if (sequence[i].transform.childCount > 0)
             {
                 if (sequence[i].transform.GetChild(0).GetComponent<Animator>())
