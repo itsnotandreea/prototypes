@@ -149,7 +149,10 @@ public class GalleryScript : MonoBehaviour
 
     private void OnDisable()
     {
-        musicPlayerScript.enabled = false;
+        if (musicPlayerScript.enabled == true)
+        {
+            musicPlayerScript.enabled = false;
+        }
     }
 
     private Sprite LoadSprite(string path, string name)

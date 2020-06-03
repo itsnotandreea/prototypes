@@ -110,7 +110,7 @@ public class PlayerInputHandler : MonoBehaviour
             SendInfo();
         }
     }
-
+    /*
     private void OnCameraMovement(InputValue value)
     {
         if (index == 0)
@@ -119,7 +119,7 @@ public class PlayerInputHandler : MonoBehaviour
             SendInfo();
         }
     }
-
+    */
     private void OnMove(InputValue value)
     {
         if (index == 1)
